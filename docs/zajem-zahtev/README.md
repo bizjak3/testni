@@ -25,11 +25,21 @@
 - Opredelite glavne tipe uporabnikov vaše aplikacije glede na funkcionalnosti, ki jih imajo na voljo.
 - Zelo pomembno je, da uporabniške vloge konsistentno imenujete. Na primer, če ste definirali vlogo **učitelj**, morate povsod uporabljati samostalnik **učitelj**, ne pa morda **profesor** ali **pedagog**. Tehniška besedila žal ne morejo dosegati leposlovnih standardov, tudi če so še tako dobro napisana.
 
+1. Latsnik psa
+2. Izvajalec storitev
+3. Administrator sistema (ali administrator)
+4.
+5.
+
 ## 3. Slovar pojmov
 
 **TO-DO**
 
 - Natančno opredelite vse têrmine, ki jih boste uporabljali v nadaljevanju dokumenta.
+
+**Lastnik psa** je oseba, ki se v aplikacijo prijavlja z namenom oddaje lastnega psa v izvedbo katere izmed storitev, ki jo aplikacija ponuja.
+**Izvajalaec storitve** je oseba, ki se v aplikacijo prijavlja z namenom izvajanja ene izmed storitev, ki jo aplikacija ponuja.
+**Administrator sistema** *(ali administrator)* je oseba, ki se v aplikacijo prijavlja z namenom upravljanja in nadzora delovanja aplikacije.
 
 ## 4. Diagram primerov uporabe
 
@@ -40,6 +50,22 @@
 - Akterji so tipično uporabniške vloge, lahko pa gre tudi za zunanje komponente (sistemi), ki komunicirajo z našo aplikacijo.
 
 ## 5. Funkcionalne zahteve
+
+Seznam funkcionalnosti:
+
+1. Registracija in prijava za lastnike psov (MUST)
+2. Registracija in prijava za izvajalce storitev (SHOULD)
+3. Pregled vseh ponujenih storitev v okviru aplikacije (MUST)
+4. Dodajanje nove ponudbe storitve kot izvajalec storitve (MUST)
+5. Dodajanje novega psa z njegovimi lastnostmi kot lastnik psa (COULD)
+6. Kopiranje vsebine pretečene storitve v novo storitev, kot izvajalec storitev (COULD)
+7. Pregled in urejanje podatkov uporabnika kot administrator sistema (SHOULD)
+8. Pregled in urejanje podatkov prijavljenega uporabnika, pregled javnih podatkov uporabnika (SHOULD)
+9. Izvajanje plačila za opravljeno storitev znotraj aplikacije (WONT)
+10. Pregled lokacije psa v posestvi lastnika psa v času izvajanja storitve izvajalca storitve (WONT)
+11. Neposredna komunikacija med izvajalcem storitve in lastnika psa (COULD)
+12. Ocenjevanje opravljene storitve izvajalca storitev (SHOULD)
+13. Pregled izvedenih storitev prijavljenega uporabnika (COULD)
 
 V tem razdelku podrobno opišite posamezne funkcionalnosti, ki jih vaša aplikacija ponuja svojim uporabnikom. Za vsako funkcionalnost navedite naslednje podatke:
 
