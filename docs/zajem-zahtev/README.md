@@ -39,15 +39,15 @@
 
 **Lastnik psa** je oseba, ki se v aplikacijo prijavlja z namenom oddaje lastnega psa v izvedbo katere izmed storitev, ki jo aplikacija ponuja.
 
-**Izvajalaec storitve** je oseba, ki se v aplikacijo prijavlja z namenom izvajanja ene izmed storitev, ki jo aplikacija ponuja.
+**Izvajalec storitve** je oseba, ki se v aplikacijo prijavlja z namenom izvajanja ene izmed storitev, ki jo aplikacija ponuja.
 
 **Administrator sistema** _(ali administrator)_ je oseba, ki se v aplikacijo prijavlja z namenom upravljanja in nadzora delovanja aplikacije.
 
 **Uporabnik** je oseba, ki aplikacijo uporablja. Vsak uporabnik ima določeno uporabniško vlogo definirano v _2. Uporabniške vloge_.
 
-**Neregistriran uporabnik** je uporabnik, ki še ni opravil ali zaključil postopka registracije. **Registriran uporabnik** je uporabnik, ki je upešno zaključil postopek registracije.
+**Neregistriran uporabnik** je uporabnik, ki še ni opravil ali zaključil postopka registracije. **Registriran uporabnik** je uporabnik, ki je uspešno zaključil postopek registracije.
 
-**Povratna informacija** je avdio-vizualni element v aplikaciji, ki z besedilom, zvokom ali sliko uporabnika obvesti o rezultetu izvedene akcije.
+**Povratna informacija** je avdio-vizualni element v aplikaciji, ki z besedilom, zvokom ali sliko uporabnika obvesti o razultatu izvedene akcije.
 
 Uporabniško ime, email, geslo, uporabniški profil, javni uporabniški podatki, URL povezava
 
@@ -72,10 +72,10 @@ Lastnik psa ali izvajalec storitev se lahko registrira v sistem. V sistem se lah
 #### Osnovni tok
 
 1. Na začetni strani neregistriran uporabnik izbere možnost "Registracija novega lastnika psa" ali "Registracija novega ponudnika storitev"
-2. Sistem prikaže obrazev, v katerega neregistriran uporabnik vnese vse potrebne podatke za registracijo.
+2. Sistem prikaže obrazec, v katerega neregistriran uporabnik vnese vse potrebne podatke za registracijo.
 3. Uporabnik, po vnosu podatkov, izbere gumb "Registracija"
-4. Sistem shrani podatke v bazo in generira edinstven registracijski žeton, ki je uporabniku posredovan na vnešen epoštni naslov.
-5. Neregistriran uporabnik v poslanem epoštnem sporočilu izbere možnost "Zaključi registracijo".
+4. Sistem shrani podatke v bazo in generira edinstven registracijski žeton, ki je uporabniku posredovan na vnešen e-poštni naslov.
+5. Neregistriran uporabnik v poslanem e-poštnem sporočilu izbere možnost "Zaključi registracijo".
 6. Uporabnik je preusmerjen na začetno stran s povratno informacijo o uspešnem zaključku registracije.
 
 #### Alternativni tok(ovi)
@@ -83,11 +83,11 @@ Lastnik psa ali izvajalec storitev se lahko registrira v sistem. V sistem se lah
 **Alternativni tok 1**
 
 1. Neregistriran uporabnik na začetni strani izbere "Prijava"
-2. Na novoodprti strani uporabnik izbere možnost "Nisem še registriran, registriraj me sedaj"
+2. Na novo odprti strani uporabnik izbere možnost "Nisem še registriran, registriraj me sedaj"
 3. Sistem prikaže obrazec, v katerega neregistriran uporabnik vnese vse potrebne podatke za registracijo.
 4. Uporabnik, po vnosu podatkov, izbere gumb "Registracija"
-5. Sistem shrani podatke v bazo in generira edinstven registracijski žeton, ki je uporabniku posredovan na vnešen epoštni naslov.
-6. Neregistriran uporabnik v poslanem epoštnem sporočilu izbere možnost "Zaključi registracijo".
+5. Sistem shrani podatke v bazo in generira edinstven registracijski žeton, ki je uporabniku posredovan na vnešen e-poštni naslov.
+6. Neregistriran uporabnik v poslanem e-poštnem sporočilu izbere možnost "Zaključi registracijo".
 7. Uporabnik je preusmerjen na začetno stran s povratno informacijo o uspešnem zaključku registracije.
 
 #### Izjemni tok(ovi)
@@ -110,13 +110,13 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _must have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _must have_.
 
 #### Sprejemni testi
 
 - Neregistriran uporabnik se v sistem registrira kot nov uporabnik tipa lastnik psov z novimi (edinstvenimi) podatki.
 - Neregistriran uporabnik se v sistem registrira kot nov uporabnik tipa lastnik psov z needinstvenimi podatki. Registracija je zavrnjena.
-- Neregistriran uporabnik se v sistem registrira kot nov uporabnik tipa ponudnik storitev z z needinstvenimi podatki. Registracija je zavrnjena.
+- Neregistriran uporabnik se v sistem registrira kot nov uporabnik tipa ponudnik storitev z needinstvenimi podatki. Registracija je zavrnjena.
 
 ### 5.2 Prijava uporabnika
 
@@ -127,7 +127,7 @@ Registriran uporabnik kateregakoli tipa se lahko prijavi v sistem z uporabniški
 #### Osnovni tok
 
 1. Na začetni strani registriran uporabnik izbere možnost "Prijava uporabnika"
-2. Sistem prikaže obrazec, v katerega uporabnik vnese uporabniško ime ali epoštni naslov.
+2. Sistem prikaže obrazec, v katerega uporabnik vnese uporabniško ime ali e-poštni naslov.
 3. Uporabnik, po vnosu podatkov, izbere gumb "Prijava"
 4. Ob pravilno vnešenih podatkih je uporabnik prijavljen v aplikacijo s povratno informacijo.
 
@@ -137,18 +137,18 @@ Registriran uporabnik kateregakoli tipa se lahko prijavi v sistem z uporabniški
 
 1. Uporabnik na začetni strani izbere "Registracija novega lastnika psa" ali "Registracija novega ponudnika storitev"
 2. Na novoodprti strani uporabnik izbere možnost "Registracijo sem že opravil, prijavi me"
-3. Sistem prikaže obrazec, v katerega uporabnik vnese uporabniško ime ali epoštni naslov.
+3. Sistem prikaže obrazec, v katerega uporabnik vnese uporabniško ime ali e-poštni naslov.
 4. Uporabnik, po vnosu podatkov, izbere gumb "Prijava"
 5. Ob pravilno vnešenih podatkih je uporabnik prijavljen v aplikacijo s povratno informacijo.
 
 #### Izjemni tok(ovi)
 
 - Uporabnik ni vnesel pravilne kombinacije uporabniškega imena in gesla ali emaila in gesla. Sistem ga opozoril s povratno informacijo.
-- Uporabnik z vnešenim uporabniškim imenom ali epošto v sistemu ne obstaja. Sistem uporabnika opozoril s povratno informacijo.
+- Uporabnik z vnešenim uporabniškim imenom ali e-pošto v sistemu ne obstaja. Sistem uporabnika opozoril s povratno informacijo.
 
 #### Pogoji
 
-V sistemu mora obstaja registriran uporabnik z enako kombinacijo epošte in gesla ali uporabniškega imena in gesla.
+V sistemu mora obstaja registriran uporabnik z enako kombinacijo e-pošte in gesla ali uporabniškega imena in gesla.
 
 #### Posledice
 
@@ -160,7 +160,7 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _must have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _must have_.
 
 #### Sprejemni testi
 
@@ -202,11 +202,11 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _must have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _must have_.
 
 #### Sprejemni testi
 
-- Uporabniku se po uspšeni prijavi prikažejo ponujene storitve ali napis "V sistemu ni trenutno aktivnih storitev"
+- Uporabniku se po uspešni prijavi prikažejo ponujene storitve ali napis "V sistemu ni trenutno aktivnih storitev"
 
 
 
@@ -264,7 +264,7 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _must have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _must have_.
 
 #### Sprejemni testi
 
@@ -312,7 +312,7 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _could have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 #### Sprejemni testi
 
@@ -356,7 +356,7 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _could have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 #### Sprejemni testi
 
@@ -371,11 +371,11 @@ Administrator sistema lahko pregleduje in ureja podatke vseh registriranih upora
 
 #### Osnovni tok
 
-1. Uporabni mora biti prijavljen v aplikacijo kot administrator sistema.
-2. Administrator sistema izbere možnost "Administracija" in "Pregled uporabnikov"
+1. Uporabnik mora biti prijavljen v aplikacijo kot administrator sistema.
+2. Administrator sistema izbere možnost "Administracija" in "Pregled uporabnikov".
 3. Na seznamu vseh registriranih uporabnikov izbere uporabnika in s tem odpre podroben pregled vseh podatkov uporabnika.
-4. Na podrobne pogledu izbere možnost "Uredi"
-5. Na obrazcu administrator sistema spremeni željene podatke in spremembe potrdi s "Shrani"
+4. Na podrobnem pogledu izbere možnost "Uredi".
+5. Na obrazcu administrator sistema spremeni željene podatke in spremembe potrdi s "Shrani".
 6. Uspešno shranjevanje je potrjeno s povratno informacijo.
 
 #### Alternativni tok(ovi)
@@ -400,7 +400,7 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _should have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _should have_.
 
 #### Sprejemni testi
 
@@ -416,15 +416,15 @@ Prijavljen uporabnik lahko pregleduje in ureja podatke povezane s svojim uporabn
 
 1. Uporabnik mora biti prijavljen v sistem.
 2. Znotraj sistema lahko izbere svoj profil ali profil katerega drugega registriranega uporabnika.
-3. Na novo odprtem oknu so prikazani podatki o uporabniku, če je bil izbran lasten profil lahko uporabnik (za urejanje lastnih podatkov) izbere možnost "Uredi profil"
-4. Na obrazcu spremeni željene podatke in spremembo potrdi s "Shrani podatke"
-5. Sprememba je potrjena s povratno informacijo
+3. Na novo odprtem oknu so prikazani podatki o uporabniku, če je bil izbran lasten profil lahko uporabnik (za urejanje lastnih podatkov) izbere možnost "Uredi profil".
+4. Na obrazcu spremeni željene podatke in spremembo potrdi s "Shrani podatke".
+5. Sprememba je potrjena s povratno informacijo.
 
 #### Alternativni tok(ovi)
 
 **Alternativni tok 1**
 1. Uporabnik ni prijavljen v sistem.
-2. Neregistriran uporabnik lahko do javnih podatkov uporabniškega računa dostopa neposredno prek posredovane povezave.
+2. Neregistriran uporabnik lahko do javnih podatkov uporabniškega računa dostopa neposredno preko posredovane povezave.
 
 #### Izjemni tok(ovi)
 
@@ -444,13 +444,13 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _should have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _should have_.
 
 #### Sprejemni testi
 
 - Neregistriran uporabnik lahko dostopa do javnih podatkov profila preko URL povezave.
 - Prijavljen uporabnik lahko dostopa do javnih podatkov drugih uporabnikov.
-- Prijavljen uporabnik lahko dostopa do latnih podatkov in jih ureja.
+- Prijavljen uporabnik lahko dostopa do lastnih podatkov in jih ureja.
 
 
 ### 5.9 Izvajanje plačila za opravljeno storitev znotraj aplikacije
@@ -463,9 +463,9 @@ Prijavljen uporabnik z uporabniško vlogo lastnik psov lahko za opravljeno stori
 
 1. Uporabnik mora biti prijavljen v sistem. Uporabniška vloga prijavljenega uporabnika mora biti latnik psov.
 2. Znotraj sistema izbere svoj profil in seznam naročenih storitev.
-3. Na seznamu naročenih storitev izvede filtracijo po opravljenih storitveh.
-4. Na seznamu izbere storitev, ki jo želi plačati s klikom na "Plačaj storitev"
-5. Uspešno plačilo je potrjeno s povrtano informacijo
+3. Na seznamu naročenih storitev izvede filtracijo po opravljenih storitvah.
+4. Na seznamu izbere storitev, ki jo želi plačati s klikom na "Plačaj storitev".
+5. Uspešno plačilo je potrjeno s povrtano informacijo.
 
 #### Alternativni tok(ovi)
 
@@ -474,7 +474,7 @@ Prijavljen uporabnik z uporabniško vlogo lastnik psov lahko za opravljeno stori
 
 #### Izjemni tok(ovi)
 
-- PLačilo je zavrnjeno, če uporabnik nima zadostnih sredstev na plačilnem sredstvu. Sisetm ga obvesti s povratno informacijo.
+- Plačilo je zavrnjeno, če uporabnik nima zadostnih sredstev na plačilnem sredstvu. Sistem ga obvesti s povratno informacijo.
 - Plačilo ni mogoče, če uporabnik ni vnesel pravih podatkov za plačilno sredstvo. Sistem ga obvesti s povratno informacijo.
 
 #### Pogoji
@@ -487,15 +487,15 @@ V sistemu je zabeležena transakcija, sredstva se prenesejo s plačilnega sredst
 
 #### Posebnosti
 
-Funkacionalna zahteva v ozdaju zajteva sistem za opravljenje transakcij, ki omogoča implementacijo preko zunanjega API vmesnika brez zapustitve sistema.
+Funkcionalna zahteva v ozadju zahteva sistem za opravljanje transakcij, ki omogoča implementacijo preko zunanjega API vmesnika brez zapustitve sistema.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _won't have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _won't have_.
 
 #### Sprejemni testi
 
-- Lastnik psov lahko izvede plačilo za opravljeno storitev izvajalcu storitve
+- Lastnik psov lahko izvede plačilo za opravljeno storitev izvajalcu storitve.
 
 ### 5.10 Pregled lokacije psa v posestvi lastnika psa v času izvajanja storitve izvajalca storitve
 
@@ -533,7 +533,7 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _won't have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _won't have_.
 
 #### Sprejemni testi
 
@@ -550,7 +550,7 @@ Dva prijavljena uporabnika, od tega ima natanko en uporabniško vlogo lastnik ps
 1. Uporabnik mora biti prijavljen v sistem.
 2. Uporabnik dostopa do profila drugega uporabniškega profila.
 3. Na uporabniškem profilu izbere možnost "Pošlji neposredno sporočilo"
-4. Uporabnik izbpolni obrazec in izbere možnost "Pošlji"
+4. Uporabnik izpolni obrazec in izbere možnost "Pošlji"
 5. Uspešno pošiljanje je potrjeno s povratno informacijo
 
 #### Alternativni tok(ovi)
@@ -579,7 +579,7 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _could have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 #### Sprejemni testi
 
@@ -590,7 +590,7 @@ Funkacionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 #### Povzetek funkcionalnosti
 
-Lastnik psov kateri je v preteklosti naročal določeno storitev izvajalca storitev lahko to storitev ocenjjue z oceno od ena do pet pasjih tačk, kjer je ena pasja tačka najmanjše zadovoljstvo z opravljeno storitvijo in pet pasjih tačk največje zadovoljstvo z opravljeno storitvijo.
+Lastnik psov, kateri je v preteklosti naročal določeno storitev izvajalca storitev, lahko to storitev ocenjuje z oceno od ena do pet pasjih tačk, kjer je ena pasja tačka najmanjše zadovoljstvo z opravljeno storitvijo in pet pasjih tačk največje zadovoljstvo z opravljeno storitvijo.
 
 #### Osnovni tok
 
@@ -612,7 +612,7 @@ Lastnik psov kateri je v preteklosti naročal določeno storitev izvajalca stori
 
 #### Pogoji
 
-Uporabnik mora imeti uporabniško vlogo lastnik psov in mora imeti v preteklosti vsaj eno naročilo za opravljenje storitve.
+Uporabnik mora imeti uporabniško vlogo lastnik psov in mora imeti v preteklosti vsaj eno naročilo za opravljanje storitve.
 
 #### Posledice
 
@@ -624,7 +624,7 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _should have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _should have_.
 
 #### Sprejemni testi
 
@@ -642,7 +642,7 @@ Izvajalec storitev lahko pregleduje svojo zgodovino opravljenih storitev.
 #### Osnovni tok
 
 1. Uporabnik mora biti prijavljen v aplikacijo in imeti uporabniško vlogo izvajalec storitev.
-2. Uporabnik odpre svoj uporabniški profil in izbere "Pokaži zgodovino opravljenih storitev"
+2. Uporabnik odpre svoj uporabniški profil in izbere "Pokaži zgodovino opravljenih storitev".
 
 #### Alternativni tok(ovi)
 
@@ -654,7 +654,7 @@ Funkcionalnost ne predvideva izjemnih tokov.
 
 #### Pogoji
 
-Uporabnik mora imeti uporabniško vlogo izjavalec storitev.
+Uporabnik mora imeti uporabniško vlogo izvajalec storitev.
 
 #### Posledice
 
@@ -666,11 +666,11 @@ Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
 
 #### Prioritete identificiranih funkcionalnosti
 
-Funkacionalnost je po metodi _MoSCoW_ označena kot _could have_.
+Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 #### Sprejemni testi
 
-- Izvajalec storitev lahko pregleduje zgodovino opravljeni hstoritev.
+- Izvajalec storitev lahko pregleduje zgodovino opravljenih storitev.
 
 ## 6. Nefunkcionalne zahteve
 
