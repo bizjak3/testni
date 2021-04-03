@@ -59,6 +59,8 @@ Uporabniško ime, email, geslo
 - Diagram predstavlja interakcijo med akterji in funkcionalnostmi (kdo lahko kaj počne).
 - Akterji so tipično uporabniške vloge, lahko pa gre tudi za zunanje komponente (sistemi), ki komunicirajo z našo aplikacijo.
 
+![alt text](../img/uml_diagram.png)
+
 ## 5. Funkcionalne zahteve
 
 Seznam funkcionalnosti:
