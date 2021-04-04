@@ -28,8 +28,8 @@
 1. Lastnik psa
 2. Izvajalec storitev
 3. Administrator sistema (ali administrator)
-4.
-5.
+4. Moderator
+5. Gost
 
 ## 3. Slovar pojmov
 
