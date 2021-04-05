@@ -726,7 +726,7 @@ pridobimo iz interne baze.
 
 #### 7.1.4 Dodajanje psa <-> The Dog Api
 
-https\://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
+https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
@@ -741,13 +741,13 @@ Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje pa
 - country_code
 - height
 
-V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov.
+Lastnik psa izbere pasmo psa.V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov.
 
 
 
 #### 7.1.5 Pregled ponujenih storitev <-> The Dog Api
 
-https\://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
+https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
@@ -766,7 +766,7 @@ Ker je storitev že bila ustvarjena, je tudi že bila izbrana pasma psa. Tako na
 
 #### 7.1.6 Dodajanje ponudbe stortive <-> The Dog Api
 
-https\://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
+https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
