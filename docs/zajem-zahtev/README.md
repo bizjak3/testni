@@ -683,3 +683,15 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 **TO-DO**
 
 - Navesti je potrebno: zaslonske maske, sistemske vmesnike in vmesnike do naprav, vključno z referencami do primerov uporabe.
+
+#### Prijava
+
+![alt text](../img/prijava.png)
+
+#### Registracija
+
+![alt text](../img/registracija.png)
+
+#### Pregled storitev
+
+![alt text](../img/pregled_storitev.png)
