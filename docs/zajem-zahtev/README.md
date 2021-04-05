@@ -16,9 +16,23 @@
 
 ## 1. Uvod
 
-**TO-DO**
+Star afriški pregovor pravi, da je za vzgojo otroka potrebna celotna vas. Danes je kljub manjšim generacijam otrok, vedno več domačih ljubljenčkov, ki jih lastniki kotirajo enako visoko ali višje od lastnih potomcev – zakaj torej ne tudi pri vzgoji psa »aktiviramo« kar celotno vas?
 
-- V uvodu opišite problemsko domeno (kateri problem bo naša aplikacija reševala) in kratek pregled glavnih funkcionalnosti (kaj vse bo aplikacija počela).
+Sistem Pasjehodec omogoča ravno to, da delež naših obveznosti iz lastnika psa preselimo na zunanje izvajalce, ki se tega dela veselijo (ter ob enem nimajo nič proti dodatnemu zaslužku). Sistem tako omogoča, da sosedov Peterček našega Pikija v sredo odpelje na sprehod, v četrtek ga ob dogovorjeni uri na dogovorjenem mestu prevzame pasja frizerka Petra, v petek pa kozmetičarka Pika. Piki je tako pripravljen na vikend obisk vikenda na slovenski obali ali sankanja po zasneženih alpskih strminah. Peterček, Petra in Pika pa imajo dodatno stranko kateri lahko posvetijo potreben čas, hkrati pa vedo, da se njihova stranka ne bo pritoževala saj lahko celoten čas opravljanja storitve spremlja trenutno lokacijo svojega štirinožca.
+
+Pasjehodec na eni strani rešuje težave lastnikov psov. Ti si lahko v sistemu ustvarijo uporabniški profil v katerega dodajo svoje pse, njihovo pasmo, lastnosti, ime, posebne potrebe,… Nato lahko med dodanimi oglasi za storitve izbere željeno storitev, ki jo izvajalec storitve ponuja ob željenem času na željenem prostoru. Ko izvajalec storitev storitev opravi, lahko lastnik psa storitev oceni in storitev tudi plača brez potrebe po uporabi zunanjih sistemov.
+
+Izvajalec storitve lahko po drugi strani preko sistema dodaja nove storitve v katerih navede kdaj, kje, kako in kaj ponuja. Ob naročilu storitve dobi informacijo o naročilu, po opravljeni storitvi pa za opravljeno storitev prejme dogovorjen znesek neposredno na svoj bančni račun.
+
+Za dodatno varnost psa med izvajanjem storitev lahko lastnik psa od izvajalca storitev zahteva spremljanje lokacije, ki prikazuje trenutno lokacijo psa (in izvajalca storitev). Tudi ta funkcionalnost je omogočena neposredno v sistemu, vse kar je potrebno za njeno delovanje je strojna oprema, ki omogoča spremljanje lokacije (npr. pametni telefon z omogočenimi lokacijskimi storitvami).
+
+Za medsebojno komunikacijo med izvajalcem storitve in lastnikom psa, sistem omogoča enostaven sporočilni sistem. Sporočilni sistem lahko uporabnika uporabita za dogovor o storitvi, še preden se fizično srečata pred opravljanje storitve, med opravljanje storitve za takojšnje dogovore glede trenutnih potreb psa ali izvajalca storitve in po opravljeni storitvi za dodatne informacije v zvezi s plačilom in sami opravljeni storitvi.
+
+Torej, sistem Pasjehodec je edinstven sistem za človeka 21. stoletja, ki si želi pasje družbe, vendar za njo (večino časa) nima časa  in (ali) volje. Je edini sistem, ki ga bo lastnik psa potreboval za organizacijo dnevnih krajših sprehodov, tedenskih daljših sprehodov, nekaj urnega, dnevnega ali več dnevnega varstva, friziranje, manikuro ali pedikuro, veterinarske preglede in redna cepljenja.
+
+Po drugi strani je sistem Pasjehodec še en vir, ne zgolj zaslužka, ampak predvsem priložnosti za kvalitetno preživljanje prostega časa za vse tiste, ki imajo pse izjemno radi a jih ne morejo (iz takšnih ali drugačnih razlogov) imeti v lastništvu. In za tiste, ki se profesionalno ukvarjajo z vzgojo in prevzgojo psa, frizerstvom psov, varstvom psov in še kaj drugega.
+
+Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 
 ## 2. Uporabniške vloge
 
@@ -231,21 +245,6 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _must have_.
 #### Sprejemni testi
 
 - Uporabniku se po uspešni prijavi prikažejo ponujene storitve ali napis "V sistemu ni trenutno aktivnih storitev"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### 5.4 Dodajanje nove ponudbe storitve kot izvajalec storitve
 
@@ -653,9 +652,6 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _should have_.
 #### Sprejemni testi
 
 - Uporabnik uspešno oddano oceno za storitev, ki jo je v preteklosti naročil.
-
-
-
 
 ### 5.13 Pregled izvedenih storitev
 
