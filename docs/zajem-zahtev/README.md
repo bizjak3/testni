@@ -20,7 +20,7 @@ Star afriški pregovor pravi, da je za vzgojo otroka potrebna celotna vas. Danes
 
 Sistem Pasjehodec omogoča ravno to, da delež naših obveznosti iz lastnika psa preselimo na zunanje izvajalce, ki se tega dela veselijo (ter ob enem nimajo nič proti dodatnemu zaslužku). Sistem tako omogoča, da sosedov Peterček našega Pikija v sredo odpelje na sprehod, v četrtek ga ob dogovorjeni uri na dogovorjenem mestu prevzame pasja frizerka Petra, v petek pa kozmetičarka Pika. Piki je tako pripravljen na vikend obisk vikenda na slovenski obali ali sankanja po zasneženih alpskih strminah. Peterček, Petra in Pika pa imajo dodatno stranko kateri lahko posvetijo potreben čas, hkrati pa vedo, da se njihova stranka ne bo pritoževala saj lahko celoten čas opravljanja storitve spremlja trenutno lokacijo svojega štirinožca.
 
-Pasjehodec na eni strani rešuje težave lastnikov psov. Ti si lahko v sistemu ustvarijo uporabniški profil v katerega dodajo svoje pse, njihovo pasmo, lastnosti, ime, posebne potrebe,… Nato lahko med dodanimi oglasi za storitve izbere željeno storitev, ki jo izvajalec storitve ponuja ob željenem času na željenem prostoru. Ko izvajalec storitev storitev opravi, lahko lastnik psa storitev oceni in storitev tudi plača brez potrebe po uporabi zunanjih sistemov.
+Pasjehodec na eni strani rešuje težave lastnikov psov. Ti si lahko v sistemu ustvarijo uporabniški profil v katerega dodajo svoje pse, njihovo pasmo, lastnosti, ime, posebne potrebe,… Nato lahko med dodanimi oglasi za storitve izbere željeno storitev, ki jo izvajalec storitve ponuja ob željenem času na željenem prostoru. Ko izvajalec storitev opravi, lahko lastnik psa storitev oceni in storitev tudi plača brez potrebe po uporabi zunanjih sistemov.
 
 Izvajalec storitve lahko po drugi strani preko sistema dodaja nove storitve v katerih navede kdaj, kje, kako in kaj ponuja. Ob naročilu storitve dobi informacijo o naročilu, po opravljeni storitvi pa za opravljeno storitev prejme dogovorjen znesek neposredno na svoj bančni račun.
 
@@ -58,7 +58,7 @@ Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 
 **Neregistriran uporabnik** je uporabnik, ki še ni opravil ali zaključil postopka registracije. **Registriran uporabnik** je uporabnik, ki je uspešno zaključil postopek registracije.
 
-**Povratna informacija** je avdio-vizualni element v aplikaciji, ki z besedilom, zvokom ali sliko uporabnika obvesti o razultatu izvedene akcije.
+**Povratna informacija** je avdio-vizualni element v aplikaciji, ki z besedilom, zvokom ali sliko uporabnika obvesti o rezultatu izvedene akcije.
 
 **Uporabniško ime** je edinstven in javen klasifikator uporabnika.
 
@@ -85,6 +85,12 @@ Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 **Speed Index** (slovensko indeks hitrosti) je parameter Lighthouse testa spletne aplikacije, ki definira kako hitro je vsebina strani vidno izpolnjena.
 
 **Lighthouse** (slovensko svetilnik) je odrptokodno orodje za testiranje kvalitete spletne strani.
+
+**Angular** je ogrodje za razvoj spletnih apliakcij.
+
+**Frontend framework** so paketi, ki vsebujejo vnaprej napisano standardizirano kodo in datoteke, ter mape. Dajo nam podlago na kateri lahko gradimo.
+
+**Big Five** je osebnostni vprašalnik, katerega sami izpolnimo, pove pa nam kakšni smo pri velikih petih faktorjih osebnosti. Te so energija, sprejemljivost, vestnost, čustvena stabilnost in odprotst.
 
 ## 4. Diagram primerov uporabe
 
@@ -135,7 +141,7 @@ Neregistriran uporabnik se je registriral v sistem kot lastnik psa ali kot ponud
 
 #### Posebnosti
 
-Funkcionalna zahteva zahteva dodatno previdnosti pri shranjevanju in upravljanju z osebnimi podatki. Posebno pozornost je potrebno nameniti shranjevanju gesel.
+Funkcionalna zahteva dodatno previdnosti pri shranjevanju in upravljanju z osebnimi podatki. Posebno pozornost je potrebno nameniti shranjevanju gesel.
 
 #### Prioritete identificiranih funkcionalnosti
 
@@ -690,7 +696,7 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 #### Uporabnost:
 **Cilj:** Spletna stran mora biti uporabna tudi barvno slepim.
-**Zahteva:** Spletna stran ne vsebuje barv kot funkcionalnost(primer: ob uspešni transakciji dobimo na ekran zeleno barvo, kot signal vse je vredu). V primeru, da se, mora biti zraven jasen znak(primer: kljukica), ki nakazuje enako kot barva, tako da lahko tudi barvno slepi razumejo enako kot tisti, ki vidijo barve.
+**Zahteva:** Spletna stran ne vsebuje barv kot funkcionalnost(primer: ob uspešni transakciji dobimo na ekran zeleno barvo, kot signal vse je v redu). V primeru, da se, mora biti zraven jasen znak(primer: kljukica), ki nakazuje enako kot barva, tako da lahko tudi barvno slepi razumejo enako kot tisti, ki vidijo barve.
 
 **Cilj:** Ker je sistem namenjen širši javnosti, mora biti aplikacija intuitivna, zato da jo bo lahko kdorkoli uporabljal.  
 **Zahteva:** Uporabnik mora biti zmožen aplikacijo samostojno uporabljati po 5 minutah učenja.  
@@ -711,7 +717,7 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 maksimalno 2 uri, poleg tega pa naj potekajo v nočnem času, med 3 in 5 uro zjutraj.
 #### Izvedba
 **Cilj:** Uporabniška izkušnja more biti dobra, zato se moramo izogibati dolgim časom nalaganja.  
-**Zahteva:** Ob uporabi Angularja kot frontend framework, spletna aplikacija dosega speed index manjši od 10 sekund.
+**Zahteva:** Ob uporabi Angularja kot frontend framework-a, spletna aplikacija dosega speed index manjši od 10 sekund.
 #### Razširljivost:
 **Cilj:** Ker bo v vedno več ljudi potrebovalo naše storitve, mora spletna stran prenesti tudi malo večjo obremenjenost.  
 **Zahteva:** Spletna stran mora biti dovolj prilagodljiva, da lahko hkrati podpira 1000 uporabnikov.
