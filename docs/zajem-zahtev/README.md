@@ -2,7 +2,7 @@
 
 |                             |                                                         |
 | :-------------------------- | :------------------------------------------------------ |
-| **Naziv projekta**          | Dog Walkers                          |
+| **Naziv projekta**          | Pasjehodec                                              |
 | **Člani projektne skupine** | Matjaž Bizjak, Primož Gabrovec, Aljaž Grdadolnik, Jakob Marušič, Mitja Vendramin |
 | **Kraj in datum**           | Ljubljana, 1. april 2021                                |
 
