@@ -2,9 +2,11 @@
 
 |                             |                                                         |
 | :-------------------------- | :------------------------------------------------------ |
-| **Naziv projekta**          | **TO-DO** naziv projekta                                |
-| **Člani projektne skupine** | **TO-DO** 1. član, 2. član, 3. član, 4. član in 5. član |
-| **Kraj in datum**           | **TO-DO** kraj, datum                                   |
+| **Naziv projekta**          | Dog Walkers                          |
+| **Člani projektne skupine** | Matjaž Bizjak, Primož Gabrovec, Aljaž Grdadolnik, Jakob Marušič, Mitja Vendramin |
+| **Kraj in datum**           | Ljubljana, 1. april 2021                                |
+
+> V tem dokumentu uporabljeni izrazi, ki se nanašajo na osebe in so zapisani v moški slovnični obliki, so uporabljeni kot nevtralni za ženski in moški spol.
 
 ## Povzetek projekta
 
@@ -20,16 +22,15 @@
 
 ## 2. Uporabniške vloge
 
-**TO-DO**
+**Lastnik psa (lastnik psov)** je registriran uporabnik, ki ima v lasti psa in sistem uporablja z namenom naročanja storitev. Lastnik psov lahko dodaja nove pse v njegovi lasti, naročuje storitve in opravljene storitve ocenjuje ter plačuje. Lastnik psov lahko neposredno komunicira z izvajalcem storitev.
 
-- Opredelite glavne tipe uporabnikov vaše aplikacije glede na funkcionalnosti, ki jih imajo na voljo.
-- Zelo pomembno je, da uporabniške vloge konsistentno imenujete. Na primer, če ste definirali vlogo **učitelj**, morate povsod uporabljati samostalnik **učitelj**, ne pa morda **profesor** ali **pedagog**. Tehniška besedila žal ne morejo dosegati leposlovnih standardov, tudi če so še tako dobro napisana.
+**Izvajalec storitev** je registriran uporabnik, ki sistem uporablja z namenom ponujanja in izvajanja storitev. Izvajalec storitev lahko dodaja nove storitve, kopira podatke iz preteklih storitev ter je lahko prek aplikacije plačan za opravljene storitve. Izvajalec storitev lahko neposredno komunicira z lastnikom psa.
 
-1. Lastnik psa
-2. Izvajalec storitev
-3. Administrator sistema (ali administrator)
-4. Moderator
-5. Gost
+**Moderator** je registriran uporabnik z dodatnimi pravicami urejanja ponujenih storitev vseh uporabnikov in urejanje vseh dodanih psov. Uporabniška vloga obsega unijo uporabniških vlog lastnika psa in izvajalca storitev ter dodatnih pravic.
+
+**Administrator sistema (administrator)** je registriran uporabnik, katerega pravice so sestavljene iz unije pravic uporabnika z uporabniško vlogo moderator in dodatnimi pravicami urejanja podatkov vseh registriranih uporabnikov.
+
+**Neregistriran uporabnik (gost)** lahko dostopa zgolj do javnih podatkov sistema.
 
 ## 3. Slovar pojmov
 
@@ -49,7 +50,23 @@
 
 **Povratna informacija** je avdio-vizualni element v aplikaciji, ki z besedilom, zvokom ali sliko uporabnika obvesti o razultatu izvedene akcije.
 
-Uporabniško ime, email, geslo, uporabniški profil, javni uporabniški podatki, URL povezava
+**Uporabniško ime** je edinstven in javen klasifikator uporabnika.
+
+**Email** je edinstven klasifikator uporabnika sestavljen iz niza znakov.
+
+**Geslo** je niz znakov, ki se uporablja za avtentikacijo uporabnikov v sistemu.
+
+**Uporabniški profil** je skupen informacij, ki so posredno ali neposredno povezani z določenim uporabnikom sistema. *Uporabniški profil se uporablja tudi kot naziv fizične zaslonske maske, ki prikazuje uporabniški profil deloma ali v celoti.*
+
+**URL** ali enolični krajevnik vira (angleško Uniform Resource Locator) je naslov spletnih strani v svetovnem spletu.
+
+**Javni podatki sistema** je skupen podatkov in informacij sistema, ki so dostopni brez predhodne avtentikacije uporabnika.
+
+**Avtentikacija** (angleško authentication) je postopek, s katerim se sistem prepriča, da je uporabnik zares tisti uporabnik, za kogar se predstavlja, da je.
+
+**Avtorizacija** je dovoljenje izdano s strani sistema, ki uporabniku sistema omogoča izvedbo operacije.
+
+**Operacija** je postopek (enota dela), ki glede na sprejete vhodne parametre spremeni stanje sistema in proizvede z operacijo določene izhodne podatke.
 
 ## 4. Diagram primerov uporabe
 
@@ -106,7 +123,7 @@ Neregistriran uporabnik se je registriral v sistem kot lastnik psa ali kot ponud
 
 #### Posebnosti
 
-Funkcionalna zahteva ne zahteva nikakršnih programskih ali strojnih posebnosti.
+Funkcionalna zahteva zahteva dodatno previdnosti pri shranjevanju in upravljanju z osebnimi podatki. Posebno pozornost je potrebno nameniti shranjevanju gesel.
 
 #### Prioritete identificiranih funkcionalnosti
 
@@ -169,16 +186,19 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _must have_.
 - Uporabnik se neuspešno prijavi z neustrezno kombinacijo uporabniškega imena in gesla. Prijava je zavrnjena.
 - Uporabnik se neuspešno prijavi z neustrezno kombinacijo emaila in gesla. Prijava je zavrnjena.
 
-### 5.3 Pregled vseh ponujenih storitev v okviru aplikacije
+### 5.3 Pregled vseh ponujenih storitev in naročilo izbrane storitve v okviru aplikacije
 
 #### Povzetek funkcionalnosti
 
-Prijavljen uporabnik lahko pregleduje vse ponujene objavljene storitve.
+Prijavljen uporabnik lahko pregleduje vse ponujene objavljene storitve. Lastnik psov lahko določeno storitev izbere in naroči.
 
 #### Osnovni tok
 
 1. Uporabnik mora biti prijavljen v aplikacijo.
 2. Po uspešni prijavi uporabnika sistem preusmeri na seznam vseh ponujenih storitev.
+3. Izbrano storitev lahko prijavljen uporabnik izbere ter s tem odpre pogled z vsemi podrobnostmi.
+4. Če ima uporabnik uporabniško vlogo lastnik psov, lahko storitev naroči s klikom na "Naroči".
+5. Naročilo je potrjeno s povratno informacijo.
 
 #### Alternativni tok(ovi)
 
@@ -190,11 +210,11 @@ Funkcionalna zahteva nima alternativnih tokov.
 
 #### Pogoji
 
-Uporabnik mora biti uspešno prijavljen v sistem.
+Uporabnik mora biti uspešno prijavljen v sistem. Za naročilo storitev mora uporabnik imeti uporabniško vlogo lastnik psa.
 
 #### Posledice
 
-Uporabnik lahko pregleduje vse objavljene ponujene storitve v okviru aplikacije.
+Uporabnik pregleduje vse objavljene ponujene storitve v okviru aplikacije. Lastnik psa naroči storitev.
 
 #### Posebnosti
 
