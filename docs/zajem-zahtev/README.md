@@ -246,21 +246,6 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _must have_.
 
 - Uporabniku se po uspešni prijavi prikažejo ponujene storitve ali napis "V sistemu ni trenutno aktivnih storitev"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### 5.4 Dodajanje nove ponudbe storitve kot izvajalec storitve
 
 #### Povzetek funkcionalnosti
@@ -667,9 +652,6 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _should have_.
 #### Sprejemni testi
 
 - Uporabnik uspešno oddano oceno za storitev, ki jo je v preteklosti naročil.
-
-
-
 
 ### 5.13 Pregled izvedenih storitev
 
