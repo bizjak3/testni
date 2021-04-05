@@ -10,8 +10,8 @@
 
 ## Povzetek projekta
 
-Spletna aplikacija Pasjehodec lastnikom psov omogoča, da najdejo nekoga, ki bo namesto njih psa peljal na sprehod. Poleg tega seveda omogoča komurkoli, 
-ki ima dovolj časa, da pelje psa na sprehod v zameno za plačilo. Za uporabo aplikacije se je potrebno registrirati kot lastnik psa ali pa 
+Spletna aplikacija Pasjehodec lastnikom psov omogoča, da najdejo nekoga, ki bo namesto njih opravil del oskrbe. Poleg tega seveda omogoča komurkoli, ki ima
+dovolj časa, da poskrbi za oskrbo psa v zameno za plačilo. Za uporabo aplikacije se je potrebno registrirati kot lastnik psa ali pa 
 kot izvajalec storitev. Prijavljeni uporabniki dostopajo do funkcij kot so dodajanje ponudbe storitve, pregled izvedenih storitev, dodajanje svojega psa,
 ocenjevanje svoje izkušnje z nekim izvajalcem in direktna komunikacija med izvajalcem ter lastnikom psa. Dodatna prednost aplikacije je možnost
 spremljanja trenutne lokacije svojega psa v realnem času. Vsa plačila se izvajajo znotraj aplikacije. Za pravilno delovanje imamo tudi nekaj moderatorjev
