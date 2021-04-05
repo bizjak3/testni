@@ -70,6 +70,8 @@
 
 **API** ali aplikacijski programski vmesnih (angleško Application Programming Interface), je vmesnik preko katerega aplikacija dostopa do zunanjega vira podatkov. 
 
+**JSON** ali JavaScript objektna notacija (angleško JavaScript Object Notation), je lahek podatkovni format za izmenjavo podatkov.
+
 ## 4. Diagram primerov uporabe
 
 **TO-DO**
