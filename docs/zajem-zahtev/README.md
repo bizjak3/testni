@@ -48,49 +48,61 @@ Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 
 ## 3. Slovar pojmov
 
-**Lastnik psa** je oseba, ki se v aplikacijo prijavlja z namenom oddaje lastnega psa v izvedbo katere izmed storitev, ki jo aplikacija ponuja.
-
-**Izvajalec storitve** je oseba, ki se v aplikacijo prijavlja z namenom izvajanja ene izmed storitev, ki jo aplikacija ponuja.
+**API** ali aplikacijski programski vmesnik (angleško Application Programming Interface), je vmesnik preko katerega aplikacija dostopa do zunanjega vira podatkov.
 
 **Administrator sistema** _(ali administrator)_ je oseba, ki se v aplikacijo prijavlja z namenom upravljanja in nadzora delovanja aplikacije.
 
-**Uporabnik** je oseba, ki aplikacijo uporablja. Vsak uporabnik ima določeno uporabniško vlogo definirano v _2. Uporabniške vloge_.
-
-**Neregistriran uporabnik** je uporabnik, ki še ni opravil ali zaključil postopka registracije. **Registriran uporabnik** je uporabnik, ki je uspešno zaključil postopek registracije.
-
-**Povratna informacija** je avdio-vizualni element v aplikaciji, ki z besedilom, zvokom ali sliko uporabnika obvesti o rezultatu izvedene akcije.
-
-**Uporabniško ime** je edinstven in javen klasifikator uporabnika.
-
-**Email** je edinstven klasifikator uporabnika sestavljen iz niza znakov.
-
-**Geslo** je niz znakov, ki se uporablja za avtentikacijo uporabnikov v sistemu.
-
-**Uporabniški profil** je skupen informacij, ki so posredno ali neposredno povezani z določenim uporabnikom sistema. *Uporabniški profil se uporablja tudi kot naziv fizične zaslonske maske, ki prikazuje uporabniški profil deloma ali v celoti.*
-
-**URL** ali enolični krajevnik vira (angleško Uniform Resource Locator) je naslov spletnih strani v svetovnem spletu.
-
-**Javni podatki sistema** je skupen podatkov in informacij sistema, ki so dostopni brez predhodne avtentikacije uporabnika.
+**Angular** je ogrodje za razvoj spletnih apliakcij.
 
 **Avtentikacija** (angleško authentication) je postopek, s katerim se sistem prepriča, da je uporabnik zares tisti uporabnik, za kogar se predstavlja, da je.
 
 **Avtorizacija** je dovoljenje izdano s strani sistema, ki uporabniku sistema omogoča izvedbo operacije.
 
-**Operacija** je postopek (enota dela), ki glede na sprejete vhodne parametre spremeni stanje sistema in proizvede z operacijo določene izhodne podatke.
+**Big Five** je osebnostni vprašalnik, katerega sami izpolnimo, pove pa nam kakšni smo pri velikih petih faktorjih osebnosti. Te so energija, sprejemljivost, vestnost, čustvena stabilnost in odprotst.
 
-**API** ali aplikacijski programski vmesnik (angleško Application Programming Interface), je vmesnik preko katerega aplikacija dostopa do zunanjega vira podatkov. 
-
-**JSON** ali JavaScript objektna notacija (angleško JavaScript Object Notation), je lahek podatkovni format za izmenjavo podatkov.
-
-**Speed Index** (slovensko indeks hitrosti) je parameter Lighthouse testa spletne aplikacije, ki definira kako hitro je vsebina strani vidno izpolnjena.
-
-**Lighthouse** (slovensko svetilnik) je odrptokodno orodje za testiranje kvalitete spletne strani.
-
-**Angular** je ogrodje za razvoj spletnih apliakcij.
+**Email** je edinstven klasifikator uporabnika sestavljen iz niza znakov.
 
 **Frontend framework** so paketi, ki vsebujejo vnaprej napisano standardizirano kodo in datoteke, ter mape. Dajo nam podlago na kateri lahko gradimo.
 
-**Big Five** je osebnostni vprašalnik, katerega sami izpolnimo, pove pa nam kakšni smo pri velikih petih faktorjih osebnosti. Te so energija, sprejemljivost, vestnost, čustvena stabilnost in odprotst.
+**Geslo** je niz znakov, ki se uporablja za avtentikacijo uporabnikov v sistemu.
+
+**Izvajalec storitve** je oseba, ki se v aplikacijo prijavlja z namenom izvajanja ene izmed storitev, ki jo aplikacija ponuja.
+
+**Javni podatki sistema** je skupen podatkov in informacij sistema, ki so dostopni brez predhodne avtentikacije uporabnika.
+
+**JSON** ali JavaScript objektna notacija (angleško JavaScript Object Notation), je lahek podatkovni format za izmenjavo podatkov.
+
+**Lastnik psa** je oseba, ki se v aplikacijo prijavlja z namenom oddaje lastnega psa v izvedbo katere izmed storitev, ki jo aplikacija ponuja.
+
+**Lighthouse** (slovensko svetilnik) je odrptokodno orodje za testiranje kvalitete spletne strani.
+
+**MoSCoW** je tehnika določanja prioritet znotraj časovno omejenega projekta.
+
+**Neregistriran uporabnik** je uporabnik, ki še ni opravil ali zaključil postopka registracije. **Registriran uporabnik** je uporabnik, ki je uspešno zaključil postopek registracije.
+
+**Operacija** je postopek (enota dela), ki glede na sprejete vhodne parametre spremeni stanje sistema in proizvede z operacijo določene izhodne podatke.
+
+**Podatkovna baza** je del jedrnega sistema in predstavlja enoto za začasno ali trajno shranjevanje podatkov.
+
+**Povratna informacija** je avdio-vizualni element v aplikaciji, ki z besedilom, zvokom ali sliko uporabnika obvesti o rezultatu izvedene akcije.
+
+**Sistem** (jedrni sistem) je skupek programov, aplikacij in tehnologij, ki sestavljajo projekt. V sistem uvrščamo (med drugim) podatkovne baze, aplikacijske strežnike, spletne in proxy strežnike in odjemalce ter vse programe in aplikacije, ki se na njih izvajajo ter brez katerih sistem ne more delovati.
+
+**Speed Index** (slovensko indeks hitrosti) je parameter Lighthouse testa spletne aplikacije, ki definira kako hitro je vsebina strani vidno izpolnjena.
+
+**Spletna aplikacija** (čelni del) je del jedrnega sistema, ki se izvaja na odjemalcu.
+
+**Uporabnik** je oseba, ki aplikacijo uporablja. Vsak uporabnik ima določeno uporabniško vlogo definirano v _2. Uporabniške vloge_.
+
+**Uporabniško ime** je edinstven in javen klasifikator uporabnika.
+
+**Uporabniški profil** je skupen informacij, ki so posredno ali neposredno povezani z določenim uporabnikom sistema. *Uporabniški profil se uporablja tudi kot naziv fizične zaslonske maske, ki prikazuje uporabniški profil deloma ali v celoti.*
+
+**URL** ali enolični krajevnik vira (angleško Uniform Resource Locator) je naslov spletnih strani v svetovnem spletu.
+
+**Zaledni del** je del jedrnega sistema, ki se izvaja na aplikacijskem strežniku.
+
+**Zunanji sistem** je sistem, ki podpira ali omogoča jedrni sistem ampak ni bil razvit v okviru projekta.
 
 ## 4. Diagram primerov uporabe
 
