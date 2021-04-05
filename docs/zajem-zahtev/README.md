@@ -882,3 +882,11 @@ Datoteka JSON vsebuje tabelo objektov. Vsak objekt pa lahko vsebuje naslednje pa
 - height (višina)
 
 Izvajalec storitve lahko izbere da je storitev namenjena samo določeni pasmi psa. V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov.
+
+
+#### 7.1.7 Izvajanje plačevanja storitev <-> PayPal API
+
+Paypal API omogoča preprosto implementacijo transakcij. Na spletni aplikaciji dodamo gumb s pomočjo metode ```paypal.Buttons().render('#paypal-button-container');```
+le ta bo uporabnika preusmeril na njihovo spletno stran, kjer se bo izvedla transakcija. Znesek plačila predamo paypal APIju tako da v gumb dodamo metodo 
+```createOrder: function(data, actions)``` le tej pa podamo vsoto plačila. V primeru da je transakcija uspešna, bo paypal uporabnika preusmeril na našo spletno
+aplikacijo, mi pa bomo to zaznali z metodo ```onApprove: function(data, actions)```, ki nas obvesti ali je bila transakcija uspešna.
