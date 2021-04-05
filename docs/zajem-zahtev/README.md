@@ -695,3 +695,90 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 #### Pregled storitev
 
 ![alt text](../img/pregled_storitev.png)
+
+#### 7.1 Vmesniki do zunanjih sistemov
+
+#### 7.1.1 Dodajanje ponudbe stortive <-> Leaflet zemljevid
+
+var draggable = new L.Draggable(elementToDrag);
+draggable.enable();
+
+Leaflet API nam omogoča dodajanje premikajoče se oznake. S pomočjo zgornje metode omogočimo izvajalcu stortive da lahko premakne oznako na lokacijo, kjer želi ponujati storitev.
+
+Ko izvajalec storitve potrdi lokacijo, pridobimo lokacijo oznake s pomočjo metode, getLatLng(elementToDrag), ter jo shranimo v interno bazo, za nadaljno uporabo.
+
+#### 7.1.2 Pregled ponujenih storitev <-> Leaflet zemljevid
+
+L.marker([X,Y]).addTo(map);
+
+Leaflet API nam omogoča dodajanje oznake na zemljevid. Leaflet je že incicializiran. Ko uporabnik želi pogledati
+ponujene storitve s pomočjo zgornje metode dodamo oznake na zemljevid. Oznake za vse stortive pridobimo iz notranje baze.
+
+#### 7.1.3 Pregled lokacije psa med izvajanjem storitve<-> Leaflet zemljevid
+
+L.marker([X,Y]).addTo(map);
+
+Leaflet API nam omogoča dodajanje oznake na zemljevid. Leaflet je že incicializiran. Ko uporabnik želi pogledati
+lokacijo psa med izvajanjem storitve, se s pomočjo zgornje metode dodamo oznako na zemljevid. Lokacijo izvajalca storitve
+pridobimo iz interne baze.
+
+
+
+#### 7.1.4 Dodajanje psa <-> The Dog Api
+
+https://api.thecatapi.com/v1/breeds/search?q="NAME OF BREED"
+
+The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
+Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
+- id
+- name
+- temperament
+- life_span
+- alt_names
+- wikipedia_url
+- origin
+- weight
+- country_code
+- height
+
+V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov.
+
+
+
+#### 7.1.5 Pregled ponujenih storitev <-> The Dog Api
+
+https://api.thecatapi.com/v1/breeds/search?q="NAME OF BREED"
+
+The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
+Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
+- id
+- name
+- temperament
+- life_span
+- alt_names
+- wikipedia_url
+- origin
+- weight
+- country_code
+- height
+
+Ker je storitev že bila ustvarjena, je tudi že bila izbrana pasma psa. Tako nam bo vrnil API samo en objekt s parametri dotične pasme.
+
+#### 7.1.6 Dodajanje ponudbe stortive <-> The Dog Api
+
+https://api.thecatapi.com/v1/breeds/search?q="NAME OF BREED"
+
+The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
+Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
+- id
+- name
+- temperament
+- life_span
+- alt_names
+- wikipedia_url
+- origin
+- weight
+- country_code
+- height
+
+Izvajalec storitve lahko izbere da je storitev namenjena samo določeni pasmi psa. V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov. 
