@@ -726,7 +726,7 @@ pridobimo iz interne baze.
 
 #### 7.1.4 Dodajanje psa <-> The Dog Api
 
-https://api.thecatapi.com/v1/breeds/search?q="NAME OF BREED"
+https\://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
@@ -747,7 +747,7 @@ V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultato
 
 #### 7.1.5 Pregled ponujenih storitev <-> The Dog Api
 
-https://api.thecatapi.com/v1/breeds/search?q="NAME OF BREED"
+https\://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
@@ -766,7 +766,7 @@ Ker je storitev že bila ustvarjena, je tudi že bila izbrana pasma psa. Tako na
 
 #### 7.1.6 Dodajanje ponudbe stortive <-> The Dog Api
 
-https://api.thecatapi.com/v1/breeds/search?q="NAME OF BREED"
+https\://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
