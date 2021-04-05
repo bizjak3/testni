@@ -815,7 +815,7 @@ L.marker([X,Y]).addTo(map);
 ```
 
 Leaflet API nam omogoča dodajanje oznake na zemljevid. Leaflet je že incicializiran. Ko uporabnik želi pogledati
-ponujene storitve s pomočjo zgornje metode dodamo oznake na zemljevid. Oznake za vse stortive pridobimo iz notranje baze.
+ponujene storitve s pomočjo zgornje metode dodamo oznake na zemljevid. Lokacije oznak za vse stortive pridobimo iz notranje baze.
 
 #### 7.1.3 Pregled lokacije psa med izvajanjem storitve<-> Leaflet zemljevid
 
@@ -824,17 +824,17 @@ L.marker([X,Y]).addTo(map);
 ```
 
 Leaflet API nam omogoča dodajanje oznake na zemljevid. Leaflet je že incicializiran. Ko uporabnik želi pogledati
-lokacijo psa med izvajanjem storitve, se s pomočjo zgornje metode dodamo oznako na zemljevid. Lokacijo izvajalca storitve
+lokacijo psa med izvajanjem storitve, s pomočjo zgornje metode dodamo oznako na zemljevid. Lokacijo izvajalca storitve
 pridobimo iz interne baze.
 
 
 
 #### 7.1.4 Dodajanje psa <-> The Dog Api
 
-https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
+```https://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"```
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
-Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
+Datoteka JSON vsebuje tabelo objektov. Vsak objekt pa lahko vsebuje naslednje parametre:
 - id (enolični identifikator)
 - name (ime)
 - temperament (značaj)
@@ -852,10 +852,10 @@ Lastnik psa izbere pasmo psa.V primeru da ime pasme ni natačno podano, dobimo v
 
 #### 7.1.5 Pregled ponujenih storitev <-> The Dog Api
 
-https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
+```https://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"```
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
-Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
+Datoteka JSON vsebuje tabelo objektov. Vsak objekt pa lahko vsebuje naslednje parametre:
 - id (enolični identifikator)
 - name (ime)
 - temperament (značaj)
@@ -871,10 +871,10 @@ Ker je storitev že bila ustvarjena, je tudi že bila izbrana pasma psa. Tako na
 
 #### 7.1.6 Dodajanje ponudbe stortive <-> The Dog Api
 
-https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
+```https://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"```
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
-Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
+Datoteka JSON vsebuje tabelo objektov. Vsak objekt pa lahko vsebuje naslednje parametre:
 - id (enolični identifikator)
 - name (ime)
 - temperament (značaj)
