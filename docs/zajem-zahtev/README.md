@@ -68,7 +68,7 @@ Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 
 **Uporabniški profil** je skupen informacij, ki so posredno ali neposredno povezani z določenim uporabnikom sistema. *Uporabniški profil se uporablja tudi kot naziv fizične zaslonske maske, ki prikazuje uporabniški profil deloma ali v celoti.*
 
-**URL** ali enolični krajevnik vira (angleško Uniform Resource Locator) je naslov spletnih strani v svetovnem spletu.
+**URL** ali enolični krajevnik vira (angleško Uniform Resource Locator) je naslov spletnih apliakcij v svetovnem spletu.
 
 **Javni podatki sistema** je skupen podatkov in informacij sistema, ki so dostopni brez predhodne avtentikacije uporabnika.
 
@@ -84,9 +84,9 @@ Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 
 **Speed Index** (slovensko indeks hitrosti) je parameter Lighthouse testa spletne aplikacije, ki definira kako hitro je vsebina strani vidno izpolnjena.
 
-**Lighthouse** (slovensko svetilnik) je odrptokodno orodje za testiranje kvalitete spletne strani.
+**Lighthouse** (slovensko svetilnik) je odrptokodno orodje za testiranje kvalitete spletne aplikacije.
 
-**Angular** je ogrodje za razvoj spletnih apliakcij.
+**Angular** je ogrodje za razvoj spletnih aplikacij.
 
 **Frontend framework** so paketi, ki vsebujejo vnaprej napisano standardizirano kodo in datoteke, ter mape. Dajo nam podlago na kateri lahko gradimo.
 
