@@ -707,8 +707,8 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 ## 6. Nefunkcionalne zahteve
 
 #### Uporabnost:
-**Cilj:** Spletna stran mora biti uporabna tudi barvno slepim.
-**Zahteva:** Spletna stran ne vsebuje barv kot funkcionalnost(primer: ob uspešni transakciji dobimo na ekran zeleno barvo, kot signal vse je v redu). V primeru, da se, mora biti zraven jasen znak(primer: kljukica), ki nakazuje enako kot barva, tako da lahko tudi barvno slepi razumejo enako kot tisti, ki vidijo barve.
+**Cilj:** Spletna aplikacija mora biti uporabna tudi barvno slepim.   
+**Zahteva:** Spletna aplikacija ne vsebuje barv kot funkcionalnost(primer: ob uspešni transakciji dobimo na ekran zeleno barvo, kot signal vse je v redu). V primeru, da se, mora biti zraven jasen znak(primer: kljukica), ki nakazuje enako kot barva, tako da lahko tudi barvno slepi razumejo enako kot tisti, ki vidijo barve.
 
 **Cilj:** Ker je sistem namenjen širši javnosti, mora biti aplikacija intuitivna, zato da jo bo lahko kdorkoli uporabljal.  
 **Zahteva:** Uporabnik mora biti zmožen aplikacijo samostojno uporabljati po 5 minutah učenja.  
@@ -731,12 +731,12 @@ maksimalno 2 uri, poleg tega pa naj potekajo v nočnem času, med 3 in 5 uro zju
 **Cilj:** Uporabniška izkušnja more biti dobra, zato se moramo izogibati dolgim časom nalaganja.  
 **Zahteva:** Ob uporabi Angularja kot frontend framework-a, spletna aplikacija dosega Speed Index manjši od 10 sekund.
 #### Razširljivost:
-**Cilj:** Ker bo v vedno več ljudi potrebovalo naše storitve, mora spletna stran prenesti tudi malo večjo obremenjenost.  
-**Zahteva:** Spletna stran mora biti dovolj prilagodljiva, da lahko hkrati podpira 1000 uporabnikov.
+**Cilj:** Ker bo v vedno več ljudi potrebovalo naše storitve, mora spletna aplikacija prenesti tudi malo večjo obremenjenost.  
+**Zahteva:** Spletna aplikacija mora biti dovolj prilagodljiva, da lahko hkrati podpira 1000 uporabnikov.
 
 #### Zanesljivost:
-**Cilj:** Spletna stran mora biti dostopna dovolj časa.
-**Zahteva:** Spletna stran mora biti dostopna 90% časa, ko uporabnik želi do nje dostopati.
+**Cilj:** Sistem mora biti dosegljiv dosegljiv in zanesljiv.   
+**Zahteva:** Sistem mora biti dostopen 90% časa, ko uporabnik želi do njega dostopati.
 
 ### Organizacijske zahteve:
 #### Operativne:
@@ -747,7 +747,7 @@ maksimalno 2 uri, poleg tega pa naj potekajo v nočnem času, med 3 in 5 uro zju
 **Zahteva:** V razvoju naj se da prednost aktivnostim na kritični poti, glede na graf PERT.
 
 #### Zahteve okolja:
-**Cilj:** Ekipa, ki dela na projektu, mora dobro sodelovati.
+**Cilj:** Ekipa, ki dela na projektu, mora dobro sodelovati.   
 **Zahteva:** Ekipo, ki bo sodelovala na tem projektu, sestavimo iz članov, ki so na podobnih projektih že sodelovali skupaj in imeli dobre rezultate in s tem zadovoljne stranke, poleg tega je zahtevana metrika še narejen Big Five osebnostni test, kateri mora biti med razvijalci kompatibilen. Od njih se pričakuje časovna usklajenost s časovnim okvirjem in nič konfliktov znotraj ekipe.
 
 **Cilj:** Projekt ne sme biti predrag.
@@ -765,7 +765,7 @@ maksimalno 2 uri, poleg tega pa naj potekajo v nočnem času, med 3 in 5 uro zju
 **Zahteva:** Aplikacija mora biti združljiva z brskalnikom Google Chrome.
 
 #### Zakonodajne zahteve:
-**Cilj:** Spletna stran mora biti v skladu z zakonom.
+**Cilj:** Aplikacija mora biti v skladu z zakonom.   
 **Zahteva:** Potreben je mesečni pregled Zakona o zaščiti živali(ZZZiv), če se s čim ne sklada, je to potrebno spremeniti.
 
 ## 7. Prototipi vmesnikov
