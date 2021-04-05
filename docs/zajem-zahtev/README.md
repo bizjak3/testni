@@ -803,23 +803,29 @@ samostojno uporabljati po 5 minutah učenja.
 
 #### 7.1.1 Dodajanje ponudbe stortive <-> Leaflet zemljevid
 
+```javascript
 var draggable = new L.Draggable(elementToDrag);
 draggable.enable();
+```
 
 Leaflet API nam omogoča dodajanje premikajoče se oznake. S pomočjo zgornje metode omogočimo izvajalcu stortive da lahko premakne oznako na lokacijo, kjer želi ponujati storitev.
 
-Ko izvajalec storitve potrdi lokacijo, pridobimo lokacijo oznake s pomočjo metode, getLatLng(elementToDrag), ter jo shranimo v interno bazo, za nadaljno uporabo.
+Ko izvajalec storitve potrdi lokacijo, pridobimo lokacijo oznake s pomočjo metode, ``` getLatLng(elementToDrag) ```, ter jo shranimo v interno bazo, za nadaljno uporabo.
 
 #### 7.1.2 Pregled ponujenih storitev <-> Leaflet zemljevid
 
+```javascript
 L.marker([X,Y]).addTo(map);
+```
 
 Leaflet API nam omogoča dodajanje oznake na zemljevid. Leaflet je že incicializiran. Ko uporabnik želi pogledati
 ponujene storitve s pomočjo zgornje metode dodamo oznake na zemljevid. Oznake za vse stortive pridobimo iz notranje baze.
 
 #### 7.1.3 Pregled lokacije psa med izvajanjem storitve<-> Leaflet zemljevid
 
+```javascript
 L.marker([X,Y]).addTo(map);
+```
 
 Leaflet API nam omogoča dodajanje oznake na zemljevid. Leaflet je že incicializiran. Ko uporabnik želi pogledati
 lokacijo psa med izvajanjem storitve, se s pomočjo zgornje metode dodamo oznako na zemljevid. Lokacijo izvajalca storitve
