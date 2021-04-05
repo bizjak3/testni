@@ -733,17 +733,67 @@ samostojno uporabljati po 5 minutah učenja.
 
 - Navesti je potrebno: zaslonske maske, sistemske vmesnike in vmesnike do naprav, vključno z referencami do primerov uporabe.
 
+#### Začetna strani
+
+![alt text](../img/zacetna_stran.png)
+
 #### Prijava
 
 ![alt text](../img/prijava.png)
 
 #### Registracija
 
-![alt text](../img/registracija.png)
+![alt text](../img/registracija_lastnik.png)
+![alt text](../img/registracija_izvajalec.png)
+
 
 #### Pregled storitev
 
 ![alt text](../img/pregled_storitev.png)
+
+#### Pregled uporabnikov
+
+![alt text](../img/uporabnik_javno.png)
+
+#### Ocenjevanje
+
+![alt text](../img/oceni.png)
+
+#### Dodaj Storitev
+
+![alt text](../img/ustvari_storitev.png)
+
+#### Uredi uporabnika kot Administrator
+
+![alt text](../img/uredi_admin.png)
+
+#### Uredi lastne podatke uporabnika
+
+![alt text](../img/uredi_lastne.png)
+
+#### Dodaj psa
+
+![alt text](../img/dodaj_psa.png)
+
+#### Kopiraj preteklo Storitev
+
+![alt text](../img/kopiraj_storitev.png)
+
+#### Pregled izvedenih storitev
+
+![alt text](../img/pretekle_storitve.png)
+
+#### Komunikacija med izvajalcem in lastnikom
+
+![alt text](../img/komunikacija.png)
+
+#### Pregled trenutne lokacije psa med izvajanjem
+
+![alt text](../img/pregled_lokacije.png)
+
+
+
+####
 
 #### 7.1 Vmesniki do zunanjih sistemov
 
@@ -830,4 +880,4 @@ Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje pa
 - country_code
 - height
 
-Izvajalec storitve lahko izbere da je storitev namenjena samo določeni pasmi psa. V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov. 
+Izvajalec storitve lahko izbere da je storitev namenjena samo določeni pasmi psa. V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov.
