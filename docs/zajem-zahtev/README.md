@@ -694,6 +694,35 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 ## 6. Nefunkcionalne zahteve
 
+#### Uporabnost:
+
+- Ker je sistem namenjen širši javnosti, mora biti aplikacija intuitivna, cilj je, da je uporabnik zmožen aplikacijo
+samostojno uporabljati po 5 minutah učenja.
+
+#### Varnost:
+- Samo uporabnik in administrator lahko brišeta ponudbe storitev za sprehod psa.
+- Samo prijavljen uporabnik lahko vidi seznam vseh storitev.
+- Vsa uporabniška gesla v bazi bodo kriptirana z naključno vrednostjo, hrani se zgoščena in naključna vrednost.
+#### Razpoložljivost:
+- Vedno mora biti na voljo opcija, da se objavi nova storitev.
+#### Izvedba
+- Spletna stran se ne sme nalagati več kot 1s.
+#### Razširljivost:
+- Spletna stran mora biti dovolj prilagodljiva, da lahko hkrati podpira 100 uporabnikov.
+
+### Organizacijske zahteve:
+#### Operativne:
+- Sistem mora beležiti zgodovino vseh transakcij.
+#### Razvojne zahteve:
+- V razvoju naj se da prednost aktivnostim na kritični poti, glede na graf PERT.
+
+### Zunanje zahteve:
+#### Zakonodajne zahteve:
+- Ker sistem hrani naslov uporabnika, mora biti skladen z GDPR.
+- Po vsakem plačilu bo uporabniku izstavljen račun v skladu s slovensko zakonodajo.
+#### Združljivost in integracija:
+- Aplikacija mora biti združljiva z brskalnikom Google Chrome.
+
 **TO-DO**
 
 - Navedite splošne omejitve, ki jih moramo upoštevati v več funkcionalnostih ali celo skozi celoten razvoj aplikacije.
