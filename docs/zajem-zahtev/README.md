@@ -68,6 +68,8 @@
 
 **Operacija** je postopek (enota dela), ki glede na sprejete vhodne parametre spremeni stanje sistema in proizvede z operacijo določene izhodne podatke.
 
+**API** ali aplikacijski programski vmesnih (angleško Application Programming Interface), je vmesnik preko katerega aplikacija dostopa do zunanjega vira podatkov. 
+
 ## 4. Diagram primerov uporabe
 
 **TO-DO**
@@ -750,16 +752,16 @@ https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
-- id
-- name
-- temperament
-- life_span
-- alt_names
-- wikipedia_url
-- origin
-- weight
-- country_code
-- height
+- id (enolični identifikator)
+- name (ime)
+- temperament (značaj)
+- life_span (življenska doba)
+- alt_names (soimena)
+- wikipedia_url 
+- origin (poreklo)
+- weight (teža)
+- country_code (koda države)
+- height (višina)
 
 Lastnik psa izbere pasmo psa.V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov.
 
@@ -771,16 +773,16 @@ https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
-- id
-- name
-- temperament
-- life_span
-- alt_names
-- wikipedia_url
-- origin
-- weight
-- country_code
-- height
+- id (enolični identifikator)
+- name (ime)
+- temperament (značaj)
+- life_span (življenska doba)
+- alt_names (soimena)
+- wikipedia_url 
+- origin (poreklo)
+- weight (teža)
+- country_code (koda države)
+- height (višina)
 
 Ker je storitev že bila ustvarjena, je tudi že bila izbrana pasma psa. Tako nam bo vrnil API samo en objekt s parametri dotične pasme.
 
@@ -790,15 +792,15 @@ https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
-- id
-- name
-- temperament
-- life_span
-- alt_names
-- wikipedia_url
-- origin
-- weight
-- country_code
-- height
+- id (enolični identifikator)
+- name (ime)
+- temperament (značaj)
+- life_span (življenska doba)
+- alt_names (soimena)
+- wikipedia_url 
+- origin (poreklo)
+- weight (teža)
+- country_code (koda države)
+- height (višina)
 
 Izvajalec storitve lahko izbere da je storitev namenjena samo določeni pasmi psa. V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov. 
