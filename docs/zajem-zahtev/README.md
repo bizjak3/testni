@@ -701,10 +701,11 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 #### Razpoložljivost:
 **Cilj:** Zagotoviti želimo, da bo vsak potencialen izvajalec vedno lahko objavil svojo storitev, saj je to osnovna funkcionalnost naše aplikacije.  
-**Zahteva:** Vedno mora biti na voljo opcija, da se objavi nova storitev.
+**Zahteva:** Med delovanjem mora vedno biti dostopna funkcionalnost objave nove storitve, vzdrževalni posegi pa lahko trajajo
+maksimalno 2 uri, poleg tega pa naj potekajo v nočnem času, med 3 in 5 uro zjutraj.
 #### Izvedba
 **Cilj:** Uporabniška izkušnja more biti dobra, zato se moramo izogibati dolgim časom nalaganja.  
-**Zahteva:** Spletna stran se ne sme nalagati več kot 1s.
+**Zahteva:** Ob uporabi Angularja kot frontend framework, spletna aplikacija dosega speed index manjši od 10 sekund.
 #### Razširljivost:
 **Cilj:** Ker bo v vedno več ljudi potrebovalo naše storitve, mora spletna stran prenesti tudi malo večjo obremenjenost.  
 **Zahteva:** Spletna stran mora biti dovolj prilagodljiva, da lahko hkrati podpira 1000 uporabnikov.
