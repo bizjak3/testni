@@ -88,12 +88,6 @@ Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 
 ## 4. Diagram primerov uporabe
 
-**TO-DO**
-
-- Narišite diagram primerov uporabe v jeziku UML.
-- Diagram predstavlja interakcijo med akterji in funkcionalnostmi (kdo lahko kaj počne).
-- Akterji so tipično uporabniške vloge, lahko pa gre tudi za zunanje komponente (sistemi), ki komunicirajo z našo aplikacijo.
-
 ![alt text](../img/uml_diagram.png)
 
 ## 5. Funkcionalne zahteve
@@ -728,10 +722,6 @@ samostojno uporabljati po 5 minutah učenja.
 - Navedite splošne omejitve, ki jih moramo upoštevati v več funkcionalnostih ali celo skozi celoten razvoj aplikacije.
 
 ## 7. Prototipi vmesnikov
-
-**TO-DO**
-
-- Navesti je potrebno: zaslonske maske, sistemske vmesnike in vmesnike do naprav, vključno z referencami do primerov uporabe.
 
 #### Začetna strani
 
