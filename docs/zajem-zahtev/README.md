@@ -82,6 +82,10 @@ Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 
 **Operacija** je postopek (enota dela), ki glede na sprejete vhodne parametre spremeni stanje sistema in proizvede z operacijo določene izhodne podatke.
 
+**API** ali aplikacijski programski vmesnih (angleško Application Programming Interface), je vmesnik preko katerega aplikacija dostopa do zunanjega vira podatkov. 
+
+**JSON** ali JavaScript objektna notacija (angleško JavaScript Object Notation), je lahek podatkovni format za izmenjavo podatkov.
+
 ## 4. Diagram primerov uporabe
 
 **TO-DO**
@@ -708,6 +712,35 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 ## 6. Nefunkcionalne zahteve
 
+#### Uporabnost:
+
+- Ker je sistem namenjen širši javnosti, mora biti aplikacija intuitivna, cilj je, da je uporabnik zmožen aplikacijo
+samostojno uporabljati po 5 minutah učenja.
+
+#### Varnost:
+- Samo uporabnik in administrator lahko brišeta ponudbe storitev za sprehod psa.
+- Samo prijavljen uporabnik lahko vidi seznam vseh storitev.
+- Vsa uporabniška gesla v bazi bodo kriptirana z naključno vrednostjo, hrani se zgoščena in naključna vrednost.
+#### Razpoložljivost:
+- Vedno mora biti na voljo opcija, da se objavi nova storitev.
+#### Izvedba
+- Spletna stran se ne sme nalagati več kot 1s.
+#### Razširljivost:
+- Spletna stran mora biti dovolj prilagodljiva, da lahko hkrati podpira 100 uporabnikov.
+
+### Organizacijske zahteve:
+#### Operativne:
+- Sistem mora beležiti zgodovino vseh transakcij.
+#### Razvojne zahteve:
+- V razvoju naj se da prednost aktivnostim na kritični poti, glede na graf PERT.
+
+### Zunanje zahteve:
+#### Zakonodajne zahteve:
+- Ker sistem hrani naslov uporabnika, mora biti skladen z GDPR.
+- Po vsakem plačilu bo uporabniku izstavljen račun v skladu s slovensko zakonodajo.
+#### Združljivost in integracija:
+- Aplikacija mora biti združljiva z brskalnikom Google Chrome.
+
 **TO-DO**
 
 - Navedite splošne omejitve, ki jih moramo upoštevati v več funkcionalnostih ali celo skozi celoten razvoj aplikacije.
@@ -718,17 +751,67 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 - Navesti je potrebno: zaslonske maske, sistemske vmesnike in vmesnike do naprav, vključno z referencami do primerov uporabe.
 
+#### Začetna strani
+
+![alt text](../img/zacetna_stran.png)
+
 #### Prijava
 
 ![alt text](../img/prijava.png)
 
 #### Registracija
 
-![alt text](../img/registracija.png)
+![alt text](../img/registracija_lastnik.png)
+![alt text](../img/registracija_izvajalec.png)
+
 
 #### Pregled storitev
 
 ![alt text](../img/pregled_storitev.png)
+
+#### Pregled uporabnikov
+
+![alt text](../img/uporabnik_javno.png)
+
+#### Ocenjevanje
+
+![alt text](../img/oceni.png)
+
+#### Dodaj Storitev
+
+![alt text](../img/ustvari_storitev.png)
+
+#### Uredi uporabnika kot Administrator
+
+![alt text](../img/uredi_admin.png)
+
+#### Uredi lastne podatke uporabnika
+
+![alt text](../img/uredi_lastne.png)
+
+#### Dodaj psa
+
+![alt text](../img/dodaj_psa.png)
+
+#### Kopiraj preteklo Storitev
+
+![alt text](../img/kopiraj_storitev.png)
+
+#### Pregled izvedenih storitev
+
+![alt text](../img/pretekle_storitve.png)
+
+#### Komunikacija med izvajalcem in lastnikom
+
+![alt text](../img/komunikacija.png)
+
+#### Pregled trenutne lokacije psa med izvajanjem
+
+![alt text](../img/pregled_lokacije.png)
+
+
+
+####
 
 #### 7.1 Vmesniki do zunanjih sistemov
 
@@ -760,59 +843,59 @@ pridobimo iz interne baze.
 
 #### 7.1.4 Dodajanje psa <-> The Dog Api
 
-https\://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
+https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
-- id
-- name
-- temperament
-- life_span
-- alt_names
-- wikipedia_url
-- origin
-- weight
-- country_code
-- height
+- id (enolični identifikator)
+- name (ime)
+- temperament (značaj)
+- life_span (življenska doba)
+- alt_names (soimena)
+- wikipedia_url 
+- origin (poreklo)
+- weight (teža)
+- country_code (koda države)
+- height (višina)
 
-V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov.
+Lastnik psa izbere pasmo psa.V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov.
 
 
 
 #### 7.1.5 Pregled ponujenih storitev <-> The Dog Api
 
-https\://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
+https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
-- id
-- name
-- temperament
-- life_span
-- alt_names
-- wikipedia_url
-- origin
-- weight
-- country_code
-- height
+- id (enolični identifikator)
+- name (ime)
+- temperament (značaj)
+- life_span (življenska doba)
+- alt_names (soimena)
+- wikipedia_url 
+- origin (poreklo)
+- weight (teža)
+- country_code (koda države)
+- height (višina)
 
 Ker je storitev že bila ustvarjena, je tudi že bila izbrana pasma psa. Tako nam bo vrnil API samo en objekt s parametri dotične pasme.
 
 #### 7.1.6 Dodajanje ponudbe stortive <-> The Dog Api
 
-https\://api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
+https\://<i></i>api.thedogapi.com/v1/breeds/search?q="NAME OF BREED"
 
 The dog API sprejme ime pasme psa preko parametra q v url zahtevku, ter vrne podatke o pasmi v obliki datoteke JSON.
 Datoteka JSON vsebuje tabelo objektov, Vsak objekt pa lahko vsebuje naslednje parametre:
-- id
-- name
-- temperament
-- life_span
-- alt_names
-- wikipedia_url
-- origin
-- weight
-- country_code
-- height
+- id (enolični identifikator)
+- name (ime)
+- temperament (značaj)
+- life_span (življenska doba)
+- alt_names (soimena)
+- wikipedia_url 
+- origin (poreklo)
+- weight (teža)
+- country_code (koda države)
+- height (višina)
 
-Izvajalec storitve lahko izbere da je storitev namenjena samo določeni pasmi psa. V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov. 
+Izvajalec storitve lahko izbere da je storitev namenjena samo določeni pasmi psa. V primeru da ime pasme ni natačno podano, dobimo v datoteki JSON več rezultatov iskanja v obliki objektov.
