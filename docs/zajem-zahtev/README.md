@@ -686,32 +686,47 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 #### Uporabnost:
 
-- Ker je sistem namenjen širši javnosti, mora biti aplikacija intuitivna, cilj je, da je uporabnik zmožen aplikacijo
-samostojno uporabljati po 5 minutah učenja.
+**Cilj:** Ker je sistem namenjen širši javnosti, mora biti aplikacija intuitivna, zato da jo bo lahko kdorkoli uporabljal.  
+**Zahteva:** Uporabnik mora biti zmožen aplikacijo samostojno uporabljati po 5 minutah učenja.  
 
 #### Varnost:
-- Samo izvajalec storitev, moderator in administrator lahko brišejo ponudbe storitev za sprehod psa.
-- Samo prijavljen uporabnik lahko vidi seznam vseh storitev.
-- Vsa uporabniška gesla v bazi bodo kriptirana z naključno vrednostjo, hrani se zgoščena in naključna vrednost.
+**Cilj:** Ne smemo dovoliti, da bi lahko kdorkoli brisal ponudbe konkurenčnih sprehajalcev psov.  
+**Zahteva:** Samo izvajalec storitev, moderator in administrator lahko brišejo ponudbe storitev za sprehod psa.  
+
+**Cilj:** Želimo, da ima možnost naročila storitve le prijavljen uporabnik, s čimer se izognemo, da bi anonimni ljudje naročali storitve, ki jih v resnici ne mislijo koristit.  
+**Zahteva:** Samo prijavljen uporabnik lahko vidi seznam vseh storitev.
+
+**Cilj:** V primeru vdora v podatkovno bazo želimo zagotoviti, da v javnost ne bodo ušla uporabniška gesla.  
+**Zahteva:** Vsa uporabniška gesla v bazi bodo kriptirana z naključno vrednostjo, hrani se zgoščena in naključna vrednost.
+
 #### Razpoložljivost:
-- Vedno mora biti na voljo opcija, da se objavi nova storitev.
+**Cilj:** Zagotoviti želimo, da bo vsak potencialen izvajalec vedno lahko objavil svojo storitev, saj je to osnovna funkcionalnost naše aplikacije.  
+**Zahteva:** Vedno mora biti na voljo opcija, da se objavi nova storitev.
 #### Izvedba
-- Spletna stran se ne sme nalagati več kot 1s.
+**Cilj:** Uporabniška izkušnja more biti dobra, zato se moramo izogibati dolgim časom nalaganja.  
+**Zahteva:** Spletna stran se ne sme nalagati več kot 1s.
 #### Razširljivost:
-- Spletna stran mora biti dovolj prilagodljiva, da lahko hkrati podpira 100 uporabnikov.
+**Cilj:** Ker bo v vedno več ljudi potrebovalo naše storitve, mora spletna stran prenesti tudi malo večjo obremenjenost.  
+**Zahteva:** Spletna stran mora biti dovolj prilagodljiva, da lahko hkrati podpira 1000 uporabnikov.
 
 ### Organizacijske zahteve:
 #### Operativne:
-- Sistem mora beležiti zgodovino vseh transakcij(kdo je bil izvajalec, čigav pes, cena).
+**Cilj:** Za lažjo analizo uporabniških navad, želimo imeti dostop do osnovne statistike o uporabi aplikacije.  
+**Zahteva:** Sistem mora beležiti zgodovino vseh transakcij(kdo je bil izvajalec, čigav pes, cena).
 #### Razvojne zahteve:
-- V razvoju naj se da prednost aktivnostim na kritični poti, glede na graf PERT.
+**Cilj:** Razvoj aplikacije mora biti končan do predvidenega roka.  
+**Zahteva:** V razvoju naj se da prednost aktivnostim na kritični poti, glede na graf PERT.
 
 ### Zunanje zahteve:
 #### Zakonodajne zahteve:
-- Ker sistem hrani naslov uporabnika, mora biti skladen z GDPR.
-- Po vsakem plačilu bo uporabniku izstavljen račun v skladu s slovensko zakonodajo.
+**Cilj:** Aplikacija bo izšla na slovenskem trgu in shranjevala nekaj osebnih podatkov, kot je ime in priimek, zato se mora skladati z Evropsko zakonodajo.  
+**Zahteva** Ker sistem hrani osebne podatke, mora biti skladen z GDPR.
+
+**Cilj:** Sprehajanje psov je plačljiva storitev, torej moramo izdati primeren račun.  
+**Zahteva:** Po vsakem plačilu bo uporabniku izstavljen račun v skladu s slovensko zakonodajo.
 #### Združljivost in integracija:
-- Aplikacija mora biti združljiva z brskalnikom Google Chrome.
+**Cilj:** Da bi našo aplikacijo uporabljalo čim več ljudi, je dobro da zagotovimo združljivost z najbolj popularnim spletnim brskalnikom.  
+**Zahteva:** Aplikacija mora biti združljiva z brskalnikom Google Chrome.
 
 ## 7. Prototipi vmesnikov
 
