@@ -82,6 +82,10 @@ Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 
 **JSON** ali JavaScript objektna notacija (angleško JavaScript Object Notation), je lahek podatkovni format za izmenjavo podatkov.
 
+**Speed Index** (slovensko indeks hitrosti) je parameter Lighthouse testa spletne aplikacije, ki definira kako hitro je vsebina strani vidno izpolnjena.
+
+**Lighthouse** (slovensko svetilnik) je odrptokodno orodje za testiranje kvalitete spletne strani.
+
 ## 4. Diagram primerov uporabe
 
 ![alt text](../img/uml_diagram.png)
