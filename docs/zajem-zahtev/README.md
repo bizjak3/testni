@@ -111,8 +111,8 @@ Lastnik psa ali izvajalec storitev se lahko registrira v sistem. V sistem se lah
 
 **Alternativni tok 1**
 
-1. Neregistriran uporabnik na začetni strani izbere "Prijava"
-2. Na novo odprti strani uporabnik izbere možnost "Nisem še registriran, registriraj me sedaj"
+1. Neregistriran uporabnik na začetni strani izbere "Prijava".
+2. Na novo odprti strani uporabnik izbere možnost "Nisem še registriran, registriraj me sedaj".
 3. Sistem prikaže obrazec, v katerega neregistriran uporabnik vnese vse potrebne podatke za registracijo.
 4. Uporabnik, po vnosu podatkov, izbere gumb "Registracija"
 5. Sistem shrani podatke v bazo in generira edinstven registracijski žeton, ki je uporabniku posredovan na vnešen e-poštni naslov.
@@ -155,7 +155,7 @@ Registriran uporabnik kateregakoli tipa se lahko prijavi v sistem z uporabniški
 
 #### Osnovni tok
 
-1. Na začetni strani registriran uporabnik izbere možnost "Prijava uporabnika"
+1. Na začetni strani registriran uporabnik izbere možnost "Prijava uporabnika".
 2. Sistem prikaže obrazec, v katerega uporabnik vnese uporabniško ime ali e-poštni naslov.
 3. Uporabnik, po vnosu podatkov, izbere gumb "Prijava"
 4. Ob pravilno vnešenih podatkih je uporabnik prijavljen v aplikacijo s povratno informacijo.
@@ -164,10 +164,10 @@ Registriran uporabnik kateregakoli tipa se lahko prijavi v sistem z uporabniški
 
 **Alternativni tok 1**
 
-1. Uporabnik na začetni strani izbere "Registracija novega lastnika psa" ali "Registracija novega ponudnika storitev"
-2. Na novoodprti strani uporabnik izbere možnost "Registracijo sem že opravil, prijavi me"
+1. Uporabnik na začetni strani izbere "Registracija novega lastnika psa" ali "Registracija novega ponudnika storitev".
+2. Na novoodprti strani uporabnik izbere možnost "Registracijo sem že opravil, prijavi me".
 3. Sistem prikaže obrazec, v katerega uporabnik vnese uporabniško ime ali e-poštni naslov.
-4. Uporabnik, po vnosu podatkov, izbere gumb "Prijava"
+4. Uporabnik, po vnosu podatkov, izbere gumb "Prijava".
 5. Ob pravilno vnešenih podatkih je uporabnik prijavljen v aplikacijo s povratno informacijo.
 
 #### Izjemni tok(ovi)
@@ -238,7 +238,7 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _must have_.
 
 #### Sprejemni testi
 
-- Uporabniku se po uspešni prijavi prikažejo ponujene storitve ali napis "V sistemu ni trenutno aktivnih storitev"
+- Uporabniku se po uspešni prijavi prikažejo ponujene storitve ali napis "V sistemu ni trenutno aktivnih storitev".
 
 ### 5.4 Dodajanje nove ponudbe storitve kot izvajalec storitve
 
@@ -292,7 +292,7 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _must have_.
 
 #### Povzetek funkcionalnosti
 
-Prijavljen uporabnik z uporabniško vlogo lastnik psov lahko doda novega psa z njegovimi lastnostmi
+Prijavljen uporabnik z uporabniško vlogo lastnik psov lahko doda novega psa z njegovimi lastnostmi.
 
 #### Osnovni tok
 
@@ -689,6 +689,8 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 ## 6. Nefunkcionalne zahteve
 
 #### Uporabnost:
+**Cilj:** Spletna stran mora biti uporabna tudi barvno slepim.
+**Zahteva:** Spletna stran ne vsebuje barv kot funkcionalnost(primer: ob uspešni transakciji dobimo na ekran zeleno barvo, kot signal vse je vredu). V primeru, da se, mora biti zraven jasen znak(primer: kljukica), ki nakazuje enako kot barva, tako da lahko tudi barvno slepi razumejo enako kot tisti, ki vidijo barve.
 
 **Cilj:** Ker je sistem namenjen širši javnosti, mora biti aplikacija intuitivna, zato da jo bo lahko kdorkoli uporabljal.  
 **Zahteva:** Uporabnik mora biti zmožen aplikacijo samostojno uporabljati po 5 minutah učenja.  
@@ -714,6 +716,10 @@ maksimalno 2 uri, poleg tega pa naj potekajo v nočnem času, med 3 in 5 uro zju
 **Cilj:** Ker bo v vedno več ljudi potrebovalo naše storitve, mora spletna stran prenesti tudi malo večjo obremenjenost.  
 **Zahteva:** Spletna stran mora biti dovolj prilagodljiva, da lahko hkrati podpira 1000 uporabnikov.
 
+#### Zanesljivost:
+**Cilj:** Spletna stran mora biti dostopna dovolj časa.
+**Zahteva:** Spletna stran mora biti dostopna 90% časa, ko uporabnik želi do nje dostopati.
+
 ### Organizacijske zahteve:
 #### Operativne:
 **Cilj:** Za lažjo analizo uporabniških navad, želimo imeti dostop do osnovne statistike o uporabi aplikacije.  
@@ -721,6 +727,13 @@ maksimalno 2 uri, poleg tega pa naj potekajo v nočnem času, med 3 in 5 uro zju
 #### Razvojne zahteve:
 **Cilj:** Razvoj aplikacije mora biti končan do predvidenega roka.  
 **Zahteva:** V razvoju naj se da prednost aktivnostim na kritični poti, glede na graf PERT.
+
+#### Zahteve okolja:
+**Cilj:** Ekipa, ki dela na projektu, mora dobro sodelovati.
+**Zahteva:** Ekipo, ki bo sodelovala na tem projektu, sestavimo iz članov, ki so na podobnih projektih že sodelovali skupaj in imeli dobre rezultate in s tem zadovoljne stranke, poleg tega je zahtevana metrika še narejen Big Five osebnostni test, kateri mora biti med razvijalci kompatibilen. Od njih se pričakuje časovna usklajenost s časovnim okvirjem in nič konfliktov znotraj ekipe.
+
+**Cilj:** Projekt ne sme biti predrag.
+**Zahteva:** Projekt ne sme preseči dane finančne omejitve, ki je 6771 €. Potrebno je imeti tedenski pregled, če je projekt v zadanem finančnem okvirju.
 
 ### Zunanje zahteve:
 #### Zakonodajne zahteve:
@@ -732,6 +745,10 @@ maksimalno 2 uri, poleg tega pa naj potekajo v nočnem času, med 3 in 5 uro zju
 #### Združljivost in integracija:
 **Cilj:** Da bi našo aplikacijo uporabljalo čim več ljudi, je dobro da zagotovimo združljivost z najbolj popularnim spletnim brskalnikom.  
 **Zahteva:** Aplikacija mora biti združljiva z brskalnikom Google Chrome.
+
+#### Zakonodajne zahteve:
+**Cilj:** Spletna stran mora biti v skladu z zakonom.
+**Zahteva:** Potreben je mesečni pregled Zakona o zaščiti živali(ZZZiv), če se s čim ne sklada, je to potrebno spremeniti.
 
 ## 7. Prototipi vmesnikov
 
