@@ -48,10 +48,6 @@ Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 
 ## 3. Slovar pojmov
 
-**TO-DO**
-
-- Natančno opredelite vse têrmine, ki jih boste uporabljali v nadaljevanju dokumenta.
-
 **Lastnik psa** je oseba, ki se v aplikacijo prijavlja z namenom oddaje lastnega psa v izvedbo katere izmed storitev, ki jo aplikacija ponuja.
 
 **Izvajalec storitve** je oseba, ki se v aplikacijo prijavlja z namenom izvajanja ene izmed storitev, ki jo aplikacija ponuja.
@@ -82,7 +78,7 @@ Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 
 **Operacija** je postopek (enota dela), ki glede na sprejete vhodne parametre spremeni stanje sistema in proizvede z operacijo določene izhodne podatke.
 
-**API** ali aplikacijski programski vmesnih (angleško Application Programming Interface), je vmesnik preko katerega aplikacija dostopa do zunanjega vira podatkov. 
+**API** ali aplikacijski programski vmesnik (angleško Application Programming Interface), je vmesnik preko katerega aplikacija dostopa do zunanjega vira podatkov. 
 
 **JSON** ali JavaScript objektna notacija (angleško JavaScript Object Notation), je lahek podatkovni format za izmenjavo podatkov.
 
@@ -778,8 +774,6 @@ samostojno uporabljati po 5 minutah učenja.
 ![alt text](../img/pregled_lokacije.png)
 
 
-
-####
 
 #### 7.1 Vmesniki do zunanjih sistemov
 
