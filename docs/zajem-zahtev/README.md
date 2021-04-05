@@ -694,7 +694,7 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 samostojno uporabljati po 5 minutah učenja.
 
 #### Varnost:
-- Samo uporabnik in administrator lahko brišeta ponudbe storitev za sprehod psa.
+- Samo izvajalec storitev, moderator in administrator lahko brišejo ponudbe storitev za sprehod psa.
 - Samo prijavljen uporabnik lahko vidi seznam vseh storitev.
 - Vsa uporabniška gesla v bazi bodo kriptirana z naključno vrednostjo, hrani se zgoščena in naključna vrednost.
 #### Razpoložljivost:
@@ -706,7 +706,7 @@ samostojno uporabljati po 5 minutah učenja.
 
 ### Organizacijske zahteve:
 #### Operativne:
-- Sistem mora beležiti zgodovino vseh transakcij.
+- Sistem mora beležiti zgodovino vseh transakcij(kdo je bil izvajalec, čigav pes, cena).
 #### Razvojne zahteve:
 - V razvoju naj se da prednost aktivnostim na kritični poti, glede na graf PERT.
 
@@ -716,10 +716,6 @@ samostojno uporabljati po 5 minutah učenja.
 - Po vsakem plačilu bo uporabniku izstavljen račun v skladu s slovensko zakonodajo.
 #### Združljivost in integracija:
 - Aplikacija mora biti združljiva z brskalnikom Google Chrome.
-
-**TO-DO**
-
-- Navedite splošne omejitve, ki jih moramo upoštevati v več funkcionalnostih ali celo skozi celoten razvoj aplikacije.
 
 ## 7. Prototipi vmesnikov
 
