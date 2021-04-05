@@ -10,9 +10,12 @@
 
 ## Povzetek projekta
 
-**TO-DO**
-
-- Povzetek je, kot že vemo, celoten dokument, strnjen v največ 150 besed.
+Spletna aplikacija Pasjehodec lastnikom psov omogoča, da najdejo nekoga, ki bo namesto njih opravil del oskrbe. Poleg tega seveda omogoča komurkoli, ki ima
+dovolj časa, da poskrbi za oskrbo psa v zameno za plačilo. Za uporabo aplikacije se je potrebno registrirati kot lastnik psa ali pa 
+kot izvajalec storitev. Prijavljeni uporabniki dostopajo do funkcij kot so dodajanje ponudbe storitve, pregled izvedenih storitev, dodajanje svojega psa,
+ocenjevanje svoje izkušnje z nekim izvajalcem in direktna komunikacija med izvajalcem ter lastnikom psa. Dodatna prednost aplikacije je možnost
+spremljanja trenutne lokacije svojega psa v realnem času. Vsa plačila se izvajajo znotraj aplikacije. Za pravilno delovanje imamo tudi nekaj moderatorjev
+ter administratorjev, ki imajo tudi možnost urejanja ali odstranjevanja neprimernih ponudb.
 
 ## 1. Uvod
 
@@ -20,7 +23,7 @@ Star afriški pregovor pravi, da je za vzgojo otroka potrebna celotna vas. Danes
 
 Sistem Pasjehodec omogoča ravno to, da delež naših obveznosti iz lastnika psa preselimo na zunanje izvajalce, ki se tega dela veselijo (ter ob enem nimajo nič proti dodatnemu zaslužku). Sistem tako omogoča, da sosedov Peterček našega Pikija v sredo odpelje na sprehod, v četrtek ga ob dogovorjeni uri na dogovorjenem mestu prevzame pasja frizerka Petra, v petek pa kozmetičarka Pika. Piki je tako pripravljen na vikend obisk vikenda na slovenski obali ali sankanja po zasneženih alpskih strminah. Peterček, Petra in Pika pa imajo dodatno stranko kateri lahko posvetijo potreben čas, hkrati pa vedo, da se njihova stranka ne bo pritoževala saj lahko celoten čas opravljanja storitve spremlja trenutno lokacijo svojega štirinožca.
 
-Pasjehodec na eni strani rešuje težave lastnikov psov. Ti si lahko v sistemu ustvarijo uporabniški profil v katerega dodajo svoje pse, njihovo pasmo, lastnosti, ime, posebne potrebe,… Nato lahko med dodanimi oglasi za storitve izbere željeno storitev, ki jo izvajalec storitve ponuja ob željenem času na željenem prostoru. Ko izvajalec storitev storitev opravi, lahko lastnik psa storitev oceni in storitev tudi plača brez potrebe po uporabi zunanjih sistemov.
+Pasjehodec na eni strani rešuje težave lastnikov psov. Ti si lahko v sistemu ustvarijo uporabniški profil v katerega dodajo svoje pse, njihovo pasmo, lastnosti, ime, posebne potrebe,… Nato lahko med dodanimi oglasi za storitve izbere željeno storitev, ki jo izvajalec storitve ponuja ob željenem času na željenem prostoru. Ko izvajalec storitev opravi, lahko lastnik psa storitev oceni in storitev tudi plača brez potrebe po uporabi zunanjih sistemov.
 
 Izvajalec storitve lahko po drugi strani preko sistema dodaja nove storitve v katerih navede kdaj, kje, kako in kaj ponuja. Ob naročilu storitve dobi informacijo o naročilu, po opravljeni storitvi pa za opravljeno storitev prejme dogovorjen znesek neposredno na svoj bančni račun.
 
@@ -48,39 +51,61 @@ Pasjehodec – sistem za zadovoljnega lastnika psa, izvajalca storitev in psa.
 
 ## 3. Slovar pojmov
 
-**Lastnik psa** je oseba, ki se v aplikacijo prijavlja z namenom oddaje lastnega psa v izvedbo katere izmed storitev, ki jo aplikacija ponuja.
-
-**Izvajalec storitve** je oseba, ki se v aplikacijo prijavlja z namenom izvajanja ene izmed storitev, ki jo aplikacija ponuja.
+**API** ali aplikacijski programski vmesnik (angleško Application Programming Interface), je vmesnik preko katerega aplikacija dostopa do zunanjega vira podatkov.
 
 **Administrator sistema** _(ali administrator)_ je oseba, ki se v aplikacijo prijavlja z namenom upravljanja in nadzora delovanja aplikacije.
 
-**Uporabnik** je oseba, ki aplikacijo uporablja. Vsak uporabnik ima določeno uporabniško vlogo definirano v _2. Uporabniške vloge_.
-
-**Neregistriran uporabnik** je uporabnik, ki še ni opravil ali zaključil postopka registracije. **Registriran uporabnik** je uporabnik, ki je uspešno zaključil postopek registracije.
-
-**Povratna informacija** je avdio-vizualni element v aplikaciji, ki z besedilom, zvokom ali sliko uporabnika obvesti o razultatu izvedene akcije.
-
-**Uporabniško ime** je edinstven in javen klasifikator uporabnika.
-
-**Email** je edinstven klasifikator uporabnika sestavljen iz niza znakov.
-
-**Geslo** je niz znakov, ki se uporablja za avtentikacijo uporabnikov v sistemu.
-
-**Uporabniški profil** je skupen informacij, ki so posredno ali neposredno povezani z določenim uporabnikom sistema. *Uporabniški profil se uporablja tudi kot naziv fizične zaslonske maske, ki prikazuje uporabniški profil deloma ali v celoti.*
-
-**URL** ali enolični krajevnik vira (angleško Uniform Resource Locator) je naslov spletnih strani v svetovnem spletu.
-
-**Javni podatki sistema** je skupen podatkov in informacij sistema, ki so dostopni brez predhodne avtentikacije uporabnika.
+**Angular** je ogrodje za razvoj spletnih apliakcij.
 
 **Avtentikacija** (angleško authentication) je postopek, s katerim se sistem prepriča, da je uporabnik zares tisti uporabnik, za kogar se predstavlja, da je.
 
 **Avtorizacija** je dovoljenje izdano s strani sistema, ki uporabniku sistema omogoča izvedbo operacije.
 
-**Operacija** je postopek (enota dela), ki glede na sprejete vhodne parametre spremeni stanje sistema in proizvede z operacijo določene izhodne podatke.
+**Big Five** je osebnostni vprašalnik, katerega sami izpolnimo, pove pa nam kakšni smo pri velikih petih faktorjih osebnosti. Te so energija, sprejemljivost, vestnost, čustvena stabilnost in odprotst.
 
-**API** ali aplikacijski programski vmesnik (angleško Application Programming Interface), je vmesnik preko katerega aplikacija dostopa do zunanjega vira podatkov. 
+**Email** je edinstven klasifikator uporabnika sestavljen iz niza znakov.
+
+**Frontend framework** so paketi, ki vsebujejo vnaprej napisano standardizirano kodo in datoteke, ter mape. Dajo nam podlago na kateri lahko gradimo.
+
+**Geslo** je niz znakov, ki se uporablja za avtentikacijo uporabnikov v sistemu.
+
+**Izvajalec storitve** je oseba, ki se v aplikacijo prijavlja z namenom izvajanja ene izmed storitev, ki jo aplikacija ponuja.
+
+**Javni podatki sistema** je skupen podatkov in informacij sistema, ki so dostopni brez predhodne avtentikacije uporabnika.
 
 **JSON** ali JavaScript objektna notacija (angleško JavaScript Object Notation), je lahek podatkovni format za izmenjavo podatkov.
+
+**Lastnik psa** je oseba, ki se v aplikacijo prijavlja z namenom oddaje lastnega psa v izvedbo katere izmed storitev, ki jo aplikacija ponuja.
+
+**Lighthouse** (slovensko svetilnik) je odrptokodno orodje za testiranje kvalitete spletne strani.
+
+**MoSCoW** je tehnika določanja prioritet znotraj časovno omejenega projekta.
+
+**Neregistriran uporabnik** je uporabnik, ki še ni opravil ali zaključil postopka registracije. **Registriran uporabnik** je uporabnik, ki je uspešno zaključil postopek registracije.
+
+**Operacija** je postopek (enota dela), ki glede na sprejete vhodne parametre spremeni stanje sistema in proizvede z operacijo določene izhodne podatke.
+
+**Podatkovna baza** je del jedrnega sistema in predstavlja enoto za začasno ali trajno shranjevanje podatkov.
+
+**Povratna informacija** je avdio-vizualni element v aplikaciji, ki z besedilom, zvokom ali sliko uporabnika obvesti o rezultatu izvedene akcije.
+
+**Sistem** (jedrni sistem) je skupek programov, aplikacij in tehnologij, ki sestavljajo projekt. V sistem uvrščamo (med drugim) podatkovne baze, aplikacijske strežnike, spletne in proxy strežnike in odjemalce ter vse programe in aplikacije, ki se na njih izvajajo ter brez katerih sistem ne more delovati.
+
+**Speed Index** (slovensko indeks hitrosti) je parameter Lighthouse testa spletne aplikacije, ki definira kako hitro je vsebina strani vidno izpolnjena.
+
+**Spletna aplikacija** (čelni del) je del jedrnega sistema, ki se izvaja na odjemalcu.
+
+**Uporabnik** je oseba, ki aplikacijo uporablja. Vsak uporabnik ima določeno uporabniško vlogo definirano v _2. Uporabniške vloge_.
+
+**Uporabniško ime** je edinstven in javen klasifikator uporabnika.
+
+**Uporabniški profil** je skupen informacij, ki so posredno ali neposredno povezani z določenim uporabnikom sistema. *Uporabniški profil se uporablja tudi kot naziv fizične zaslonske maske, ki prikazuje uporabniški profil deloma ali v celoti.*
+
+**URL** ali enolični krajevnik vira (angleško Uniform Resource Locator) je naslov spletnih strani v svetovnem spletu.
+
+**Zaledni del** je del jedrnega sistema, ki se izvaja na aplikacijskem strežniku.
+
+**Zunanji sistem** je sistem, ki podpira ali omogoča jedrni sistem ampak ni bil razvit v okviru projekta.
 
 ## 4. Diagram primerov uporabe
 
@@ -107,8 +132,8 @@ Lastnik psa ali izvajalec storitev se lahko registrira v sistem. V sistem se lah
 
 **Alternativni tok 1**
 
-1. Neregistriran uporabnik na začetni strani izbere "Prijava"
-2. Na novo odprti strani uporabnik izbere možnost "Nisem še registriran, registriraj me sedaj"
+1. Neregistriran uporabnik na začetni strani izbere "Prijava".
+2. Na novo odprti strani uporabnik izbere možnost "Nisem še registriran, registriraj me sedaj".
 3. Sistem prikaže obrazec, v katerega neregistriran uporabnik vnese vse potrebne podatke za registracijo.
 4. Uporabnik, po vnosu podatkov, izbere gumb "Registracija"
 5. Sistem shrani podatke v bazo in generira edinstven registracijski žeton, ki je uporabniku posredovan na vnešen e-poštni naslov.
@@ -131,7 +156,7 @@ Neregistriran uporabnik se je registriral v sistem kot lastnik psa ali kot ponud
 
 #### Posebnosti
 
-Funkcionalna zahteva zahteva dodatno previdnosti pri shranjevanju in upravljanju z osebnimi podatki. Posebno pozornost je potrebno nameniti shranjevanju gesel.
+Funkcionalna zahteva dodatno previdnosti pri shranjevanju in upravljanju z osebnimi podatki. Posebno pozornost je potrebno nameniti shranjevanju gesel.
 
 #### Prioritete identificiranih funkcionalnosti
 
@@ -151,7 +176,7 @@ Registriran uporabnik kateregakoli tipa se lahko prijavi v sistem z uporabniški
 
 #### Osnovni tok
 
-1. Na začetni strani registriran uporabnik izbere možnost "Prijava uporabnika"
+1. Na začetni strani registriran uporabnik izbere možnost "Prijava uporabnika".
 2. Sistem prikaže obrazec, v katerega uporabnik vnese uporabniško ime ali e-poštni naslov.
 3. Uporabnik, po vnosu podatkov, izbere gumb "Prijava"
 4. Ob pravilno vnešenih podatkih je uporabnik prijavljen v aplikacijo s povratno informacijo.
@@ -160,10 +185,10 @@ Registriran uporabnik kateregakoli tipa se lahko prijavi v sistem z uporabniški
 
 **Alternativni tok 1**
 
-1. Uporabnik na začetni strani izbere "Registracija novega lastnika psa" ali "Registracija novega ponudnika storitev"
-2. Na novoodprti strani uporabnik izbere možnost "Registracijo sem že opravil, prijavi me"
+1. Uporabnik na začetni strani izbere "Registracija novega lastnika psa" ali "Registracija novega ponudnika storitev".
+2. Na novoodprti strani uporabnik izbere možnost "Registracijo sem že opravil, prijavi me".
 3. Sistem prikaže obrazec, v katerega uporabnik vnese uporabniško ime ali e-poštni naslov.
-4. Uporabnik, po vnosu podatkov, izbere gumb "Prijava"
+4. Uporabnik, po vnosu podatkov, izbere gumb "Prijava".
 5. Ob pravilno vnešenih podatkih je uporabnik prijavljen v aplikacijo s povratno informacijo.
 
 #### Izjemni tok(ovi)
@@ -234,7 +259,7 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _must have_.
 
 #### Sprejemni testi
 
-- Uporabniku se po uspešni prijavi prikažejo ponujene storitve ali napis "V sistemu ni trenutno aktivnih storitev"
+- Uporabniku se po uspešni prijavi prikažejo ponujene storitve ali napis "V sistemu ni trenutno aktivnih storitev".
 
 ### 5.4 Dodajanje nove ponudbe storitve kot izvajalec storitve
 
@@ -288,7 +313,7 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _must have_.
 
 #### Povzetek funkcionalnosti
 
-Prijavljen uporabnik z uporabniško vlogo lastnik psov lahko doda novega psa z njegovimi lastnostmi
+Prijavljen uporabnik z uporabniško vlogo lastnik psov lahko doda novega psa z njegovimi lastnostmi.
 
 #### Osnovni tok
 
@@ -685,6 +710,8 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 ## 6. Nefunkcionalne zahteve
 
 #### Uporabnost:
+**Cilj:** Spletna aplikacija mora biti uporabna tudi barvno slepim.   
+**Zahteva:** Spletna aplikacija ne vsebuje barv kot funkcionalnost(primer: ob uspešni transakciji dobimo na ekran zeleno barvo, kot signal vse je v redu). V primeru, da se, mora biti zraven jasen znak(primer: kljukica), ki nakazuje enako kot barva, tako da lahko tudi barvno slepi razumejo enako kot tisti, ki vidijo barve.
 
 **Cilj:** Ker je sistem namenjen širši javnosti, mora biti aplikacija intuitivna, zato da jo bo lahko kdorkoli uporabljal.  
 **Zahteva:** Uporabnik mora biti zmožen aplikacijo samostojno uporabljati po 5 minutah učenja.  
@@ -701,13 +728,18 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 
 #### Razpoložljivost:
 **Cilj:** Zagotoviti želimo, da bo vsak potencialen izvajalec vedno lahko objavil svojo storitev, saj je to osnovna funkcionalnost naše aplikacije.  
-**Zahteva:** Vedno mora biti na voljo opcija, da se objavi nova storitev.
+**Zahteva:** Med delovanjem strani mora vedno biti dostopna funkcionalnost objave nove storitve, vzdrževalni posegi pa lahko trajajo
+maksimalno 2 uri, poleg tega pa naj potekajo v nočnem času, med 3 in 5 uro zjutraj.
 #### Izvedba
 **Cilj:** Uporabniška izkušnja more biti dobra, zato se moramo izogibati dolgim časom nalaganja.  
-**Zahteva:** Spletna stran se ne sme nalagati več kot 1s.
+**Zahteva:** Ob uporabi Angularja kot frontend framework-a, spletna aplikacija dosega Speed Index manjši od 10 sekund.
 #### Razširljivost:
-**Cilj:** Ker bo v vedno več ljudi potrebovalo naše storitve, mora spletna stran prenesti tudi malo večjo obremenjenost.  
-**Zahteva:** Spletna stran mora biti dovolj prilagodljiva, da lahko hkrati podpira 1000 uporabnikov.
+**Cilj:** Ker bo v vedno več ljudi potrebovalo naše storitve, mora spletna aplikacija prenesti tudi malo večjo obremenjenost.  
+**Zahteva:** Spletna aplikacija mora biti dovolj prilagodljiva, da lahko hkrati podpira 1000 uporabnikov.
+
+#### Zanesljivost:
+**Cilj:** Sistem mora biti dosegljiv dosegljiv in zanesljiv.   
+**Zahteva:** Sistem mora biti dostopen 90% časa, ko uporabnik želi do njega dostopati.
 
 ### Organizacijske zahteve:
 #### Operativne:
@@ -716,6 +748,13 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 #### Razvojne zahteve:
 **Cilj:** Razvoj aplikacije mora biti končan do predvidenega roka.  
 **Zahteva:** V razvoju naj se da prednost aktivnostim na kritični poti, glede na graf PERT.
+
+#### Zahteve okolja:
+**Cilj:** Ekipa, ki dela na projektu, mora dobro sodelovati.   
+**Zahteva:** Ekipo, ki bo sodelovala na tem projektu, sestavimo iz članov, ki so na podobnih projektih že sodelovali skupaj in imeli dobre rezultate in s tem zadovoljne stranke, poleg tega je zahtevana metrika še narejen Big Five osebnostni test, kateri mora biti med razvijalci kompatibilen. Od njih se pričakuje časovna usklajenost s časovnim okvirjem in nič konfliktov znotraj ekipe.
+
+**Cilj:** Projekt ne sme biti predrag.
+**Zahteva:** Projekt ne sme preseči dane finančne omejitve, ki je 6771 €. Potrebno je imeti tedenski pregled, če je projekt v zadanem finančnem okvirju.
 
 ### Zunanje zahteve:
 #### Zakonodajne zahteve:
@@ -727,6 +766,10 @@ Funkcionalnost je po metodi _MoSCoW_ označena kot _could have_.
 #### Združljivost in integracija:
 **Cilj:** Da bi našo aplikacijo uporabljalo čim več ljudi, je dobro da zagotovimo združljivost z najbolj popularnim spletnim brskalnikom.  
 **Zahteva:** Aplikacija mora biti združljiva z brskalnikom Google Chrome.
+
+#### Zakonodajne zahteve:
+**Cilj:** Aplikacija mora biti v skladu z zakonom.   
+**Zahteva:** Potreben je mesečni pregled Zakona o zaščiti živali(ZZZiv), če se s čim ne sklada, je to potrebno spremeniti.
 
 ## 7. Prototipi vmesnikov
 
