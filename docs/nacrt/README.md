@@ -2,9 +2,11 @@
 
 |                             |                                                         |
 | :-------------------------- | :------------------------------------------------------ |
-| **Naziv projekta**          | **TO-DO** naziv projekta                                |
-| **Člani projektne skupine** | **TO-DO** 1. član, 2. član, 3. član, 4. član in 5. član |
-| **Kraj in datum**           | **TO-DO** kraj, datum                                   |
+| **Naziv projekta**          | Pasjehodec                                              |
+| **Člani projektne skupine** | Matjaž Bizjak, Primož Gabrovec, Aljaž Grdadolnik, Jakob Marušič, Mitja Vendramin |
+| **Kraj in datum**           | Ljubljana, 1. april 2021                                |
+
+> V tem dokumentu uporabljeni izrazi, ki se nanašajo na osebe in so zapisani v moški slovnični obliki, so uporabljeni kot nevtralni za ženski in moški spol.
 
 ## Povzetek
 
