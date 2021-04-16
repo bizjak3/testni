@@ -302,6 +302,10 @@ Psa lahko dodamo tudi iz zavihka "Moji štirinožni prijatelji" na profilu upora
 
 ![](../img/dodaj_psa_diagram_izjemni.png)
 
+### 5.6 Kopiraj storitev
+
+Pod zaslonsko masko "Pretekle storitve" lahko izberemo možnost kopiranja storitve samo v primeru, da kot izvajalec imamo storitve, ki smo jih izvedli v preteklosti. S klikom na gumb "Kopiranje vsebine v novo storitev" se v novi zaslonski maski "Kopiraj storitev" v spustnem meniju prikažejo pretekle storitve, ki jih preko API-ja dobimo iz podatkovne baze na strežniku. S klikom na bumb "Kopiraj" se prepišejo podatki v vlogo nove storitve. Zatem lahko uredimo želene podatke in pritisnemo na gumb "Dodaj storitev", ki s pomočjo kontrolerja izvede API klic na strežnik za zapis nove storitve v podatkovno bazo.
+
 ### 3.12 ali 5.12
 #### Osnovni tok
 
@@ -310,5 +314,3 @@ Psa lahko dodamo tudi iz zavihka "Moji štirinožni prijatelji" na profilu upora
 ### Alternativni tok
 
 ![](../img/5.12%20alternativni%20tok.png)
-
-
