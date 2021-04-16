@@ -215,7 +215,7 @@ Razred *Transaction* je entitetni razred, ki predstavlja plačilno transakcijo i
   - diagrame stanj in
   - psevdokodo.
 
-### Registracija lastnika psa ali ponudnika storitve
+### 3.1 Registracija lastnika psa ali ponudnika storitve
 Uporabnik se lahko v aplikacijo registrira preko zaslonske maske za registracijo.
 
 
@@ -240,6 +240,30 @@ V primeru da so vnešeni podatki isti podatkom, ki so že zapisani v podatkovni 
 saj le ta že obstaja. Nato bo strežnik sporočil to spletni aplikaciji, ki bo uporabnika obvestila da uporabnik že obstaja.
 ![](../img/Izjemni%20tok%20Register(User%20user).png)
 
+### 3.2 Prijava uporabnika
+Uporabnik se lahko v aplikacijo prijavi preko zaslonske maske za prijavo.
+
+
+#### Osnovni tok
+Osnovni tok poteka na sledeči način. Uporabnik klikne na gumb "Prijava uporabnika". Izrisala se mu bo zaslonska maska za prijavo. Ko vnese vse
+potrebne podatke klikne na gumb "prijava". Spletna aplikacija bo povprašala strežnik ali uporabnik obstaja ter ali je vnešena pravilna kombinacija uporabniškega
+imena in gesla. Strežnik bo pogledal v podatkovno bazo ob uspešni poizvedbi bo vrnil sporočilo da je uporabnik prijavljen. Spletna aplikacija bo uporabnika
+obvestila o uspešni prijavi ter ga prijavila v aplikacijo.
+
+![](../img/login(username,%20password).png)
+
+#### Alternativni tok
+Do zaslonske maske lahko uporabnik pride tudi po alternativni poti. In sicer lahko se najprej premakne na zaslonsko masko "Registracija novega lastnika psa" ali  "Registracija novega ponudnika storitev", nato pa tam klikne na gumb
+"Registracijo sem že opravil, prijavi me", ki ga bo preusmeril na zaslonsko masko za prijavo. Nato poteka prijava na isti način kot pri osnovnem toku.
+![](../img/Alternativni%20login(username,%20password).png)
+
+#### Izjemni tok
+V primeru da uporabnik ne vnese pravilne kombinacije uporabniškega imena in gesla, bo pri preverbi na strani strežnika prišlo do napake. Le ta bo spletni aplikaciji
+napako sporočil, ta pa bo uporabnika obvestila o neuspešni prijavi zaradi napačne kombinacije uporabniškega imena in gesla.
+
+V primeru da uporabnik z vnešenim uporabniškim imenom ne obstaja, bo pri preverbi na strani strežnika prišlo do napake. Le ta bo spletni aplikaciji
+napako sporočil, ta pa bo uporabnika obvestila o neuspešni prijavi zaradi neobstoječega uporabnika.
+![](../img/Izjemni%20login(username,%20password).png)
 
 
 ### 5.4 Dodaj storitev
