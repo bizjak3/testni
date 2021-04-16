@@ -214,6 +214,34 @@ Razred *Transaction* je entitetni razred, ki predstavlja plačilno transakcijo i
   - diagrame aktivnosti,
   - diagrame stanj in
   - psevdokodo.
+
+### Registracija lastnika psa ali ponudnika storitve
+Uporabnik se lahko v aplikacijo registrira preko zaslonske maske za registracijo.
+
+
+####Osnovni tok
+Osnovni tok poteka na sledeči način. Uporabnik klikne na gumb "Registracija novega lastnika psa". Izrisala se mu bo zaslonska maska za registracijo. Nato uporabnik
+vnese vse potrebne podatke ter klikne na gumb "Registracija". Spletna aplikacija bo posredovala podatke strežniku, le ta pa bo zapisal novega uporabnika
+v podatkovno bazo. Ob uspešnem zapisu bo strežnik uporabniku na email posredoval žeton, hkrati pa bo posredoval spletni aplikaciji sporočilo, da je nov uporabnik
+bil uspešno ustvarjen.
+
+![](../img/Register(User%20user).png)
+
+####Alternativni tok
+Do zaslonske maske lahko uporabnik pride tudi po alternativni poti. In sicer lahko se najprej premakne na zaslonsko masko "Prijava", nato pa tam klikne na gumb
+"Nisem še registriran, registriraj me sedaj", ki ga bo preusmeril na zaslonsko masko za registracijo. Nato poteka registracija na isti način kot pri osnovnem toku.
+![](../img/Alternativni1%20Register(User%20user).png)
+
+####Izjemni tok
+V primeru da uporabnik ne vnese vseh potrebnih podatkov, ga bo spletna aplikacija ob kliku na gumb "Registracija" o tem opozorila, ter preprečila 
+nasaljevanje registracije, dokler niso vsa polja izpolnjena.
+ 
+V primeru da so vnešeni podatki isti podatkom, ki so že zapisani v podatkovni bazi, nam bo podatkovna baza sporočila da registracija uporabnika ni mogoča
+saj le ta že obstaja. Nato bo strežnik sporočil to spletni aplikaciji, ki bo uporabnika obvestila da uporabnik že obstaja.
+![](../img/Izjemni%20tok%20Register(User%20user).png)
+  
+  
+  
 ### Dodaj storitev
 #### Osnovni tok
 Storitev dodamo lahko samo kot uporabnik tipa "Izvajalec". Storitev dodamo tako, da na zaslonski maski "Pregled storitev" izberemo možnost "Dodaj novo storitev". Na novo odprti vlogi izpolnimo podatke in pritisnemo na gumb "Oddaj ponudbo". Podatki se zatem posredujejo kontrolerju, ki jih preko API klica posreduje strežniku. Kontroler na strani strežnika podatke vpiše v bazo, uporabniku pa se prikaže obvestilo o uspešnosti dodajanja storitve.
