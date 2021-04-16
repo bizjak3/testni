@@ -206,9 +206,16 @@ Razred *Transaction* je entitetni razred, ki predstavlja plačilno transakcijo i
 
 **TO-DO**
 
+
+
 - Za izdelavo načrta obnašanja lahko uporabite:
   - diagrame zaporedja,
   - končne avtomate,
   - diagrame aktivnosti,
   - diagrame stanj in
   - psevdokodo.
+### Dodaj storitev
+
+Storitev dodamo lahko samo kot uporabnik tipa "Izvajalec". Storitev dodamo tako, da na zaslonski maski "Pregled storitev" izberemo možnost "Dodaj novo storitev". Na novo odprti vlogi izpolnimo podatke in pritisnemo na gumb "Oddaj ponudbo". Podatki se zatem posredujejo kontrolerju, ki jih preko API klica posreduje strežniku. Kontroler na strani strežnika podatke vpiše v bazo, uporabniku pa se prikaže obvestilo o uspešnosti dodajanja storitve.
+
+  ![](../img/dodaj_storitev_diagram_poteka.png)
