@@ -253,6 +253,11 @@ Storitev lahko dodamo prav tako iz zaslonske maske "Pregled preteklih storitev",
 
 ![](../img/dodaj_storitev_diagram_alternativni.png)
 
+#### Izjemni tok
+Če pri dodajanju storitve ne izpolnimo vseh zahtevanih podatkov in kliknemo na gumb "Oddaj ponudbo" se nam na zaslonu izpiše, da manjkajo zahtevani podatki za oddajo ponudbe.
+
+![](../img/dodaj_storitev_diagram_izjemni.png)
+
 ### 5.5 Dodaj psa
 #### Osnovni tok
 
@@ -266,3 +271,9 @@ Psa lahko dodamo kot uporabnik tipa "Lastnik". Na zaslonski maski izberemo možn
 Psa lahko dodamo tudi iz zavihka "Moji štirinožni prijatelji" na profilu uporabnika. Izberemo možnost "Dodaj novega štirinožca" in po izpolnitvi vloge pritisnemo na gumb "Dodaj štirinožca". Po oddaji se podatki posredujejo strežniku, ki zapiše podatke v bazo. Uporabniku se vrne status izvedene operacije.
 
 ![](../img/dodaj_psa_diagram_alternativni.png)
+
+#### Izjemni tok
+
+Če pri dodajanju psa ne izpolnimo vseh zahtevanih podatkov in kliknemo na gumb "Dodaj štirinožca" se nam na zaslonu izpiše, da manjkajo zahtevani podatki za dodajanje psa.
+
+![](../img/dodaj_psa_diagram_izjemni.png)
