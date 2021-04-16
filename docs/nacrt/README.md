@@ -249,6 +249,20 @@ Storitev dodamo lahko samo kot uporabnik tipa "Izvajalec". Storitev dodamo tako,
 ![](../img/dodaj_storitev_diagram_osnovni.png)
 
 #### Alternativni tok
-Storitev lahko dodamo prav tako iz zaslonske maske "Pregled preteklih storitev", kjer izberemo možnost "Dodaj novo storitev". Na vlogi izpolnimo podatke in pritisnemo gumb "Oddaj ponudbo". Po oddaji se prikaže obvestilo o statusu oddaje.
+Storitev lahko dodamo prav tako iz zaslonske maske "Pregled preteklih storitev", kjer izberemo možnost "Dodaj novo storitev". Na vlogi izpolnimo podatke in pritisnemo gumb "Oddaj ponudbo". Po oddaji se podatki posredujejo strežniku, kjer se shranijo v bazo.Uporabniku se prikaže obvestilo o statusu oddaje.
 
 ![](../img/dodaj_storitev_diagram_alternativni.png)
+
+### Dodaj psa
+#### Osnovni tok
+
+Psa lahko dodamo kot uporabnik tipa "Lastnik". Na zaslonski maski izberemo možnost "Dodaj novega psa". Na odprti vlogi izolnimo zahtevane podatke in kliknemo na gumb "Dodaj štirinožca". Podatki se preko kontrolerja posredujejo z API klicem na strežnik, kjer se preko kontrolerja zapišejo v bazo. Uporabniko se posreduje sporočilo o uspešnosti shranjevanja.
+
+![](../img/dodaj_psa_diagram_osnovni.png)
+
+
+#### Alternativni tok
+
+Psa lahko dodamo tudi iz zavihka "Moji štirinožni prijatelji" na profilu uporabnika. Izberemo možnost "Dodaj novega štirinožca" in po izpolnitvi vloge pritisnemo na gumb "Dodaj štirinožca". Po oddaji se podatki posredujejo strežniku, ki zapiše podatke v bazo. Uporabniku se vrne status izvedene operacije.
+
+![](../img/dodaj_psa_diagram_alternativni.png)
