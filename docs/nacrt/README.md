@@ -36,15 +36,147 @@
 >
 > * Primer: metoda `createUser(User user)` kreira novo entiteto s parametri user tipa User, metoda `deleteUser(User user)` izbriše entiteto enako podani entiteti user tipa User.\*
 
+#### Razredni diagram zalednega dela aplikacije
+
+![](../img/3LP_razredniDiagram_backend.png)
+
+#### Razredni diagram čelnega dela aplikacije
+
 **TO-DO**
 
-- Izdelajte razredni diagram.
+Zankrat upoštevaj, da so kontrolerji na frontendu enaki kot na backeendu. Boundary razredi za zaslonske maske pa se itak deifnira znotraj PU-
 
 ### 2.2 Opis razredov
 
-**TO-DO**
+V nadaljevanju opisujemo podrobneje opisujemo vse razrede problemske domene. Pri opisih podajamo naslednje tipe razreda:
 
-- Vsak razred podrobno opišite. Opis posameznega razreda naj ima sledečo strukturo:
+- _entitetni tip_ je razred, ki predsatvlja smiselno celoto za hrambo dela podatkov in je neodvisen od okolja. Skupaj s primarnim identifikatorjem razreda predsatvlja osnovo za izgradnjo podatkovnega modela. Če ni drugače navedeno, entitetni razredi nimajo nesamoumevnih metod.
+
+> Pri opisu atributov so izpuščeni atributi razreda, ki so samoumevni iz razrednega diagrama in niso bistvenega pomena za razumevanje oz. ne potrebujejo dodatne razlage.
+> *Primer: iz razrednega diagrama je razvidno, da ima vsak objekt tipa User seznam objektov tipa Service, ki mu pripadajo. Vendar je ta asociacija samoumevna in ne potrebuje dodatnega pojasnila zato je pri opisu atributov izpuščena.*
+
+#### **User**
+
+Razred _User_ je entitetni razred, ki predstavlja registriranega uporabnika sistema. Z vsakega registriranega uporabnika obstaja natanko en objekt tega tipa.
+
+#### Atributi
+
+| Ime atributa | Tip atributa | Pomen atributa                                                              | Zaloga vrednosti |
+| ------------ | ------------ | --------------------------------------------------------------------------- | ---------------- |
+| id           | int          | Primarni identifikator razreda                                              |                  |
+| name         | string       | ime uporabnika                                                              |                  |
+| surname      | string       | priimek uporabnika                                                          |                  |
+| email        | string       | epoštni naslov registriranega uporabnika (unikaten glede na tip uporabnika) |                  |
+|username|string|uporabniško ime uporabnika, unikatno glede na tip uporabnika||
+|password|string|kodirana vrednost uporabniškega gesla za dostop||
+|usertype|string|tip uporabnika|IZVAJALEC_STORITVE, LASTNIK_PSA, MODERATOR, ADMINISTRATOR|
+
+#### **Message**
+
+Razred _Message_ je entitetni razred, ki predstavlja eno sporočilo v medsebojni komunikaciji med dvema uporabnikoma.
+
+#### Atributi
+
+| Ime atributa | Tip atributa | Pomen atributa | Zaloga vrednosti |
+| ------------ | ------------ | -------------- | ---------------- |
+| id | int | unikaten primarni identifikator objekta | |
+| text | string | vsebina sporočila | |
+| created | DateTime | čas kreiranja objekta | |
+| sender | User | pošilljatelj sporočila | |
+| recipient | User | prejemnik sporočila, pri čemer velja `this.sender !== this.recipient`| |
+
+#### **Service**
+
+Razred *Service* je entitetni razred, ki predstavlja eno objavljeno storitev v sistemu. Vsaka storitev pripada natanko enemu objektu tipa *User*.
+
+#### Atributi
+
+| Ime atributa | Tip atributa | Pomen atributa | Zaloga vrednosti |
+| ------------ | ------------ | -------------- | ---------------- |
+| id | int | unikaten primarni identifikator objekta | |
+| name | string | opsino ime storitve | |
+| description | string | daljši opis storitve | |
+| restrictions | string | seznam omejitev pri izvedbi storitve | |
+| dateFrom | DateTime | začetek ponujanja storitve | |
+| dateTo | DateTime | konec ponujanja storitve | `dateFrom < dateTo` |
+
+#### **Dogo**
+
+Razred *Dogo* je entitetni razred, ki predstavlja enega psa vnešenega v sistema. Vsak pes pripada natanko enemu objektu tipa *User* (lastniku).
+
+#### Atributi
+
+| Ime atributa | Tip atributa | Pomen atributa | Zaloga vrednosti |
+| ------------ | ------------ | -------------- | ---------------- |
+| id | int | unikaten primarni identifikator objekta | |
+| name | string | opisno ime psa ||
+| breed | string | pasma psa ||
+| breedId| string | id pasme, kot je definiran v zunanjem sistemu DogAPI ||
+
+#### **ServiceDiary**
+
+Razred *ServiceDiary* je entitetni razred, ki predstavlja eno opravljeno storitev tipa Service za en objekt tipa *Dogo*. V osnovi predstavlja mnogo-mnogo povezavo med objektoma tipa *Dogo* in *Service* z dodatnimi atributi o statusu, oceni in lokaciji.
+
+#### Atributi
+
+| Ime atributa | Tip atributa | Pomen atributa | Zaloga vrednosti |
+| ------------ | ------------ | -------------- | ---------------- |
+| id | int | unikaten primarni identifikator objekta | |
+| assess | int | ocena opravljene storitve| `0 <= assess =< 5` |
+| status| string | status storitve | ORDERED, CURRENT, FINNISHED, PAYED, CANCELLED |
+
+#### **Location**
+
+Razred *Location* je entitetni razred, ki predstavlja geografsko koordinato. Glede na dodatne asociativne povezave lahko predsatvlja lokacijo, kjer se določena storitev izvaja ali trenutno lokacijo psa med izvajanjem storitve.
+
+#### Atributi
+
+| Ime atributa | Tip atributa | Pomen atributa | Zaloga vrednosti |
+| ------------ | ------------ | -------------- | ---------------- |
+| id | int | unikaten primarni identifikator objekta | |
+| date | DateTime | čas kreacije | |
+| geoLat | double | Latituda lokacije | |
+| geoLon | double | Longituda lokacije ||
+| service | Service | storitev kateri pripada lokacija ||
+| serviceDiary | ServiceDiary | izvedba storitve kateri pripada lokacija ||
+
+Objekt tipa *Location* pripada bodisi objektu tipa *Service* bodisi objektu tipa *ServiceDiary*, torej je en izmed teh dveh atributov vedno nedefiniran (˙null`).
+
+#### **PaymentType**
+
+Razred *PaymentType* je entitetni razred, ki predstavlja plačilno sredstvo in je vedno vezan na natanko en razred tipa *User*.
+
+#### Atributi
+
+| Ime atributa | Tip atributa | Pomen atributa | Zaloga vrednosti |
+| ------------ | ------------ | -------------- | ---------------- |
+| id | int | unikaten primarni identifikator objekta | |
+| cardNumber | string | številka plačilne kartice | niz števk 0-9 |
+| cvv | string | varnostna koda plačilne kartice | trimestni niz števk 0-9 |
+| expirationDate | Date | datum veljavnosti plačilne kartice | |
+| default | boolean | Če je vrednost `true` gre za privzeto plačilno sredstvo na katero se privzeto prenašajo plačilne transakcije. ||
+
+#### **Transaction**
+
+Razred *Transaction* je entitetni razred, ki predstavlja plačilno transakcijo izvedeno med dvema objektoma tipa *PaymantType* in je vezan na en objekt tipa *ServiceDiary* (za izvedeno storitev).
+
+#### Atributi
+
+| Ime atributa | Tip atributa | Pomen atributa | Zaloga vrednosti |
+| ------------ | ------------ | -------------- | ---------------- |
+| id | int | unikaten primarni identifikator objekta | |
+| date | DateTime | čas opravljene transakcije | |
+| value | double | vrednost transkacije | |
+| status | string | status transakcije | PENDING, COMPLETED |
+| sender | PaymentType | plačilno sredstvo kateremu gre transakcija v breme ||
+| recipient | PaymentType | plačilno sredstvo kateremu gre transakcija v dobro||
+| service | ServiceDiary | storitev za katero se transkcija izvede||
+
+
+
+
+
+
 
 #### Ime razreda **TO-DO**
 
