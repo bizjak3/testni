@@ -277,3 +277,14 @@ Psa lahko dodamo tudi iz zavihka "Moji štirinožni prijatelji" na profilu upora
 Če pri dodajanju psa ne izpolnimo vseh zahtevanih podatkov in kliknemo na gumb "Dodaj štirinožca" se nam na zaslonu izpiše, da manjkajo zahtevani podatki za dodajanje psa.
 
 ![](../img/dodaj_psa_diagram_izjemni.png)
+
+### 3.12 ali 5.12
+#### Osnovni tok
+
+![](../img/5.12.png)
+
+### Alternativni tok
+
+![](../img/5.12%20alternativni%20tok.png)
+
+
