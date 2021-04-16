@@ -233,16 +233,16 @@ Do zaslonske maske lahko uporabnik pride tudi po alternativni poti. In sicer lah
 ![](../img/Alternativni1%20Register(User%20user).png)
 
 #### Izjemni tok
-V primeru da uporabnik ne vnese vseh potrebnih podatkov, ga bo spletna aplikacija ob kliku na gumb "Registracija" o tem opozorila, ter preprečila 
+V primeru da uporabnik ne vnese vseh potrebnih podatkov, ga bo spletna aplikacija ob kliku na gumb "Registracija" o tem opozorila, ter preprečila
 nasaljevanje registracije, dokler niso vsa polja izpolnjena.
- 
+
 V primeru da so vnešeni podatki isti podatkom, ki so že zapisani v podatkovni bazi, nam bo podatkovna baza sporočila da registracija uporabnika ni mogoča
 saj le ta že obstaja. Nato bo strežnik sporočil to spletni aplikaciji, ki bo uporabnika obvestila da uporabnik že obstaja.
 ![](../img/Izjemni%20tok%20Register(User%20user).png)
-  
-  
-  
-### Dodaj storitev
+
+
+
+### 5.4 Dodaj storitev
 #### Osnovni tok
 Storitev dodamo lahko samo kot uporabnik tipa "Izvajalec". Storitev dodamo tako, da na zaslonski maski "Pregled storitev" izberemo možnost "Dodaj novo storitev". Na novo odprti vlogi izpolnimo podatke in pritisnemo na gumb "Oddaj ponudbo". Podatki se zatem posredujejo kontrolerju, ki jih preko API klica posreduje strežniku. Kontroler na strani strežnika podatke vpiše v bazo, uporabniku pa se prikaže obvestilo o uspešnosti dodajanja storitve.
 
@@ -253,7 +253,7 @@ Storitev lahko dodamo prav tako iz zaslonske maske "Pregled preteklih storitev",
 
 ![](../img/dodaj_storitev_diagram_alternativni.png)
 
-### Dodaj psa
+### 5.5 Dodaj psa
 #### Osnovni tok
 
 Psa lahko dodamo kot uporabnik tipa "Lastnik". Na zaslonski maski izberemo možnost "Dodaj novega psa". Na odprti vlogi izolnimo zahtevane podatke in kliknemo na gumb "Dodaj štirinožca". Podatki se preko kontrolerja posredujejo z API klicem na strežnik, kjer se preko kontrolerja zapišejo v bazo. Uporabniko se posreduje sporočilo o uspešnosti shranjevanja.
