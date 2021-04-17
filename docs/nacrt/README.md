@@ -16,9 +16,32 @@
 
 ## 1. Načrt arhitekture
 
-**TO-DO**
+### Procesni pogled
 
-- Za prikaz uporabite enostavne prikaze, kot so blokovni ali paketni diagrami. Uporabite arhitekturne vzorce.
+Arhitektura sistema je bazirana na principih večnivojskih mikrosotritev. S tem v mislih je sistem zasnovan z neodvisnima komponentoma - čelnim in zalednim delom, ki medsebojno komunicirata s REST API-jem. Več nivojska arhitektura, ki medsebojno skrbi za izolacije in proces izmenjave podatkov med nivoji je prikazana na spodnjem diagramu.
+
+![](../img/3LP_procesni.png)
+
+### Logični pogled
+
+Sistem je na logičnem nivoju zasnovan v petih modulih: 
+- **Upravljanje in pregled uporabnikov** vsebuje vse podatkovne, mejne in razrede poslovne logike, ki so potrebni za pregled vseh uporabnikov sistema, posameznega uporabnika sistem in upravljenje z uporabniki, kar vključuje registracijo novih uporabnikov, logiranje registraranih uporabnikov in brisanje uporabnikov.
+- **Upravljanje in pregled storitev** vsebuje vse podatkovne in mejne razrede ter razrede poslovne logike, ki so potrebni za pregled in upravljanje s storitvami, ki jih dodajajo registrarani uporabniki sistema.
+- **Upravljanje in pregled psov** vsebuje vse podatkovne in mejne razrede ter razrede poslovne logike, ki so potrebni za pregled, urejanje in dodajanje psov, ki jih imajo lastniki psov v lasti.
+- **Upravljanje, izvajanje in pregled denarnih transakcij** vsebuje vse podatkovne in mejne razrede ter razrede poslovne logike, ki so potrebni za izvajanje denarnih transakcij med dvema uporabnikoma sistema.
+
+![](../img/3LP_logicni.png)
+
+Na logičnem nivoju je modul za upravljenje in pregled uporabnikov bistven del sistema, saj zagotavlja podporne operacije in asociacije za vse preostale module, ki so večinoma med sebojno (lahko) neodvisni.
+
+
+### Razvojni pogled
+
+V razvojnem pogledu sistem delimo na podsisteme, podsistem pa na pakete, ki združujejo razrede in pakete z enakimi oz. podobnimi funkcionalnostmi. V grobem delimo sistem na podsisteme:na **zaledni** in **čelni** podsistem ter na podsistem za **trajno shranjevanje podatkov (podatkovne baze)**.
+
+V nadaljevanju čelni in zaledni podsistem razdelimo na pakete s poslovnimi razredi in pakete z REST API vmesnike, ki so si paroma enaki, sortirani glede na **modul logičnega pogleda**. Poleg tega zaledni podistem vsebuje še pakete entitetnih razredov, ki jih uporabljamo za hrambo podatkov v predpisani obliki in pakete zaslonskih mask na čelnem delu.
+
+![](../img/3LP_razvojni.png)
 
 ## 2. Načrt strukture
 
