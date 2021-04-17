@@ -437,7 +437,7 @@ V primeru da strežnik spletni aplikaciji vrne prazen seznam, bo aplikacija obve
 ![](../img/Izjemni%20getServices().png)
 
 
-### 3.4 Dodaj storitev
+### 3.4 Dodajanje nove ponudbe storitve kot izvajalec storitve
 #### Osnovni tok
 Storitev dodamo lahko samo kot uporabnik tipa "Izvajalec". Storitev dodamo tako, da na zaslonski maski "Pregled storitev" izberemo možnost "Dodaj novo storitev". Na novo odprti vlogi izpolnimo podatke in pritisnemo na gumb "Oddaj ponudbo". Podatki se zatem posredujejo kontrolerju, ki jih preko API klica posreduje strežniku. Kontroler na strani strežnika podatke vpiše v bazo, uporabniku pa se prikaže obvestilo o uspešnosti dodajanja storitve.
 
@@ -457,7 +457,7 @@ API klic v grafu predstavlja klic metode `Service postService(Service service)`.
 
 ![](../img/dodaj_storitev_diagram_izjemni.png)
 
-### 3.5 Dodaj psa
+### 3.5 Dodajanje novega psa z njegovimi lastnostmi kot lastnik psa
 #### Osnovni tok
 
 Psa lahko dodamo kot uporabnik tipa "Lastnik". Na zaslonski maski izberemo možnost "Dodaj novega psa". Na odprti vlogi izolnimo zahtevane podatke in kliknemo na gumb "Dodaj štirinožca". Podatki se preko kontrolerja posredujejo z API klicem na strežnik, kjer se preko kontrolerja zapišejo v bazo. Uporabniko se posreduje sporočilo o uspešnosti shranjevanja.
@@ -480,13 +480,17 @@ API klic v grafu predstavlja klic metode `Dogo postDogo(Dogo dogo)`.
 
 ![](../img/dodaj_psa_diagram_izjemni.png)
 
-### 3.6 Kopiraj storitev
+### 3.6 Kopiranje vsebine pretečene storitve v novo storitev, kot izvajalec storitev
 
 Pod zaslonsko masko "Pretekle storitve" lahko izberemo možnost kopiranja storitve samo v primeru, da kot izvajalec imamo storitve, ki smo jih izvedli v preteklosti. S klikom na gumb "Kopiranje vsebine v novo storitev" se v novi zaslonski maski "Kopiraj storitev" v spustnem meniju prikažejo pretekle storitve, ki jih preko API-ja dobimo iz podatkovne baze na strežniku. S klikom na bumb "Kopiraj" se prepišejo podatki v vlogo nove storitve. Zatem lahko uredimo želene podatke in pritisnemo na gumb "Dodaj storitev", ki s pomočjo kontrolerja izvede API klic na strežnik za zapis nove storitve v podatkovno bazo.
 
 API klic v grafu predstavlja klic metode `Service postService(Service service)`.
 
 ![](../img/kopiraj_storitev_diagram.png)
+
+Diagram aktivnosti je namenjem lažjemu razumevanju poteka funckionalnosti in zaporedju akcij le-te.
+
+![](../img/kopiraj_storitev_aktivnosti.png)
 
 ### 3.7 Pregled in urejanje podatkov uporabnika kot administrator sistema
 
