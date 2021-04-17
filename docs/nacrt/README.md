@@ -516,20 +516,25 @@ Plačilo seveda ni mogoče, če so vneseni podatki o kartici napačni. (TODO pri
 
 ![](../img/5.9%20izjemen.png)
 
-### 3.11 ali 5.11
+### 3.10
 #### Osnovni tok
 
-![](../img/5.11.png)
+![](../img/3.10.png)
+
+### 3.11
+#### Osnovni tok
+
+![](../img/3.11.png)
 
 #### Alternativni tok
 
-![](../img/5.11%20alternativni%20tok.png)
+![](../img/3.11%20alternativni%20tok.png)
 
-### 3.12 ali 5.12
+### 3.12
 #### Osnovni tok
 
-![](../img/5.12.png)
+![](../img/3.12.png)
 
 ### Alternativni tok
 
-![](../img/5.12%20alternativni%20tok.png)
+![](../img/3.12%20alternativni%20tok.png)
