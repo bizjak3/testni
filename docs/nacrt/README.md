@@ -448,11 +448,15 @@ V primeru da strežnik spletni aplikaciji vrne prazen seznam, bo aplikacija obve
 #### Osnovni tok
 Storitev dodamo lahko samo kot uporabnik tipa "Izvajalec". Storitev dodamo tako, da na zaslonski maski "Pregled storitev" izberemo možnost "Dodaj novo storitev". Na novo odprti vlogi izpolnimo podatke in pritisnemo na gumb "Oddaj ponudbo". Podatki se zatem posredujejo kontrolerju, ki jih preko API klica posreduje strežniku. Kontroler na strani strežnika podatke vpiše v bazo, uporabniku pa se prikaže obvestilo o uspešnosti dodajanja storitve.
 
+API klic v grafu predstavlja klic metode postService(Service service).
+
+
 ![](../img/dodaj_storitev_diagram_osnovni.png)
 
 #### Alternativni tok
 Storitev lahko dodamo prav tako iz zaslonske maske "Pregled preteklih storitev", kjer izberemo možnost "Dodaj novo storitev". Na vlogi izpolnimo podatke in pritisnemo gumb "Oddaj ponudbo". Po oddaji se podatki posredujejo strežniku, kjer se shranijo v bazo.Uporabniku se prikaže obvestilo o statusu oddaje.
 
+API klic v grafu predstavlja klic metode postService(Service service).
 ![](../img/dodaj_storitev_diagram_alternativni.png)
 
 #### Izjemni tok
@@ -465,6 +469,8 @@ Storitev lahko dodamo prav tako iz zaslonske maske "Pregled preteklih storitev",
 
 Psa lahko dodamo kot uporabnik tipa "Lastnik". Na zaslonski maski izberemo možnost "Dodaj novega psa". Na odprti vlogi izolnimo zahtevane podatke in kliknemo na gumb "Dodaj štirinožca". Podatki se preko kontrolerja posredujejo z API klicem na strežnik, kjer se preko kontrolerja zapišejo v bazo. Uporabniko se posreduje sporočilo o uspešnosti shranjevanja.
 
+API klic v grafu predstavlja klic metode postDogo(Dogo dogo).
+
 ![](../img/dodaj_psa_diagram_osnovni.png)
 
 
@@ -472,6 +478,7 @@ Psa lahko dodamo kot uporabnik tipa "Lastnik". Na zaslonski maski izberemo možn
 
 Psa lahko dodamo tudi iz zavihka "Moji štirinožni prijatelji" na profilu uporabnika. Izberemo možnost "Dodaj novega štirinožca" in po izpolnitvi vloge pritisnemo na gumb "Dodaj štirinožca". Po oddaji se podatki posredujejo strežniku, ki zapiše podatke v bazo. Uporabniku se vrne status izvedene operacije.
 
+API klic v grafu predstavlja klic metode postDogo(Dogo dogo).
 ![](../img/dodaj_psa_diagram_alternativni.png)
 
 #### Izjemni tok
@@ -483,6 +490,8 @@ Psa lahko dodamo tudi iz zavihka "Moji štirinožni prijatelji" na profilu upora
 ### 3.6 Kopiraj storitev
 
 Pod zaslonsko masko "Pretekle storitve" lahko izberemo možnost kopiranja storitve samo v primeru, da kot izvajalec imamo storitve, ki smo jih izvedli v preteklosti. S klikom na gumb "Kopiranje vsebine v novo storitev" se v novi zaslonski maski "Kopiraj storitev" v spustnem meniju prikažejo pretekle storitve, ki jih preko API-ja dobimo iz podatkovne baze na strežniku. S klikom na bumb "Kopiraj" se prepišejo podatki v vlogo nove storitve. Zatem lahko uredimo želene podatke in pritisnemo na gumb "Dodaj storitev", ki s pomočjo kontrolerja izvede API klic na strežnik za zapis nove storitve v podatkovno bazo.
+
+API klic v grafu predstavlja klic metode postService(Service service).
 
 ![](../img/kopiraj_storitev_diagram.png)
 
