@@ -514,6 +514,12 @@ Prijavljen uporabnik lahko pregleduje svoje podatke, ter jih tudi spreminja.
 
 ![](../img/5.8%20osnovni%20tok.png)
 
+#### Alternativni tok
+
+Neprijavljen uporabnik tudi lahko dostopa do profilov registriranih uporabnikov preko posredovane povezave.
+
+![](../img/5.8%20alternativni%20tok.png)
+
 ### 3.9 Izvajanje plačila za opravljeno storitev znotraj aplikacije
 
 #### Osnovni tok
