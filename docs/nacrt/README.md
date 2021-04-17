@@ -308,6 +308,34 @@ Pod zaslonsko masko "Pretekle storitve" lahko izberemo možnost kopiranja storit
 
 ![](../img/kopiraj_storitev_diagram.png)
 
+### 3.7 Pregled in urejanje podatkov uporabnika kot administrator sistema
+
+#### Osnovni tok
+
+Administrator sistema ima pravico pregledovati ter spreminjati podtke vseh prijavljenih uporabnikov.
+
+![](../img/5.7%20osnovni%20tok.png)
+
+### 3.9 Izvajanje plačila za opravljeno storitev znotraj aplikacije
+
+#### Osnovni tok
+
+Prijavljen lastnik psov lahko izvajalcu storitev plača.
+
+![](../img/5.9%20osnoven.png)
+
+#### Alternativni tok
+
+Če lastnik psov še ni vnesel plačilnega sredstva, to lahko stori hkrati s plačilom.
+
+![](../img/5.9%20alternativen.png)
+
+#### Izjemni tok
+
+Plačilo seveda ni mogoče, če so vneseni podatki o kartici napačni. (TODO primer ko ni dovolj sredstev).
+
+![](../img/5.9%20izjemen.png)
+
 ### 3.12 ali 5.12
 #### Osnovni tok
 
