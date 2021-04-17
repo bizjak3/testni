@@ -42,9 +42,7 @@
 
 #### Razredni diagram čelnega dela aplikacije
 
-**TO-DO**
-
-Zankrat upoštevaj, da so kontrolerji na frontendu enaki kot na backeendu. Boundary razredi za zaslonske maske pa se itak deifnira znotraj PU-
+![](../img/3LP_razredniDiagram_frontend.png)
 
 ### 2.2 Opis razredov
 
