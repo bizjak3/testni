@@ -51,6 +51,9 @@ Zankrat upoštevaj, da so kontrolerji na frontendu enaki kot na backeendu. Bound
 V nadaljevanju opisujemo podrobneje opisujemo vse razrede problemske domene. Pri opisih podajamo naslednje tipe razreda:
 
 - _entitetni tip_ je razred, ki predsatvlja smiselno celoto za hrambo dela podatkov in je neodvisen od okolja. Skupaj s primarnim identifikatorjem razreda predsatvlja osnovo za izgradnjo podatkovnega modela. Če ni drugače navedeno, entitetni razredi nimajo nesamoumevnih metod.
+- *kontrolni tip* je razred *(tudi servisni razred)*, ki vsebuje smiselno zaključeno celoto poslovne logike, ki se izvaja nad delom entitetnih in mejnih razredov. Na zalednem delu aplikacije kontrolni razredi smiselno izvajajo poslovno logiko med entitetnimi razredi in med mejnimi razredi REST API vmesnika, na čelnem delu aplikacije pa med mejnimi razredi REST API vmesnika in mejnimi razredi zaslonskih mask. V osnovi so si, kar se tiče metod poslovne logike, paroma enaki na čelnem in zalednem delu aplikacije. Če ni definirano drugače velja, da kontrolni razredi ne vsebujejo atributov (razen atributov, ki so povezani z asociacijami).
+- *kontrolni tip* označen s *singleton* je posebna vrsta kontrolnega razreda, za katero velja, da je dostopna iz vseh ostalih kontrolnih razredov (zaradi preglednosti so asociacije na razrednem diagramu izpuščene). Za *singleton* razred velja, da čez celoten življenjski cikel aplikacije obstaja ena in natanko ena instanca tega razreda.
+- *mejni tip* je razred, ki predstavlja mejo med implementiranim sistemom in zunanjim sistemom ali uporabnikom. Ob enem predstavljajo paroma enaki mejni razredi na čelnem in zalednem delu aplikacije REST API komunikacijski vmesnik za prenos podatkov med čelnem in zalednem delu. Če ni definirano drugače velja, da kontrolni razredi ne vsebujejo atributov (razen atributov, ki so povezani z asociacijami).
 
 > Pri opisu atributov so izpuščeni atributi razreda, ki so samoumevni iz razrednega diagrama in niso bistvenega pomena za razumevanje oz. ne potrebujejo dodatne razlage.
 > *Primer: iz razrednega diagrama je razvidno, da ima vsak objekt tipa User seznam objektov tipa Service, ki mu pripadajo. Vendar je ta asociacija samoumevna in ne potrebuje dodatnega pojasnila zato je pri opisu atributov izpuščena.*
@@ -173,9 +176,87 @@ Razred *Transaction* je entitetni razred, ki predstavlja plačilno transakcijo i
 | service | ServiceDiary | storitev za katero se transkcija izvede||
 
 
+#### **UserServices**
+
+Razred *UserServices* je servisni razred, ki vsebuje poslovno logiko za operacije, ki se izvajajajo nad (če ni definirano drugače) entitetnimi razredi *User, PaymentType in Message* ter z njimi povezanimi mejnimi razredi.
+
+#### Nesamoumevne metode
+
+Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata | Pomen |
+| ---------- | --------- | ------------- | ----- |
+| sendMessage | message: Message| Message | preveri popolnost podatkov, zahteva pošiljanje sporočila (api klic) in vrača v ZM poslano sporočilo ali HTTP napako |
+| login | username: string, password: string | User | preveri popolnost podatkov, zahteva API klic in vrača podatke o uporabniku ali HTTP napako v ZM |
+| register | user: User | User | preveri popolnost podatkov, zahteva API klic in vrača status registracije v ZM |
+
+Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata | Pomen |
+| ---------- | --------- | ------------- | ----- |
+| sendMessage | message: Message| Message | preveri popolnost podatkov in validira podatke v PB ter vrača rezultat transakcije |
+| login | username: string, password: string | User | preveri popolnost podatkov in validira podatke v PB ter vrača rezultat validacije |
+| register | user: User | User | preveri in validira podatke v PB ter vrača rezultat transakcije (zapis v PB) |
 
 
+#### **DogoServices**
 
+Razred *DogoServices* je servisni razred, ki vsebuje poslovno logiko za operacije, ki se izvajajajo nad (če ni definirano drugače) entitetnimi razredi *Dogo, Location in ServiceDiary* ter z njimi povezanimi mejnimi razredi.
+
+#### Nesamoumevne metode
+
+Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata | Pomen |
+| ---------- | --------- | ------------- | ----- |
+| checkDogoLocation | dogo: Dogo, serviceDiary: ServiceDiary | Location[] | zahteva izvedbo API klica in vrača rezultat ali HTTP napako zahteve po seznamu lokacij psa dog med izvajanje storitve serviceDiary |
+| addDogo | dogo: Dog, lastnik: User | Dogo | zahteva API klic, ki vpiše novega psa v bazo ter vrača rezultat ali HTTP napako |
+
+Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata | Pomen |
+| ---------- | --------- | ------------- | ----- |
+| checkDogoLocation | dogo: Dogo, serviceDiary: ServiceDiary | Location[] | iz baze bere in vrača seznam lokacij psa med izvedbo storitve |
+| addDogo | dogo: Dog, lastnik: User | Dogo | validiran podatke ter jih zapiše v PB |
+
+#### **ServiceServices**
+
+Razred *ServiceServices* je servisni razred, ki vsebuje poslovno logiko za operacije, ki se izvajajajo nad (če ni definirano drugače) entitetnimi razredi *Service, ServiceDiary, User, Location* ter z njimi povezanimi mejnimi razredi.
+
+#### Nesamoumevne metode
+
+Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata | Pomen |
+| ---------- | --------- | ------------- | ----- |
+| addService | service: Service, izvajalec: User | Service | validira podatke, zahteva API klic za shranjevanje storitve v bazo in vrača rezultat ali HTTP napako |
+
+Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata | Pomen |
+| ---------- | --------- | ------------- | ----- |
+| addService | service: Service, izvajalec: User | Service | validira podatke in jih zapiše v PB |
+
+
+#### **ServiceDiaryServices**
+
+Razred *ServiceDiaryServices* je servisni razred, ki vsebuje poslovno logiko za operacije, ki se izvajajajo nad (če ni definirano drugače) entitetnimi razredi *Service, ServiceDiary, Dogo, Location* ter z njimi povezanimi mejnimi razredi.
+
+#### Nesamoumevne metode
+
+Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata | Pomen |
+| ---------- | --------- | ------------- | ----- |
+| payService | paymentType: PaymentType, service: ServiceDiary | Transaction | zahteva API klic, ki zapiše in izvede denarno transakcijo za opravljeno storitev |
+| rateService | serviceDiary: ServiceDiary | ServiceDiary | zahteva API klic, ki v PB shrani oceno storitve |
+
+Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata | Pomen |
+| ---------- | --------- | ------------- | ----- |
+| payService | paymentType: PaymentType, service: ServiceDiary | Transaction | validira podatke in izvede denarno transakcijo za opravljeno stroritev med lastnikom psa in izvajalcem storitve |
+| rateService | serviceDiary: ServiceDiary | ServiceDiary | validira podatke in zapiše oceno storitve v PB |
 
 
 #### Ime razreda **TO-DO**
