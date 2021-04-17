@@ -10,9 +10,12 @@
 
 ## Povzetek
 
-**TO-DO**
+Če nadaljujejo s starim afriškim pregovorom, vas odgovorna za vzgojo otroka bo le-to izvedla veliko kakovostneje, če se bo pri tem posluževala dobrih praks in oblikovanega načrta razumljivega vsakemu posamezniku v vasi. Ravno iz tega razloga je spletna aplikacija Pasjehodec deležna še zadnje stopničke pred dejansko implementacijo – dokument načrta sistema.
 
-- Povzetek je, kot že vemo, celoten dokument, strnjen v največ 150 besed.
+V načrtu sistema razvijalci Pasjehodca predstavimo bistvene elemente sistema – načrte arhitekture, načrte strukture in načrte obnašanja. Pri tem smo se posluževali standardnih tehnik in dobrih praks razvoja programske opreme, ki v največji meri zagotavljajo kakovost končne implementacije.
+
+Spomnimo – aplikacija Pasjehodec omogoča lastnikom psov, da med ponujenimi storitvami, ki jih ponujajo raznorazni izvajalci storitev izberejo storitev za svojega štirinožca, naj si bo to sprehod, pasji frizer ali kaj drugega. Poleg tega si lahko lastnik pas in izvajalec storitev neposredno dopisujejo in poravnajo ceno storitve – vse znotraj aplikacije.
+
 
 ## 1. Načrt arhitekture
 
