@@ -500,6 +500,12 @@ Administrator sistema ima pravico pregledovati ter spreminjati podtke vseh prija
 
 ![](../img/5.7%20osnovni%20tok.png)
 
+#### Izjemni tok
+
+To operacijo lahko izvajajo izključno administratorji sistema.
+
+![](../img/5.7%20izjemen.png)
+
 ### 3.8 Pregled in urejanje podatkov prijavljenega uporabnika, pregled javnih podatkov uporabnika
 
 #### Osnovni tok
