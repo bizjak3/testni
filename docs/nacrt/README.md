@@ -363,19 +363,12 @@ TODO
 
 ## 3. Načrt obnašanja
 
-**TO-DO**
+V nadaljevanju definiramo načrte obnašanja za vse primere uporabe, ki izhajajo iz funkcionalnih zahtev definiranih v dokumentu zajema zahtev.
 
-
-
-- Za izdelavo načrta obnašanja lahko uporabite:
-  - diagrame zaporedja,
-  - končne avtomate,
-  - diagrame aktivnosti,
-  - diagrame stanj in
-  - psevdokodo.
+> API klici so na diagramih izpuščeni zaradi preglednosti. Opisani so pred pripadajočim grafom.
 
 ### 3.1 Registracija lastnika psa ali ponudnika storitve
-Uporabnik se lahko v aplikacijo registrira preko zaslonske maske za registracijo. API klici so na diagramih izpuščeni zaradi preglednosti. Opisani so pred pripadajočim grafom.
+Uporabnik se lahko v aplikacijo registrira preko zaslonske maske za registracijo.
 
 
 #### Osnovni tok
