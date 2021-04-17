@@ -500,6 +500,14 @@ Administrator sistema ima pravico pregledovati ter spreminjati podtke vseh prija
 
 ![](../img/5.7%20osnovni%20tok.png)
 
+### 3.8 Pregled in urejanje podatkov prijavljenega uporabnika, pregled javnih podatkov uporabnika
+
+#### Osnovni tok
+
+Prijavljen uporabnik lahko pregleduje svoje podatke, ter jih tudi spreminja.
+
+![](../img/5.8%20osnovni%20tok.png)
+
 ### 3.9 Izvajanje plačila za opravljeno storitev znotraj aplikacije
 
 #### Osnovni tok
