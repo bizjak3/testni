@@ -376,7 +376,8 @@ Uporabnik se lahko v aplikacijo registrira preko zaslonske maske za registracijo
 
 
 #### Osnovni tok
-Osnovni tok poteka na sledeči način. Uporabnik klikne na gumb "Registracija novega lastnika psa". Izrisala se mu bo zaslonska maska za registracijo. Nato uporabnik
+Osnovni tok poteka na sledeči način. Uporabnik klikne na gumb "Registracija novega lastnika psa" ali "Registracija novega ponudnika storitev". Obrazca za registracijo sta različna, vendar je nadaljni tok isti.
+Izrisala se mu bo zaslonska maska za registracijo. Nato uporabnik
 vnese vse potrebne podatke ter klikne na gumb "Registracija". Spletna aplikacija bo posredovala podatke strežniku, le ta pa bo zapisal novega uporabnika
 v podatkovno bazo. Ob uspešnem zapisu bo strežnik uporabniku na email posredoval žeton, hkrati pa bo posredoval spletni aplikaciji sporočilo, da je nov uporabnik
 bil uspešno ustvarjen.
@@ -390,7 +391,7 @@ Do zaslonske maske lahko uporabnik pride tudi po alternativni poti. In sicer lah
 
 #### Izjemni tok
 V primeru da uporabnik ne vnese vseh potrebnih podatkov, ga bo spletna aplikacija ob kliku na gumb "Registracija" o tem opozorila, ter preprečila
-nasaljevanje registracije, dokler niso vsa polja izpolnjena.
+nadaljevanje registracije, dokler niso vsa polja izpolnjena.
 
 V primeru da so vnešeni podatki isti podatkom, ki so že zapisani v podatkovni bazi, nam bo podatkovna baza sporočila da registracija uporabnika ni mogoča
 saj le ta že obstaja. Nato bo strežnik sporočil to spletni aplikaciji, ki bo uporabnika obvestila da uporabnik že obstaja.
@@ -403,8 +404,8 @@ Uporabnik se lahko v aplikacijo prijavi preko zaslonske maske za prijavo.
 #### Osnovni tok
 Osnovni tok poteka na sledeči način. Uporabnik klikne na gumb "Prijava uporabnika". Izrisala se mu bo zaslonska maska za prijavo. Ko vnese vse
 potrebne podatke klikne na gumb "prijava". Spletna aplikacija bo povprašala strežnik ali uporabnik obstaja ter ali je vnešena pravilna kombinacija uporabniškega
-imena in gesla. Strežnik bo pogledal v podatkovno bazo ob uspešni poizvedbi bo vrnil sporočilo da je uporabnik prijavljen. Spletna aplikacija bo uporabnika
-obvestila o uspešni prijavi ter ga prijavila v aplikacijo.
+imena in gesla. Strežnik bo pogledal v podatkovno bazo ob uspešni poizvedbi bo generiral JWT žeton ter vrnil podatke o uporabniku in generirani JWT žeton. Spletna aplikacija bo uporabnika
+obvestila o uspešni prijavi hkrati pa bo zapisala podatke o uporabniku ter prejeti JWT žeton v SessionService.
 
 ![](../img/login(username,%20password).png)
 
@@ -420,6 +421,24 @@ napako sporočil, ta pa bo uporabnika obvestila o neuspešni prijavi zaradi napa
 V primeru da uporabnik z vnešenim uporabniškim imenom ne obstaja, bo pri preverbi na strani strežnika prišlo do napake. Le ta bo spletni aplikaciji
 napako sporočil, ta pa bo uporabnika obvestila o neuspešni prijavi zaradi neobstoječega uporabnika.
 ![](../img/Izjemni%20login(username,%20password).png)
+
+### 3.3 Pregled vseh ponujenih storitev in naročilo izbrane storitve v okviru aplikacije
+Ob uspešni prijavi bo aplikacija uporabnika preusmerila na seznam vseh ponujenih storitev.
+
+
+#### Osnovni tok
+Pogoj da se prične osnovni tok je prijavljen uporabnik. V kolikor uporabnik ni prijavljen do tega pogleda ne more dostopati. Ko je izpolnjen pogoj
+se začne osnovni tok. Spletna aplikacija po preko APIja povprašala strežnik o seznamu storitev. Le ta bo dostopal do podatkovne baze ter aplikaciji 
+vrnil seznam vseh storitev. Ko aplikacija izriše seznam storitev lahko uporabnik klikne na katerokoli izmed njih. Aplikacija mu bo izpisala
+podrobnosti ibrane storitve. V kolikor je prijavljen uporabnik lastnik psa ima ob storitvi tudi gumb za naročitev storitve. Če uporabnik klikne na gumb
+bo spletna aplikacija poslala zahtevo za naročitev storitve strežniku. Ta bo uporabnika naročil na storitev, tako da bo to zapisal v podatkovno bazo.
+Ob uspešnem zapisu bo strežnik obvestil spletno aplikacijo, le ta pa bo uporabnika obvestila o uspešnem naročilu na storitev.
+
+![](../img/getServices().png)
+
+#### Izjemni tok
+V primeru da strežnik spletni aplikaciji vrne prazen seznam, bo aplikacija obvestila uporabnika da v sistemu ni trenutno aktivnih storitev.
+![](../img/Izjemni%20getServices().png)
 
 
 ### 3.4 Dodaj storitev
