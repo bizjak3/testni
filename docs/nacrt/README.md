@@ -540,10 +540,19 @@ Plačilo seveda ni mogoče, če so vneseni podatki o kartici napačni. (TODO pri
 
 ![](../img/5.9%20izjemen.png)
 
-### 3.10
+### 3.10 Pregled lokacije psa v posestvi lastnika psa v času izvajanja storitve
+Ker lastnika psa seveda lahko skrbi, kje se nahaja njegov ljubi štirinožec, ta lahko pregleda zadnjo lokacijo izvajalca z mislijo, da s tem tudi ljubljenčka.  
+Uporabnik se prijavi v aplikacijo in v svojem profilu najde željeno storitev, kateri bo sledil. Ko pritisne gumb "Spremljaj lokacijo", se mu ta prikaže na zaslonu.
 #### Osnovni tok
 
 ![](../img/3.10.png)
+
+#### Izjemni tok
+Dandanes so privatni podatki veliko vredni, poleg tega pa tudi ni vsem všeč, če ima kdorkoli dostop do njihovih podatkov, zato aplikacija omogoča, da izvajalcu, zaradi takih ali drugačnih razlogov, ni potrebno deliti svoje lokacije.  
+Z drugega vidika, pa je popolnoma normalno za lastnike psov, da jih skrbi, kje se nahajajo, v trenutku, ko niso v njihovi oskrbi.  
+Zato je omogočeno, da ko lasnik želi najeti storitev, da mu je prej sporočeno ali izvajale omogoča sledenje njegovi lokaciji. V primeru da ali ne, se lastniku pred zaključenim najemom storitve to prikaže. 
+
+![](../img/3.10%20izjemni%20tok.png)
 
 ### 3.11
 #### Osnovni tok
