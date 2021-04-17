@@ -374,8 +374,12 @@ TODO
   - diagrame stanj in
   - psevdokodo.
 
+
+
+>API klici so na diagramih izpuščeni zaradi preglednosti. Opisani so pred pripadajočim grafom.
+
 ### 3.1 Registracija lastnika psa ali ponudnika storitve
-Uporabnik se lahko v aplikacijo registrira preko zaslonske maske za registracijo. API klici so na diagramih izpuščeni zaradi preglednosti. Opisani so pred pripadajočim grafom.
+Uporabnik se lahko v aplikacijo registrira preko zaslonske maske za registracijo.
 
 
 #### Osnovni tok
