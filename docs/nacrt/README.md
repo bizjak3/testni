@@ -514,6 +514,10 @@ Plačilo seveda ni mogoče, če so vneseni podatki o kartici napačni. (TODO pri
 
 ![](../img/5.9%20izjemen.png)
 
+### 3.11 ali 5.11
+
+![](../img/5.11.png)
+
 ### 3.12 ali 5.12
 #### Osnovni tok
 
