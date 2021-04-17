@@ -54,6 +54,7 @@ V nadaljevanju opisujemo podrobneje opisujemo vse razrede problemske domene. Pri
 - *kontrolni tip* je razred *(tudi servisni razred)*, ki vsebuje smiselno zaključeno celoto poslovne logike, ki se izvaja nad delom entitetnih in mejnih razredov. Na zalednem delu aplikacije kontrolni razredi smiselno izvajajo poslovno logiko med entitetnimi razredi in med mejnimi razredi REST API vmesnika, na čelnem delu aplikacije pa med mejnimi razredi REST API vmesnika in mejnimi razredi zaslonskih mask. V osnovi so si, kar se tiče metod poslovne logike, paroma enaki na čelnem in zalednem delu aplikacije. Če ni definirano drugače velja, da kontrolni razredi ne vsebujejo atributov (razen atributov, ki so povezani z asociacijami).
 - *kontrolni tip* označen s *singleton* je posebna vrsta kontrolnega razreda, za katero velja, da je dostopna iz vseh ostalih kontrolnih razredov (zaradi preglednosti so asociacije na razrednem diagramu izpuščene). Za *singleton* razred velja, da čez celoten življenjski cikel aplikacije obstaja ena in natanko ena instanca tega razreda.
 - *mejni tip* je razred, ki predstavlja mejo med implementiranim sistemom in zunanjim sistemom ali uporabnikom. Ob enem predstavljajo paroma enaki mejni razredi na čelnem in zalednem delu aplikacije REST API komunikacijski vmesnik za prenos podatkov med čelnem in zalednem delu. Če ni definirano drugače velja, da kontrolni razredi ne vsebujejo atributov (razen atributov, ki so povezani z asociacijami).
+- poseben tip mejnega razreda je mejni razred s končnico *Api*, takšni razredi obstajajo paroma enaki na čelnem in zalednem delu aplikacije (če ni drugače navenedeno) in predstavljajo REST API komunikacijske točke, ki kreirajo HTTP zahtevo (čelni del, odjemalec) ali na njo odgovarjajo (zaledni del, strežnik) - imena metod so definirana po standardnem principu `http-zahtevaIme_entitete()` in jih kot takšne ne posebej opisujemo.
 
 > Pri opisu atributov so izpuščeni atributi razreda, ki so samoumevni iz razrednega diagrama in niso bistvenega pomena za razumevanje oz. ne potrebujejo dodatne razlage.
 > *Primer: iz razrednega diagrama je razvidno, da ima vsak objekt tipa User seznam objektov tipa Service, ki mu pripadajo. Vendar je ta asociacija samoumevna in ne potrebuje dodatnega pojasnila zato je pri opisu atributov izpuščena.*
@@ -258,30 +259,83 @@ Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem del
 | payService | paymentType: PaymentType, service: ServiceDiary | Transaction | validira podatke in izvede denarno transakcijo za opravljeno stroritev med lastnikom psa in izvajalcem storitve |
 | rateService | serviceDiary: ServiceDiary | ServiceDiary | validira podatke in zapiše oceno storitve v PB |
 
+#### **LoginRegisterApi**
 
-#### Ime razreda **TO-DO**
-
-- Koncept iz problemske domene, ki ga razred predstavlja.
-
-#### Atributi
-
-**TO-DO**
-
-- Za vsak atribut navedite:
-  - ime atributa,
-  - podatkovni tip, če ta ni očiten,
-  - pomen, če ta ni samoumeven,
-  - zalogo vrednosti, če ta ni neomejena ali očitna.
+Razred *LoginRegisterApi* je mejni api razred, ki se uporablja za komunikacijo med zalednim in čelnim delom za potrebe logiranja in registriranja uporabnikov (kontroler *UserServices*).
 
 #### Nesamoumevne metode
 
-**TO-DO**
+Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 
-- Za vsako metodo navedite:
-  - ime metode,
-  - imena in tipe parametrov,
-  - tip rezultata,
-  - pomen (če ta ni dovolj očiten iz naziva metode in njenih parametrov).
+| Ime metode | Parametri | Tip rezultata |
+| ---------- | --------- | ------------- |
+| postRegisterForm | form: User | User |
+| postLogin | form: User | User |
+
+
+#### **UserApi**
+
+Razred *UserApi* je mejni api razred, ki se uporablja za komunikacijo med zalednim in čelnim delom za potrebe poslovne logike definirane v kontrolerju *UserServices*.
+
+#### Nesamoumevne metode
+
+Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata |
+| ---------- | --------- | ------------- |
+
+
+#### **DogoApi**
+
+Razred *DogoApi* je mejni api razred, ki se uporablja za komunikacijo med zalednim in čelnim delom za potrebe poslovne logike definirane v kontrolerju *DogoServices*.
+
+#### Nesamoumevne metode
+
+Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata |
+| ---------- | --------- | ------------- |
+| postDogo | dogo: Dogo | Dogo |
+| getLocation | dogo: Dogo | Location[] |
+
+#### **DogApi**
+
+Razred *DogApi* je mejni api razred, ki se uporablja za komunikacijo med zalednim delom aplikacije in zunanjim sistemom DogAPI za potrebe poslovne logike v kontrolerju *DogoServices*.
+
+#### Nesamoumevne metode
+
+Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata |
+| ---------- | --------- | ------------- |
+
+#### **ServiceApi**
+
+Razred *ServiceApi* je mejni api razred, ki se uporablja za komunikacijo med zalednim in čelnim delom za potrebe poslovne logike definirane v kontrolerju *ServiceServices* in *ServiceDiaryServices*.
+
+#### Nesamoumevne metode
+
+Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
+
+| Ime metode | Parametri | Tip rezultata |
+| ---------- | --------- | ------------- |
+| getServices | -/- | Service[] |
+| postServics | service: Service | Service |
+| postServiceDiary | serviceDiary: ServiceDiary | ServiceDiary |
+
+
+#### Mejni razredi - zaslonske maske/view
+
+Mejni *(boundary)* razredi so mejni razredi posebnega tipa, ki ne vsebujejo atributov (razen atributov, ki izhajajo iz asociacij) in metod (razen metod, ki so bodisi samoumevne ali izhajajo neposredno iz asociacij).
+
+Zatorej mejne razrede zaslonski mask zgolj navajamo v skupni tabeli.
+
+| Ime razreda | Opis |
+| ----------- | ---- |
+|||
+
+TODO
+
 
 ## 3. Načrt obnašanja
 
