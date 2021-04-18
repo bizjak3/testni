@@ -551,14 +551,16 @@ Plačilo seveda ni mogoče, če so vneseni podatki o kartici napačni. (TODO pri
 Ker lastnika psa seveda lahko skrbi, kje se nahaja njegov ljubi štirinožec, ta lahko pregleda zadnjo lokacijo izvajalca z mislijo, da s tem tudi ljubljenčka.
 #### Osnovni tok
 
-Uporabnik se prijavi v aplikacijo in v svojem profilu najde željeno storitev, kateri bo sledil. Ko pritisne gumb "Spremljaj lokacijo", se mu ta prikaže na zaslonu.
+Uporabnik se prijavi v aplikacijo in v svojem profilu najde željeno storitev, kateri bo sledil. Ko pritisne gumb "Spremljaj lokacijo", se mu ta prikaže na zaslonu.  
+Api klic tu predstavlja `DogoApi getLocation(Dogo dogo)`
 
 ![](../img/3.10.png)
 
 #### Izjemni tok
 Dandanes so privatni podatki veliko vredni, poleg tega pa tudi ni vsem všeč, če ima kdorkoli dostop do njih, zato aplikacija omogoča, da izvajalcu, zaradi takih ali drugačnih razlogov, ni potrebno deliti svoje lokacije.  
 Z drugega vidika, pa je popolnoma normalno za lastnike psov, da jih skrbi, kje se nahajajo, v trenutku, ko niso v njihovi oskrbi.  
-Zato je omogočeno, da ko lasnik želi najeti storitev, da mu je prej sporočeno ali izvajale omogoča sledenje njegovi lokaciji. V primeru da ali ne, se lastniku pred zaključenim najemom storitve to prikaže. 
+Zato je omogočeno, da ko lasnik želi najeti storitev, da mu je prej sporočeno ali izvajale omogoča sledenje njegovi lokaciji. V primeru da ali ne, se lastniku pred zaključenim najemom storitve to prikaže.  
+Api klic tu predstavlja `DogoApi getLocation(Dogo dogo)`
 
 ![](../img/3.10%20izjemni%20tok.png)
 
@@ -568,13 +570,14 @@ Uporabniki ne glede na to ali so uporabniki ali ponudniki, se želijo kdaj pa kd
 V ta namen aplikacija omogoča pogovarjanje preko sporočil, kar preko nje same.
 
 #### Osnovni tok
-V osnovnem toku je predstavljen potek iz strani pošiljatelja, ki najde željenega ponudnika, izpolni pošiljateljski obrazec, tega pošlje, nazaj pa dobi potrdilo, da je bilo sporočilo uspešno poslano.
-
+V osnovnem toku je predstavljen potek iz strani pošiljatelja, ki najde željenega ponudnika, izpolni pošiljateljski obrazec za sporočilo, tega pošlje, nazaj pa dobi potrdilo, da je bilo sporočilo uspešno poslano.
+Api klic tu predstavlja `UserAPI sendMessage(Message message)`
 
 ![](../img/3.11.png)
 
 #### Alternativni tok
-Alternativni tok pa predvideva uporabnika kot prejemnika, ki sporočilo prejme. To se mu prikaže v nabiralniku, v primeru da sporočilo obstaja, vendar je na bazi napaka, pa ga o tem obvesti, ko sporočilo želi pogledati.
+Alternativni tok pa predvideva uporabnika kot prejemnika, ki sporočilo prejme. To se mu prikaže v nabiralniku, v primeru da sporočilo obstaja, vendar je na bazi napaka, pa ga o tem obvesti, ko sporočilo želi pogledati.  
+Api klic tu predstavlja `UserAPI sendMessage(Message message)`
 
 ![](../img/3.11%20alternativni%20tok.png)
 
@@ -584,19 +587,22 @@ ocenami imeli boljši ugled in bili s tem nagrajeni za dobro delo.
 
 #### Osnovni tok
 V osnovnem toku se predvideva, da je uporabnik prijavljen v aplikacijo in da storitev poišče na seznamu vseh storitev. Nato oceni željeno storitev z oceno od 1 do 5 tačk, kjer 1 predstavlja najnižjo oceno 5 pa najvišjo.  
-Oceno odda, kjer v primeru, da je lastnik psov, se ta zapiše v bazo, v primeru da ni, pa se mu izpiše obvestilo, da ni lastnik psov in nima možnosti oddaje ocene.
+Oceno odda, kjer v primeru, da je lastnik psov, se ta zapiše v bazo, v primeru da ni(kar se pregleda na čelnem delu), pa se mu izpiše obvestilo, da ni lastnik psov in nima možnosti oddaje ocene.  
+Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
 
 ![](../img/3.12.png)
 
 #### Alternativni tok
 Alternativni tok je precej podoben osnovnemu, le da tu lastnik psov poišče storitev na svojem profilu med tistimi, ki jih je v preteklosti že naročil. Ostali del postopka, pa je enak, torej izpolni obrazec za oceno in ga odda. Še ena razlika tu je, da ker uporabnik išče med že naročenimi storitvami,
-po oddanemu obrazcu ne more dobiti nazaj sporočila, da ni lasnik psov, saj to mora biti, da sploh lahko ima zgodovino teh.
+po oddanemu obrazcu ne more dobiti nazaj sporočila, da ni lasnik psov, saj to mora biti, da sploh lahko ima zgodovino teh.  
+Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
 
 ![](../img/3.12%20alternativni%20tok.png)
 
 #### Izjemni tok
 Poleg osnovnega in alternativnega toka, je tu še izjemni tok. Predvideva se, da uporabnik na zaslonski maski "Profil" pritisne gumb "Zgodovina", kateri mu prikaže vse storitve, ki jih je v preteklosti že najel, da bi eno izmed teh ocenil.
-Vendar pa teh še nima, zato se mu na zaslonski maski izpiše ravno to sporočilo, da ni še nikoli naročil storitve.
+Vendar pa teh še nima, zato se mu na zaslonski maski izpiše ravno to sporočilo, da ni še nikoli naročil storitve.  
+Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
 
 ![](../img/3.12%20Izjemni%20tok.png)
 
