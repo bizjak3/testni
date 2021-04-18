@@ -587,7 +587,7 @@ ocenami imeli boljši ugled in bili s tem nagrajeni za dobro delo.
 
 #### Osnovni tok
 V osnovnem toku se predvideva, da je uporabnik prijavljen v aplikacijo in da storitev poišče na seznamu vseh storitev. Nato oceni željeno storitev z oceno od 1 do 5 tačk, kjer 1 predstavlja najnižjo oceno 5 pa najvišjo.  
-Oceno odda, kjer v primeru, da je lastnik psov, se ta zapiše v bazo, v primeru da ni, pa se mu izpiše obvestilo, da ni lastnik psov in nima možnosti oddaje ocene.  
+Oceno odda, kjer v primeru, da je lastnik psov, se ta zapiše v bazo, v primeru da ni(kar se pregleda na čelnem delu), pa se mu izpiše obvestilo, da ni lastnik psov in nima možnosti oddaje ocene.  
 Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
 
 ![](../img/3.12.png)
