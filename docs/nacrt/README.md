@@ -363,6 +363,7 @@ Zatorej mejne razrede zaslonski mask zgolj navajamo v skupni tabeli.
 |DodajStoritev| Maska je namenjena dodajanju nove storitve v sistem. Vsebuje polje tipa form, kamor izvajalec vpiše podatke za dodajanje storitve.|
 |DodajPsa| Maska vsebuje polje tipa form, kamor uporabnik vnese podatke psa. Namenjena je lastniku psa za dodajanje novega psa v sistem.|
 |Kopiraj storitev | Maska vsebuje spustni meni za izbor pretekle storitve v novo. V polju tipa form izvajalec storitve lahko uredi podatke. |
+| Moje storitve | Maska je namenjena prikazu vseh trenutnih in preteklih storitev izvajalca. |
 
 TODO
 
