@@ -27,7 +27,7 @@ Arhitektura sistema je bazirana na principih večnivojskih mikrosotritev. S tem 
 
 ### Logični pogled
 
-Sistem je na logičnem nivoju zasnovan v petih modulih: 
+Sistem je na logičnem nivoju zasnovan v petih modulih:
 - **Upravljanje in pregled uporabnikov** vsebuje vse podatkovne, mejne in razrede poslovne logike, ki so potrebni za pregled vseh uporabnikov sistema, posameznega uporabnika sistem in upravljenje z uporabniki, kar vključuje registracijo novih uporabnikov, logiranje registraranih uporabnikov in brisanje uporabnikov.
 - **Upravljanje in pregled storitev** vsebuje vse podatkovne in mejne razrede ter razrede poslovne logike, ki so potrebni za pregled in upravljanje s storitvami, ki jih dodajajo registrarani uporabniki sistema.
 - **Upravljanje in pregled psov** vsebuje vse podatkovne in mejne razrede ter razrede poslovne logike, ki so potrebni za pregled, urejanje in dodajanje psov, ki jih imajo lastniki psov v lasti.
@@ -360,7 +360,9 @@ Zatorej mejne razrede zaslonski mask zgolj navajamo v skupni tabeli.
 | Prijava       |   Maska vsebuje polje tipa form, kamor že registriran uporabnik vnese zahtevane podatke za priajvo v spletno aplikacijo. |
 | Pregled storitev  |   Maska vsebuje seznam vseh aktivnih storitev. |
 | Opravljene storitve   |   Maska vsebuje seznam vseh opravljenih storitev prijavljenega izvajalca.  |
-|||
+|DodajStoritev| Maska je namenjena dodajanju nove storitve v sistem. Vsebuje polje tipa form, kamor izvajalec vpiše podatke za dodajanje storitve.|
+|DodajPsa| Maska vsebuje polje tipa form, kamor uporabnik vnese podatke psa. Namenjena je lastniku psa za dodajanje novega psa v sistem.|
+|Kopiraj storitev | Maska vsebuje spustni meni za izbor pretekle storitve v novo. V polju tipa form izvajalec storitve lahko uredi podatke. |
 
 TODO
 
@@ -431,7 +433,7 @@ API klic na naslednjih dveh diagramih predstavlja klic metode `Service[] getServ
 
 #### Osnovni tok
 Pogoj da se prične osnovni tok je prijavljen uporabnik. V kolikor uporabnik ni prijavljen do tega pogleda ne more dostopati. Ko je izpolnjen pogoj
-se začne osnovni tok. Spletna aplikacija po preko APIja povprašala strežnik o seznamu storitev. Le ta bo dostopal do podatkovne baze ter aplikaciji 
+se začne osnovni tok. Spletna aplikacija po preko APIja povprašala strežnik o seznamu storitev. Le ta bo dostopal do podatkovne baze ter aplikaciji
 vrnil seznam vseh storitev. Ko aplikacija izriše seznam storitev lahko uporabnik klikne na katerokoli izmed njih. Aplikacija mu bo izpisala
 podrobnosti ibrane storitve. V kolikor je prijavljen uporabnik lastnik psa ima ob storitvi tudi gumb za naročitev storitve. Če uporabnik klikne na gumb
 bo spletna aplikacija poslala zahtevo za naročitev storitve strežniku. Ta bo uporabnika naročil na storitev, tako da bo to zapisal v podatkovno bazo.
@@ -626,4 +628,3 @@ Pogoj da se prične osnovni tok je prijavljen uporabnik, ki ima vlogo izvajalca 
 Strežnik bo iz podatkovne baze pridobil opravljene storitve ter jih preko API-ja vrnil spletni aplikaciji. Le ta bo na to uporabniku prikazala zgodovino opravljenih storitev.
 
 ![](../img/zgodovina%20opravljenih%20storitev.png)
-
