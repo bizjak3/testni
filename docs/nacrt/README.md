@@ -48,6 +48,12 @@ V nadaljevanju čelni in zaledni podsistem razdelimo na pakete s poslovnimi razr
 
 ## 2. Načrt strukture
 
+V nadaljevanju so predstavljeni razredi sistema. Pri zasnovi razrednega diagrama in posameznih razredov smo se posluževali arhitekturnih stilov:
+- pri hrambi podatkov o prijavljenem uporabniku in seji na čelnem delu aplikacije se poslužujemo uporabe arhitekturnega stila *repozitorij* (*singleton*) do katerega imajo dostop vsi preostali kontrolni razredi znotraj čelnega dela aplikacije,
+- na nivoju REST API-ja je definirana *veriga filtrov* (*chain of responsibilities*), ki filtrirajo HTTP zahteve glede na karakteristike in lastnosti posamezne zahteve
+- na nivoju implementacije se na čelnem delu poslužujemo uporabe *observer-jev* za izvajanje HTTP zahtevkov, ki nam omogočajo asihrono obdelavo zakasnelih HTTP odgovorov
+- na nivoju imeplementacije se na čelnem in zalednem delu aplikacije poslužujemo dekoratorjev (*wrapper*) za enkapsulacijo objektov v HTTP zahteve in odgovore
+
 ### 2.1 Razredni diagram
 
 > V nadaljevanju predstavljamo dva globalna razredna diagrama, ki se delita na **razredni diagram zaledne aplikacije** in **razredni diagram čelne aplikacije**. Razredna diagrama sta ločena zaradi preglednosti, komunikacija med njima pa poteka prek _boundary_ razredov, ki so paroma enaki na obeh razrednih diagramih (npr. _boundary_ razred z imenom _UserApi_ na čelnem delu aplikacije predstavlja komunikacijsko točko z _boundary_ razredom _UserApi_ na zalednem delu, pri čemer sta si oba razreda _UserApi_ identična v imenu razerda in podpisu metod).
@@ -110,8 +116,8 @@ Razred _Message_ je entitetni razred, ki predstavlja eno sporočilo v medsebojni
 | id | int | unikaten primarni identifikator objekta | |
 | text | string | vsebina sporočila | |
 | created | DateTime | čas kreiranja objekta | |
-| sender | User | pošilljatelj sporočila | |
-| recipient | User | prejemnik sporočila, pri čemer velja `this.sender !== this.recipient`| |
+| sender | User | pošilljatelj sporočila | `this.sender !== this.recipient` |
+| recipient | User | prejemnik sporočila| `this.sender !== this.recipient` |
 
 #### **Service**
 
@@ -214,6 +220,9 @@ Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 | sendMessage | message: Message| Message | preveri popolnost podatkov, zahteva pošiljanje sporočila (api klic) in vrača v ZM poslano sporočilo ali HTTP napako |
 | login | username: string, password: string | User | preveri popolnost podatkov, zahteva API klic in vrača podatke o uporabniku ali HTTP napako v ZM |
 | register | user: User | User | preveri popolnost podatkov, zahteva API klic in vrača status registracije v ZM |
+| usersOverview | | User[] | zahteva HTTP klic, ki vrača seznam vseh uporabnikov |
+| saveData | user: User | User | zahteva pošiljanje podatkov o uporabniku |
+| getMessages | user: User | Mesaage[] | zahteva HTTP klic, ki vrača vsa sporočila uporabnika `user` |
 
 Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem delu aplikacije:
 
@@ -222,6 +231,10 @@ Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem del
 | sendMessage | message: Message| Message | preveri popolnost podatkov in validira podatke v PB ter vrača rezultat transakcije |
 | login | username: string, password: string | User | preveri popolnost podatkov in validira podatke v PB ter vrača rezultat validacije |
 | register | user: User | User | preveri in validira podatke v PB ter vrača rezultat transakcije (zapis v PB) |
+| usersOverview | | User[] | vrne seznam vseh registriranih uporabnikov |
+| saveData | user: User | User | shrani podatke uporabnika |
+| getMessages | user: User | Mesaage[] | vrne vsa sporočila uporabnika `user` |
+| createJWT | user: User | string | kreira in vrne JWT žeton za uporabnika `user` |
 
 
 #### **DogoServices**
@@ -255,12 +268,16 @@ Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 | Ime metode | Parametri | Tip rezultata | Pomen |
 | ---------- | --------- | ------------- | ----- |
 | addService | service: Service, izvajalec: User | Service | validira podatke, zahteva API klic za shranjevanje storitve v bazo in vrača rezultat ali HTTP napako |
+| getServices | | Service[] | zahteva API klic, ki vrača seznam vse kreiranih storitev |
+| registerToService | serviceDiary: ServiceDiary | ServiceDiary | zahteva API klic naročila nove storitve |
 
 Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem delu aplikacije:
 
 | Ime metode | Parametri | Tip rezultata | Pomen |
 | ---------- | --------- | ------------- | ----- |
 | addService | service: Service, izvajalec: User | Service | validira podatke in jih zapiše v PB |
+| getServices | | Service[] | vrača seznam vse kreiranih storitev |
+| registerToService | serviceDiary: ServiceDiary | ServiceDiary | vsebuje poslovno logiko za shranjevanje novega naročila storitve |
 
 
 #### **ServiceDiaryServices**
@@ -274,14 +291,19 @@ Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 | Ime metode | Parametri | Tip rezultata | Pomen |
 | ---------- | --------- | ------------- | ----- |
 | payService | paymentType: PaymentType, service: ServiceDiary | Transaction | zahteva API klic, ki zapiše in izvede denarno transakcijo za opravljeno storitev |
-| rateService | serviceDiary: ServiceDiary | ServiceDiary | zahteva API klic, ki v PB shrani oceno storitve |
+| addRating | serviceDiary: ServiceDiary | boolean | zahteva API klic, ki v PB shrani oceno storitve |
+| addCardAndPay | service: ServiceDiary, paymentType: PaymentType | Transaction | zahteva API klica za dodajanje novega plačilnega sredstva in za opravljanje denarne trnsakcije |
+| allowLocation | service: Service | Service | zahteva API klic za odobritev spremljanja lokacije |
+| getServices | | Service[] | zahteva API klic, ki vrača seznam vseh dodanih storitve |
 
 Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem delu aplikacije:
 
 | Ime metode | Parametri | Tip rezultata | Pomen |
 | ---------- | --------- | ------------- | ----- |
 | payService | paymentType: PaymentType, service: ServiceDiary | Transaction | validira podatke in izvede denarno transakcijo za opravljeno stroritev med lastnikom psa in izvajalcem storitve |
-| rateService | serviceDiary: ServiceDiary | ServiceDiary | validira podatke in zapiše oceno storitve v PB |
+| addRating | serviceDiary: ServiceDiary | ServiceDiary | validira podatke in zapiše oceno storitve v PB |
+| allowLocation | service: Service | Service | shrani uporabnikovo dovoljenje za spremljanje lokacije |
+| getServices | | Service[] | zvrača seznam vseh storitev shranjenih v podatkovni bazi |
 
 #### **LoginRegisterApi**
 
@@ -291,10 +313,10 @@ Razred *LoginRegisterApi* je mejni api razred, ki se uporablja za komunikacijo m
 
 Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 
-| Ime metode | Parametri | Tip rezultata |
-| ---------- | --------- | ------------- |
-| postRegisterForm | form: User | User |
-| postLogin | form: User | User |
+| Ime metode | Tip HTTP zahteve | Parametri | Tip rezultata |
+| ---------- | ---------------- | --------- | ------------- |
+| postRegisterForm | POST | form: User | User |
+| postLogin | POST| form: User | User |
 
 
 #### **UserApi**
@@ -305,8 +327,23 @@ Razred *UserApi* je mejni api razred, ki se uporablja za komunikacijo med zaledn
 
 Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 
-| Ime metode | Parametri | Tip rezultata |
-| ---------- | --------- | ------------- |
+| Ime metode | Tip HTTP zahteve | Parametri | Tip rezultata |
+| ---------- | ---------------- | --------- | ------------- |
+| getUsers | POST | | User |
+| putUser |PUT | user: User | User |
+
+#### **MessageApi**
+
+Razred *MessageApi* je mejni api razred, ki se uporablja za komunikacijo med zalednim in čelnim delom za potrebe poslovne logike definirane v kontrolerju *UserServices*.
+
+#### Nesamoumevne metode
+
+Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
+
+| Ime metode | Tip HTTP zahteve | Parametri | Tip rezultata |
+| ---------- | ---------------- | --------- | ------------- |
+| postMessage | POST | message: Message | Message |
+| getMessages | GET | | Message[] |
 
 
 #### **DogoApi**
@@ -317,21 +354,18 @@ Razred *DogoApi* je mejni api razred, ki se uporablja za komunikacijo med zaledn
 
 Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 
-| Ime metode | Parametri | Tip rezultata |
-| ---------- | --------- | ------------- |
-| postDogo | dogo: Dogo | Dogo |
-| getLocation | dogo: Dogo | Location[] |
+| Ime metode | Tip HTTP zahteve | Parametri | Tip rezultata |
+| ---------- | ---------------- | --------- | ------------- |
+| postDogo | POST | dogo: Dogo | Dogo |
+| getLocation | GET | dogo: Dogo | Location[] |
 
 #### **DogApi**
 
 Razred *DogApi* je mejni api razred, ki se uporablja za komunikacijo med zalednim delom aplikacije in zunanjim sistemom DogAPI za potrebe poslovne logike v kontrolerju *DogoServices*.
 
-#### Nesamoumevne metode
+#### **LeafletApi**
 
-Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
-
-| Ime metode | Parametri | Tip rezultata |
-| ---------- | --------- | ------------- |
+Razred *LeafletApi* je mejni api razred, ki se uporablja za komunikacijo med zalednim delom aplikacije in zunanjim sistemom Leaflet za potrebe poslovne logike v kontrolerju *ServiceServices* in *ServiceDiaryServices*.
 
 #### **ServiceApi**
 
@@ -341,11 +375,18 @@ Razred *ServiceApi* je mejni api razred, ki se uporablja za komunikacijo med zal
 
 Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 
-| Ime metode | Parametri | Tip rezultata |
-| ---------- | --------- | ------------- |
-| getServices | -/- | Service[] |
-| postService | service: Service | Service |
-| postServiceDiary | serviceDiary: ServiceDiary | ServiceDiary |
+| Ime metode | Tip HTTP zahteve | Parametri | Tip rezultata |
+| ---------- | ---------------- | --------- | ------------- |
+| getServices | GET | | Service[] |
+| postService | POST | service: Service | Service |
+| postServiceDiary | POST | serviceDiary: ServiceDiary | ServiceDiary |
+| postPayementType | POST | paymentType: PaymentType | PaymentType |
+
+#### **AuthenticationFilter** in **AuthorizationFilter**
+
+Razreda *AuthenticationFilter* in *AuthorizationFilter* sta del verige varnostnih filtrov, ki vsako HTTP zahtevo na REST API strežnik filtrirajo glede na samo zahtevo in njene lastnosti. Avtorizacijski filter filtrira zahteve glede na to ali ima uporabnik, ki izvaja zahtevo pravico le-to izvajati. Avtentikacijski filter pa filtrira zahteve glede na identifikacijo uporabnika, ki jo zahteva.
+
+*Zaradi preglednosti načrtov obnašanja so filtri izpuščeni.*
 
 
 #### Mejni razredi - zaslonske maske/view
@@ -563,6 +604,12 @@ Plačilo seveda ni mogoče, če so vneseni podatki o kartici napačni ali pa če
 API klic na diagramu predstavlja klic metode `ServiceApi postServiceDiary(ServiceDiary serviceDiary)`.
 
 ![](../img/5.9%20izjemen.png)
+
+#### Diagram aktivnosti
+
+Za lažje razumevanje zaporedja vseh možnosti ter vseh zahtev za uspešno izvedbo plačila je spodaj še diagram aktivnosti.
+
+![](../img/diagram%20aktivnosti%205.9.png)
 
 ### 3.10 Pregled lokacije psa v posestvi lastnika psa v času izvajanja storitve
 Ker lastnika psa seveda lahko skrbi, kje se nahaja njegov ljubi štirinožec, ta lahko pregleda zadnjo lokacijo izvajalca z mislijo, da s tem tudi ljubljenčka.
