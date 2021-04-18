@@ -504,7 +504,8 @@ Diagram aktivnosti je namenjem lažjemu razumevanju poteka funckionalnosti in za
 #### Osnovni tok
 
 Administrator sistema ima pravico pregledovati ter spreminjati podtke vseh prijavljenih uporabnikov.
-API klic na diagramu predstavlja klic metode `Service[] getServices()` ter `User putUser(User user)`.
+API klic na diagramu po kliku gumba "Pregled uporabnikov" predstavlja klic metode `Service[] getServices()`,
+ klic po pritisku gumba "Shrani" pa `User putUser(User user)`.
 
 ![](../img/5.7%20osnovni%20tok.png)
 
