@@ -362,9 +362,6 @@ Zatorej mejne razrede zaslonski mask zgolj navajamo v skupni tabeli.
 | Opravljene storitve   |   Maska vsebuje seznam vseh opravljenih storitev prijavljenega izvajalca.  |
 |||
 
-TODO
-
-
 ## 3. Načrt obnašanja
 
 V nadaljevanju definiramo načrte obnašanja za vse primere uporabe, ki izhajajo iz funkcionalnih zahtev definiranih v dokumentu zajema zahtev.
