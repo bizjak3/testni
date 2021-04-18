@@ -581,20 +581,20 @@ Api klic tu predstavlja `DogoApi getLocation(Dogo dogo)`
 
 ![](../img/3.10%20izjemni%20tok.png)
 
-### 3.11
+### 3.11 Neposredna komunikacija med izvajalcem storitve in lastnikom psa
 
 Uporabniki ne glede na to ali so uporabniki ali ponudniki, se želijo kdaj pa kdaj pogovoriti, pa naj gre za skrb lastnika glede svojega ljubljenčka, ali pa pomanjkanje socialne interakcije v času izolacije.  
 V ta namen aplikacija omogoča pogovarjanje preko sporočil, kar preko nje same.
 
 #### Osnovni tok
 V osnovnem toku je predstavljen potek iz strani pošiljatelja, ki najde željenega ponudnika, izpolni pošiljateljski obrazec za sporočilo, tega pošlje, nazaj pa dobi potrdilo, da je bilo sporočilo uspešno poslano.
-Api klic tu predstavlja `UserAPI sendMessage(Message message)`
+Api klic tu predstavlja `MessageApi postMessage(Message message)`
 
 ![](../img/3.11.png)
 
 #### Alternativni tok
 Alternativni tok pa predvideva uporabnika kot prejemnika, ki sporočilo prejme. To se mu prikaže v nabiralniku, v primeru da sporočilo obstaja, vendar je na bazi napaka, pa ga o tem obvesti, ko sporočilo želi pogledati.  
-Api klic tu predstavlja `UserAPI sendMessage(Message message)`
+Api klic tu predstavlja `MessageApi postMessage(Message message)`
 
 ![](../img/3.11%20alternativni%20tok.png)
 
