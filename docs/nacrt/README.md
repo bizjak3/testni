@@ -358,12 +358,16 @@ Zatorej mejne razrede zaslonski mask zgolj navajamo v skupni tabeli.
 | ----------- | ---- |
 | Registracija  |   Maska vsebuje polje tipa form, kamor uporabnik vnese potrebne podatke za registracijo. |
 | Prijava       |   Maska vsebuje polje tipa form, kamor že registriran uporabnik vnese zahtevane podatke za priajvo v spletno aplikacijo. |
-| Pregled storitev  |   Maska vsebuje seznam vseh aktivnih storitev. |
+| Pregled storitev  |   Maska vsebuje seznam vseh aktivnih storitev. Na tej maski je tudi možno oceniti storitev. |
 | Opravljene storitve   |   Maska vsebuje seznam vseh opravljenih storitev prijavljenega izvajalca.  |
 |DodajStoritev| Maska je namenjena dodajanju nove storitve v sistem. Vsebuje polje tipa form, kamor izvajalec vpiše podatke za dodajanje storitve.|
 |DodajPsa| Maska vsebuje polje tipa form, kamor uporabnik vnese podatke psa. Namenjena je lastniku psa za dodajanje novega psa v sistem.|
 |Kopiraj storitev | Maska vsebuje spustni meni za izbor pretekle storitve v novo. V polju tipa form izvajalec storitve lahko uredi podatke. |
 | Moje storitve | Maska je namenjena prikazu vseh trenutnih in preteklih storitev izvajalca. |
+| ProfilStoritve    | Maska vsebuje seznam zgodovine storitev, ki jih je uporabnik naročil, na njih je gumb "Spremljaj lokacijo". |
+| Lokacija  | Na maski se prikaže zemljevid z lokacijo psa oziroma izvajalca storitve, katerega smo izbrali na maski ProfilStoritve. |
+| PregledUporabnikov   | Na maski se izpiše seznam vseh uporabnikov, katerim lahko tudi pošljemo sporočilo. |
+| Profil | Maska vsebuje podatke o uporabniku, prav tako vsebuje gumb "Nabiralnik", ki odpre nabiralnik s prejetimi sporočili. |
 
 TODO
 
@@ -601,21 +605,21 @@ ocenami imeli boljši ugled in bili s tem nagrajeni za dobro delo.
 #### Osnovni tok
 V osnovnem toku se predvideva, da je uporabnik prijavljen v aplikacijo in da storitev poišče na seznamu vseh storitev. Nato oceni željeno storitev z oceno od 1 do 5 tačk, kjer 1 predstavlja najnižjo oceno 5 pa najvišjo.  
 Oceno odda, kjer v primeru, da je lastnik psov, se ta zapiše v bazo, v primeru da ni(kar se pregleda na čelnem delu), pa se mu izpiše obvestilo, da ni lastnik psov in nima možnosti oddaje ocene.  
-Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
+Api klic tu predstavlja `ServiceDiary postServiceDiary(ServiceDiary serviceDiary)`
 
 ![](../img/3.12.png)
 
 #### Alternativni tok
 Alternativni tok je precej podoben osnovnemu, le da tu lastnik psov poišče storitev na svojem profilu med tistimi, ki jih je v preteklosti že naročil. Ostali del postopka, pa je enak, torej izpolni obrazec za oceno in ga odda. Še ena razlika tu je, da ker uporabnik išče med že naročenimi storitvami,
 po oddanemu obrazcu ne more dobiti nazaj sporočila, da ni lasnik psov, saj to mora biti, da sploh lahko ima zgodovino teh.  
-Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
+Api klic tu predstavlja `ServiceDiary postServiceDiary(ServiceDiary serviceDiary)`
 
 ![](../img/3.12%20alternativni%20tok.png)
 
 #### Izjemni tok
 Poleg osnovnega in alternativnega toka, je tu še izjemni tok. Predvideva se, da uporabnik na zaslonski maski "Profil" pritisne gumb "Zgodovina", kateri mu prikaže vse storitve, ki jih je v preteklosti že najel, da bi eno izmed teh ocenil.
 Vendar pa teh še nima, zato se mu na zaslonski maski izpiše ravno to sporočilo, da ni še nikoli naročil storitve.  
-Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
+Api klic tu predstavlja `ServiceDiary postServiceDiary(ServiceDiary serviceDiary)`
 
 ![](../img/3.12%20Izjemni%20tok.png)
 
