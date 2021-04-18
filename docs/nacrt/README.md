@@ -369,7 +369,7 @@ V nadaljevanju definiramo načrte obnašanja za vse primere uporabe, ki izhajajo
 
 ### 3.1 Registracija lastnika psa ali ponudnika storitve
 Uporabnik se lahko v aplikacijo registrira preko zaslonske maske za registracijo.
-API klic na naslednjih treh diagramih predstavlja klic metode `String postRegisterForm(User form)`.
+API klic na naslednjih treh diagramih predstavlja klic metode `User postRegisterForm(User form)`.
 
 
 #### Osnovni tok
