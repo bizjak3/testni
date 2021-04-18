@@ -422,7 +422,7 @@ napako sporočil, ta pa bo uporabnika obvestila o neuspešni prijavi zaradi neob
 
 ### 3.3 Pregled vseh ponujenih storitev in naročilo izbrane storitve v okviru aplikacije
 Ob uspešni prijavi bo aplikacija uporabnika preusmerila na seznam vseh ponujenih storitev.
-API klic na naslednjih dveh diagramih predstavlja klic metode `Service[] getServices()`.
+API klic na naslednjih dveh diagramih predstavlja klic metode `Service[] getServices()` za pridobitev seznama storitev ter API klic `ServiceDiary postServiceDiary(ServiceDiary ServiceDiary)` 
 
 
 #### Osnovni tok
