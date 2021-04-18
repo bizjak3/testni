@@ -409,6 +409,7 @@ Zatorej mejne razrede zaslonski mask zgolj navajamo v skupni tabeli.
 | Lokacija  | Na maski se prikaže zemljevid z lokacijo psa oziroma izvajalca storitve, katerega smo izbrali na maski ProfilStoritve. |
 | PregledUporabnikov   | Na maski se izpiše seznam vseh uporabnikov, katerim lahko tudi pošljemo sporočilo. |
 | Profil | Maska vsebuje podatke o uporabniku, prav tako vsebuje gumb "Nabiralnik", ki odpre nabiralnik s prejetimi sporočili. |
+| Administracija | Maska je namenjena asministratorijem za spreminjanje ter pregledovanje podatkov uporabnika. |
 
 TODO
 
