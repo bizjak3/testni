@@ -27,7 +27,7 @@ Arhitektura sistema je bazirana na principih večnivojskih mikrosotritev. S tem 
 
 ### Logični pogled
 
-Sistem je na logičnem nivoju zasnovan v petih modulih: 
+Sistem je na logičnem nivoju zasnovan v petih modulih:
 - **Upravljanje in pregled uporabnikov** vsebuje vse podatkovne, mejne in razrede poslovne logike, ki so potrebni za pregled vseh uporabnikov sistema, posameznega uporabnika sistem in upravljenje z uporabniki, kar vključuje registracijo novih uporabnikov, logiranje registraranih uporabnikov in brisanje uporabnikov.
 - **Upravljanje in pregled storitev** vsebuje vse podatkovne in mejne razrede ter razrede poslovne logike, ki so potrebni za pregled in upravljanje s storitvami, ki jih dodajajo registrarani uporabniki sistema.
 - **Upravljanje in pregled psov** vsebuje vse podatkovne in mejne razrede ter razrede poslovne logike, ki so potrebni za pregled, urejanje in dodajanje psov, ki jih imajo lastniki psov v lasti.
@@ -47,6 +47,12 @@ V nadaljevanju čelni in zaledni podsistem razdelimo na pakete s poslovnimi razr
 ![](../img/3LP_razvojni.png)
 
 ## 2. Načrt strukture
+
+V nadaljevanju so predstavljeni razredi sistema. Pri zasnovi razrednega diagrama in posameznih razredov smo se posluževali arhitekturnih stilov:
+- pri hrambi podatkov o prijavljenem uporabniku in seji na čelnem delu aplikacije se poslužujemo uporabe arhitekturnega stila *repozitorij* (*singleton*) do katerega imajo dostop vsi preostali kontrolni razredi znotraj čelnega dela aplikacije,
+- na nivoju REST API-ja je definirana *veriga filtrov* (*chain of responsibilities*), ki filtrirajo HTTP zahteve glede na karakteristike in lastnosti posamezne zahteve
+- na nivoju implementacije se na čelnem delu poslužujemo uporabe *observer-jev* za izvajanje HTTP zahtevkov, ki nam omogočajo asihrono obdelavo zakasnelih HTTP odgovorov
+- na nivoju imeplementacije se na čelnem in zalednem delu aplikacije poslužujemo dekoratorjev (*wrapper*) za enkapsulacijo objektov v HTTP zahteve in odgovore
 
 ### 2.1 Razredni diagram
 
@@ -110,8 +116,8 @@ Razred _Message_ je entitetni razred, ki predstavlja eno sporočilo v medsebojni
 | id | int | unikaten primarni identifikator objekta | |
 | text | string | vsebina sporočila | |
 | created | DateTime | čas kreiranja objekta | |
-| sender | User | pošilljatelj sporočila | |
-| recipient | User | prejemnik sporočila, pri čemer velja `this.sender !== this.recipient`| |
+| sender | User | pošilljatelj sporočila | `this.sender !== this.recipient` |
+| recipient | User | prejemnik sporočila| `this.sender !== this.recipient` |
 
 #### **Service**
 
@@ -214,6 +220,9 @@ Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 | sendMessage | message: Message| Message | preveri popolnost podatkov, zahteva pošiljanje sporočila (api klic) in vrača v ZM poslano sporočilo ali HTTP napako |
 | login | username: string, password: string | User | preveri popolnost podatkov, zahteva API klic in vrača podatke o uporabniku ali HTTP napako v ZM |
 | register | user: User | User | preveri popolnost podatkov, zahteva API klic in vrača status registracije v ZM |
+| usersOverview | | User[] | zahteva HTTP klic, ki vrača seznam vseh uporabnikov |
+| saveData | user: User | User | zahteva pošiljanje podatkov o uporabniku |
+| getMessages | user: User | Mesaage[] | zahteva HTTP klic, ki vrača vsa sporočila uporabnika `user` |
 
 Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem delu aplikacije:
 
@@ -222,6 +231,10 @@ Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem del
 | sendMessage | message: Message| Message | preveri popolnost podatkov in validira podatke v PB ter vrača rezultat transakcije |
 | login | username: string, password: string | User | preveri popolnost podatkov in validira podatke v PB ter vrača rezultat validacije |
 | register | user: User | User | preveri in validira podatke v PB ter vrača rezultat transakcije (zapis v PB) |
+| usersOverview | | User[] | vrne seznam vseh registriranih uporabnikov |
+| saveData | user: User | User | shrani podatke uporabnika |
+| getMessages | user: User | Mesaage[] | vrne vsa sporočila uporabnika `user` |
+| createJWT | user: User | string | kreira in vrne JWT žeton za uporabnika `user` |
 
 
 #### **DogoServices**
@@ -255,12 +268,16 @@ Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 | Ime metode | Parametri | Tip rezultata | Pomen |
 | ---------- | --------- | ------------- | ----- |
 | addService | service: Service, izvajalec: User | Service | validira podatke, zahteva API klic za shranjevanje storitve v bazo in vrača rezultat ali HTTP napako |
+| getServices | | Service[] | zahteva API klic, ki vrača seznam vse kreiranih storitev |
+| registerToService | serviceDiary: ServiceDiary | ServiceDiary | zahteva API klic naročila nove storitve |
 
 Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem delu aplikacije:
 
 | Ime metode | Parametri | Tip rezultata | Pomen |
 | ---------- | --------- | ------------- | ----- |
 | addService | service: Service, izvajalec: User | Service | validira podatke in jih zapiše v PB |
+| getServices | | Service[] | vrača seznam vse kreiranih storitev |
+| registerToService | serviceDiary: ServiceDiary | ServiceDiary | vsebuje poslovno logiko za shranjevanje novega naročila storitve |
 
 
 #### **ServiceDiaryServices**
@@ -274,14 +291,19 @@ Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 | Ime metode | Parametri | Tip rezultata | Pomen |
 | ---------- | --------- | ------------- | ----- |
 | payService | paymentType: PaymentType, service: ServiceDiary | Transaction | zahteva API klic, ki zapiše in izvede denarno transakcijo za opravljeno storitev |
-| rateService | serviceDiary: ServiceDiary | ServiceDiary | zahteva API klic, ki v PB shrani oceno storitve |
+| addRating | serviceDiary: ServiceDiary | boolean | zahteva API klic, ki v PB shrani oceno storitve |
+| addCardAndPay | service: ServiceDiary, paymentType: PaymentType | Transaction | zahteva API klica za dodajanje novega plačilnega sredstva in za opravljanje denarne trnsakcije |
+| allowLocation | service: Service | Service | zahteva API klic za odobritev spremljanja lokacije |
+| getServices | | Service[] | zahteva API klic, ki vrača seznam vseh dodanih storitve |
 
 Nesamoumevne metode definirane v istoimenskem kontrolnem razredu na zalednem delu aplikacije:
 
 | Ime metode | Parametri | Tip rezultata | Pomen |
 | ---------- | --------- | ------------- | ----- |
 | payService | paymentType: PaymentType, service: ServiceDiary | Transaction | validira podatke in izvede denarno transakcijo za opravljeno stroritev med lastnikom psa in izvajalcem storitve |
-| rateService | serviceDiary: ServiceDiary | ServiceDiary | validira podatke in zapiše oceno storitve v PB |
+| addRating | serviceDiary: ServiceDiary | ServiceDiary | validira podatke in zapiše oceno storitve v PB |
+| allowLocation | service: Service | Service | shrani uporabnikovo dovoljenje za spremljanje lokacije |
+| getServices | | Service[] | zvrača seznam vseh storitev shranjenih v podatkovni bazi |
 
 #### **LoginRegisterApi**
 
@@ -291,10 +313,10 @@ Razred *LoginRegisterApi* je mejni api razred, ki se uporablja za komunikacijo m
 
 Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 
-| Ime metode | Parametri | Tip rezultata |
-| ---------- | --------- | ------------- |
-| postRegisterForm | form: User | User |
-| postLogin | form: User | User |
+| Ime metode | Tip HTTP zahteve | Parametri | Tip rezultata |
+| ---------- | ---------------- | --------- | ------------- |
+| postRegisterForm | POST | form: User | User |
+| postLogin | POST| form: User | User |
 
 
 #### **UserApi**
@@ -305,8 +327,23 @@ Razred *UserApi* je mejni api razred, ki se uporablja za komunikacijo med zaledn
 
 Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 
-| Ime metode | Parametri | Tip rezultata |
-| ---------- | --------- | ------------- |
+| Ime metode | Tip HTTP zahteve | Parametri | Tip rezultata |
+| ---------- | ---------------- | --------- | ------------- |
+| getUsers | POST | | User |
+| putUser |PUT | user: User | User |
+
+#### **MessageApi**
+
+Razred *MessageApi* je mejni api razred, ki se uporablja za komunikacijo med zalednim in čelnim delom za potrebe poslovne logike definirane v kontrolerju *UserServices*.
+
+#### Nesamoumevne metode
+
+Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
+
+| Ime metode | Tip HTTP zahteve | Parametri | Tip rezultata |
+| ---------- | ---------------- | --------- | ------------- |
+| postMessage | POST | message: Message | Message |
+| getMessages | GET | | Message[] |
 
 
 #### **DogoApi**
@@ -317,21 +354,18 @@ Razred *DogoApi* je mejni api razred, ki se uporablja za komunikacijo med zaledn
 
 Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 
-| Ime metode | Parametri | Tip rezultata |
-| ---------- | --------- | ------------- |
-| postDogo | dogo: Dogo | Dogo |
-| getLocation | dogo: Dogo | Location[] |
+| Ime metode | Tip HTTP zahteve | Parametri | Tip rezultata |
+| ---------- | ---------------- | --------- | ------------- |
+| postDogo | POST | dogo: Dogo | Dogo |
+| getLocation | GET | dogo: Dogo | Location[] |
 
 #### **DogApi**
 
 Razred *DogApi* je mejni api razred, ki se uporablja za komunikacijo med zalednim delom aplikacije in zunanjim sistemom DogAPI za potrebe poslovne logike v kontrolerju *DogoServices*.
 
-#### Nesamoumevne metode
+#### **LeafletApi**
 
-Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
-
-| Ime metode | Parametri | Tip rezultata |
-| ---------- | --------- | ------------- |
+Razred *LeafletApi* je mejni api razred, ki se uporablja za komunikacijo med zalednim delom aplikacije in zunanjim sistemom Leaflet za potrebe poslovne logike v kontrolerju *ServiceServices* in *ServiceDiaryServices*.
 
 #### **ServiceApi**
 
@@ -341,11 +375,18 @@ Razred *ServiceApi* je mejni api razred, ki se uporablja za komunikacijo med zal
 
 Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 
-| Ime metode | Parametri | Tip rezultata |
-| ---------- | --------- | ------------- |
-| getServices | -/- | Service[] |
-| postService | service: Service | Service |
-| postServiceDiary | serviceDiary: ServiceDiary | ServiceDiary |
+| Ime metode | Tip HTTP zahteve | Parametri | Tip rezultata |
+| ---------- | ---------------- | --------- | ------------- |
+| getServices | GET | | Service[] |
+| postService | POST | service: Service | Service |
+| postServiceDiary | POST | serviceDiary: ServiceDiary | ServiceDiary |
+| postPayementType | POST | paymentType: PaymentType | PaymentType |
+
+#### **AuthenticationFilter** in **AuthorizationFilter**
+
+Razreda *AuthenticationFilter* in *AuthorizationFilter* sta del verige varnostnih filtrov, ki vsako HTTP zahtevo na REST API strežnik filtrirajo glede na samo zahtevo in njene lastnosti. Avtorizacijski filter filtrira zahteve glede na to ali ima uporabnik, ki izvaja zahtevo pravico le-to izvajati. Avtentikacijski filter pa filtrira zahteve glede na identifikacijo uporabnika, ki jo zahteva.
+
+*Zaradi preglednosti načrtov obnašanja so filtri izpuščeni.*
 
 
 #### Mejni razredi - zaslonske maske/view
@@ -358,9 +399,16 @@ Zatorej mejne razrede zaslonski mask zgolj navajamo v skupni tabeli.
 | ----------- | ---- |
 | Registracija  |   Maska vsebuje polje tipa form, kamor uporabnik vnese potrebne podatke za registracijo. |
 | Prijava       |   Maska vsebuje polje tipa form, kamor že registriran uporabnik vnese zahtevane podatke za priajvo v spletno aplikacijo. |
-| Pregled storitev  |   Maska vsebuje seznam vseh aktivnih storitev. |
+| Pregled storitev  |   Maska vsebuje seznam vseh aktivnih storitev. Na tej maski je tudi možno oceniti storitev. |
 | Opravljene storitve   |   Maska vsebuje seznam vseh opravljenih storitev prijavljenega izvajalca.  |
-|||
+|DodajStoritev| Maska je namenjena dodajanju nove storitve v sistem. Vsebuje polje tipa form, kamor izvajalec vpiše podatke za dodajanje storitve.|
+|DodajPsa| Maska vsebuje polje tipa form, kamor uporabnik vnese podatke psa. Namenjena je lastniku psa za dodajanje novega psa v sistem.|
+|Kopiraj storitev | Maska vsebuje spustni meni za izbor pretekle storitve v novo. V polju tipa form izvajalec storitve lahko uredi podatke. |
+| Moje storitve | Maska je namenjena prikazu vseh trenutnih in preteklih storitev izvajalca. |
+| ProfilStoritve    | Maska vsebuje seznam zgodovine storitev, ki jih je uporabnik naročil, na njih je gumb "Spremljaj lokacijo". |
+| Lokacija  | Na maski se prikaže zemljevid z lokacijo psa oziroma izvajalca storitve, katerega smo izbrali na maski ProfilStoritve. |
+| PregledUporabnikov   | Na maski se izpiše seznam vseh uporabnikov, katerim lahko tudi pošljemo sporočilo. |
+| Profil | Maska vsebuje podatke o uporabniku, prav tako vsebuje gumb "Nabiralnik", ki odpre nabiralnik s prejetimi sporočili. |
 
 TODO
 
@@ -431,7 +479,7 @@ API klic na naslednjih dveh diagramih predstavlja klic metode `Service[] getServ
 
 #### Osnovni tok
 Pogoj da se prične osnovni tok je prijavljen uporabnik. V kolikor uporabnik ni prijavljen do tega pogleda ne more dostopati. Ko je izpolnjen pogoj
-se začne osnovni tok. Spletna aplikacija po preko APIja povprašala strežnik o seznamu storitev. Le ta bo dostopal do podatkovne baze ter aplikaciji 
+se začne osnovni tok. Spletna aplikacija po preko APIja povprašala strežnik o seznamu storitev. Le ta bo dostopal do podatkovne baze ter aplikaciji
 vrnil seznam vseh storitev. Ko aplikacija izriše seznam storitev lahko uporabnik klikne na katerokoli izmed njih. Aplikacija mu bo izpisala
 podrobnosti ibrane storitve. V kolikor je prijavljen uporabnik lastnik psa ima ob storitvi tudi gumb za naročitev storitve. Če uporabnik klikne na gumb
 bo spletna aplikacija poslala zahtevo za naročitev storitve strežniku. Ta bo uporabnika naročil na storitev, tako da bo to zapisal v podatkovno bazo.
@@ -604,21 +652,21 @@ ocenami imeli boljši ugled in bili s tem nagrajeni za dobro delo.
 #### Osnovni tok
 V osnovnem toku se predvideva, da je uporabnik prijavljen v aplikacijo in da storitev poišče na seznamu vseh storitev. Nato oceni željeno storitev z oceno od 1 do 5 tačk, kjer 1 predstavlja najnižjo oceno 5 pa najvišjo.  
 Oceno odda, kjer v primeru, da je lastnik psov, se ta zapiše v bazo, v primeru da ni(kar se pregleda na čelnem delu), pa se mu izpiše obvestilo, da ni lastnik psov in nima možnosti oddaje ocene.  
-Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
+Api klic tu predstavlja `ServiceDiary postServiceDiary(ServiceDiary serviceDiary)`
 
 ![](../img/3.12.png)
 
 #### Alternativni tok
 Alternativni tok je precej podoben osnovnemu, le da tu lastnik psov poišče storitev na svojem profilu med tistimi, ki jih je v preteklosti že naročil. Ostali del postopka, pa je enak, torej izpolni obrazec za oceno in ga odda. Še ena razlika tu je, da ker uporabnik išče med že naročenimi storitvami,
 po oddanemu obrazcu ne more dobiti nazaj sporočila, da ni lasnik psov, saj to mora biti, da sploh lahko ima zgodovino teh.  
-Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
+Api klic tu predstavlja `ServiceDiary postServiceDiary(ServiceDiary serviceDiary)`
 
 ![](../img/3.12%20alternativni%20tok.png)
 
 #### Izjemni tok
 Poleg osnovnega in alternativnega toka, je tu še izjemni tok. Predvideva se, da uporabnik na zaslonski maski "Profil" pritisne gumb "Zgodovina", kateri mu prikaže vse storitve, ki jih je v preteklosti že najel, da bi eno izmed teh ocenil.
 Vendar pa teh še nima, zato se mu na zaslonski maski izpiše ravno to sporočilo, da ni še nikoli naročil storitve.  
-Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
+Api klic tu predstavlja `ServiceDiary postServiceDiary(ServiceDiary serviceDiary)`
 
 ![](../img/3.12%20Izjemni%20tok.png)
 
@@ -632,4 +680,3 @@ Pogoj da se prične osnovni tok je prijavljen uporabnik, ki ima vlogo izvajalca 
 Strežnik bo iz podatkovne baze pridobil opravljene storitve ter jih preko API-ja vrnil spletni aplikaciji. Le ta bo na to uporabniku prikazala zgodovino opravljenih storitev.
 
 ![](../img/zgodovina%20opravljenih%20storitev.png)
-
