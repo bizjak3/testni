@@ -58,15 +58,7 @@ V nadaljevanju so predstavljeni razredi sistema. Pri zasnovi razrednega diagrama
 
 > V nadaljevanju predstavljamo dva globalna razredna diagrama, ki se delita na **razredni diagram zaledne aplikacije** in **razredni diagram čelne aplikacije**. Razredna diagrama sta ločena zaradi preglednosti, komunikacija med njima pa poteka prek _boundary_ razredov, ki so paroma enaki na obeh razrednih diagramih (npr. _boundary_ razred z imenom _UserApi_ na čelnem delu aplikacije predstavlja komunikacijsko točko z _boundary_ razredom _UserApi_ na zalednem delu, pri čemer sta si oba razreda _UserApi_ identična v imenu razerda in podpisu metod).
 
-> Ravno tako ne definiramo _get_ in _set_ metod za _private_ polja razredov. Na razrednem diagramu tudi ne definiramo metod za _CRUD operacije_ nad entiteto ali skupino entitet. Vse metode, ki izvajajo takšne operacije znotraj celotne aplikacije sledijo naslednjemu konceptu:
-> `<ime-operacije><ime-entitete>(<entiteta ali entiteta-id>, [...dodatni parametri])`
->
-> - Pri čemer ima parameter `ime-operacije` eno izmed naslednjih vrednosti: `create`, `read`, `update`, `delete` ali `save` (save predstavlja skupek operacij create in update, pri čemer se slednja izvede v kolikor entiteta z enakim primarni identifikatorjem že obstaja)
-> - Parameter `ime-entitete` je identifikator entitetnega razreda
-> - Parameter `entiteta` (ali `entiteta-id`, ki predstavlja primarni identifikator entitete) predsatvlja entiteto nad katero se izvaja dana operacija. V kolikor ni podan se operacija izvede nad vsemi objekti tipa entiteta.
-> - `dodatni-parametri` so neobvezen del CRUD operacije, v kolikor so definirani, so dodatno opisani ob definiciji.
->
-> * Primer: metoda `createUser(User user)` kreira novo entiteto s parametri user tipa User, metoda `deleteUser(User user)` izbriše entiteto enako podani entiteti user tipa User.\*
+> Ravno tako ne definiramo _get_ in _set_ metod za _private_ polja razredov.
 
 #### Razredni diagram zalednega dela aplikacije
 
@@ -629,20 +621,20 @@ Api klic tu predstavlja `DogoApi getLocation(Dogo dogo)`
 
 ![](../img/3.10%20izjemni%20tok.png)
 
-### 3.11
+### 3.11 Neposredna komunikacija med izvajalcem storitve in lastnikom psa
 
 Uporabniki ne glede na to ali so uporabniki ali ponudniki, se želijo kdaj pa kdaj pogovoriti, pa naj gre za skrb lastnika glede svojega ljubljenčka, ali pa pomanjkanje socialne interakcije v času izolacije.  
 V ta namen aplikacija omogoča pogovarjanje preko sporočil, kar preko nje same.
 
 #### Osnovni tok
 V osnovnem toku je predstavljen potek iz strani pošiljatelja, ki najde željenega ponudnika, izpolni pošiljateljski obrazec za sporočilo, tega pošlje, nazaj pa dobi potrdilo, da je bilo sporočilo uspešno poslano.
-Api klic tu predstavlja `UserAPI sendMessage(Message message)`
+Api klic tu predstavlja `MessageApi postMessage(Message message)`
 
 ![](../img/3.11.png)
 
 #### Alternativni tok
 Alternativni tok pa predvideva uporabnika kot prejemnika, ki sporočilo prejme. To se mu prikaže v nabiralniku, v primeru da sporočilo obstaja, vendar je na bazi napaka, pa ga o tem obvesti, ko sporočilo želi pogledati.  
-Api klic tu predstavlja `UserAPI sendMessage(Message message)`
+Api klic tu predstavlja `MessageApi postMessage(Message message)`
 
 ![](../img/3.11%20alternativni%20tok.png)
 
