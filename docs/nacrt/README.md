@@ -369,7 +369,7 @@ V nadaljevanju definiramo načrte obnašanja za vse primere uporabe, ki izhajajo
 
 ### 3.1 Registracija lastnika psa ali ponudnika storitve
 Uporabnik se lahko v aplikacijo registrira preko zaslonske maske za registracijo.
-API klic na naslednjih treh diagramih predstavlja klic metode `LoginRegisterApi postForm(User form)`.
+API klic na naslednjih treh diagramih predstavlja klic metode `String postRegisterForm(User form)`.
 
 
 #### Osnovni tok
@@ -396,7 +396,7 @@ saj le ta že obstaja. Nato bo strežnik sporočil to spletni aplikaciji, ki bo 
 
 ### 3.2 Prijava uporabnika
 Uporabnik se lahko v aplikacijo prijavi preko zaslonske maske za prijavo.
-API klic na naslednjih treh diagramih predstavlja klic metode `LoginRegisterApi postLogin(User form)`.
+API klic na naslednjih treh diagramih predstavlja klic metode `User postLogin(User form)`.
 
 
 #### Osnovni tok
@@ -422,7 +422,7 @@ napako sporočil, ta pa bo uporabnika obvestila o neuspešni prijavi zaradi neob
 
 ### 3.3 Pregled vseh ponujenih storitev in naročilo izbrane storitve v okviru aplikacije
 Ob uspešni prijavi bo aplikacija uporabnika preusmerila na seznam vseh ponujenih storitev.
-API klic na naslednjih dveh diagramih predstavlja klic metode `ServiceApi getServices()`.
+API klic na naslednjih dveh diagramih predstavlja klic metode `Service[] getServices()`.
 
 
 #### Osnovni tok
@@ -612,7 +612,7 @@ Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
 
 ### 3.13 Pregled izvedenih storitev
 Izvajalec storitev ima kadarkoli možnost pregleda opravljenih storitev. Pri pregledu opravljene storitve pridobi tudi povratno informacijo glede kvalitete storitve, saj imajo uporabniki možnost oceniti opravljeno storitev.
-API klic na naslednjem diagramu predstavlja klic metode `ServiceApi getServices(User user)`.
+API klic na naslednjem diagramu predstavlja klic metode `Service[] getServices(User user)`.
 
 
 #### Osnovni tok
