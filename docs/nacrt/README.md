@@ -600,3 +600,14 @@ Vendar pa teh še nima, zato se mu na zaslonski maski izpiše ravno to sporočil
 
 ![](../img/3.12%20Izjemni%20tok.png)
 
+### 3.13 Pregled izvedenih storitev
+Izvajalec storitev ima možnost pregleda opravljenih storitev.
+API klic na naslednjem diagramu predstavlja klic metode `ServiceApi getServices(User user)`.
+
+
+#### Osnovni tok
+Pogoj da se prične osnovni tok je prijavljen uporabnik, ki ima vlogo izvajalca storitev. Ko na profilu pritisne na gumb "Pokaži zgodovino opravljenih storitev" bo spletna aplikacija poslala strežniku zahtevo za pridobitev zgodovine opravljenih storitev.
+Strežnik bo iz podatkovne baze pridobil opravljene storitve ter jih preko API-ja vrnil spletni aplikaciji. Le ta bo na to uporabniku prikazala zgodovino opravljenih storitev.
+
+![](../img/zgodovina%20opravljenih%20storitev,.png)
+
