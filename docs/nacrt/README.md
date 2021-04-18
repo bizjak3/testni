@@ -369,7 +369,7 @@ V nadaljevanju definiramo načrte obnašanja za vse primere uporabe, ki izhajajo
 
 ### 3.1 Registracija lastnika psa ali ponudnika storitve
 Uporabnik se lahko v aplikacijo registrira preko zaslonske maske za registracijo.
-API klic na naslednjih treh diagramih predstavlja klic metode `String postRegisterForm(User form)`.
+API klic na naslednjih treh diagramih predstavlja klic metode `User postRegisterForm(User form)`.
 
 
 #### Osnovni tok
@@ -422,7 +422,7 @@ napako sporočil, ta pa bo uporabnika obvestila o neuspešni prijavi zaradi neob
 
 ### 3.3 Pregled vseh ponujenih storitev in naročilo izbrane storitve v okviru aplikacije
 Ob uspešni prijavi bo aplikacija uporabnika preusmerila na seznam vseh ponujenih storitev.
-API klic na naslednjih dveh diagramih predstavlja klic metode `Service[] getServices()`.
+API klic na naslednjih dveh diagramih predstavlja klic metode `Service[] getServices()` za pridobitev seznama storitev ter API klic `ServiceDiary postServiceDiary(ServiceDiary ServiceDiary)` 
 
 
 #### Osnovni tok
