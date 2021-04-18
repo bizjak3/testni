@@ -344,7 +344,7 @@ Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 | Ime metode | Parametri | Tip rezultata |
 | ---------- | --------- | ------------- |
 | getServices | -/- | Service[] |
-| postServics | service: Service | Service |
+| postService | service: Service | Service |
 | postServiceDiary | serviceDiary: ServiceDiary | ServiceDiary |
 
 
@@ -369,6 +369,7 @@ V nadaljevanju definiramo načrte obnašanja za vse primere uporabe, ki izhajajo
 
 ### 3.1 Registracija lastnika psa ali ponudnika storitve
 Uporabnik se lahko v aplikacijo registrira preko zaslonske maske za registracijo.
+API klic na naslednjih treh diagramih predstavlja klic metode `LoginRegisterApi postForm(User form)`.
 
 
 #### Osnovni tok
@@ -395,6 +396,7 @@ saj le ta že obstaja. Nato bo strežnik sporočil to spletni aplikaciji, ki bo 
 
 ### 3.2 Prijava uporabnika
 Uporabnik se lahko v aplikacijo prijavi preko zaslonske maske za prijavo.
+API klic na naslednjih treh diagramih predstavlja klic metode `LoginRegisterApi postLogin(User form)`.
 
 
 #### Osnovni tok
@@ -420,6 +422,7 @@ napako sporočil, ta pa bo uporabnika obvestila o neuspešni prijavi zaradi neob
 
 ### 3.3 Pregled vseh ponujenih storitev in naročilo izbrane storitve v okviru aplikacije
 Ob uspešni prijavi bo aplikacija uporabnika preusmerila na seznam vseh ponujenih storitev.
+API klic na naslednjih dveh diagramih predstavlja klic metode `ServiceApi getServices()`.
 
 
 #### Osnovni tok
@@ -435,6 +438,10 @@ Ob uspešnem zapisu bo strežnik obvestil spletno aplikacijo, le ta pa bo uporab
 #### Izjemni tok
 V primeru da strežnik spletni aplikaciji vrne prazen seznam, bo aplikacija obvestila uporabnika da v sistemu ni trenutno aktivnih storitev.
 ![](../img/Izjemni%20getServices().png)
+
+Za lažje razumevanje poteka (več pogojev) je priložen še spodnji diagram poteka, ki vsebuje tako osnovni kot izjemni tok.
+![](../img/Diagram%20poteka.png)
+
 
 
 ### 3.4 Dodajanje nove ponudbe storitve kot izvajalec storitve
@@ -540,20 +547,73 @@ Plačilo seveda ni mogoče, če so vneseni podatki o kartici napačni ali pa če
 
 ![](../img/5.9%20izjemen.png)
 
-### 3.11 ali 5.11
+### 3.10 Pregled lokacije psa v posestvi lastnika psa v času izvajanja storitve
+Ker lastnika psa seveda lahko skrbi, kje se nahaja njegov ljubi štirinožec, ta lahko pregleda zadnjo lokacijo izvajalca z mislijo, da s tem tudi ljubljenčka.
 #### Osnovni tok
 
-![](../img/5.11.png)
+Uporabnik se prijavi v aplikacijo in v svojem profilu najde željeno storitev, kateri bo sledil. Ko pritisne gumb "Spremljaj lokacijo", se mu ta prikaže na zaslonu.  
+Api klic tu predstavlja `DogoApi getLocation(Dogo dogo)`
+
+![](../img/3.10.png)
+
+#### Izjemni tok
+Dandanes so privatni podatki veliko vredni, poleg tega pa tudi ni vsem všeč, če ima kdorkoli dostop do njih, zato aplikacija omogoča, da izvajalcu, zaradi takih ali drugačnih razlogov, ni potrebno deliti svoje lokacije.  
+Z drugega vidika, pa je popolnoma normalno za lastnike psov, da jih skrbi, kje se nahajajo, v trenutku, ko niso v njihovi oskrbi.  
+Zato je omogočeno, da ko lasnik želi najeti storitev, da mu je prej sporočeno ali izvajale omogoča sledenje njegovi lokaciji. V primeru da ali ne, se lastniku pred zaključenim najemom storitve to prikaže.  
+Api klic tu predstavlja `DogoApi getLocation(Dogo dogo)`
+
+![](../img/3.10%20izjemni%20tok.png)
+
+### 3.11
+
+Uporabniki ne glede na to ali so uporabniki ali ponudniki, se želijo kdaj pa kdaj pogovoriti, pa naj gre za skrb lastnika glede svojega ljubljenčka, ali pa pomanjkanje socialne interakcije v času izolacije.  
+V ta namen aplikacija omogoča pogovarjanje preko sporočil, kar preko nje same.
+
+#### Osnovni tok
+V osnovnem toku je predstavljen potek iz strani pošiljatelja, ki najde željenega ponudnika, izpolni pošiljateljski obrazec za sporočilo, tega pošlje, nazaj pa dobi potrdilo, da je bilo sporočilo uspešno poslano.
+Api klic tu predstavlja `UserAPI sendMessage(Message message)`
+
+![](../img/3.11.png)
 
 #### Alternativni tok
+Alternativni tok pa predvideva uporabnika kot prejemnika, ki sporočilo prejme. To se mu prikaže v nabiralniku, v primeru da sporočilo obstaja, vendar je na bazi napaka, pa ga o tem obvesti, ko sporočilo želi pogledati.  
+Api klic tu predstavlja `UserAPI sendMessage(Message message)`
 
-![](../img/5.11%20alternativni%20tok.png)
+![](../img/3.11%20alternativni%20tok.png)
 
-### 3.12 ali 5.12
+### 3.12 Ocenjevanje opravljene storitve izvajalce storitve
+Izkušnje z izvajalci storitev so lahko različne in predvsem so subjektivne. V ta namen je omogočena funkcija glasovanja. Lastnik psov lahko po zaključeni storitvi poda oceno izvajalcu storitve ne glede na to ali je bil zadovoljen ali ne. S tem pa pripomore k temu, da bodo tisti izvajalci z boljšimi
+ocenami imeli boljši ugled in bili s tem nagrajeni za dobro delo.
+
 #### Osnovni tok
+V osnovnem toku se predvideva, da je uporabnik prijavljen v aplikacijo in da storitev poišče na seznamu vseh storitev. Nato oceni željeno storitev z oceno od 1 do 5 tačk, kjer 1 predstavlja najnižjo oceno 5 pa najvišjo.  
+Oceno odda, kjer v primeru, da je lastnik psov, se ta zapiše v bazo, v primeru da ni(kar se pregleda na čelnem delu), pa se mu izpiše obvestilo, da ni lastnik psov in nima možnosti oddaje ocene.  
+Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
 
-![](../img/5.12.png)
+![](../img/3.12.png)
 
-### Alternativni tok
+#### Alternativni tok
+Alternativni tok je precej podoben osnovnemu, le da tu lastnik psov poišče storitev na svojem profilu med tistimi, ki jih je v preteklosti že naročil. Ostali del postopka, pa je enak, torej izpolni obrazec za oceno in ga odda. Še ena razlika tu je, da ker uporabnik išče med že naročenimi storitvami,
+po oddanemu obrazcu ne more dobiti nazaj sporočila, da ni lasnik psov, saj to mora biti, da sploh lahko ima zgodovino teh.  
+Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
 
-![](../img/5.12%20alternativni%20tok.png)
+![](../img/3.12%20alternativni%20tok.png)
+
+#### Izjemni tok
+Poleg osnovnega in alternativnega toka, je tu še izjemni tok. Predvideva se, da uporabnik na zaslonski maski "Profil" pritisne gumb "Zgodovina", kateri mu prikaže vse storitve, ki jih je v preteklosti že najel, da bi eno izmed teh ocenil.
+Vendar pa teh še nima, zato se mu na zaslonski maski izpiše ravno to sporočilo, da ni še nikoli naročil storitve.  
+Api klic tu predstavlja `ServiceApi rateService(ServiceDiary serviceDiary)`
+
+![](../img/3.12%20Izjemni%20tok.png)
+
+### 3.13 Pregled izvedenih storitev
+Izvajalec storitev ima kadarkoli možnost pregleda opravljenih storitev. Pri pregledu opravljene storitve pridobi tudi povratno informacijo glede kvalitete storitve, saj imajo uporabniki možnost oceniti opravljeno storitev.
+API klic na naslednjem diagramu predstavlja klic metode `ServiceApi getServices(User user)`.
+
+
+#### Osnovni tok
+Pogoj da se prične osnovni tok je prijavljen uporabnik, ki ima vlogo izvajalca storitev. Ko na profilu pritisne na gumb "Pokaži zgodovino opravljenih storitev" bo spletna aplikacija poslala strežniku zahtevo za pridobitev zgodovine opravljenih storitev.
+Strežnik bo iz podatkovne baze pridobil opravljene storitve ter jih preko API-ja vrnil spletni aplikaciji. Le ta bo na to uporabniku prikazala zgodovino opravljenih storitev.
+
+![](../img/zgodovina%20opravljenih%20storitev.png)
+
