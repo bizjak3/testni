@@ -532,23 +532,24 @@ Neprijavljen uporabnik tudi lahko dostopa do profilov registriranih uporabnikov 
 
 ### 3.9 Izvajanje plačila za opravljeno storitev znotraj aplikacije
 
-API klic na diagramu predstavlja klic metode `ServiceApi payServices(Service service)`.
-
 #### Osnovni tok
 
 Prijavljen lastnik psov lahko izvajalcu storitev plača.
+API klic na diagramu predstavlja klic metode `ServiceApi postServiceDiary(ServiceDiary serviceDiary)`.
 
 ![](../img/5.9%20osnovni.png)
 
 #### Alternativni tok
 
 Če lastnik psov še ni vnesel plačilnega sredstva, to lahko stori hkrati s plačilom.
+API klic na diagramu predstavlja klice 2 metod: `ServiceApi postPaymentType(PaymentType paymentType)` in `ServiceApi postServiceDiary(ServiceDiary serviceDiary)`.
 
 ![](../img/5.9%20alternativni.png)
 
 #### Izjemni tok
 
 Plačilo seveda ni mogoče, če so vneseni podatki o kartici napačni ali pa če na plačilnem sredstvu ni dovolj denarja.
+API klic na diagramu predstavlja klic metode `ServiceApi postServiceDiary(ServiceDiary serviceDiary)`.
 
 ![](../img/5.9%20izjemen.png)
 
