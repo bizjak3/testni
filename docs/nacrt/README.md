@@ -344,7 +344,7 @@ Nesamoumevne metode definirane v kontrolnem razredu na čelnem delu aplikacije:
 | Ime metode | Parametri | Tip rezultata |
 | ---------- | --------- | ------------- |
 | getServices | -/- | Service[] |
-| postServics | service: Service | Service |
+| postService | service: Service | Service |
 | postServiceDiary | serviceDiary: ServiceDiary | ServiceDiary |
 
 
@@ -548,33 +548,55 @@ Plačilo seveda ni mogoče, če so vneseni podatki o kartici napačni. (TODO pri
 ![](../img/5.9%20izjemen.png)
 
 ### 3.10 Pregled lokacije psa v posestvi lastnika psa v času izvajanja storitve
-Ker lastnika psa seveda lahko skrbi, kje se nahaja njegov ljubi štirinožec, ta lahko pregleda zadnjo lokacijo izvajalca z mislijo, da s tem tudi ljubljenčka.  
-Uporabnik se prijavi v aplikacijo in v svojem profilu najde željeno storitev, kateri bo sledil. Ko pritisne gumb "Spremljaj lokacijo", se mu ta prikaže na zaslonu.
+Ker lastnika psa seveda lahko skrbi, kje se nahaja njegov ljubi štirinožec, ta lahko pregleda zadnjo lokacijo izvajalca z mislijo, da s tem tudi ljubljenčka.
 #### Osnovni tok
+
+Uporabnik se prijavi v aplikacijo in v svojem profilu najde željeno storitev, kateri bo sledil. Ko pritisne gumb "Spremljaj lokacijo", se mu ta prikaže na zaslonu.
 
 ![](../img/3.10.png)
 
 #### Izjemni tok
-Dandanes so privatni podatki veliko vredni, poleg tega pa tudi ni vsem všeč, če ima kdorkoli dostop do njihovih podatkov, zato aplikacija omogoča, da izvajalcu, zaradi takih ali drugačnih razlogov, ni potrebno deliti svoje lokacije.  
+Dandanes so privatni podatki veliko vredni, poleg tega pa tudi ni vsem všeč, če ima kdorkoli dostop do njih, zato aplikacija omogoča, da izvajalcu, zaradi takih ali drugačnih razlogov, ni potrebno deliti svoje lokacije.  
 Z drugega vidika, pa je popolnoma normalno za lastnike psov, da jih skrbi, kje se nahajajo, v trenutku, ko niso v njihovi oskrbi.  
 Zato je omogočeno, da ko lasnik želi najeti storitev, da mu je prej sporočeno ali izvajale omogoča sledenje njegovi lokaciji. V primeru da ali ne, se lastniku pred zaključenim najemom storitve to prikaže. 
 
 ![](../img/3.10%20izjemni%20tok.png)
 
 ### 3.11
+
+Uporabniki ne glede na to ali so uporabniki ali ponudniki, se želijo kdaj pa kdaj pogovoriti, pa naj gre za skrb lastnika glede svojega ljubljenčka, ali pa pomanjkanje socialne interakcije v času izolacije.  
+V ta namen aplikacija omogoča pogovarjanje preko sporočil, kar preko nje same.
+
 #### Osnovni tok
+V osnovnem toku je predstavljen potek iz strani pošiljatelja, ki najde željenega ponudnika, izpolni pošiljateljski obrazec, tega pošlje, nazaj pa dobi potrdilo, da je bilo sporočilo uspešno poslano.
+
 
 ![](../img/3.11.png)
 
 #### Alternativni tok
+Alternativni tok pa predvideva uporabnika kot prejemnika, ki sporočilo prejme. To se mu prikaže v nabiralniku, v primeru da sporočilo obstaja, vendar je na bazi napaka, pa ga o tem obvesti, ko sporočilo želi pogledati.
 
 ![](../img/3.11%20alternativni%20tok.png)
 
-### 3.12
+### 3.12 Ocenjevanje opravljene storitve izvajalce storitve
+Izkušnje z izvajalci storitev so lahko različne in predvsem so subjektivne. V ta namen je omogočena funkcija glasovanja. Lastnik psov lahko po zaključeni storitvi poda oceno izvajalcu storitve ne glede na to ali je bil zadovoljen ali ne. S tem pa pripomore k temu, da bodo tisti izvajalci z boljšimi
+ocenami imeli boljši ugled in bili s tem nagrajeni za dobro delo.
+
 #### Osnovni tok
+V osnovnem toku se predvideva, da je uporabnik prijavljen v aplikacijo in da storitev poišče na seznamu vseh storitev. Nato oceni željeno storitev z oceno od 1 do 5 tačk, kjer 1 predstavlja najnižjo oceno 5 pa najvišjo.  
+Oceno odda, kjer v primeru, da je lastnik psov, se ta zapiše v bazo, v primeru da ni, pa se mu izpiše obvestilo, da ni lastnik psov in nima možnosti oddaje ocene.
 
 ![](../img/3.12.png)
 
-### Alternativni tok
+#### Alternativni tok
+Alternativni tok je precej podoben osnovnemu, le da tu lastnik psov poišče storitev na svojem profilu med tistimi, ki jih je v preteklosti že naročil. Ostali del postopka, pa je enak, torej izpolni obrazec za oceno in ga odda. Še ena razlika tu je, da ker uporabnik išče med že naročenimi storitvami,
+po oddanemu obrazcu ne more dobiti nazaj sporočila, da ni lasnik psov, saj to mora biti, da sploh lahko ima zgodovino teh.
 
 ![](../img/3.12%20alternativni%20tok.png)
+
+#### Izjemni tok
+Poleg osnovnega in alternativnega toka, je tu še izjemni tok. Predvideva se, da uporabnik na zaslonski maski "Profil" pritisne gumb "Zgodovina", kateri mu prikaže vse storitve, ki jih je v preteklosti že najel, da bi eno izmed teh ocenil.
+Vendar pa teh še nima, zato se mu na zaslonski maski izpiše ravno to sporočilo, da ni še nikoli naročil storitve.
+
+![](../img/3.12%20Izjemni%20tok.png)
+
