@@ -356,6 +356,10 @@ Zatorej mejne razrede zaslonski mask zgolj navajamo v skupni tabeli.
 
 | Ime razreda | Opis |
 | ----------- | ---- |
+| Registracija  |   Maska vsebuje polje tipa form, kamor uporabnik vnese potrebne podatke za registracijo. |
+| Prijava       |   Maska vsebuje polje tipa form, kamor že registriran uporabnik vnese zahtevane podatke za priajvo v spletno aplikacijo. |
+| Pregled storitev  |   Maska vsebuje seznam vseh aktivnih storitev. |
+| Opravljene storitve   |   Maska vsebuje seznam vseh opravljenih storitev prijavljenega izvajalca.  |
 |||
 
 TODO
