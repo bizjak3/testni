@@ -533,17 +533,17 @@ Neprijavljen uporabnik tudi lahko dostopa do profilov registriranih uporabnikov 
 
 Prijavljen lastnik psov lahko izvajalcu storitev plača.
 
-![](../img/5.9%20osnoven.png)
+![](../img/5.9%20osnovni.png)
 
 #### Alternativni tok
 
 Če lastnik psov še ni vnesel plačilnega sredstva, to lahko stori hkrati s plačilom.
 
-![](../img/5.9%20alternativen.png)
+![](../img/5.9%20alternativni.png)
 
 #### Izjemni tok
 
-Plačilo seveda ni mogoče, če so vneseni podatki o kartici napačni. (TODO primer ko ni dovolj sredstev).
+Plačilo seveda ni mogoče, če so vneseni podatki o kartici napačni ali pa če na plačilnem sredstvu ni dovolj denarja.
 
 ![](../img/5.9%20izjemen.png)
 
