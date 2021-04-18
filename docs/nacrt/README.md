@@ -557,6 +557,12 @@ API klic na diagramu predstavlja klic metode `ServiceApi postServiceDiary(Servic
 
 ![](../img/5.9%20izjemen.png)
 
+#### Diagram aktivnosti
+
+Za lažje razumevanje zaporedja vseh možnosti ter vseh zahtev za uspešno izvedbo plačila je spodaj še diagram aktivnosti.
+
+![](../img/diagram%20aktivnosti%205.9.png)
+
 ### 3.10 Pregled lokacije psa v posestvi lastnika psa v času izvajanja storitve
 Ker lastnika psa seveda lahko skrbi, kje se nahaja njegov ljubi štirinožec, ta lahko pregleda zadnjo lokacijo izvajalca z mislijo, da s tem tudi ljubljenčka.
 #### Osnovni tok
