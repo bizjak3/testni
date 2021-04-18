@@ -403,9 +403,6 @@ Zatorej mejne razrede zaslonski mask zgolj navajamo v skupni tabeli.
 | Profil | Maska vsebuje podatke o uporabniku, prav tako vsebuje gumb "Nabiralnik", ki odpre nabiralnik s prejetimi sporočili. |
 | Administracija | Maska je namenjena administratorjem za spreminjanje ter pregledovanje podatkov uporabnika. |
 
-TODO
-
-
 ## 3. Načrt obnašanja
 
 V nadaljevanju definiramo načrte obnašanja za vse primere uporabe, ki izhajajo iz funkcionalnih zahtev definiranih v dokumentu zajema zahtev.
