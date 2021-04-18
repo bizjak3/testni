@@ -401,7 +401,7 @@ Zatorej mejne razrede zaslonski mask zgolj navajamo v skupni tabeli.
 | Lokacija  | Na maski se prikaže zemljevid z lokacijo psa oziroma izvajalca storitve, katerega smo izbrali na maski ProfilStoritve. |
 | PregledUporabnikov   | Na maski se izpiše seznam vseh uporabnikov, katerim lahko tudi pošljemo sporočilo. |
 | Profil | Maska vsebuje podatke o uporabniku, prav tako vsebuje gumb "Nabiralnik", ki odpre nabiralnik s prejetimi sporočili. |
-| Administracija | Maska je namenjena asministratorijem za spreminjanje ter pregledovanje podatkov uporabnika. |
+| Administracija | Maska je namenjena administratorjem za spreminjanje ter pregledovanje podatkov uporabnika. |
 
 TODO
 
@@ -546,9 +546,11 @@ Diagram aktivnosti je namenjem lažjemu razumevanju poteka funckionalnosti in za
 
 ### 3.7 Pregled in urejanje podatkov uporabnika kot administrator sistema
 
+Administrator sistema ima pravico pregledovati ter spreminjati podatke vseh prijavljenih uporabnikov.
+
 #### Osnovni tok
 
-Administrator sistema ima pravico pregledovati ter spreminjati podtke vseh prijavljenih uporabnikov.
+V osnovnem toku administrator izbere možnost "Administracija" ter na seznamu vseh registriranih uporabnikov po želji spreminja podatke.
 API klic na diagramu po kliku gumba "Pregled uporabnikov" predstavlja klic metode `Service[] getServices()`,
  klic po pritisku gumba "Shrani" pa `User putUser(User user)`.
 
@@ -556,37 +558,42 @@ API klic na diagramu po kliku gumba "Pregled uporabnikov" predstavlja klic metod
 
 #### Izjemni tok
 
-To operacijo lahko izvajajo izključno administratorji sistema.
+Dostop do strani za administracijo imajo le administratorji, ostalim uporabnikom pa je vrnjena napaka.
 
 ![](../img/5.7%20izjemen.png)
 
 ### 3.8 Pregled in urejanje podatkov prijavljenega uporabnika, pregled javnih podatkov uporabnika
 
+Prijavljen uporabnik lahko pregleduje svoje podatke, ter jih tudi spreminja.
+
 #### Osnovni tok
 
-Prijavljen uporabnik lahko pregleduje svoje podatke, ter jih tudi spreminja.
+V osnovnem toku uporabnik lahko pogleda podatke kateregakoli profila, na svojem lastnem profilu pa ima tudi možnost urejanja svojih podatkov.
 API klic na diagramu predstavlja klic metode `User putUser(User user)`.
 
 ![](../img/5.8%20osnovni%20tok.png)
 
 #### Alternativni tok
 
-Neprijavljen uporabnik tudi lahko dostopa do profilov registriranih uporabnikov preko posredovane povezave.
+Neprijavljen uporabnik tudi lahko dostopa do profilov registriranih uporabnikov preko posredovane povezave. Če pa uporabnik poskusi urejati profil, medtem 
+ko ni prijavljen, pa mu je vrnjena napaka.
 
 ![](../img/5.8%20alternativni%20tok.png)
 
 ### 3.9 Izvajanje plačila za opravljeno storitev znotraj aplikacije
 
+Prijavljen uporabnik z vlogo lastnik psov lahko izvajalcu storitev plača.
+
 #### Osnovni tok
 
-Prijavljen lastnik psov lahko izvajalcu storitev plača.
+Če ima plačilno sredstvo že shranjeno v sistemu, mora le izbrati storitev, ki jo želi plačati, ter pritisniti gumb "Plačaj storitev".
 API klic na diagramu predstavlja klic metode `ServiceApi postServiceDiary(ServiceDiary serviceDiary)`.
 
 ![](../img/5.9%20osnovni.png)
 
 #### Alternativni tok
 
-Če lastnik psov še ni vnesel plačilnega sredstva, to lahko stori hkrati s plačilom.
+Če lastnik psov še ni vnesel plačilnega sredstva(npr. kreditne kartice), to lahko stori hkrati s plačilom.
 API klic na diagramu predstavlja klice 2 metod: `ServiceApi postPaymentType(PaymentType paymentType)` in `ServiceApi postServiceDiary(ServiceDiary serviceDiary)`.
 
 ![](../img/5.9%20alternativni.png)
