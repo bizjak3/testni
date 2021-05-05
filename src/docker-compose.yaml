@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  # databases
+  mariadb:
+    image: mariadb
+    hostname: mariadb
+    restart: on-failure
+    volumes:
+      - ./volumes/mariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: PasjehodecDB
+      MYSQL_USER: pasjehodec
+      MYSQL_PASSWORD: pasjehodec
+    ports:
+    - "10001:3306"
+  redis:
+    image: redis
+    hostname: redis
+    restart: on-failure
+    volumes:
+      - ./volumes/redis:/data
+    ports:
+    - "10002:6379"
