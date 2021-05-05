@@ -1,6 +1,14 @@
 version: "3"
 
 services:
+  # frontenda v razvojni fazi ne potrebujemo v dockerju
+  # ohranjamo za teste
+  #frontend:
+  #  build: frontend
+  #  ports:
+  #  - "10010:80"
+
+
   # databases
   mariadb:
     image: mariadb
