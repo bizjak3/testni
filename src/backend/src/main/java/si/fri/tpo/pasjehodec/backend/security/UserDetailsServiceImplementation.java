@@ -19,7 +19,7 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
     @SneakyThrows
     @Override
     public UserEntity loadUserByUsername(String s) throws UsernameNotFoundException {
-        return userRepository.findByEmail(s)
-                .orElseThrow(() -> new ForbiddenOperationException("Uporabnik s podanim epoštnim naslovom ne obstaja."));
+        return userRepository.findByUsername(s)
+                .orElseThrow(() -> new ForbiddenOperationException("Uporabnik s podanim uporabniškim imenom ne obstaja"));
     }
 }

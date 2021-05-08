@@ -2,11 +2,17 @@ package si.fri.tpo.pasjehodec.backend.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import si.fri.tpo.pasjehodec.backend.database.entities.DogoEntity;
+import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
+import si.fri.tpo.pasjehodec.backend.database.entities.users.UserType;
+import si.fri.tpo.pasjehodec.backend.dtos.mappers.DogoEntityMapper;
+import si.fri.tpo.pasjehodec.backend.dtos.models.dogo.DogoDto;
 import si.fri.tpo.pasjehodec.backend.services.DogoService;
 
 @RestController
@@ -15,9 +21,15 @@ import si.fri.tpo.pasjehodec.backend.services.DogoService;
 public class DogoApi {
 
     private final DogoService dogoService;
+    private final DogoEntityMapper dogoEntityMapper;
 
     @PostMapping("post")
-    public ResponseEntity<DogoEntity> postDogo(@RequestBody DogoEntity dogo) {
-        return ResponseEntity.ok(dogoService.addDogo(dogo, dogo.getOwner()));
+    @Secured({
+            UserType.DOG_OWNER,
+            UserType.ADMIN
+    })
+    public ResponseEntity<DogoDto> postDogo(@RequestBody DogoEntity dogo, @AuthenticationPrincipal UserEntity user) {
+        var entity = dogoService.addDogo(dogo, dogo.getOwner());
+        return ResponseEntity.ok(dogoEntityMapper.castDogoDtoFromEntity(entity));
     }
 }
