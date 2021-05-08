@@ -1,5 +1,6 @@
 package si.fri.tpo.pasjehodec.backend.database.entities.users;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,10 +31,11 @@ public class UserEntity implements UserDetails {
     @Column(unique = true)
     private String username;
     private String password;
-    @Enumerated(EnumType.STRING)
-    private UserType usertype;
 
-    @JsonIgnoreProperties({"owner"})
+    private Boolean isDogOwner = false;
+    private Boolean isServiceWorker = false;
+    private Boolean isAdmin = false;
+
     @OneToMany(mappedBy = "owner")
     List<DogoEntity> dogos;
 

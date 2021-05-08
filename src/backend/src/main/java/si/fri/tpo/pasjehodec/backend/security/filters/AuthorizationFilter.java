@@ -4,10 +4,12 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import si.fri.tpo.pasjehodec.backend.constants.JwtConstants;
-import si.fri.tpo.pasjehodec.backend.database.repositories.UserRepository;
+import si.fri.tpo.pasjehodec.backend.database.entities.users.UserType;
 import si.fri.tpo.pasjehodec.backend.security.UserDetailsServiceImplementation;
 
 import javax.servlet.FilterChain;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AuthorizationFilter extends BasicAuthenticationFilter {
 
@@ -50,10 +53,19 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
                     .getSubject();
 
             if (user != null) {
+                var userEntity = userDetailsServiceImplementation.loadUserByUsername(user);
+                var authorities = new ArrayList<GrantedAuthority>();
+                if(userEntity.getIsAdmin())
+                    authorities.add(new SimpleGrantedAuthority(UserType.ADMIN.toString()));
+                if(userEntity.getIsDogOwner())
+                    authorities.add(new SimpleGrantedAuthority(UserType.DOG_OWNER.toString()));
+                if(userEntity.getIsServiceWorker())
+                    authorities.add(new SimpleGrantedAuthority(UserType.SERVICE_WORKER.toString()));
+
                 return new UsernamePasswordAuthenticationToken(
-                        userDetailsServiceImplementation.loadUserByUsername(user),
+                        userEntity,
                         null,
-                        new ArrayList<>());
+                        authorities);
             }
             return null;
         }

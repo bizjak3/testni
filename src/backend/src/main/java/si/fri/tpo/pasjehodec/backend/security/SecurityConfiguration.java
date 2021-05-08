@@ -32,19 +32,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.cors().and().csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/register", "/login")
-//                    .permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .addFilter(new AuthenticationFilter(authenticationManager(), expirationTime ,jwtSecret, refreshTime))
-//                .addFilter(new AuthorizationFilter(authenticationManager(), jwtSecret, userDetailsServiceImplementation))
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.cors().and().csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/register/**")
+                    .permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .addFilter(new AuthenticationFilter(authenticationManager(), expirationTime ,jwtSecret, refreshTime))
+                .addFilter(new AuthorizationFilter(authenticationManager(), jwtSecret, userDetailsServiceImplementation))
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
 
-        http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers("**").permitAll();
+//        http.cors().and().csrf().disable().authorizeRequests()
+//                .antMatchers("**").permitAll();
     }
 
     @Override
