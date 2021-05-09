@@ -9,7 +9,7 @@ import {ProfilComponent} from './components/profil/profil.component';
 
 const routes: Routes = [
   {
-    path: 'zacetna_stran',
+    path: '',
     component: ZacetnaStranComponent,
   },
   {
