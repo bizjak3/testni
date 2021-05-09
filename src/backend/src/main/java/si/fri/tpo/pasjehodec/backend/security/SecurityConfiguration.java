@@ -34,6 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // to je "produkcijska" verzija
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/register/**", "/docs/**")
@@ -44,7 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilter(new AuthorizationFilter(authenticationManager(), jwtSecret, userDetailsServiceImplementation))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-
+        // to je testna/razvojna verzija brez varnosti (načeloma ne uporabljaj)
 //        http.cors().and().csrf().disable().authorizeRequests()
 //                .antMatchers("**").permitAll();
     }
