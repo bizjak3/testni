@@ -1,0 +1,43 @@
+<!-- ################ navbar ################ -->
+<app-navbar-login-signup></app-navbar-login-signup>
+
+
+
+<!-- ################ main body ################ -->
+<main>
+  <div ng-app="myApp" ng-controller="myController" class="container">
+    <form name="myForm">
+      <div role="alert" *ngIf="napakaNaObrazcu" class="alert alert-danger">{{ napakaNaObrazcu }}</div>
+      <div class="login-container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Geslo</label>
+              <input type="password" name="pass" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <div class="btn-group">
+              <button class="btn btn-primary pull-right">Prijava</button>
+              <button routerLink="/signup" class="btn btn-secondary pull-right">Registracija</button>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngIf="showSuccess" class="alert alert-success">Login Successful!</div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
