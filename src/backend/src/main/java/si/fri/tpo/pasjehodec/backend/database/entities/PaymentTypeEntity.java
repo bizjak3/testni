@@ -7,6 +7,7 @@ import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name="payment_type")
@@ -27,4 +28,7 @@ public class PaymentTypeEntity {
     @ManyToOne
     @JoinColumn
     private UserEntity cardOwner;
+
+    @OneToMany(mappedBy = "paymentType")
+    List<TransactionEntity> transactions;
 }

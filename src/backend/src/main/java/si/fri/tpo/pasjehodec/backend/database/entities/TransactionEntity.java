@@ -5,33 +5,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "service_diary")
+@Table(name = "transaction")
 @Getter
 @Setter
 @NoArgsConstructor
-public class ServiceDiaryEntity {
+public class TransactionEntity {
 
     @Id
     @GeneratedValue
     private Integer id;
 
-    private int assess;
+    private LocalDateTime date;
+    private double value;
     private String status;
 
     @ManyToOne
     @JoinColumn
-    private DogoEntity dogo;
+    private PaymentTypeEntity paymentType;
 
     @ManyToOne
     @JoinColumn
-    private ServiceEntity service;
-
-    /*@OneToMany(mappedBy = "serviceDiary")
-    List<LocationEntity> locations;*/
-
-    @OneToMany(mappedBy = "serviceDiary")
-    List<TransactionEntity> transactions;
+    private ServiceDiaryEntity serviceDiary;
 }
