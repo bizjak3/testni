@@ -33,9 +33,10 @@ describe('registracija uporabnika izvajalca', function () {
 
         cy.get('.btn-primary')
             .click()
+        cy.wait(500)
 
 
 
-        cy.contains('Prijava')
+        cy.get('h1').contains('PRIJAVA')
     });
 });

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "service_diary")
@@ -29,9 +30,9 @@ public class ServiceDiaryEntity {
     @JoinColumn
     private ServiceEntity service;
 
-    @OneToMany(mappedBy = "serviceDiary")
-    private List<LocationEntity> locations;
+    @OneToMany(mappedBy = "serviceDiary", fetch = FetchType.EAGER)
+    private Set<LocationEntity> locations;
 
-    @OneToMany(mappedBy = "serviceDiary")
-    private List<TransactionEntity> transactions;
+    @OneToMany(mappedBy = "serviceDiary", fetch = FetchType.EAGER)
+    private Set<TransactionEntity> transactions;
 }
