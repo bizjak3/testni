@@ -28,7 +28,7 @@ public class ServiceEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
-    private UserEntity subscriber;
+    private UserEntity author;
 
     @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
     private List<LocationEntity> locations;

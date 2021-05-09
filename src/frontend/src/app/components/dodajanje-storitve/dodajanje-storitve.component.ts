@@ -4,9 +4,9 @@ import * as geo from "esri-leaflet-geocoder"
 
 
 
-const iconRetinaUrl = 'assets/pictures/marker-icon-2x.png';
-const iconUrl = 'assets/pictures/marker-icon.png';
-const shadowUrl = 'assets/pictures/marker-shadow.png';
+const iconRetinaUrl = '../../assets/pictures/marker-icon-2x.png';
+const iconUrl = '../../assets/pictures/marker-icon.png';
+const shadowUrl = '../../assets/pictures/marker-shadow.png';
 const iconDefault = L.icon({
   iconRetinaUrl,
   iconUrl,

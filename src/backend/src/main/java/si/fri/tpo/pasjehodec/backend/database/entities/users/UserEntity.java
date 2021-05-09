@@ -44,10 +44,10 @@ public class UserEntity implements UserDetails {
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     private List<DogoEntity> dogos;
 
-    @OneToMany(mappedBy = "subscriber", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
     private List<ServiceEntity> services;
 
-    @OneToMany(mappedBy = "sender", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "sender")
     private List<MessageEntity> messages;
 
     @OneToMany(mappedBy = "cardOwner", fetch = FetchType.EAGER)
