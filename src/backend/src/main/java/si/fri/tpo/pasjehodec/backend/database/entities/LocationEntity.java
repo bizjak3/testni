@@ -22,11 +22,11 @@ public class LocationEntity {
     private double geoLat;
     private double geoLon;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private ServiceEntity service;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private ServiceDiaryEntity serviceDiary;
 

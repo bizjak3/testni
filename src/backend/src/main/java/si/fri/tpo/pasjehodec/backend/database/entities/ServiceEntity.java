@@ -26,14 +26,14 @@ public class ServiceEntity {
     private LocalDateTime dateFrom;
     private LocalDateTime dateTo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private UserEntity subscriber;
 
-    @OneToMany(mappedBy = "service")
+    @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
     private List<LocationEntity> locations;
 
-    @OneToMany(mappedBy = "service")
+    @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
     private List<ServiceDiaryEntity> serviceDiaries;
 
 }

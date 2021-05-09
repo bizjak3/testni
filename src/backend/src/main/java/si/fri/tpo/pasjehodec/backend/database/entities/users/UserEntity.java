@@ -44,13 +44,13 @@ public class UserEntity implements UserDetails {
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     private List<DogoEntity> dogos;
 
-    @OneToMany(mappedBy = "subscriber")
+    @OneToMany(mappedBy = "subscriber", fetch = FetchType.EAGER)
     private List<ServiceEntity> services;
 
-    @OneToMany(mappedBy = "sender")
+    @OneToMany(mappedBy = "sender", fetch = FetchType.EAGER)
     private List<MessageEntity> messages;
 
-    @OneToMany(mappedBy = "cardOwner")
+    @OneToMany(mappedBy = "cardOwner", fetch = FetchType.EAGER)
     private List<PaymentTypeEntity> paymentTypes;
 
 

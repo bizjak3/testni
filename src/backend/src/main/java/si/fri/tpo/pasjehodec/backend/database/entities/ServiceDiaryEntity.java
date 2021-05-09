@@ -21,17 +21,17 @@ public class ServiceDiaryEntity {
     private int assess;
     private String status;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private DogoEntity dogo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private ServiceEntity service;
 
-    @OneToMany(mappedBy = "serviceDiary")
+    @OneToMany(mappedBy = "serviceDiary", fetch = FetchType.EAGER)
     private List<LocationEntity> locations;
 
-    @OneToMany(mappedBy = "serviceDiary")
+    @OneToMany(mappedBy = "serviceDiary", fetch = FetchType.EAGER)
     private List<TransactionEntity> transactions;
 }

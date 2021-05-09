@@ -25,10 +25,10 @@ public class PaymentTypeEntity {
     private LocalDateTime expirationDate;
     private boolean defaultPaymentType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private UserEntity cardOwner;
 
-    @OneToMany(mappedBy = "paymentType")
+    @OneToMany(mappedBy = "paymentType", fetch = FetchType.EAGER)
     private List<TransactionEntity> transactions;
 }
