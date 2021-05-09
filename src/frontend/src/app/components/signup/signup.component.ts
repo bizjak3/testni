@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
+  public uporabnik = {
+    lastnik: false,
+    izvajalec: false
+  };
   submitted = false;
   emptyPassword = true;
   username = '';
@@ -14,9 +18,17 @@ export class SignupComponent implements OnInit {
   isOnline = false; // to bila funkcija
   public napakaNaObrazcu = '';
 
+  public kajJe() {
+    console.log(this.uporabnik.lastnik ? 'je lastnik' : 'je izvajalec');
+  }
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  radioChangeHandler(event: any) {
+    console.log(event.target.value);
   }
 
 }
