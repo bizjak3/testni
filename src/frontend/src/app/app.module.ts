@@ -11,6 +11,7 @@ import { NavbarLoginSignupComponent } from './components/navbars/navbar-login-si
 import { SignupComponent } from './components/signup/signup.component';
 import { DodajPsaComponent } from './components/dodaj-psa/dodaj-psa.component';
 import { ZacetnaStranComponent } from './components/zacetna-stran/zacetna-stran.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ZacetnaStranComponent } from './components/zacetna-stran/zacetna-stran.
     NavbarLoginSignupComponent,
     SignupComponent,
     DodajPsaComponent,
-    ZacetnaStranComponent
+    ZacetnaStranComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
