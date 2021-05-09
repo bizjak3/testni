@@ -47,7 +47,7 @@ public class UserEntity implements UserDetails {
     @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
     private List<ServiceEntity> services;
 
-    @OneToMany(mappedBy = "sender")
+    @OneToMany(mappedBy = "sender", fetch = FetchType.EAGER)
     private List<MessageEntity> messages;
 
     @OneToMany(mappedBy = "cardOwner", fetch = FetchType.EAGER)
