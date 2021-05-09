@@ -65,9 +65,12 @@ export class DodajanjeStoritveComponent implements OnInit {
         this.map.removeLayer(marker);
       }
       marker = new L.marker(e.latlng).addTo(this.map);
+      console.log(e.latlng.lat, e.latlng.lng);
+      this.storitev.lat = e.latlng.lat;
+      this.storitev.lng = e.latlng.lng;
       geocodeService.reverse().latlng(e.latlng).run((error, result) => {
-        this.storitev.lat = e.latlng.lat
-        this.storitev.lng = e.latlng.lng
+        
+        
       })
     })
   }
