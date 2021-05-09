@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterService } from '../../services/register/register.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,8 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SignupComponent implements OnInit {
 
   public uporabnik = {
-    lastnik: false,
-    izvajalec: false,
+    tip: "",
     ime: '',
     priimek: '',
     uporabniskoIme: '',
@@ -20,20 +20,53 @@ export class SignupComponent implements OnInit {
   emptyPassword = true;
   username = '';
   showSuccess = false;
-  isOnline = false; // to bila funkcija
+  //isOnline = false; // to bila funkcija
   public napakaNaObrazcu = '';
 
   public kajJe() {
-    console.log(this.uporabnik.lastnik ? 'je lastnik' : 'je izvajalec');
+    console.log(this.uporabnik.tip ? 'lastnik' : 'izvajalec');
   }
 
-  constructor() { }
+  constructor(private reg: RegisterService) { }
 
   ngOnInit(): void {
   }
 
   radioChangeHandler(event: any) {
     console.log(event.target.value);
+  }
+
+/*
+  {
+    name: this.uporabnik.ime,
+    surname: this.uporabnik.priimek,
+    email: this.uporabnik.email,
+    username: this.uporabnik.uporabniskoIme,
+    password: this.uporabnik.geslo
+  }
+  */
+  public register() {
+    console.log(this.uporabnik);
+    if(this.uporabnik.tip == "lastnik"){
+      console.log("je lastnik");
+      this.reg.registerOwner({
+        name: this.uporabnik.ime,
+        surname: this.uporabnik.priimek,
+        email: this.uporabnik.email,
+        username: this.uporabnik.uporabniskoIme,
+        password: this.uporabnik.geslo
+      });
+    }else{
+      console.log("ni lastnik");
+      this.reg.registerWorker({
+        name: this.uporabnik.ime,
+        surname: this.uporabnik.priimek,
+        email: this.uporabnik.email,
+        username: this.uporabnik.uporabniskoIme,
+        password: this.uporabnik.geslo
+      });
+    }
+
   }
 
 }
