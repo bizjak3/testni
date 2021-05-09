@@ -20,15 +20,15 @@ public class PaymentTypeEntity {
     @GeneratedValue
     private Integer id;
 
-    String cardNumber;
-    String cw;
-    LocalDateTime expirationDate;
-    boolean defaultPaymentType;
+    private String cardNumber;
+    private String cw;
+    private LocalDateTime expirationDate;
+    private boolean defaultPaymentType;
 
     @ManyToOne
     @JoinColumn
     private UserEntity cardOwner;
 
     @OneToMany(mappedBy = "paymentType")
-    List<TransactionEntity> transactions;
+    private List<TransactionEntity> transactions;
 }

@@ -20,20 +20,20 @@ public class ServiceEntity {
     @GeneratedValue
     private Integer id;
 
-    String name;
-    String description;
-    String restrictions;
-    LocalDateTime dateFrom;
-    LocalDateTime dateTo;
+    private String name;
+    private String description;
+    private String restrictions;
+    private LocalDateTime dateFrom;
+    private LocalDateTime dateTo;
 
     @ManyToOne
     @JoinColumn
     private UserEntity subscriber;
 
     @OneToMany(mappedBy = "service")
-    List<LocationEntity> locations;
+    private List<LocationEntity> locations;
 
     @OneToMany(mappedBy = "service")
-    List<ServiceDiaryEntity> serviceDiaries;
+    private List<ServiceDiaryEntity> serviceDiaries;
 
 }

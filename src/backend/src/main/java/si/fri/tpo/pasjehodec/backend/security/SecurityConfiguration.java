@@ -12,6 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import si.fri.tpo.pasjehodec.backend.database.repositories.UserRepository;
 import si.fri.tpo.pasjehodec.backend.security.filters.AuthenticationFilter;
 import si.fri.tpo.pasjehodec.backend.security.filters.AuthorizationFilter;
@@ -53,6 +56,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsServiceImplementation).passwordEncoder(bCryptPasswordEncoder);
+    }
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        var configuration = new CorsConfiguration().applyPermitDefaultValues();
+        configuration.addAllowedMethod("PUT");
+        configuration.addAllowedMethod("DELETE");
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 
     @Bean

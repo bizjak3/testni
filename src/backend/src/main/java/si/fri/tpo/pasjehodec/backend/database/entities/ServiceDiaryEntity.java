@@ -29,8 +29,8 @@ public class ServiceDiaryEntity {
     @JoinColumn
     private ServiceEntity service;
 
-    /*@OneToMany(mappedBy = "serviceDiary")
-    List<LocationEntity> locations;*/
+    @OneToMany(mappedBy = "serviceDiary")
+    List<LocationEntity> locations;
 
     @OneToMany(mappedBy = "serviceDiary")
     List<TransactionEntity> transactions;
