@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExceptionWrapper {
-    private String message;
+public class ExceptionWrapper<T> {
+    private T message;
 }

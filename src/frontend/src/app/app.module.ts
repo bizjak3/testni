@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,8 @@ import { NavbarLoginSignupComponent } from './components/navbars/navbar-login-si
 import { SignupComponent } from './components/signup/signup.component';
 import { DodajPsaComponent } from './components/dodaj-psa/dodaj-psa.component';
 import { ZacetnaStranComponent } from './components/zacetna-stran/zacetna-stran.component';
+import { DodajanjeStoritveComponent } from './components/dodajanje-storitve/dodajanje-storitve.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +24,16 @@ import { ZacetnaStranComponent } from './components/zacetna-stran/zacetna-stran.
     NavbarLoginSignupComponent,
     SignupComponent,
     DodajPsaComponent,
-    ZacetnaStranComponent
+    ZacetnaStranComponent,
+    DodajanjeStoritveComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

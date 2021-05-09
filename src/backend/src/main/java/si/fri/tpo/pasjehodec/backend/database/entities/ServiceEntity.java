@@ -7,6 +7,7 @@ import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name="service")
@@ -19,14 +20,20 @@ public class ServiceEntity {
     @GeneratedValue
     private Integer id;
 
-    String name;
-    String description;
-    String restrictions;
-    LocalDateTime dateFrom;
-    LocalDateTime dateTo;
+    private String name;
+    private String description;
+    private String restrictions;
+    private LocalDateTime dateFrom;
+    private LocalDateTime dateTo;
 
     @ManyToOne
     @JoinColumn
     private UserEntity subscriber;
+
+    @OneToMany(mappedBy = "service")
+    private List<LocationEntity> locations;
+
+    @OneToMany(mappedBy = "service")
+    private List<ServiceDiaryEntity> serviceDiaries;
 
 }
