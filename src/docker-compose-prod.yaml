@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  frontend:
+    image: bizjak3/tpo:frontend
+    hostname: bizjak3/tpo:frontend
+    ports:
+    - "4200:80"
+
+  backend:
+    build: backend
+    ports:
+    - "8080:80"
+
+
+  # databases
+  mariadb:
+    image: mariadb
+    hostname: mariadb
+    restart: on-failure
+    volumes:
+      - ./volumes/mariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: PasjehodecDB
+      MYSQL_USER: pasjehodec
+      MYSQL_PASSWORD: pasjehodec_zelo_mocno_geslo_123
+    ports:
+    - "127.0.0.1:3306:3306"
+  redis:
+    image: redis
+    hostname: redis
+    restart: on-failure
+    volumes:
+      - ./volumes/redis:/data
+    ports:
+    - "127.0.0.1:6379:6379"
+
+  watchtower:
+    image: v2tec/watchtower
+    environment:
+      REPO_USER: bizjak3
+      REPO_PASS: Vp&LLPQJdES6RXc
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 --debug
