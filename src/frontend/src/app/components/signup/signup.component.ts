@@ -66,6 +66,7 @@ export class SignupComponent implements OnInit {
           (err: HttpErrorResponse) => {
             const errorWrapper = err.error as ErrorWrapper;
             //naredi nekaj z errorji
+            console.log(err);
           }
         );
     } else {
