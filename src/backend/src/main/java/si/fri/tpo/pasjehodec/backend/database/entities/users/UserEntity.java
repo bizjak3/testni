@@ -42,16 +42,16 @@ public class UserEntity implements UserDetails {
     private Boolean isAdmin = false;
 
     @OneToMany(mappedBy = "owner")
-    List<DogoEntity> dogos;
+    private List<DogoEntity> dogos;
 
     @OneToMany(mappedBy = "subscriber")
-    List<ServiceEntity> services;
+    private List<ServiceEntity> services;
 
     @OneToMany(mappedBy = "sender")
-    List<MessageEntity> messages;
+    private List<MessageEntity> messages;
 
     @OneToMany(mappedBy = "cardOwner")
-    List<PaymentTypeEntity> paymentTypes;
+    private List<PaymentTypeEntity> paymentTypes;
 
 
     //privzeto potrebno za implementirati zaradi security, se ne rabi

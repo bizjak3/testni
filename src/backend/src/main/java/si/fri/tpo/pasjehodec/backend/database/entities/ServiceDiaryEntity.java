@@ -30,8 +30,8 @@ public class ServiceDiaryEntity {
     private ServiceEntity service;
 
     @OneToMany(mappedBy = "serviceDiary")
-    List<LocationEntity> locations;
+    private List<LocationEntity> locations;
 
     @OneToMany(mappedBy = "serviceDiary")
-    List<TransactionEntity> transactions;
+    private List<TransactionEntity> transactions;
 }

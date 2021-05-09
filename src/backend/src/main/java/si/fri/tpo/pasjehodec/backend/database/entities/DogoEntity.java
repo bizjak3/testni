@@ -27,5 +27,5 @@ public class DogoEntity {
     private UserEntity owner;
 
     @OneToMany(mappedBy = "dogo")
-    List<ServiceDiaryEntity> serviceDiaries;
+    private List<ServiceDiaryEntity> serviceDiaries;
 }
