@@ -12,6 +12,10 @@ export class LoginComponent implements OnInit {
   username = '';
   showSuccess = false;
   isOnline = false; // to bila funkcija
+  public prijava = {
+    email: '',
+    geslo: ''
+  };
   public napakaNaObrazcu = '';
 
   constructor() { }

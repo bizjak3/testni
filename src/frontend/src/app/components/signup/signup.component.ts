@@ -9,7 +9,12 @@ export class SignupComponent implements OnInit {
 
   public uporabnik = {
     lastnik: false,
-    izvajalec: false
+    izvajalec: false,
+    ime: '',
+    priimek: '',
+    uporabniskoIme: '',
+    email: '',
+    geslo: '',
   };
   submitted = false;
   emptyPassword = true;
