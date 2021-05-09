@@ -8,9 +8,15 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import si.fri.tpo.pasjehodec.backend.constants.JwtConstants;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
+import si.fri.tpo.pasjehodec.backend.database.entities.users.UserType;
+import si.fri.tpo.pasjehodec.backend.dtos.mappers.UserEntityMapper;
+import si.fri.tpo.pasjehodec.backend.dtos.models.login_register.LoginDto;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -21,24 +27,41 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 
-@RequiredArgsConstructor
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
     private final Integer expirationTime;
     private final String jwtSecret;
     private final Integer refreshTime;
 
+    public AuthenticationFilter(AuthenticationManager authenticationManager, String jwtSecret, Integer expirationTime, Integer refreshTime) {
+        super(authenticationManager);
+        this.authenticationManager = authenticationManager;
+        this.expirationTime = expirationTime;
+        this.jwtSecret = jwtSecret;
+        this.refreshTime = refreshTime;
+    }
+
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
-            UserEntity userEntity = new ObjectMapper()
-                    .readValue(request.getInputStream(), UserEntity.class);
+            LoginDto loginDto = new ObjectMapper()
+                    .readValue(request.getInputStream(), LoginDto.class);
+            UserEntityMapper mapper = new UserEntityMapper();
+            UserEntity userEntity = mapper.mapUserEntityFromLoginDto(loginDto);
+
+            var authorities = new ArrayList<GrantedAuthority>();
+            if(userEntity.getIsAdmin())
+                authorities.add(new SimpleGrantedAuthority(UserType.ADMIN));
+            if(userEntity.getIsDogOwner())
+                authorities.add(new SimpleGrantedAuthority(UserType.DOG_OWNER));
+            if(userEntity.getIsServiceWorker())
+                authorities.add(new SimpleGrantedAuthority(UserType.SERVICE_WORKER));
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            userEntity.getEmail(),
+                            userEntity.getUsername(),
                             userEntity.getPassword(),
-                            new ArrayList<>()
+                            authorities
                     )
             );
         } catch (IOException exception) {
@@ -60,5 +83,10 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         response.addHeader(JwtConstants.AUTHORIZATION_HEADER_NAME, JwtConstants.TOKEN_PREFIX + token);
         response.addHeader(JwtConstants.REFRESH_TIME_HEADER_NAME, refreshTime.toString());
 
+    }
+
+    @Override
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
+        super.unsuccessfulAuthentication(request, response, failed);
     }
 }

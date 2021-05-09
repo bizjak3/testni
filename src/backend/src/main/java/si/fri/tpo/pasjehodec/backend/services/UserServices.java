@@ -31,7 +31,7 @@ public class UserServices {
      * @throws BadRequestException something wrong, look in response
      * @throws ForbiddenOperationException user exists in database, but passwords doesn't match
      */
-    public UserEntity createNewUser(UserEntity user, UserType userType) throws BadRequestException, ForbiddenOperationException {
+    public UserEntity createNewUser(UserEntity user, String userType) throws BadRequestException, ForbiddenOperationException {
         //preveri, če je email veljaven
         if(!emailServices.isEmailValid(user.getEmail()))
             throw new BadRequestException("Epoštni naslov ni pravilne oblike");
@@ -58,10 +58,10 @@ public class UserServices {
         return userRepository.findAll().toArray(UserEntity[]::new);
     }
 
-    private UserEntity addUserTypeToUser(UserEntity entity, UserType type) {
-        if(type == UserType.DOG_OWNER)
+    private UserEntity addUserTypeToUser(UserEntity entity, String type) {
+        if(type.equals(UserType.DOG_OWNER))
             entity.setIsDogOwner(true);
-        if(type == UserType.SERVICE_WORKER)
+        if(type.equals(UserType.SERVICE_WORKER))
             entity.setIsServiceWorker(true);
 
         return entity;

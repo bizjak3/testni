@@ -47,6 +47,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         String token = request.getHeader(JwtConstants.AUTHORIZATION_HEADER_NAME);
         if (token != null) {
+            token = token.replace(JwtConstants.TOKEN_PREFIX, "");
             String user = JWT.require(Algorithm.HMAC512(jwtSecret.getBytes()))
                     .build()
                     .verify(token.replace(JwtConstants.TOKEN_PREFIX, ""))
@@ -56,11 +57,11 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
                 var userEntity = userDetailsServiceImplementation.loadUserByUsername(user);
                 var authorities = new ArrayList<GrantedAuthority>();
                 if(userEntity.getIsAdmin())
-                    authorities.add(new SimpleGrantedAuthority(UserType.ADMIN.toString()));
+                    authorities.add(new SimpleGrantedAuthority(UserType.ADMIN));
                 if(userEntity.getIsDogOwner())
-                    authorities.add(new SimpleGrantedAuthority(UserType.DOG_OWNER.toString()));
+                    authorities.add(new SimpleGrantedAuthority(UserType.DOG_OWNER));
                 if(userEntity.getIsServiceWorker())
-                    authorities.add(new SimpleGrantedAuthority(UserType.SERVICE_WORKER.toString()));
+                    authorities.add(new SimpleGrantedAuthority(UserType.SERVICE_WORKER));
 
                 return new UsernamePasswordAuthenticationToken(
                         userEntity,
