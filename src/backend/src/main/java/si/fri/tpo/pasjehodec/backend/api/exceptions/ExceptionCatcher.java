@@ -24,37 +24,37 @@ lovi exceptione, ki se zgodijo v servisih in na bazi ter kriera primeren API res
 public class ExceptionCatcher {
 
     @ExceptionHandler(value = {BadRequestException.class})
-    public ResponseEntity<ExceptionWrapper<String>> handleBadRequestException(BadRequestException exception) {
+    public ResponseEntity<ExceptionWrapper> handleBadRequestException(BadRequestException exception) {
         log.warning(exception.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ExceptionWrapper<>(exception.getMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ExceptionWrapper(exception.getMessage()));
     }
 
     @ExceptionHandler(value = {ForbiddenOperationException.class})
-    public ResponseEntity<ExceptionWrapper<String>> handleForbiddenException(ForbiddenOperationException exception) {
+    public ResponseEntity<ExceptionWrapper> handleForbiddenException(ForbiddenOperationException exception) {
         log.warning(exception.getMessage());
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ExceptionWrapper<>(exception.getMessage()));
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ExceptionWrapper(exception.getMessage()));
     }
 
     @ExceptionHandler(value = {DataNotFoundException.class})
-    public ResponseEntity<ExceptionWrapper<String>> handleDataNotFoundException(DataNotFoundException exception) {
+    public ResponseEntity<ExceptionWrapper> handleDataNotFoundException(DataNotFoundException exception) {
         log.warning(exception.getMessage());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionWrapper<>(exception.getMessage()));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionWrapper(exception.getMessage()));
     }
 
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
-    public ResponseEntity<ExceptionWrapper<List<String>>> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
+    public ResponseEntity<ExceptionWrapper> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         log.warning(exception.getMessage());
         var errors = exception.getBindingResult().getFieldErrors().stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
                 .collect(Collectors.toList());
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionWrapper<>(errors));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionWrapper(errors));
     }
 
     @ExceptionHandler(value = {Exception.class})
-    public ResponseEntity<ExceptionWrapper<String>> handleDefaultException(Exception exception) {
+    public ResponseEntity<ExceptionWrapper> handleDefaultException(Exception exception) {
         log.warning(exception.getMessage());
         exception.printStackTrace();
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ExceptionWrapper<>(exception.getMessage()));
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ExceptionWrapper(exception.getMessage()));
     }
 }
