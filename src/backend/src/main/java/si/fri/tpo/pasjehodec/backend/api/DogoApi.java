@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import si.fri.tpo.pasjehodec.backend.database.entities.DogoEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserType;
 import si.fri.tpo.pasjehodec.backend.dtos.mappers.DogoEntityMapper;
@@ -28,8 +27,9 @@ public class DogoApi {
             UserType.DOG_OWNER,
             UserType.ADMIN
     })
-    public ResponseEntity<DogoDto> postDogo(@RequestBody DogoEntity dogo, @AuthenticationPrincipal UserEntity user) {
-        var entity = dogoService.addDogo(dogo, dogo.getOwner());
+    public ResponseEntity<DogoDto> postDogo(@RequestBody DogoDto dogo, @AuthenticationPrincipal UserEntity user) {
+        var entity = dogoEntityMapper.castDogoEntityFromDto(dogo);
+        entity = dogoService.addDogo(entity, entity.getOwner());
         return ResponseEntity.ok(dogoEntityMapper.castDogoDtoFromEntity(entity));
     }
 }

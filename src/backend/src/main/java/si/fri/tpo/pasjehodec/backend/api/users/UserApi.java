@@ -7,29 +7,37 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserType;
+import si.fri.tpo.pasjehodec.backend.dtos.mappers.UserEntityMapper;
+import si.fri.tpo.pasjehodec.backend.dtos.models.user.UserDto;
 import si.fri.tpo.pasjehodec.backend.exceptions.BadRequestException;
 import si.fri.tpo.pasjehodec.backend.services.UserServices;
+
+import java.util.Arrays;
 
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserApi {
     private final UserServices userServices;
+    private final UserEntityMapper userEntityMapper;
 
     @GetMapping("/get-all")
     @Secured({"ADMIN"})
-    public ResponseEntity<UserEntity[]> getUsers() {
+    public ResponseEntity<UserDto[]> getUsers() {
         return ResponseEntity.ok(
-                userServices.usersOverview()
+                Arrays.stream(userServices.usersOverview())
+                        .map(userEntityMapper::mapUserDtoFromEntity)
+                        .toArray(UserDto[]::new)
         );
     }
 
 
 
     @PutMapping("/put")
-    public ResponseEntity<UserEntity> putUser(@RequestBody UserEntity user, @AuthenticationPrincipal UserEntity userEntity) {
+    public ResponseEntity<UserEntity> putUser(@RequestBody UserDto user, @AuthenticationPrincipal UserEntity userEntity) {
+        var entity = userEntityMapper.mapUserEntityFromDto(user);
         return ResponseEntity.ok(
-                userServices.saveData(user)
+                userServices.saveData(entity)
         );
     }
 }
