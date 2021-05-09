@@ -19,8 +19,8 @@ public class MessageEntity {
     @GeneratedValue
     private Integer id;
 
-    String text;
-    LocalDateTime created;
+    private String text;
+    private LocalDateTime created;
 
     @ManyToOne
     @JoinColumn
