@@ -28,7 +28,7 @@ public class ServiceEntity {
 
     @ManyToOne
     @JoinColumn
-    private UserEntity subscriber;
+    private UserEntity author;
 
     @OneToMany(mappedBy = "service")
     private List<LocationEntity> locations;

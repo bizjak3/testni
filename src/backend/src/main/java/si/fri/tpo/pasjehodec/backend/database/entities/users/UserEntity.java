@@ -44,7 +44,7 @@ public class UserEntity implements UserDetails {
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     private List<DogoEntity> dogos;
 
-    @OneToMany(mappedBy = "subscriber")
+    @OneToMany(mappedBy = "author")
     private List<ServiceEntity> services;
 
     @OneToMany(mappedBy = "sender")
