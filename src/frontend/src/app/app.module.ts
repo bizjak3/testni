@@ -7,6 +7,7 @@ import { ToBeDeletedComponent } from './components/to-be-deleted/to-be-deleted.c
 import { ToBeDeletedPipe } from './pipes/to-be-deleted/to-be-deleted.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarLoginSignupComponent } from './components/navbars/navbar-login-signup/navbar-login-signup.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NavbarLoginSignupComponent } from './components/navbars/navbar-login-si
     ToBeDeletedComponent,
     ToBeDeletedPipe,
     LoginComponent,
-    NavbarLoginSignupComponent
+    NavbarLoginSignupComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
