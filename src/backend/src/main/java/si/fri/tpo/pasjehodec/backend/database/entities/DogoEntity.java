@@ -26,6 +26,6 @@ public class DogoEntity {
     @JoinColumn
     private UserEntity owner;
 
-    @OneToMany(mappedBy = "dogo", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "dogo")
     private List<ServiceDiaryEntity> serviceDiaries;
 }

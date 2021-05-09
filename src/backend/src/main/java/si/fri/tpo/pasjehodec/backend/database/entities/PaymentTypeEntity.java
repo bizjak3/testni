@@ -29,6 +29,6 @@ public class PaymentTypeEntity {
     @JoinColumn
     private UserEntity cardOwner;
 
-    @OneToMany(mappedBy = "paymentType", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "paymentType")
     private List<TransactionEntity> transactions;
 }

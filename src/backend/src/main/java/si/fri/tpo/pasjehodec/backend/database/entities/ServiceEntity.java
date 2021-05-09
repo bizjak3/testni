@@ -30,10 +30,10 @@ public class ServiceEntity {
     @JoinColumn
     private UserEntity author;
 
-    @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "service")
     private List<LocationEntity> locations;
 
-    @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "service")
     private List<ServiceDiaryEntity> serviceDiaries;
 
 }

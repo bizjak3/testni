@@ -29,9 +29,9 @@ public class ServiceDiaryEntity {
     @JoinColumn
     private ServiceEntity service;
 
-    @OneToMany(mappedBy = "serviceDiary", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "serviceDiary")
     private List<LocationEntity> locations;
 
-    @OneToMany(mappedBy = "serviceDiary", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "serviceDiary")
     private List<TransactionEntity> transactions;
 }

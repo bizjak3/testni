@@ -41,16 +41,16 @@ public class UserEntity implements UserDetails {
     private Boolean isServiceWorker = false;
     private Boolean isAdmin = false;
 
-    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "owner")
     private List<DogoEntity> dogos;
 
-    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "author")
     private List<ServiceEntity> services;
 
-    @OneToMany(mappedBy = "sender", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "sender")
     private List<MessageEntity> messages;
 
-    @OneToMany(mappedBy = "cardOwner", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cardOwner")
     private List<PaymentTypeEntity> paymentTypes;
 
 
