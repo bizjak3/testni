@@ -48,9 +48,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
+      - name: premakni na frontend
+        run: cd src/frontend
 
     # Runs a single command using the runners shell
-      - name: Cypress run --spec test/*.js
+      - name: Cypress run --spec ../../test/*.js
         uses: cypress-io/github-action@v2
         with:
           build: npm run build
