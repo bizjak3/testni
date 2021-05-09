@@ -11,6 +11,9 @@ import si.fri.tpo.pasjehodec.backend.exceptions.ForbiddenOperationException;
 
 @ControllerAdvice
 @Log
+/*
+lovi exceptione, ki se zgodijo v servisih in na bazi ter kriera primeren API response
+ */
 public class ExceptionCatcher {
 
     @ExceptionHandler(value = {BadRequestException.class})
