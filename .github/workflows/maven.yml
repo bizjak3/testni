@@ -5,8 +5,6 @@ name: GitHub Actions Maven
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ test ]
   pull_request:
     branches: [ test ]
 
@@ -38,5 +36,5 @@ jobs:
       - name: izpisi 
         run: |
           ls -a
-          cd target
+          cd src/backend/target
           ls -a
