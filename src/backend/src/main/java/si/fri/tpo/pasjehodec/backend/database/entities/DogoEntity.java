@@ -22,7 +22,7 @@ public class DogoEntity {
     private String breed;
     private Integer breedId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private UserEntity owner;
 

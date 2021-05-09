@@ -54,6 +54,7 @@ public class ExceptionCatcher {
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<ExceptionWrapper<String>> handleDefaultException(Exception exception) {
         log.warning(exception.getMessage());
+        exception.printStackTrace();
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ExceptionWrapper<>(exception.getMessage()));
     }
 }
