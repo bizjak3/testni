@@ -41,7 +41,7 @@ public class UserEntity implements UserDetails {
     private Boolean isServiceWorker = false;
     private Boolean isAdmin = false;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     private List<DogoEntity> dogos;
 
     @OneToMany(mappedBy = "subscriber")

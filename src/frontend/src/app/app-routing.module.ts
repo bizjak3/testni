@@ -6,6 +6,7 @@ import { DodajPsaComponent } from './components/dodaj-psa/dodaj-psa.component';
 import { ZacetnaStranComponent } from './components/zacetna-stran/zacetna-stran.component';
 import { DodajanjeStoritveComponent } from './components/dodajanje-storitve/dodajanje-storitve.component';
 import { ProfilComponent } from './components/profil/profil.component';
+import { LoginService } from './services/login/login.service';
 
 const routes: Routes = [
   {
@@ -23,17 +24,17 @@ const routes: Routes = [
   {
     path: 'dodaj_psa',
     component: DodajPsaComponent,
-    canActivate: [LoginComponent],
+    canActivate: [LoginService],
   },
   {
     path: 'dodaj_storitev',
     component: DodajanjeStoritveComponent,
-    canActivate: [LoginComponent],
+    canActivate: [LoginService],
   },
   {
     path: 'profil',
     component: ProfilComponent,
-    canActivate: [LoginComponent],
+    canActivate: [LoginService],
   },
 ];
 

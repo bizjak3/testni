@@ -11,7 +11,6 @@ public class UserDto {
     private String surname;
     private String email;
     private String username;
-    private String password;
     private Boolean isDogOwner;
     private Boolean isServiceWorker;
     private Boolean isAdmin;

@@ -7,6 +7,8 @@ import si.fri.tpo.pasjehodec.backend.dtos.models.login_register.LoginDto;
 import si.fri.tpo.pasjehodec.backend.dtos.models.login_register.RegisterDto;
 import si.fri.tpo.pasjehodec.backend.dtos.models.user.UserDto;
 
+import javax.transaction.Transactional;
+
 @Service
 public class UserEntityMapper {
     private final ModelMapper modelMapper = new ModelMapper();
