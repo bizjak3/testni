@@ -5,21 +5,23 @@
 
 <!-- ################ main body ################ -->
 <main>
-  <div ng-app="myApp" ng-controller="myController" class="container">
-    <form name="myForm">
+  <div class="main col d-flex justify-content-center">
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+    <form name="myForm" (submit)="isOnline" id="forma" class="box mx-auto">
       <div role="alert" *ngIf="napakaNaObrazcu" class="alert alert-danger">{{ napakaNaObrazcu }}</div>
       <div class="login-container">
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
+              <h1>PRIJAVA</h1>
               <label>Email</label>
-              <input type="email" name="email" class="form-control">
+              <input type="email" name="email" class="form-control email">
             </div>
           </div>
           <div class="col-md-12">
             <div class="form-group">
               <label>Geslo</label>
-              <input type="password" name="pass" class="form-control">
+              <input type="password" name="pass" class="form-control password">
             </div>
           </div>
           <div class="col-md-12">
@@ -39,5 +41,6 @@
         </div>
       </div>
     </form>
+    </div>
   </div>
 </main>
