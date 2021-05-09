@@ -11,6 +11,7 @@ import { NavbarLoginSignupComponent } from './components/navbars/navbar-login-si
 import { SignupComponent } from './components/signup/signup.component';
 import { DodajPsaComponent } from './components/dodaj-psa/dodaj-psa.component';
 import { ZacetnaStranComponent } from './components/zacetna-stran/zacetna-stran.component';
+import { DodajanjeStoritveComponent } from './components/dodajanje-storitve/dodajanje-storitve.component';
 import { ProfilComponent } from './components/profil/profil.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ProfilComponent } from './components/profil/profil.component';
     SignupComponent,
     DodajPsaComponent,
     ZacetnaStranComponent,
+    DodajanjeStoritveComponent,
     ProfilComponent
   ],
   imports: [

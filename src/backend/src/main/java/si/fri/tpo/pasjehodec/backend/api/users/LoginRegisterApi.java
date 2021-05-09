@@ -6,7 +6,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +20,8 @@ import si.fri.tpo.pasjehodec.backend.dtos.models.user.UserDto;
 import si.fri.tpo.pasjehodec.backend.exceptions.BadRequestException;
 import si.fri.tpo.pasjehodec.backend.exceptions.ForbiddenOperationException;
 import si.fri.tpo.pasjehodec.backend.services.UserServices;
+
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -53,7 +57,7 @@ public class LoginRegisterApi {
                     }
             )
     })
-    public ResponseEntity<UserDto> registerNewDogOwner(@RequestBody RegisterDto user) throws BadRequestException, ForbiddenOperationException {
+    public ResponseEntity<UserDto> registerNewDogOwner(@Valid @RequestBody RegisterDto user) throws BadRequestException, ForbiddenOperationException {
         var entity = userEntityMapper.mapUserEntityFromRegisterDto(user);
         entity = userServices.createNewUser(entity, UserType.DOG_OWNER);
         return ResponseEntity.ok(userEntityMapper.mapUserDtoFromEntity(entity));
@@ -88,7 +92,10 @@ public class LoginRegisterApi {
                     }
             )
     })
-    public ResponseEntity<UserDto> registerNewServiceOwner(@RequestBody RegisterDto user) {
-        return null;
+    public ResponseEntity<UserDto> registerNewServiceOwner(@RequestBody RegisterDto user) throws BadRequestException, ForbiddenOperationException {
+        var entity = userEntityMapper.mapUserEntityFromRegisterDto(user);
+        entity = userServices.createNewUser(entity, UserType.SERVICE_WORKER);
+        return ResponseEntity.ok(userEntityMapper.mapUserDtoFromEntity(entity));
     }
+
 }
