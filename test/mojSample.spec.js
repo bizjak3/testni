@@ -2,7 +2,7 @@ describe("First try", function () {
     it('Type in email and password', function () {
         cy.visit('http://localhost:4200/login')
 
-        cy.contains('Email')
+        cy.contains('Uporabniško ime')
         cy.contains('Geslo')
         cy.contains('Prijava')
         cy.contains('Registracija')
