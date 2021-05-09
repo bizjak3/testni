@@ -24,6 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^9.1.0",
     "bootstrap": "^4.5.0",
     "esri-leaflet-geocoder": "^3.0.0",
+    "jwt-decode": "^3.1.2",
     "leaflet": "^1.7.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
