@@ -3,11 +3,11 @@ version: "3"
 services:
   # frontenda v razvojni fazi ne potrebujemo v dockerju
   # ohranjamo za teste
-  frontend:
-    image: bizjak3/tpo:frontend
-    hostname: bizjak3/tpo:frontend
-    ports:
-    - "80:80"
+  #frontend:
+  #  image: bizjak3/tpo:frontend
+  #  hostname: bizjak3/tpo:frontend
+  #  ports:
+  #  - "80:80"
 
   # backenda v razvojni fazi ne potrebujemo v dockerju
   # ohranjamo za teste
