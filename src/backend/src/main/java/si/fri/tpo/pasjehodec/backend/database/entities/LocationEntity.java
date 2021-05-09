@@ -26,8 +26,8 @@ public class LocationEntity {
     @JoinColumn
     private ServiceEntity service;
 
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn
-    private ServiceDiaryEntity serviceDiary;*/
+    private ServiceDiaryEntity serviceDiary;
 
 }
