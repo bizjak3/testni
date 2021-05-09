@@ -7,6 +7,7 @@ import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name="service")
@@ -28,5 +29,8 @@ public class ServiceEntity {
     @ManyToOne
     @JoinColumn
     private UserEntity subscriber;
+
+    @OneToMany(mappedBy = "service")
+    List<LocationEntity> locations;
 
 }
