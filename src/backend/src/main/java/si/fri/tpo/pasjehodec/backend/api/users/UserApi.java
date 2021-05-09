@@ -40,6 +40,7 @@ public class UserApi {
                     }
             )
     })
+    @Transactional
     public ResponseEntity<UserDto> getInfoAboutLoggedInUser(@Parameter(hidden = true) @AuthenticationPrincipal UserEntity userEntity) {
         return ResponseEntity.ok(userEntityMapper.mapUserDtoFromEntity(userEntity));
     }

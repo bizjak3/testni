@@ -21,6 +21,7 @@ public class UserEntityMapper {
         return modelMapper.map(dto, UserEntity.class);
     }
 
+    @Transactional
     public UserDto mapUserDtoFromEntity(UserEntity entity) {
         return modelMapper.map(entity, UserDto.class);
     }
