@@ -26,8 +26,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: premakni in kopiraj
-        run: |
-          cd src/backend
+        run: cd src/backend
           
 
       # Runs a single command using the runners shell
