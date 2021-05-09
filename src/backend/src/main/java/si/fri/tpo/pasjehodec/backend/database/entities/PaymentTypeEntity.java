@@ -6,26 +6,25 @@ import lombok.Setter;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name="dogo")
+@Table(name="payment_type")
 @Getter
 @Setter
 @NoArgsConstructor
-public class DogoEntity {
+public class PaymentTypeEntity {
+
     @Id
     @GeneratedValue
     private Integer id;
 
-    private String name;
-    private String breed;
-    private Integer breedId;
+    String cardNumber;
+    String cw;
+    LocalDateTime expirationDate;
+    boolean defaultPaymentType;
 
     @ManyToOne
     @JoinColumn
-    private UserEntity owner;
-
-    @OneToMany(mappedBy = "dogo")
-    List<ServiceDiaryEntity> serviceDiaries;
+    private UserEntity cardOwner;
 }

@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import si.fri.tpo.pasjehodec.backend.database.entities.DogoEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.MessageEntity;
+import si.fri.tpo.pasjehodec.backend.database.entities.PaymentTypeEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.ServiceEntity;
 
 import javax.persistence.*;
@@ -48,6 +49,9 @@ public class UserEntity implements UserDetails {
 
     @OneToMany(mappedBy = "sender")
     List<MessageEntity> messages;
+
+    @OneToMany(mappedBy = "cardOwner")
+    List<PaymentTypeEntity> paymentTypes;
 
 
     //privzeto potrebno za implementirati zaradi security, se ne rabi

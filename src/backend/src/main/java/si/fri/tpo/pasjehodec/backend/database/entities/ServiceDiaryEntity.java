@@ -3,29 +3,32 @@ package si.fri.tpo.pasjehodec.backend.database.entities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="dogo")
+@Table(name = "service_diary")
 @Getter
 @Setter
 @NoArgsConstructor
-public class DogoEntity {
+public class ServiceDiaryEntity {
+
     @Id
     @GeneratedValue
     private Integer id;
 
-    private String name;
-    private String breed;
-    private Integer breedId;
+    private int assess;
+    private String status;
 
     @ManyToOne
     @JoinColumn
-    private UserEntity owner;
+    private DogoEntity dogo;
 
-    @OneToMany(mappedBy = "dogo")
-    List<ServiceDiaryEntity> serviceDiaries;
+    @ManyToOne
+    @JoinColumn
+    private ServiceEntity service;
+
+    /*@OneToMany(mappedBy = "serviceDiary")
+    List<LocationEntity> locations;*/
 }
