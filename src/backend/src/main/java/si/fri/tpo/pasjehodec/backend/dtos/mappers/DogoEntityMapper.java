@@ -13,4 +13,8 @@ public class DogoEntityMapper {
         return modelMapper.map(entity, DogoDto.class);
     }
 
+    public DogoEntity castDogoEntityFromDto(DogoDto dto) {
+        return modelMapper.map(dto, DogoEntity.class);
+    }
+
 }
