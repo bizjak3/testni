@@ -33,4 +33,7 @@ public class ServiceEntity {
     @OneToMany(mappedBy = "service")
     List<LocationEntity> locations;
 
+    @OneToMany(mappedBy = "service")
+    List<ServiceDiaryEntity> serviceDiaries;
+
 }

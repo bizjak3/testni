@@ -5,29 +5,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(name = "location")
+@Table(name = "service_diary")
 @Getter
 @Setter
 @NoArgsConstructor
-public class LocationEntity {
+public class ServiceDiaryEntity {
 
     @Id
     @GeneratedValue
     private Integer id;
 
-    private LocalDateTime date;
-    private double geoLat;
-    private double geoLon;
+    private int assess;
+    private String status;
+
+    @ManyToOne
+    @JoinColumn
+    private DogoEntity dogo;
 
     @ManyToOne
     @JoinColumn
     private ServiceEntity service;
 
-    /*@ManyToOne
-    @JoinColumn
-    private ServiceDiaryEntity serviceDiary;*/
-
+    /*@OneToMany(mappedBy = "serviceDiary")
+    List<LocationEntity> locations;*/
 }
