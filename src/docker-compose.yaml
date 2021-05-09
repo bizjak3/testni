@@ -3,10 +3,11 @@ version: "3"
 services:
   # frontenda v razvojni fazi ne potrebujemo v dockerju
   # ohranjamo za teste
-  #frontend:
-  #  build: frontend
-  #  ports:
-  #  - "10010:80"
+  frontend:
+    image: bizjak3/tpo:frontend
+    hostname: bizjak3/tpo:frontend
+    ports:
+    - "10010:80"
 
   # backenda v razvojni fazi ne potrebujemo v dockerju
   # ohranjamo za teste
@@ -38,3 +39,12 @@ services:
       - ./volumes/redis:/data
     ports:
     - "10002:6379"
+
+  watchtower:
+    image: v2tec/watchtower
+    environment:
+      REPO_USER: bizjak3
+      REPO_PASS: Vp&LLPQJdES6RXc
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 --debug
