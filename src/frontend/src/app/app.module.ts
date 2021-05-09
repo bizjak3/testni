@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarLoginSignupComponent } from './components/navbars/navbar-login-signup/navbar-login-signup.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DodajPsaComponent } from './components/dodaj-psa/dodaj-psa.component';
+import { ZacetnaStranComponent } from './components/zacetna-stran/zacetna-stran.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DodajPsaComponent } from './components/dodaj-psa/dodaj-psa.component';
     LoginComponent,
     NavbarLoginSignupComponent,
     SignupComponent,
-    DodajPsaComponent
+    DodajPsaComponent,
+    ZacetnaStranComponent
   ],
   imports: [
     BrowserModule,
