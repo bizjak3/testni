@@ -1,4 +1,4 @@
-describe('registracija uporabnika', function () {
+describe('registracija uporabnika izvajalca', function () {
     it('Obisk strani za registracijo in registracija', function () {
         cy.visit('http://localhost:4200/signup')
 
@@ -6,30 +6,30 @@ describe('registracija uporabnika', function () {
             .should('include', '/signup')
 
         cy.get('.name')
-            .type('Metka')
-            .should('have.value', 'Metka')
+            .type('Bor')
+            .should('have.value', 'Bor')
 
         cy.get('.lastname')
             .type('Novak')
             .should('have.value', 'Novak')
 
         cy.get('.username')
-            .type('metkanovak')
-            .should('have.value', 'metkanovak')
+            .type('bornovak')
+            .should('have.value', 'bornovak')
 
         cy.get('.email')
-            .type('metkanovak@gmail.com')
-            .should('have.value', 'metkanovak@gmail.com')
+            .type('bornovak@gmail.com')
+            .should('have.value', 'bornovak@gmail.com')
 
         cy.get('.password1')
-            .type('metkametka')
-            .should('have.value', 'metkametka')
+            .type('borbor')
+            .should('have.value', 'borbor')
 
         cy.get('.password2')
-            .type('metkametka')
-            .should('have.value', 'metkametka')
+            .type('borbor')
+            .should('have.value', 'borbor')
 
-        cy.get('[type="radio"]').check('lastnik')
+        cy.get('[type="radio"]').check('izvajalec')
 
         cy.get('.btn-primary')
             .click()
