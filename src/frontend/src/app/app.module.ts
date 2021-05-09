@@ -18,7 +18,7 @@ import { DodajPsaComponent } from './components/dodaj-psa/dodaj-psa.component';
     ToBeDeletedPipe,
     LoginComponent,
     NavbarLoginSignupComponent,
-    SignupComponent
+    SignupComponent,
     DodajPsaComponent
   ],
   imports: [
