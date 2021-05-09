@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import si.fri.tpo.pasjehodec.backend.database.entities.DogoEntity;
+import si.fri.tpo.pasjehodec.backend.database.entities.ServiceEntity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -41,6 +42,9 @@ public class UserEntity implements UserDetails {
     @OneToMany(mappedBy = "owner")
     List<DogoEntity> dogos;
 
+    @OneToMany(mappedBy = "subscriber")
+    List<ServiceEntity> services;
+
 
     //privzeto potrebno za implementirati zaradi security, se ne rabi
     @Override
@@ -54,6 +58,17 @@ public class UserEntity implements UserDetails {
             list.add(new SimpleGrantedAuthority(UserType.ADMIN));
 
         return list;
+    }
+
+    // potrebno implementirati zaradi UserDetails
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
     }
 
     @Override
