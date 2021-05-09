@@ -6,6 +6,7 @@ import lombok.Setter;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="dogo")
@@ -21,7 +22,10 @@ public class DogoEntity {
     private String breed;
     private Integer breedId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private UserEntity owner;
+
+    @OneToMany(mappedBy = "dogo")
+    private List<ServiceDiaryEntity> serviceDiaries;
 }
