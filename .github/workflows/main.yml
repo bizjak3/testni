@@ -27,7 +27,7 @@ jobs:
         run: mvn --file src/backend/pom.xml package -Dmaven.test.skip=true
         
     
-  docker:
+  cypress:
     needs: build
     runs-on: ubuntu-latest
 
