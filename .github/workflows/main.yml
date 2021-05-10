@@ -34,10 +34,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Testiranje cypress 
+      - name: Zagon dockerja 
         run: | 
           docker login -p 'Vp&LLPQJdES6RXc' -u 'bizjak3'
           cd src
           docker-compose up -d
+          
+      - name: Cypress test 
+        run: | 
           cd frontend
-          npx run cypress 
+          npx run cypress
+
+          
