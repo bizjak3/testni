@@ -40,6 +40,7 @@ const routes: Routes = [
   {
     path: 'pregled_storitev',
     component: PregledStoritevComponent,
+    canActivate: [LoginService],
   }
 ];
 
