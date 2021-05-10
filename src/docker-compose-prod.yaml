@@ -1,20 +1,16 @@
 version: "3"
 
 services:
-  # frontenda v razvojni fazi ne potrebujemo v dockerju
-  # ohranjamo za teste
   frontend:
     image: bizjak3/tpo:frontend
     hostname: bizjak3/tpo:frontend
     ports:
     - "4200:80"
 
-  # backenda v razvojni fazi ne potrebujemo v dockerju
-  # ohranjamo za teste
   backend:
     build: backend
     ports:
-      - "8080:80"
+    - "8080:80"
 
 
   # databases
@@ -28,9 +24,9 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: PasjehodecDB
       MYSQL_USER: pasjehodec
-      MYSQL_PASSWORD: pasjehodec
+      MYSQL_PASSWORD: pasjehodec_zelo_mocno_geslo_123
     ports:
-    - "10001:3306"
+    - "3306:3306"
   redis:
     image: redis
     hostname: redis
@@ -38,4 +34,13 @@ services:
     volumes:
       - ./volumes/redis:/data
     ports:
-    - "10002:6379"
+    - "6379:6379"
+
+  watchtower:
+    image: v2tec/watchtower
+    environment:
+      REPO_USER: bizjak3
+      REPO_PASS: Vp&LLPQJdES6RXc
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 --debug
