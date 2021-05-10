@@ -24,6 +24,6 @@ public class ServiceDto {
     private LocalDateTime dateTo;
     private ServiceAuthorDto author;
 
-    private List<LocationEntity> locations;
-    private List<ServiceDiaryEntity> serviceDiaries;
+    private List<ServiceLocationDto> locations;
+    private List<ServiceDiaryDto> serviceDiaries;
 }

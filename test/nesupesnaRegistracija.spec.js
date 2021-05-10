@@ -1,5 +1,5 @@
-describe('registracija uporabnika', function () {
-    it('Obisk strani za registracijo in registracija', function () {
+describe('neuspešna registracija', function () {
+    it('Obisk strani za registracijo in neizpoljneni vsi inputi', function () {
         cy.visit('http://localhost:4200/signup')
 
         cy.url()
@@ -8,10 +8,6 @@ describe('registracija uporabnika', function () {
         cy.get('.name')
             .type('Metka')
             .should('have.value', 'Metka')
-
-        cy.get('.lastname')
-            .type('Novak')
-            .should('have.value', 'Novak')
 
         cy.get('.username')
             .type('metkanovak')
@@ -33,9 +29,8 @@ describe('registracija uporabnika', function () {
 
         cy.get('.btn-primary')
             .click()
+        cy.wait(500)
 
-
-
-        cy.contains('Prijava')
+        cy.contains('Vsa polja morajo biti izpolnjena')
     });
 });

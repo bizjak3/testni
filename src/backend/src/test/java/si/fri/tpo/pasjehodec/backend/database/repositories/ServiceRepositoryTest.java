@@ -11,6 +11,8 @@ import si.fri.tpo.pasjehodec.backend.database.entities.ServiceEntity;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class ServiceRepositoryTest {
@@ -21,23 +23,60 @@ public class ServiceRepositoryTest {
     @Autowired
     private ServiceRepository serviceRepository;
 
-    @Test
-    public void testService() {
+    // v bazo zapise novo storitev, poiscemo iz baze po id-ju, ter primerjamo ce sta enaka
 
-        ServiceEntity newExample = createExample();
+    @Test
+    public void testService1() {
+
+        ServiceEntity newExample = new ServiceEntity("x", "Sprehod vasega psa po Tivoliju", "y", LocalDateTime.of(2021, 5, 12, 15, 10), LocalDateTime.of(2021, 5, 12, 16, 10));
+
+        // ServiceEntity newExample = createExample();
         testEntityManager.persist(newExample);
         testEntityManager.flush();
 
         Optional<ServiceEntity> readExample = serviceRepository.findById(newExample.getId());
 
-        
+        assertThat(readExample.get().getDescription())
+                .isEqualTo(newExample.getDescription());
 
     }
 
+    // v bazo zapisemo novo storitev, poiscemo iz baze po id-ju, ter primerjamo ce je description "Sprehod vasega psa po Tivoliju"
+
+    @Test
+    public void testService2() {
+        ServiceEntity newExample = new ServiceEntity("x", "Sprehod vasega psa po Tivoliju", "y", LocalDateTime.of(2021, 5, 12, 15, 10), LocalDateTime.of(2021, 5, 12, 16, 10));
+
+        // ServiceEntity newExample = createExample();
+        testEntityManager.persist(newExample);
+        testEntityManager.flush();
+
+        Optional<ServiceEntity> readExample = serviceRepository.findById(newExample.getId());
+
+        assertThat(readExample.get().getDescription())
+                .isEqualTo("Sprehod vasega psa po Tivoliju");
+    }
+
+    // v bazo zapisemo novo storitev, poiscemo iz baze po opisu s funkcijo findByDescription, ter primerjamo ce sta enaka
+
+    @Test
+    public void testService3() {
+        ServiceEntity newExample = new ServiceEntity("x", "Sprehod vasega psa po Tivoliju", "y", LocalDateTime.of(2021, 5, 12, 15, 10), LocalDateTime.of(2021, 5, 12, 16, 10));
+
+        // ServiceEntity newExample = createExample();
+        testEntityManager.persist(newExample);
+        testEntityManager.flush();
+
+        Optional<ServiceEntity> readExample = serviceRepository.findByDescription("Sprehod vasega psa po Tivoliju");
+
+        assertThat(readExample.get().getDescription())
+                .isEqualTo(newExample.getDescription());
+    }
 
     private ServiceEntity createExample() {
 
         ServiceEntity serviceEntity = new ServiceEntity();
+        serviceEntity.setId(1);
         serviceEntity.setName("Sprehod psa");
         serviceEntity.setDescription("Za vas bom sprehodil psa");
         serviceEntity.setRestrictions("Ne bom sprehajal agresivnih psov");
