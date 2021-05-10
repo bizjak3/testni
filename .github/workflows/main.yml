@@ -35,7 +35,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Testiranje cypress 
-        run: |          
+        run: | 
+          cd src
           docker-compose up -d
-          cd src/frontend
+          cd frontend
           npx run cypress 
