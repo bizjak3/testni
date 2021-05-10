@@ -24,7 +24,7 @@ jobs:
           java-version: 15
 
       - name: Build project
-        run: mvn --file src/backend/pom.xml package -Dmaven.test.skip=false
+        run: mvn --file src/backend/pom.xml package -Dmaven.test.skip=true
         
     
   docker:
