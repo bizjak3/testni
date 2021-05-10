@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { User } from 'src/app/models/user';
@@ -74,5 +74,10 @@ export class LoginService implements CanActivate {
 
   public get userLoggedIn() {
     return this._userLoggedIn;
+  }
+
+  public async getAuthorizationHeader(): Promise<HttpHeaders>{
+    const bearer = await this.bearer();
+    return new HttpHeaders({"Authorization": bearer});
   }
 }
