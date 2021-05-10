@@ -35,5 +35,6 @@ jobs:
 
       - name: Testiranje cypress 
         run: |          
+          docker-compose -d up
           cd src/frontend
           npx run cypress 
