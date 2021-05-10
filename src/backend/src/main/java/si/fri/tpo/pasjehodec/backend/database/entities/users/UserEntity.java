@@ -54,6 +54,12 @@ public class UserEntity implements UserDetails {
     @OneToMany(mappedBy = "cardOwner")
     private Set<PaymentTypeEntity> paymentTypes;
 
+    public UserEntity(String name, String surname, String email, String username) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.username = username;
+    }
 
     //privzeto potrebno za implementirati zaradi security, se ne rabi
     @Override
