@@ -4,11 +4,14 @@ services:
   frontend:
     image: bizjak3/tpo:frontend
     hostname: bizjak3/tpo:frontend
+    restart: on-failure
     ports:
     - "4200:80"
 
   backend:
-    build: backend
+    image: bizjak3/tpo:backend
+    hostname: bizjak3/tpo:backend
+    restart: on-failure
     ports:
     - "8080:80"
 
@@ -26,7 +29,7 @@ services:
       MYSQL_USER: pasjehodec
       MYSQL_PASSWORD: pasjehodec_zelo_mocno_geslo_123
     ports:
-    - "127.0.0.1:3306:3306"
+    - "3306:3306"
   redis:
     image: redis
     hostname: redis
@@ -34,7 +37,7 @@ services:
     volumes:
       - ./volumes/redis:/data
     ports:
-    - "127.0.0.1:6379:6379"
+    - "6379:6379"
 
   watchtower:
     image: v2tec/watchtower
