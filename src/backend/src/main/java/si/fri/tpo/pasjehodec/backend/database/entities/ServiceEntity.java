@@ -36,4 +36,11 @@ public class ServiceEntity {
     @OneToMany(mappedBy = "service")
     private List<ServiceDiaryEntity> serviceDiaries;
 
+    public ServiceEntity(String name, String description, String restrictions, LocalDateTime dateFrom, LocalDateTime dateTo) {
+        this.name = name;
+        this.description = description;
+        this.restrictions = restrictions;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+    }
 }
