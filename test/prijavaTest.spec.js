@@ -15,5 +15,10 @@ describe("Prijava registriranega uporanika", function () {
 
         cy.get('.btn-primary')
             .click()
+        cy.wait(500)
+
+        cy.url()
+            .should('include', '/pregled_storitev')
+        cy.contains('Možne storitve')
     });
 })
