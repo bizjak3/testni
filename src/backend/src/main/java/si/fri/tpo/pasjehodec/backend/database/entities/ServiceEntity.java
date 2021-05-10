@@ -8,6 +8,7 @@ import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="service")
@@ -30,11 +31,11 @@ public class ServiceEntity {
     @JoinColumn
     private UserEntity author;
 
-    @OneToMany(mappedBy = "service")
-    private List<LocationEntity> locations;
+    @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
+    private Set<LocationEntity> locations;
 
-    @OneToMany(mappedBy = "service")
-    private List<ServiceDiaryEntity> serviceDiaries;
+    @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
+    private Set<ServiceDiaryEntity> serviceDiaries;
 
     public ServiceEntity(String name, String description, String restrictions, LocalDateTime dateFrom, LocalDateTime dateTo) {
         this.name = name;

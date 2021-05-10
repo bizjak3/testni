@@ -14,6 +14,7 @@ import { DodajPsaComponent } from './components/dodaj-psa/dodaj-psa.component';
 import { ZacetnaStranComponent } from './components/zacetna-stran/zacetna-stran.component';
 import { DodajanjeStoritveComponent } from './components/dodajanje-storitve/dodajanje-storitve.component';
 import { ProfilComponent } from './components/profil/profil.component';
+import { PregledStoritevComponent } from './components/pregled-storitev/pregled-storitev.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProfilComponent } from './components/profil/profil.component';
     DodajPsaComponent,
     ZacetnaStranComponent,
     DodajanjeStoritveComponent,
-    ProfilComponent
+    ProfilComponent,
+    PregledStoritevComponent
   ],
   imports: [
     BrowserModule,
