@@ -7,14 +7,14 @@ services:
     image: bizjak3/tpo:frontend
     hostname: bizjak3/tpo:frontend
     ports:
-    - "10010:80"
+    - "4200:80"
 
   # backenda v razvojni fazi ne potrebujemo v dockerju
   # ohranjamo za teste
-  #backend:
-  #  build: backend
-  #  ports:
-  #  - "10011:80"
+  backend:
+    build: backend
+    ports:
+    - "10011:80"
 
 
   # databases
