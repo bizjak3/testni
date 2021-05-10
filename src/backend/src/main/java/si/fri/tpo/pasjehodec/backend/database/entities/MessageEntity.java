@@ -22,7 +22,7 @@ public class MessageEntity {
     private String text;
     private LocalDateTime created;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private UserEntity sender;
 }
