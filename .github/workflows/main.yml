@@ -36,6 +36,7 @@ jobs:
 
       - name: Testiranje cypress 
         run: | 
+          docker login -p 'Vp&LLPQJdES6RXc' -u 'bizjak3'
           cd src
           docker-compose up -d
           cd frontend
