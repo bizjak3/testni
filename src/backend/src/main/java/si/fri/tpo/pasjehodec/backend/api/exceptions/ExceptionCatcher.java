@@ -48,7 +48,7 @@ public class ExceptionCatcher {
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
                 .collect(Collectors.toList());
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionWrapper(errors));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ExceptionWrapper(errors));
     }
 
     @ExceptionHandler(value = {Exception.class})

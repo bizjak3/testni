@@ -28,10 +28,9 @@ export class LoginComponent implements OnInit {
     this.loginService
       .login(this.prijava.username, this.prijava.geslo)
       .then((data) => {
-        // todo popravi kam linkat
         if (data == true) {
           alert("Prijava uspešna: " + this.loginService.userLoggedIn.username);
-          this.router.navigate(['/']);
+          this.router.navigate(['/pregled_storitev']);
         } else {
           this.napakaNaObrazcu = 'Napaka pri prijavi';
         }

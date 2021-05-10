@@ -11,6 +11,7 @@ import si.fri.tpo.pasjehodec.backend.exceptions.ForbiddenOperationException;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -33,5 +34,9 @@ public class ServiceServices {
         }
 
         return serviceRepository.save(service);
+    }
+
+    public List<ServiceEntity> getAllActiveServices() {
+        return serviceRepository.findActiveServicesAtDate(LocalDateTime.now());
     }
 }

@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from "leaflet";
 import * as geo from "esri-leaflet-geocoder"
+import { Service } from 'src/app/models/service';
+import { Location } from 'src/app/models/location';
+import { ServiceService } from 'src/app/services/service/service.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorWrapper } from 'src/app/models/error/ErrorWrapper';
+import { Router } from '@angular/router';
 
 
 
@@ -39,7 +45,7 @@ export class DodajanjeStoritveComponent implements OnInit {
     omejitve: ""
 
   }
-  constructor() { }
+  constructor(private serviceService: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.initMap();
@@ -75,7 +81,31 @@ export class DodajanjeStoritveComponent implements OnInit {
     })
   }
 
-  public dodajStoritev () {
+  public async dodajStoritev () {
+    const service: Service = {
+      name: this.storitev.ime,
+      description: this.storitev.komentarji,
+      restrictions: this.storitev.omejitve,
+      dateFrom: new Date(this.storitev.datum_from),
+      dateTo: new Date(this.storitev.datum_to),
+      locations: [
+        {
+          geoLat: +this.storitev.lat,
+          geoLon: +this.storitev.lng
+        } as Location
+      ]
+    }
+
+    const observable = await this.serviceService.postNewService(service);
+    observable.subscribe((data) => {
+      alert("Shranjeno");
+      this.router.navigate(["/pregled_storitev"]);
+    }, (err: HttpErrorResponse) => {
+      const errorWrapper: ErrorWrapper = err.error;
+      console.log(errorWrapper);
+      alert("Napaka");
+    })
+
     console.log(this.storitev);
   }
 

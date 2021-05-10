@@ -1,6 +1,7 @@
 package si.fri.tpo.pasjehodec.backend.dtos.models.service;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 import si.fri.tpo.pasjehodec.backend.database.entities.LocationEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.ServiceDiaryEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
@@ -14,7 +15,9 @@ import java.util.List;
 public class ServiceDto {
     private Integer id;
     @NotNull(message = "Naziv storitve ne sme bit prazen")
+    @Length(min = 1, message = "Naziv storitve ne sme bit prazen")
     private String name;
+    @Length(min = 1, message = "Opis storitve ne sme bit prazen")
     @NotNull(message = "Opis storitve ne sme bit prazen")
     private String description;
     private String restrictions;
@@ -24,6 +27,6 @@ public class ServiceDto {
     private LocalDateTime dateTo;
     private ServiceAuthorDto author;
 
-    private List<LocationEntity> locations;
-    private List<ServiceDiaryEntity> serviceDiaries;
+    private List<ServiceLocationDto> locations;
+    private List<ServiceDiaryDto> serviceDiaries;
 }
