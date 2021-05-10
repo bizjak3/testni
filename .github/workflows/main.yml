@@ -50,7 +50,7 @@ jobs:
       - name: Cypress test 
         run: | 
           cd src/frontend
-          npx run cypress
+          npx cypress run
           
   mvn:
     needs: docker
