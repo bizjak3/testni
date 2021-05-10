@@ -48,46 +48,57 @@ export class SignupComponent implements OnInit {
   */
   public register() {
     console.log(this.uporabnik);
-    if (this.uporabnik.tip == 'lastnik') {
-      console.log('je lastnik');
-      this.reg
-        .registerOwner({
-          name: this.uporabnik.ime,
-          surname: this.uporabnik.priimek,
-          email: this.uporabnik.email,
-          username: this.uporabnik.uporabniskoIme,
-          password: this.uporabnik.geslo,
-        })
-        .subscribe(
-          (data) => {
-            alert('Registracija uspešna, lahko se prijavite');
-            this.router.navigate(['/login']);
-          },
-          (err: HttpErrorResponse) => {
-            const errorWrapper = err.error as ErrorWrapper;
-            //naredi nekaj z errorji
-          }
-        );
-    } else {
-      console.log('ni lastnik');
-      this.reg
-        .registerWorker({
-          name: this.uporabnik.ime,
-          surname: this.uporabnik.priimek,
-          email: this.uporabnik.email,
-          username: this.uporabnik.uporabniskoIme,
-          password: this.uporabnik.geslo,
-        })
-        .subscribe(
-          (data) => {
-            alert('Registracija uspešna, lahko se prijavite');
-            this.router.navigate(['/login']);
-          },
-          (err: HttpErrorResponse) => {
-            const errorWrapper = err.error as ErrorWrapper;
-            //naredi nekaj z errorji
-          }
-        );
+    if (this.vsaPolna()) {
+      if (this.uporabnik.tip == 'lastnik') {
+        console.log('je lastnik');
+        this.reg
+          .registerOwner({
+            name: this.uporabnik.ime,
+            surname: this.uporabnik.priimek,
+            email: this.uporabnik.email,
+            username: this.uporabnik.uporabniskoIme,
+            password: this.uporabnik.geslo,
+          })
+          .subscribe(
+            (data) => {
+              alert('Registracija uspešna, lahko se prijavite');
+              this.router.navigate(['/login']);
+            },
+            (err: HttpErrorResponse) => {
+              const errorWrapper = err.error as ErrorWrapper;
+              //naredi nekaj z errorji
+            }
+          );
+      } else {
+        console.log('ni lastnik');
+        this.reg
+          .registerWorker({
+            name: this.uporabnik.ime,
+            surname: this.uporabnik.priimek,
+            email: this.uporabnik.email,
+            username: this.uporabnik.uporabniskoIme,
+            password: this.uporabnik.geslo,
+          })
+          .subscribe(
+            (data) => {
+              alert('Registracija uspešna, lahko se prijavite');
+              this.router.navigate(['/login']);
+            },
+            (err: HttpErrorResponse) => {
+              const errorWrapper = err.error as ErrorWrapper;
+              //naredi nekaj z errorji
+            }
+          );
+      }
     }
+  }
+
+  public vsaPolna() {
+    // tslint:disable-next-line:max-line-length
+    if (this.uporabnik.ime === '' || this.uporabnik.priimek === '' || this.uporabnik.uporabniskoIme === '' || this.uporabnik.email === '' || this.uporabnik.geslo === '') {
+      this.napakaNaObrazcu = 'Vsa polja morajo biti izpolnjena';
+      return false;
+    }
+    return true;
   }
 }

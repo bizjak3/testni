@@ -17,6 +17,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -42,16 +43,16 @@ public class UserEntity implements UserDetails {
     private Boolean isAdmin = false;
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
-    private List<DogoEntity> dogos;
+    private Set<DogoEntity> dogos;
 
-    @OneToMany(mappedBy = "subscriber")
-    private List<ServiceEntity> services;
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    private Set<ServiceEntity> services;
 
     @OneToMany(mappedBy = "sender")
-    private List<MessageEntity> messages;
+    private Set<MessageEntity> messages;
 
     @OneToMany(mappedBy = "cardOwner")
-    private List<PaymentTypeEntity> paymentTypes;
+    private Set<PaymentTypeEntity> paymentTypes;
 
 
     //privzeto potrebno za implementirati zaradi security, se ne rabi

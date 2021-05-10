@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . .
 RUN npm install -g @angular/cli
 RUN npm install
-RUN ng build --prod
+RUN ng build
 
 # stage 2
 

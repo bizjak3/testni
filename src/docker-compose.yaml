@@ -7,14 +7,14 @@ services:
     image: bizjak3/tpo:frontend
     hostname: bizjak3/tpo:frontend
     ports:
-    - "4200:80"
+    - "10010:80"
 
   # backenda v razvojni fazi ne potrebujemo v dockerju
   # ohranjamo za teste
-  backend:
-    build: backend
-    ports:
-      - "8080:80"
+  #backend:
+  #  build: backend
+  #  ports:
+  #  - "10011:80"
 
 
   # databases
@@ -39,3 +39,12 @@ services:
       - ./volumes/redis:/data
     ports:
     - "10002:6379"
+
+  watchtower:
+    image: v2tec/watchtower
+    environment:
+      REPO_USER: bizjak3
+      REPO_PASS: Vp&LLPQJdES6RXc
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 --debug

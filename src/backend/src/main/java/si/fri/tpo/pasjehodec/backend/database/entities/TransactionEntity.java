@@ -22,11 +22,11 @@ public class TransactionEntity {
     private double value;
     private String status;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private PaymentTypeEntity paymentType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private ServiceDiaryEntity serviceDiary;
 }

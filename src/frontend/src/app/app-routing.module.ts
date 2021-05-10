@@ -7,6 +7,7 @@ import { ZacetnaStranComponent } from './components/zacetna-stran/zacetna-stran.
 import { DodajanjeStoritveComponent } from './components/dodajanje-storitve/dodajanje-storitve.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { LoginService } from './services/login/login.service';
+import { PregledStoritevComponent } from './components/pregled-storitev/pregled-storitev.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
     component: ProfilComponent,
     canActivate: [LoginService],
   },
+  {
+    path: 'pregled_storitev',
+    component: PregledStoritevComponent,
+  }
 ];
 
 @NgModule({
