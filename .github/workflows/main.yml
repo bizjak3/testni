@@ -28,6 +28,7 @@ jobs:
         
     
   cypress:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -35,6 +36,6 @@ jobs:
 
       - name: Testiranje cypress 
         run: |          
-          docker-compose -d up
+          docker-compose up -d
           cd src/frontend
           npx run cypress 
