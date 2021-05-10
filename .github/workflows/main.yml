@@ -39,13 +39,6 @@ jobs:
           docker login -p 'Vp&LLPQJdES6RXc' -u 'bizjak3'
           cd src
           docker-compose up -d
-
-  cypress:
-    needs: docker
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
           
       - name: Cypress test 
         run: | 
@@ -53,7 +46,7 @@ jobs:
           npx cypress run
           
   mvn:
-    needs: docker
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
