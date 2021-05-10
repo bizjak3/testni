@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  BASE_URL: "http://pasjehodec.marela.team/api/"
+  BASE_URL: "https://pasjehodec.marela.team/api/"
 };
