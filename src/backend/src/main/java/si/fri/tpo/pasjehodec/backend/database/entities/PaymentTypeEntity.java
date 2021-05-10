@@ -8,6 +8,7 @@ import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="payment_type")
@@ -25,10 +26,10 @@ public class PaymentTypeEntity {
     private LocalDateTime expirationDate;
     private boolean defaultPaymentType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn
     private UserEntity cardOwner;
 
-    @OneToMany(mappedBy = "paymentType")
-    private List<TransactionEntity> transactions;
+    @OneToMany(mappedBy = "paymentType", fetch = FetchType.EAGER)
+    private Set<TransactionEntity> transactions;
 }

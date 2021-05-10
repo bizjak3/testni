@@ -7,6 +7,7 @@ import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="dogo")
@@ -26,6 +27,6 @@ public class DogoEntity {
     @JoinColumn
     private UserEntity owner;
 
-    @OneToMany(mappedBy = "dogo")
-    private List<ServiceDiaryEntity> serviceDiaries;
+    @OneToMany(mappedBy = "dogo", fetch = FetchType.EAGER)
+    private Set<ServiceDiaryEntity> serviceDiaries;
 }

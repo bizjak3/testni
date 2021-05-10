@@ -28,12 +28,38 @@ jobs:
         
     
   cypress:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Testiranje cypress 
-        run: |          
+      - name: Zagon dockerja 
+        run: | 
+          docker login -p 'Vp&LLPQJdES6RXc' -u 'bizjak3'
+          cd src
+          docker-compose up -d
+          
+      - name: Cypress test 
+        run: | 
           cd src/frontend
-          npx run cypress 
+          npx cypress run
+          
+  mvn:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+          
+      - name: Set up openJDK-15
+        uses: actions/setup-java@v2.0.0
+        with:
+          distribution: 'adopt'
+          java-version: 15
+          
+      - name: mvn test
+        run: |
+          cd src/backend
+          mvn test
+
