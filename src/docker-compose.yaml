@@ -4,8 +4,7 @@ services:
   # frontenda v razvojni fazi ne potrebujemo v dockerju
   # ohranjamo za teste
   frontend:
-    image: bizjak3/tpo:frontend
-    hostname: bizjak3/tpo:frontend
+    build: frontend
     ports:
     - "4200:80"
 
