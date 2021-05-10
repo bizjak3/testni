@@ -18,4 +18,10 @@ export class ServiceService {
 
     return this.http.post<Service>(this.baseUrl + "add", service, {headers});
   }
+
+  public async getAllActiveServices(): Promise<Observable<Service[]>> {
+    const headers = await this.loginService.getAuthorizationHeader();
+
+    return this.http.get<Service[]>(this.baseUrl + "all", {headers});
+  }
 }
