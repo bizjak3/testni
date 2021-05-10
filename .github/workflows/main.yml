@@ -68,5 +68,5 @@ jobs:
       - name: mvn test
         run: |
           cd src/backend
-          mvn test -e -X
+          mvn test
 
