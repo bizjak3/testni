@@ -26,7 +26,7 @@ services:
       MYSQL_USER: pasjehodec
       MYSQL_PASSWORD: pasjehodec_zelo_mocno_geslo_123
     ports:
-    - "127.0.0.1:3306:3306"
+    - "3306:3306"
   redis:
     image: redis
     hostname: redis
@@ -34,7 +34,7 @@ services:
     volumes:
       - ./volumes/redis:/data
     ports:
-    - "127.0.0.1:6379:6379"
+    - "6379:6379"
 
   watchtower:
     image: v2tec/watchtower
