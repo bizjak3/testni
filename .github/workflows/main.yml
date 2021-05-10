@@ -27,7 +27,7 @@ jobs:
         run: mvn --file src/backend/pom.xml package -Dmaven.test.skip=true
         
     
-  cypress:
+  docker:
     needs: build
     runs-on: ubuntu-latest
 
@@ -45,4 +45,19 @@ jobs:
           cd frontend
           npx run cypress
 
+  testi:
+    needs: docker
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
           
+      - name: Cypress test 
+        run: | 
+          cd src/frontend
+          npx run cypress
+          
+      - name: mvn test
+        run: |
+          cd src/backend
+          mvn test
