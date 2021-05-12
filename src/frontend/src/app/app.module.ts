@@ -15,6 +15,7 @@ import { ZacetnaStranComponent } from './components/zacetna-stran/zacetna-stran.
 import { DodajanjeStoritveComponent } from './components/dodajanje-storitve/dodajanje-storitve.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { PregledStoritevComponent } from './components/pregled-storitev/pregled-storitev.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PregledStoritevComponent } from './components/pregled-storitev/pregled-
     ZacetnaStranComponent,
     DodajanjeStoritveComponent,
     ProfilComponent,
-    PregledStoritevComponent
+    PregledStoritevComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
