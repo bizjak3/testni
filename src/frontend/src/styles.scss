@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
+$primary: #016FB9;
+$info: #27B9B4;
+$success: #0AAE43;
+$secondary: #353531;
+$warning: #F58F00;
+$danger: #BC3810;
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  min-height: 100vh;
+}

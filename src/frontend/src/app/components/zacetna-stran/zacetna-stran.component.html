@@ -1,34 +1,188 @@
 <main class="bg-light">
-  <div class="main col bg-light justify-content-center d-flex">
-      <p class="h1 text-dark mt-3 mb-3">Pasjehodec je odličen za vse lastnike in ljubitelje psov!</p>
+  <div class="d-flex align-items-center" style="height: 100vh">
+    <div class="row w-100 h-100 main-animation">
+      <div class="col" style="margin-left: 5vw">
+        <div style="height: 25vh"></div>
+        <div class="bg-light">
+          <h1 class="main-title text-left">Pasjehodec</h1>
+          <h2 class="subtitle text-left">
+            Aplikacija za modernega lastnika psa
+          </h2>
+        </div>
+        <div class="row" style="margin: 0.5vw; margin-top: 2vh">
+          <div class="col">
+            <button
+              type="button"
+              style="margin-right: 1vw"
+              class="btn btn-primary btn-block btn-lg"
+            >
+              Prijava
+            </button>
+          </div>
+          <div class="col">
+            <button
+              type="button"
+              style="margin-right: 1vw"
+              class="btn btn-block btn-lg btn-outline-secondary"
+            >
+              Registracija
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
   </div>
-  <div>
-    <div class="d-flex justify-content-center">
-      <div style=" width: 50%;">
-        <img class="mx-auto d-block" src="../assets/pictures/dog.jpg" style="width: 50%;"alt="dog">
-      </div>
-      <div class="justify-content-center align-self-center" style=" width: 50%;">
-        <p class="p-2 h2 text-dark text-center">Si lastnik psa? Privošči tvojemu ljubljenčku zabavne sprehode.</p>
+
+  <div class="container" style="margin-bottom: 3vh">
+    <div class="card">
+      <div class="card-body">
+        <div class="row w-100 d-flex align-items-center">
+          <div class="col-md-8">
+            <h3 class="card-title card_title">Za modernega lastnika psa</h3>
+            <button
+              type="button"
+              style="margin-right: 1vw"
+              class="btn btn-outline-secondary"
+            >
+              Registracija kot lastnik psov
+            </button>
+          </div>
+          <div class="col-md-4">
+            <img
+              class="img-fluid"
+              src="./assets/animations/dog_tree.svg"
+              alt="dog"
+            />
+          </div>
+        </div>
+
+        <p class="card-text-big">
+          V današnjem času 21. stoletja je vzgoja domačega ljubljnčka, ki
+          zahteva veliko skrbi in nege, za modernega človeka velikokrat postala
+          prenaporna.
+        </p>
+        <p class="card-text-big">
+          Pasjehodec omogoča modernemu lastniku psov, da del obveznosti in skrbi
+          prenese na sosedovega Tončka, študenta, ki za vikend z veseljem
+          popelje psa ali dva na sprehod. Na Cvetko iz sosednje vasi, ki je od
+          vedno znala psičke negovati bolje od lastnih otrok. In na daljnega
+          sorodnika Miklavža, ki je po 20 letih zakona ostal sam pri hiši.
+        </p>
       </div>
     </div>
-    <div class="d-flex">
+  </div>
 
-      <div class="justify-content-center align-self-center" style="width: 50%;">
-        <p class="p-2 h2 text-dark text-center">Si ljubitelj psov? Podaj se na razburljive sprehode s štirinožnimi prijatelji.</p>
+  <div class="container" style="margin-bottom: 6vh">
+    <div class="card">
+      <div class="card-body">
+        <div class="row w-100 d-flex align-items-center">
+          <div class="col-md-4">
+            <img
+              class="img-fluid"
+              src="./assets/animations/dog_bone.svg"
+              alt="dog"
+            />
+          </div>
+          <div class="col-md-8">
+            <h3 class="card-title card_title">Ponudite storitev</h3>
+            <button
+              type="button"
+              style="margin-right: 1vw"
+              class="btn btn-outline-secondary"
+            >
+              Registracija kot ponudnik storitev
+            </button>
+          </div>
+        </div>
+
+        <p class="card-text-big">
+          Ponudite svojo storitev, preživite kvaliteten čas s štirinožnimi
+          prijatelji. Storitve lahko obsegajo od tedenskih sprehodov do
+          vsakodnevnih treningov ali občasnih frizerskih storitve, pedikur,
+          maniku ali čiščenja uh.
+        </p>
       </div>
-
-      <div style="width: 50%;">
-        <img class="mx-auto d-block" src="../assets/pictures/walking.jpg" style="width: 50%; float: center;" alt="dog">
-      </div>
-
     </div>
+  </div>
 
-    <div class="mt-5">
-      <p class="text-center h3 text-dark">Zakaj nas izbrati?</p>
-      <p class="text-center h4 text-dark">Aplikacija je preprosta za uporabo in prijazna do okolja. Vaši štirinožni prijatelji in ostali sprehajalci bodo zelo veseli zabavnih in razburljivih sprehodov.</p>
-      <p class="text-center h4 text-dark"><a class="text-dark" routerLink='/signup'>Registriraj se!</a></p>
-      <p class="text-center h5 text-dark">Že registriran? <a class="text-dark" routerLink='/login'>Prijavi se.</a></p>
-
+  <div style="margin-left: 5vw; margin-right: 5vw; padding-bottom: 5vh">
+    <h2 class="card_title">Naše zadovoljne stranke</h2>
+    <div class="row w-100">
+      <div class="card_experience">
+        <div class="card h-100">
+          <img
+            class="card-img-top"
+            src="assets/pictures/dog.jpg"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Samuel III. Bavarski</h5>
+            <p class="card-text">
+              Hov hov hov - moja pasja frizerka Brigita je res super izkušnja.
+              Vsak tretji dan jo obiščem, da me skrtači in pripravi na moj
+              lepotni spanec. Priporočam, če se želiš tako svetiti in lepo
+              dišati kot jaz!
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card_experience">
+        <div class="card h-100">
+          <img
+            class="card-img-top"
+            src="assets/pictures/student.jpg"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Študent Borislav</h5>
+            <p class="card-text">
+              Od kadar uporabljam aplikacijo Pasjehodec in ob vikendih v domačem
+              okolju sprehajam dva ali tri pse si lahko privošči par piv več v
+              študentu. Pa tudi kakovost mojega študijskega dela se je zaradi
+              mojih prijateljčkov izboljšalo.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card_experience">
+        <div class="card h-100">
+          <img
+            class="card-img-top"
+            src="assets/pictures/lazy.jpg"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Teja Sfilo</h5>
+            <p class="card-text">
+              V prvem valu korone sem si zaželela psa katerega mi ga je podaril
+              fant Martin. Ampak kdo bi si mislil, da je s psom toliko dela.
+              Sedaj, ko so pilatesi in bari ponovno odprti, časa za vzdrževanje
+              psa ni. Še dobro,
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card_experience">
+        <div class="card h-100">
+          <img
+            class="card-img-top"
+            src="assets/pictures/big_dogo.jpg"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Reksi</h5>
+            <p class="card-text">
+              Hov hov hov - Prvi sprehod z Borislavom se za njega ni končal
+              najbolje. S povito roko in solzami v očeh, ampak to je tako če
+              Reksiju ne daš priboljška, ko je priden kuža! Od takrat sva že
+              dobra prijatelja, ki se na sprehodih lepo zabavava, sploh ko mu
+              uidem z verige in ves naudušen steče za menoj - ujemi me, če me
+              moreš!
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </main>
