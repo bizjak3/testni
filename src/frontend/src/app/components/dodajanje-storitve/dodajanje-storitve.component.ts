@@ -35,6 +35,9 @@ var geocodeService = geo.geocodeService();
 })
 export class DodajanjeStoritveComponent implements OnInit {
   private map;
+
+  public errors;
+
   public storitev = {
     ime: "",
     lat: "",
@@ -103,7 +106,7 @@ export class DodajanjeStoritveComponent implements OnInit {
     }, (err: HttpErrorResponse) => {
       const errorWrapper: ErrorWrapper = err.error;
       console.log(errorWrapper);
-      alert("Napaka");
+      this.errors = errorWrapper.errors;
     })
 
     console.log(this.storitev);

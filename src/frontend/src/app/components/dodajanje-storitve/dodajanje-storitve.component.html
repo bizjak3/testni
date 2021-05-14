@@ -38,6 +38,11 @@
           <label>Omejitve</label><br>
           <textarea class="form-control" name="omejitve" rows="6" cols="60" [(ngModel)]="storitev.omejitve"></textarea>
         </div>
+        <div *ngFor="let error of errors">
+          <div class="alert alert-warning">
+            {{ error }}
+          </div>
+        </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary pull-right">Oddaj ponudbo</button>
         </div>
