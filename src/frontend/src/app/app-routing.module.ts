@@ -23,6 +23,10 @@ const routes: Routes = [
     component: SignupComponent,
   },
   {
+    path: 'signup/:tip',
+    component: SignupComponent,
+  },
+  {
     path: 'dodaj_psa',
     component: DodajPsaComponent,
     canActivate: [LoginService],

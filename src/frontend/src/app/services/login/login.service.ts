@@ -40,7 +40,14 @@ export class LoginService implements CanActivate {
 
   public canActivate(): boolean {
 
-    let decoded: any = jwt_decode(this._bearer);
+    let decoded;
+    try {
+      decoded = jwt_decode(this._bearer);
+    }catch (er) {
+      this.router.navigate(['']);
+      return false;
+    }
+
     console.log(decoded);
 
     if (this._bearer == null) {

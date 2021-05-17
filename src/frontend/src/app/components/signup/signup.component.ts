@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorWrapper } from 'src/app/models/error/ErrorWrapper';
 import { RegisterService } from '../../services/register/register.service';
 
@@ -10,8 +10,10 @@ import { RegisterService } from '../../services/register/register.service';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
+  model = 1;
+
   public uporabnik = {
-    tip: '',
+    tip: 'lastnik',
     ime: '',
     priimek: '',
     uporabniskoIme: '',
@@ -29,7 +31,16 @@ export class SignupComponent implements OnInit {
     console.log(this.uporabnik.tip ? 'lastnik' : 'izvajalec');
   }
 
-  constructor(private reg: RegisterService, private router: Router) {}
+  constructor(
+    private reg: RegisterService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
+    activatedRoute.params.subscribe((params) => {
+      console.log(params);
+      if (params.tip) this.uporabnik.tip = params.tip;
+    });
+  }
 
   ngOnInit(): void {}
 
@@ -37,15 +48,6 @@ export class SignupComponent implements OnInit {
     console.log(event.target.value);
   }
 
-  /*
-  {
-    name: this.uporabnik.ime,
-    surname: this.uporabnik.priimek,
-    email: this.uporabnik.email,
-    username: this.uporabnik.uporabniskoIme,
-    password: this.uporabnik.geslo
-  }
-  */
   public register() {
     console.log(this.uporabnik);
     if (this.vsaPolna()) {
@@ -95,7 +97,13 @@ export class SignupComponent implements OnInit {
 
   public vsaPolna() {
     // tslint:disable-next-line:max-line-length
-    if (this.uporabnik.ime === '' || this.uporabnik.priimek === '' || this.uporabnik.uporabniskoIme === '' || this.uporabnik.email === '' || this.uporabnik.geslo === '') {
+    if (
+      this.uporabnik.ime === '' ||
+      this.uporabnik.priimek === '' ||
+      this.uporabnik.uporabniskoIme === '' ||
+      this.uporabnik.email === '' ||
+      this.uporabnik.geslo === ''
+    ) {
       this.napakaNaObrazcu = 'Vsa polja morajo biti izpolnjena';
       return false;
     }

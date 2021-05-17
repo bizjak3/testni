@@ -10,14 +10,37 @@ import { ServiceService } from 'src/app/services/service/service.service';
   styleUrls: ['./pregled-storitev.component.scss'],
 })
 export class PregledStoritevComponent implements OnInit {
-  public services: Service[];
+  public services: Service[] = [
+    {
+      id: 15,
+      name: 'Sprehajanje',
+      description:
+        'khdflahsf iauhsdij hfiduhgai uriguh idfuhsadifu hasiufh isufh',
+      restrictions:
+        'khdflahsf iauhsdij hfiduhgai uriguh idfuhsadifu hasiufh isufh',
+      dateFrom: new Date(),
+      dateTo: new Date(),
+      author: { name: 'Kleopater', surname: 'Igislav' },
+    },
+    {
+      id: 15,
+      name: 'Sprehajanje',
+      description:
+        'khdflahsf iauhsdij hfiduhgai uriguh idfuhsadifu hasiufh isufh',
+      restrictions:
+        'khdflahsf iauhsdij hfiduhgai uriguh idfuhsadifu hasiufh isufh',
+      dateFrom: new Date(),
+      dateTo: new Date(),
+      author: { name: 'Kleopater', surname: 'Igislav' },
+    },
+  ];
   public loading: boolean = false;
   public error: string | null = null;
 
   constructor(private serviceServices: ServiceService) {}
 
   ngOnInit(): void {
-    this.getData();
+    // this.getData();
   }
 
   async getData(): Promise<void> {

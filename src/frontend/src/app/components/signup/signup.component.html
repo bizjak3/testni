@@ -1,67 +1,213 @@
-
-
-
-
-<!-- ################ main body ################ -->
 <main>
-  <div class="main col d-flex justify-content-center">
-    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
-      <form name="myForm" (submit)="register()" id="forma" class="box mx-auto">
-        <div role="alert" *ngIf="napakaNaObrazcu!=''" class="alert alert-danger">{{ napakaNaObrazcu }}</div>
+  <div class="container">
+    <div class="card shadow-lg">
+      <form name="myForm" (submit)="register()" id="forma" class="box">
+        <div
+          role="alert"
+          *ngIf="napakaNaObrazcu != ''"
+          class="alert alert-danger"
+        >
+          {{ napakaNaObrazcu }}
+        </div>
         <div class="login-container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <h1>REGISTRACIJA</h1>
-                <label>Ime</label>
-                <input type="text" name="name" class="form-control name" placeholder="Ime" [(ngModel)]="uporabnik.ime">
+          <h1>REGISTRACIJA</h1>
+          <div class="btn-group btn-group-sm btn-group-toggle" ngbRadioGroup name="radioBasic" style="margin-bottom: 1vh;" [(ngModel)]="uporabnik.tip">
+            <label ngbButtonLabel class="btn-outline-info">
+              <input ngbButton type="radio" [value]="'lastnik'"> Lastnik psa
+            </label>
+            <label ngbButtonLabel class="btn-outline-info">
+              <input ngbButton type="radio" value="izvajalec"> Izvajalec storitve
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Ime</label>
+            <input
+              type="text"
+              name="name"
+              class="form-control name"
+              placeholder="Ime"
+              [(ngModel)]="uporabnik.ime"
+            />
+          </div>
+          <div class="form-group">
+            <label>Priimek</label>
+            <input
+              type="text"
+              name="lastname"
+              class="form-control lastname"
+              placeholder="Priimek"
+              [(ngModel)]="uporabnik.priimek"
+            />
+          </div>
+          <div class="form-group">
+            <label>Uporabniško ime</label>
+            <input
+              type="text"
+              name="username"
+              class="form-control username"
+              placeholder="janeznovak"
+              [(ngModel)]="uporabnik.uporabniskoIme"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              class="form-control email"
+              placeholder="janeznovak@gmail.com"
+              [(ngModel)]="uporabnik.email"
+            />
+          </div>
+          <div class="form-group">
+            <label>Geslo</label>
+            <div class="row w-100">
+              <div class="col-md-6">
+                <input
+                  type="password"
+                  name="pass1"
+                  class="form-control password1"
+                  [(ngModel)]="uporabnik.geslo"
+                />
               </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Priimek</label>
-                <input type="text" name="lastname" class="form-control lastname" placeholder="Priimek" [(ngModel)]="uporabnik.priimek">
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Uporabniško ime</label>
-                <input type="text" name="username" class="form-control username" placeholder="janeznovak" [(ngModel)]="uporabnik.uporabniskoIme">
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control email" placeholder="janeznovak@gmail.com" [(ngModel)]="uporabnik.email">
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Geslo</label>
-                <input type="password" name="pass1" class="form-control password1" [(ngModel)]="uporabnik.geslo">
-                <input type="password" name="pass2" class="form-control password2">
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <div class="btn-group">
-                  <button type="submit" class="btn btn-primary pull-right">Registracija</button>
-                </div>
-                <div class="clearfix"></div>
-                <div class="col-sm-10 RadioGrup">
-                  <input type="radio" name="vrstaUporabnika" value="lastnik" (change)="radioChangeHandler($event)" [(ngModel)]="uporabnik.tip"> Lastnik psa
-                  <input type="radio" name="vrstaUporabnika" value="izvajalec" (change)="radioChangeHandler($event)" [(ngModel)]="uporabnik.tip"> Izvajalec storitve<br>
-                </div>
+              <div class="col-md-6">
+                <input
+                  type="password"
+                  name="pass2"
+                  class="form-control password2"
+                />
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div *ngIf="showSuccess" class="alert alert-success">Login Successful!</div>
-            </div>
+          <div class="form-group">
+              <button type="submit" class="btn btn-block btn-primary pull-right">
+                Registracija
+              </button>
           </div>
         </div>
       </form>
     </div>
   </div>
 </main>
+
+<!-- ################ main body ################ -->
+<!-- <main>
+  <div class="main col d-flex justify-content-center">
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+      <form name="myForm" (submit)="register()" id="forma" class="box mx-auto">
+        <div
+          role="alert"
+          *ngIf="napakaNaObrazcu != ''"
+          class="alert alert-danger"
+        >
+          {{ napakaNaObrazcu }}
+        </div>
+        <div class="login-container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <h1>REGISTRACIJA</h1>
+                <label>Ime</label>
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control name"
+                  placeholder="Ime"
+                  [(ngModel)]="uporabnik.ime"
+                />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Priimek</label>
+                <input
+                  type="text"
+                  name="lastname"
+                  class="form-control lastname"
+                  placeholder="Priimek"
+                  [(ngModel)]="uporabnik.priimek"
+                />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Uporabniško ime</label>
+                <input
+                  type="text"
+                  name="username"
+                  class="form-control username"
+                  placeholder="janeznovak"
+                  [(ngModel)]="uporabnik.uporabniskoIme"
+                />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control email"
+                  placeholder="janeznovak@gmail.com"
+                  [(ngModel)]="uporabnik.email"
+                />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Geslo</label>
+                <input
+                  type="password"
+                  name="pass1"
+                  class="form-control password1"
+                  [(ngModel)]="uporabnik.geslo"
+                />
+                <input
+                  type="password"
+                  name="pass2"
+                  class="form-control password2"
+                />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <div class="btn-group">
+                  <button type="submit" class="btn btn-primary pull-right">
+                    Registracija
+                  </button>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-10 RadioGrup">
+                  <input
+                    type="radio"
+                    name="vrstaUporabnika"
+                    value="lastnik"
+                    (change)="radioChangeHandler($event)"
+                    [(ngModel)]="uporabnik.tip"
+                  />
+                  Lastnik psa
+                  <input
+                    type="radio"
+                    name="vrstaUporabnika"
+                    value="izvajalec"
+                    (change)="radioChangeHandler($event)"
+                    [(ngModel)]="uporabnik.tip"
+                  />
+                  Izvajalec storitve<br />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div *ngIf="showSuccess" class="alert alert-success">
+                Login Successful!
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main> -->
