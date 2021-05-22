@@ -2,11 +2,7 @@ package si.fri.tpo.pasjehodec.backend.dtos.models.service;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-import si.fri.tpo.pasjehodec.backend.database.entities.LocationEntity;
-import si.fri.tpo.pasjehodec.backend.database.entities.ServiceDiaryEntity;
-import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -28,5 +24,5 @@ public class ServiceDto {
     private ServiceAuthorDto author;
 
     private List<ServiceLocationDto> locations;
-    private List<ServiceDiaryDto> serviceDiaries;
+    private List<ServiceServiceDiaryDto> serviceDiaries;
 }

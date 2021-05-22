@@ -15,5 +15,5 @@ public class UserDto {
     private Boolean isServiceWorker;
     private Boolean isAdmin;
 
-    List<UserDogoDto> dogos;
+    private List<UserDogoDto> dogos;
 }

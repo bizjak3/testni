@@ -14,12 +14,16 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import si.fri.tpo.pasjehodec.backend.database.entities.ServiceDiaryEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserType;
+import si.fri.tpo.pasjehodec.backend.dtos.mappers.ServiceDiaryEntityMapper;
 import si.fri.tpo.pasjehodec.backend.dtos.mappers.ServiceEntityMapper;
 import si.fri.tpo.pasjehodec.backend.dtos.models.service.ServiceDto;
+import si.fri.tpo.pasjehodec.backend.dtos.models.service_diary.ServiceDiaryDto;
 import si.fri.tpo.pasjehodec.backend.exceptions.BadRequestException;
 import si.fri.tpo.pasjehodec.backend.exceptions.ForbiddenOperationException;
+import si.fri.tpo.pasjehodec.backend.services.ServiceDiaryServices;
 import si.fri.tpo.pasjehodec.backend.services.ServiceServices;
 
 import java.util.List;
@@ -31,6 +35,9 @@ import java.util.stream.Collectors;
 public class ServicesApi {
     private final ServiceServices serviceServices;
     private final ServiceEntityMapper serviceEntityMapper;
+
+    private final ServiceDiaryServices serviceDiaryServices;
+    private final ServiceDiaryEntityMapper serviceDiaryEntityMapper;
 
     @PostMapping("add")
     @Secured({UserType.ADMIN, UserType.SERVICE_WORKER})
@@ -75,5 +82,15 @@ public class ServicesApi {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(data);
+    }
+
+
+    @PostMapping("/post-service-diary")
+    public ResponseEntity<ServiceDiaryDto> postServiceDiary(@RequestBody ServiceDiaryEntity serviceDiary) {
+        ServiceDiaryEntity entity = serviceDiaryServices.createNewServiceDiary(serviceDiary);
+
+        return ResponseEntity.ok(
+                serviceDiaryEntityMapper.castFromServiceDiaryEntityToServiceDiaryDto(entity)
+        );
     }
 }
