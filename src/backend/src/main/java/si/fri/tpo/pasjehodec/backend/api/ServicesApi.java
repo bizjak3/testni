@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -70,7 +71,7 @@ public class ServicesApi {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "List of currently active services",
+                    description = "List of currently active services - parameter dateTo >= current date",
                     content = {
                             @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ServiceDto.class)))
                     }
@@ -84,8 +85,32 @@ public class ServicesApi {
         return ResponseEntity.ok(data);
     }
 
+    @GetMapping("user-service-all")
+    @Secured({UserType.ADMIN, UserType.SERVICE_WORKER})
+    @Operation(
+            summary = "Get list of all users services"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "List of all services created by logged in user",
+                    content = {
+                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ServiceDto.class)))
+                    }
+            )
+    })
+    public ResponseEntity<ServiceDto[]> getAllCurrentUsersServices(
+            @Parameter(hidden = true) @AuthenticationPrincipal UserEntity user
+    ) {
+        return ResponseEntity.ok(
+                CollectionUtils.emptyIfNull(serviceServices.getAllUsersServices(user)).stream()
+                    .map(serviceEntityMapper::castFromServiceEntityToServiceDto)
+                    .toArray(ServiceDto[]::new)
+        );
+    }
 
-    @PostMapping("/post-service-diary")
+
+    @PostMapping("post-service-diary")
     public ResponseEntity<ServiceDiaryDto> postServiceDiary(@RequestBody ServiceDiaryEntity serviceDiary) {
         ServiceDiaryEntity entity = serviceDiaryServices.createNewServiceDiary(serviceDiary);
 

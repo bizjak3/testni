@@ -39,4 +39,8 @@ public class ServiceServices {
     public List<ServiceEntity> getAllActiveServices() {
         return serviceRepository.findActiveServicesAtDate(LocalDateTime.now());
     }
+
+    public List<ServiceEntity> getAllUsersServices(UserEntity user) {
+        return serviceRepository.findByAuthor(user);
+    }
 }
