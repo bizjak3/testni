@@ -1,5 +1,7 @@
 package si.fri.tpo.pasjehodec.backend.api;
 
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -27,7 +29,7 @@ public class DogoApi {
             UserType.DOG_OWNER,
             UserType.ADMIN
     })
-    public ResponseEntity<DogoDto> postDogo(@RequestBody DogoDto dogo, @AuthenticationPrincipal UserEntity user) {
+    public ResponseEntity<DogoDto> postDogo(@RequestBody DogoDto dogo, @Parameter(hidden = true) @AuthenticationPrincipal UserEntity user) {
         var entity = dogoEntityMapper.castDogoEntityFromDto(dogo);
         entity = dogoService.addDogo(entity, entity.getOwner());
         return ResponseEntity.ok(dogoEntityMapper.castDogoDtoFromEntity(entity));
