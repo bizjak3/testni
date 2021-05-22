@@ -85,31 +85,50 @@ export class DodajanjeStoritveComponent implements OnInit {
   }
 
   public async dodajStoritev () {
-    const service: Service = {
-      name: this.storitev.ime,
-      description: this.storitev.komentarji,
-      restrictions: this.storitev.omejitve,
-      dateFrom: new Date(this.storitev.datum_from),
-      dateTo: new Date(this.storitev.datum_to),
-      locations: [
-        {
-          geoLat: +this.storitev.lat,
-          geoLon: +this.storitev.lng
-        } as Location
-      ]
+    this.errors = [];
+    if(this.storitev.lat == "" || this.storitev.lng == ""){
+      this.errors.push("Lokacija ne sme biti prazna");
+    }
+    if(this.storitev.ime == ""){
+      this.errors.push("Naziv storitve ne sme biti prazen");
+    }
+    if(this.storitev.datum_from == ""){
+      this.errors.push("Začetni datum ne sme biti prazen");
+    }
+    if(this.storitev.datum_to == ""){
+      this.errors.push("Končni datum ne sme biti prazen");
+    }
+    if(this.storitev.komentarji == ""){
+      this.errors.push("Opis storitve ne sme biti prazen");
     }
 
-    const observable = await this.serviceService.postNewService(service);
-    observable.subscribe((data) => {
-      alert("Shranjeno");
-      this.router.navigate(["/pregled_storitev"]);
-    }, (err: HttpErrorResponse) => {
-      const errorWrapper: ErrorWrapper = err.error;
-      console.log(errorWrapper);
-      this.errors = errorWrapper.errors;
-    })
+    if(this.errors.length == 0){
+      const service: Service = {
+        name: this.storitev.ime,
+        description: this.storitev.komentarji,
+        restrictions: this.storitev.omejitve,
+        dateFrom: new Date(this.storitev.datum_from),
+        dateTo: new Date(this.storitev.datum_to),
+        locations: [
+          {
+            geoLat: +this.storitev.lat,
+            geoLon: +this.storitev.lng
+          } as Location
+        ]
+      }
 
-    console.log(this.storitev);
+      const observable = await this.serviceService.postNewService(service);
+      observable.subscribe((data) => {
+        alert("Shranjeno");
+        this.router.navigate(["/pregled_storitev"]);
+      }, (err: HttpErrorResponse) => {
+        const errorWrapper: ErrorWrapper = err.error;
+        console.log(errorWrapper);
+        this.errors = errorWrapper.errors;
+      })
+
+      console.log(this.storitev);
+    }
   }
 
 }
