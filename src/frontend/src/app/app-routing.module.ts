@@ -8,6 +8,7 @@ import { DodajanjeStoritveComponent } from './components/dodajanje-storitve/doda
 import { ProfilComponent } from './components/profil/profil.component';
 import { LoginService } from './services/login/login.service';
 import { PregledStoritevComponent } from './components/pregled-storitev/pregled-storitev.component';
+import { EditProfileComponent} from './components/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
     path: 'pregled_storitev',
     component: PregledStoritevComponent,
     canActivate: [LoginService],
+  },
+  {
+    path: 'spremeni_profil',
+    component: EditProfileComponent
   }
 ];
 

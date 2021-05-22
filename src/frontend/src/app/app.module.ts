@@ -16,6 +16,7 @@ import { DodajanjeStoritveComponent } from './components/dodajanje-storitve/doda
 import { ProfilComponent } from './components/profil/profil.component';
 import { PregledStoritevComponent } from './components/pregled-storitev/pregled-storitev.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FooterComponent } from './components/footer/footer.component';
     DodajanjeStoritveComponent,
     ProfilComponent,
     PregledStoritevComponent,
-    FooterComponent
+    FooterComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
