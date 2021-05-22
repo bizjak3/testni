@@ -56,10 +56,14 @@ public class UserApi {
 
 
     @PutMapping("/put")
-    public ResponseEntity<UserEntity> putUser(@RequestBody UserDto user, @AuthenticationPrincipal UserEntity userEntity) {
+    public ResponseEntity<UserDto> putUser(@RequestBody UserDto user, @AuthenticationPrincipal UserEntity userEntity) {
         var entity = userEntityMapper.mapUserEntityFromDto(user);
+
+        if(entity.getPassword() == null)
+            entity.setPassword(userEntity.getPassword());
+
         return ResponseEntity.ok(
-                userServices.saveData(entity)
+                userEntityMapper.mapUserDtoFromEntity(userServices.saveData(entity))
         );
     }
 }
