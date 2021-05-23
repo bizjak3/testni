@@ -18,8 +18,10 @@ public class UserServices {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder; //za kriptiranje gesel
 
-    public UserEntity saveData(UserEntity user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+    public UserEntity saveData(UserEntity user, boolean sifrirajGeslo) {
+        if(sifrirajGeslo)
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
         return userRepository.save(user);
     }
 
