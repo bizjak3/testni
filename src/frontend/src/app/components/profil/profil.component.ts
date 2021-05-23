@@ -61,7 +61,21 @@ export class ProfilComponent implements OnInit {
       const obs = await this.serviceService.getAllActiveUserServices();
       obs.subscribe(
         (data) => {
-          this.services = data;
+          let x = [];
+          let y = [];
+          let date: Date = new Date();
+          console.log(data);
+          data.forEach((value) => {
+            if(value.dateTo < date ){
+              console.log("past");
+              y.push(value);
+            }else{
+              console.log(value);
+              x.push(value);
+            }
+          });
+          this.services = x;
+          this.pastServices = y;
           this.loading = false;
         },
         () => {
@@ -69,6 +83,9 @@ export class ProfilComponent implements OnInit {
           this.error = 'Napaka pri pridobivanju podatkov';
         }
       );
+    }
+    if(this.loginService.userLoggedIn.isDogOwner){
+      console.log("kužar");
     }
   }
 
