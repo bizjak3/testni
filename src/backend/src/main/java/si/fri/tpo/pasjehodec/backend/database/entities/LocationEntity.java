@@ -18,7 +18,7 @@ public class LocationEntity {
     @GeneratedValue
     private Integer id;
 
-    private LocalDateTime date;
+    private LocalDateTime date = LocalDateTime.now();
     private double geoLat;
     private double geoLon;
 

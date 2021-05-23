@@ -31,7 +31,7 @@ public class ServiceEntity {
     @JoinColumn
     private UserEntity author;
 
-    @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "service", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<LocationEntity> locations;
 
     @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)

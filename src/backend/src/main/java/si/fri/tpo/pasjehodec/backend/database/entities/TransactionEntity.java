@@ -18,7 +18,7 @@ public class TransactionEntity {
     @GeneratedValue
     private Integer id;
 
-    private LocalDateTime date;
+    private LocalDateTime date = LocalDateTime.now();
     private double value;
     private String status;
 
