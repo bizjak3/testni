@@ -28,21 +28,33 @@
           {{ error }}
         </div>
 
-        <div *ngFor="let service of services" class="card p-4 shadow m-3">
-          <a href="#" class="stretched-link">
-            <h2>{{ service.name }}</h2>
-          </a>
-          <h5>
-            {{ service.dateFrom | date: "dd.MM.YYYY" }} -
-            {{ service.dateTo | date: "dd.MM.YYYY" }}
-          </h5>
-          <hr />
+        <div *ngFor="let service of services" class="p-4 shadow m-3 row main">
+            <div class="col-md-8">
+              <a class="stretched-link">
+                <h2>{{ service.name }}</h2>
+              </a>
+              <h5>
+                {{ service.dateFrom | date: "dd.MM.YYYY" }} -
+                {{ service.dateTo | date: "dd.MM.YYYY" }}
+              </h5>
+              <hr />
 
-          <h4 class="text-secondary">Opis storitve</h4>
-          <p class="p-2">{{ service.description }}</p>
+              <h4 class="text-secondary">Opis storitve</h4>
+              <p class="p-2">{{ service.description }}</p>
 
-          <h4 class="text-secondary">Omejitve storitve</h4>
-          <p class="p-2">{{ service.restrictions }}</p>
+              <h4 class="text-secondary">Omejitve storitve</h4>
+              <p class="p-2">{{ service.restrictions }}</p>
+            </div>
+            <div class="col-md-4">
+              <div style="  position: absolute;top: 0;left: 0;right: 0;bottom: 0;">
+                <div class="map-frame" style="height: 100%;">
+                  <div id="map{{service.id}}" style="height:100%"></div>
+                </div>
+              </div>
+            </div>
+          <div class="container-fluid mt-2">
+            <button type="button" class="btn btn-primary btn-block">Naroči</button>
+          </div>
         </div>
       </div>
     </div>
