@@ -11,7 +11,7 @@ describe('Poizkus priti na stran dodaj storitev ne, da bi bil prijavljen', funct
             .should('include', '/')
         cy.wait(500)
 
-        cy.contains('Logo')
+        cy.contains('Pasjehodec')
         cy.url()
             .should('include', '/')
     });

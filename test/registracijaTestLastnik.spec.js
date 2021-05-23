@@ -1,9 +1,15 @@
 describe('registracija uporabnika lastnika', function () {
     it('Obisk strani za registracijo in registracija', function () {
-        cy.visit('http://localhost:4200/signup')
+        cy.visit('http://localhost:4200/')
 
         cy.url()
-            .should('include', '/signup')
+            .should('include', '/')
+
+        cy.get('.btn').contains(' Registracija kot lastnik psov ')
+            .click()
+
+        cy.url()
+            .should('include', '/signup/lastnik')
 
         cy.get('.name')
             .type('Metka')

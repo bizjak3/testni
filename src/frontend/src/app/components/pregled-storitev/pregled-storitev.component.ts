@@ -3,8 +3,10 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ErrorWrapper } from 'src/app/models/error/ErrorWrapper';
 import { Service } from 'src/app/models/service';
 import { ServiceService } from 'src/app/services/service/service.service';
+import { LoginService } from 'src/app/services/login/login.service';
 import * as L from "leaflet";
 import * as geo from "esri-leaflet-geocoder"
+import { User } from 'src/app/models/user';
 
 
 
@@ -38,11 +40,15 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
 
   public maps;
 
+  public user: User;
+
   private observable;
 
-  constructor(private serviceServices: ServiceService) {}
+  constructor(private serviceServices: ServiceService, private loginService: LoginService) {}
 
   ngOnInit(): void {
+    this.user = this.loginService.userLoggedIn;
+
     this.getData();
   }
 
