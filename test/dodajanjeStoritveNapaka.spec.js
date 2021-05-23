@@ -6,12 +6,12 @@ describe('Dodajanje nove storitve z napako', function () {
             .should('include', '/login')
 
         cy.get('.email')
-            .type('metkanovak')
-            .should('have.value', 'metkanovak')
+            .type('testko')
+            .should('have.value', 'testko')
 
         cy.get('.password')
-            .type('metkametka')
-            .should('have.value', 'metkametka')
+            .type('test')
+            .should('have.value', 'test')
 
         cy.get('.btn-primary')
             .click()
