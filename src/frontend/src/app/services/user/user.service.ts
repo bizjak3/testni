@@ -15,9 +15,14 @@ export class UserService {
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  public async updateUser(uporabnik: User) {
-    console.log("here");
+  public async updateMe(uporabnik: User) {
     const headers = await this.loginService.getAuthorizationHeader();
+    return this.http.put<User>(this.baseUrl + 'put-me', uporabnik, {headers});
+  }
+
+  public async updateUser(uporabnik: User): Promise<Observable<User>> {
+    const headers = await this.loginService.getAuthorizationHeader();
+
     return this.http.put<User>(this.baseUrl + 'put', uporabnik, {headers});
   }
 

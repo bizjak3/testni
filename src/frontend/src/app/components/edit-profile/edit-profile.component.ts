@@ -46,7 +46,7 @@ export class EditProfileComponent implements OnInit {
     //     }
     //   })
     //   .catch(() => (this.napakaNaObrazcu = 'Napaka pri posodabljanju uporabnika'));
-    const observable = await this.userService.updateUser(this.loginService.userLoggedIn);
+    const observable = await this.userService.updateMe(this.loginService.userLoggedIn);
     observable.subscribe((data) => {
       alert('Uporabnik posodobljen');
       this.router.navigate(['/profil']);
