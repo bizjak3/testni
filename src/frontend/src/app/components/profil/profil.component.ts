@@ -61,21 +61,7 @@ export class ProfilComponent implements OnInit {
       const obs = await this.serviceService.getAllActiveUserServices();
       obs.subscribe(
         (data) => {
-          let x = [];
-          let y = [];
-          let date: Date = new Date();
-          console.log(data);
-          data.forEach((value) => {
-            if(value.dateTo < date ){
-              console.log("past");
-              y.push(value);
-            }else{
-              console.log(value);
-              x.push(value);
-            }
-          });
-          this.services = x;
-          this.pastServices = y;
+          this.services = data;
           this.loading = false;
         },
         () => {
@@ -85,7 +71,17 @@ export class ProfilComponent implements OnInit {
       );
     }
     if(this.loginService.userLoggedIn.isDogOwner){
-      console.log("kužar");
+      const obs = await this.dogoService.getUserDogos();
+      obs.subscribe(
+        (data) => {
+          this.dogos = data;
+          this.loading = false;
+        },
+        () => {
+          this.loading = false;
+          this.error = 'Napaka pri pridobivanju podatkov';
+        }
+      );
     }
   }
 

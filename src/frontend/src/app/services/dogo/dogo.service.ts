@@ -25,4 +25,10 @@ export class DogoService {
 
     return this.http.get<DogApiBreed[]>(this.baseUrl + 'dogos/breeds', {headers});
   }
+
+  public async getUserDogos(): Promise<Observable<Dogo[]>> {
+    const headers = await this.loginService.getAuthorizationHeader();
+
+    return this.http.get<Dogo[]>(this.baseUrl + "dogos/get-users-dogos", {headers});
+  }
 }

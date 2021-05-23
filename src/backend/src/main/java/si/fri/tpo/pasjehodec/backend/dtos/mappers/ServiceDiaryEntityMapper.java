@@ -13,4 +13,8 @@ public class ServiceDiaryEntityMapper {
     public ServiceDiaryDto castFromServiceDiaryEntityToServiceDiaryDto(ServiceDiaryEntity entity) {
         return modelMapper.map(entity, ServiceDiaryDto.class);
     }
+
+    public ServiceDiaryEntity castFromServiceDiaryDtoToServiceDiaryEntity(ServiceDiaryDto dto) {
+        return modelMapper.map(dto, ServiceDiaryEntity.class);
+    }
 }

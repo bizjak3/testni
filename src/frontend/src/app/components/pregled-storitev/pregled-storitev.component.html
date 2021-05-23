@@ -28,6 +28,31 @@
         <div *ngIf="error">
           {{ error }}
         </div>
+        
+        <ng-template #izborPsa let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="dateOfBirth">Date of birth</label>
+                <div class="input-group">
+                  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+          </div>
+        </ng-template>
 
         <div *ngFor="let service of services | serviceSearch : searchInput" class="p-4 shadow m-3 row main">
             <div class="col-md-8">
@@ -53,8 +78,12 @@
                 </div>
               </div>
             </div>
-          <div class="container-fluid mt-2">
-            <button type="button" class="btn btn-primary btn-block" [disabled]="user.isServiceWorker">Naroči</button>
+          <div class="container-fluid row mt-2" *ngIf="user.isDogOwner">
+            <div class="col-md-8"></div>
+            <select [(ngModel)]="dogo" [ngModelOptions]="{standalone: true}" class="form-control col-md-2">
+              <option *ngFor="let d of dogos" [ngValue]="d">{{d.name}}</option>
+            </select> 
+            <button type="button" (click)="narociStoritev(service)" class="btn btn-primary col-md-2">Naroči</button>
           </div>
         </div>
       </div>

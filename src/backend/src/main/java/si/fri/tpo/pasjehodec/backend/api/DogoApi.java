@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.*;
+import si.fri.tpo.pasjehodec.backend.database.entities.DogoEntity;
 import org.springframework.web.bind.annotation.*;
 import si.fri.tpo.pasjehodec.backend.client.dogo_api.DogClient;
 import si.fri.tpo.pasjehodec.backend.client.dogo_api.models.DogApiRoot;
@@ -18,6 +21,8 @@ import si.fri.tpo.pasjehodec.backend.dtos.models.dogo.DogoDto;
 import si.fri.tpo.pasjehodec.backend.services.DogoService;
 
 import java.util.List;
+
+import java.util.Arrays;
 
 @RestController
 @RequestMapping("/dogos/")
@@ -35,7 +40,7 @@ public class DogoApi {
     })
     public ResponseEntity<DogoDto> postDogo(@RequestBody DogoDto dogo, @Parameter(hidden = true) @AuthenticationPrincipal UserEntity user) {
         var entity = dogoEntityMapper.castDogoEntityFromDto(dogo);
-        entity = dogoService.addDogo(entity, entity.getOwner());
+        entity = dogoService.addDogo(entity, user);
         return ResponseEntity.ok(dogoEntityMapper.castDogoDtoFromEntity(entity));
     }
 
@@ -44,5 +49,19 @@ public class DogoApi {
     @Cacheable(value = "breeds")
     public List<DogApiRoot> getDogBreeds() {
         return dogClient.getDogBreeds();
+    }
+
+    @GetMapping("get-users-dogos")
+    public ResponseEntity<DogoDto[]> getUsersDogos(@AuthenticationPrincipal UserEntity user) {
+        return ResponseEntity.ok(
+                dogoService.getUsersDogos(user).stream()
+                .map(dogoEntityMapper::castDogoDtoFromEntity)
+                .toArray(DogoDto[]::new)
+        );
+    }
+
+    @GetMapping("location")
+    public ResponseEntity<DogoDto> getDogoLocation(@Parameter DogoEntity dogoEntity) {
+        return ResponseEntity.ok(dogoEntityMapper.castDogoDtoFromEntity(dogoEntity));
     }
 }
