@@ -114,8 +114,8 @@ public class ServicesApi {
 
     @PostMapping("post-service-diary")
     public ResponseEntity<ServiceDiaryDto> postServiceDiary(@RequestBody ServiceDiaryEntity serviceDiaryEntity,
-                                                            Integer dogoId,
-                                                            Integer serviceId) {
+                                                            @Parameter Integer dogoId,
+                                                            @Parameter Integer serviceId) {
 
         ServiceDiaryEntity entity = serviceDiaryServices.createNewServiceDiary(serviceDiaryEntity, dogoId, serviceId);
 
