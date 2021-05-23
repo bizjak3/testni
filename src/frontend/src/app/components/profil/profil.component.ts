@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../../services/login/login.service';
 import {Subscription} from 'rxjs';
 import {UserService} from '../../services/user/user.service';
+import {ServiceService} from '../../services/service/service.service';
 import { User } from '../../models/user';
+import { DogoService } from 'src/app/services/dogo/dogo.service';
 
 @Component({
   selector: 'app-profil',
@@ -18,11 +20,16 @@ export class ProfilComponent implements OnInit {
     email: ''
   };
 
+  public services;
+  public pastServices;
+  public dogos;
+
   public user1: User;
   public loading: boolean = false;
   public error: string | null = null;
 
-  constructor(private loginService: LoginService, private userService: UserService) { }
+  constructor(private loginService: LoginService, private userService: UserService, 
+    private serviceService: ServiceService, private dogoService: DogoService) { }
 
   ngOnInit(): void {
     this.user.name = this.loginService.userLoggedIn.name;
@@ -50,6 +57,36 @@ export class ProfilComponent implements OnInit {
         this.error = 'Napaka pri pridobivanju podatkov';
       }
     );
+    if(this.loginService.userLoggedIn.isServiceWorker){
+      const obs = await this.serviceService.getAllActiveUserServices();
+      obs.subscribe(
+        (data) => {
+          let x = [];
+          let y = [];
+          let date: Date = new Date();
+          console.log(data);
+          data.forEach((value) => {
+            if(value.dateTo < date ){
+              console.log("past");
+              y.push(value);
+            }else{
+              console.log(value);
+              x.push(value);
+            }
+          });
+          this.services = x;
+          this.pastServices = y;
+          this.loading = false;
+        },
+        () => {
+          this.loading = false;
+          this.error = 'Napaka pri pridobivanju podatkov';
+        }
+      );
+    }
+    if(this.loginService.userLoggedIn.isDogOwner){
+      console.log("kužar");
+    }
   }
 
 }

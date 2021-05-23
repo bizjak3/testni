@@ -12,12 +12,12 @@ import {UserService} from '../../services/user/user.service';
 })
 export class SpremeniUporabnikaComponent implements OnInit {
   @Input() uporabnik: User;
-  public nadomestniUporabnik = {
-    name: '',
-    surname: '',
-    username: '',
-    email: ''
-  };
+  // public nadomestniUporabnik = {
+  //   name: '',
+  //   surname: '',
+  //   username: '',
+  //   email: ''
+  // };
 
   constructor(public activeModal: NgbActiveModal, private userService: UserService) { }
 
@@ -31,10 +31,10 @@ export class SpremeniUporabnikaComponent implements OnInit {
   // }
 
   public async posodobiUporabnika() {
-    this.uporabnik.name = (this.nadomestniUporabnik.name === '' ? this.uporabnik.name : this.nadomestniUporabnik.name);
-    this.uporabnik.surname = (this.nadomestniUporabnik.surname === '' ? this.uporabnik.surname : this.nadomestniUporabnik.surname);
-    this.uporabnik.username = (this.nadomestniUporabnik.username === '' ? this.uporabnik.username : this.nadomestniUporabnik.username);
-    this.uporabnik.email = (this.nadomestniUporabnik.email === '' ? this.uporabnik.email : this.nadomestniUporabnik.email);
+    // this.uporabnik.name = (this.nadomestniUporabnik.name === '' ? this.uporabnik.name : this.nadomestniUporabnik.name);
+    // this.uporabnik.surname = (this.nadomestniUporabnik.surname === '' ? this.uporabnik.surname : this.nadomestniUporabnik.surname);
+    // this.uporabnik.username = (this.nadomestniUporabnik.username === '' ? this.uporabnik.username : this.nadomestniUporabnik.username);
+    // this.uporabnik.email = (this.nadomestniUporabnik.email === '' ? this.uporabnik.email : this.nadomestniUporabnik.email);
     //   .updateUser(this.loginService.userLoggedIn)
     //   .then((data) => {
     //     if (data === true) {

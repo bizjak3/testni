@@ -22,12 +22,12 @@ describe('Dodajanje nove storitve', function () {
 
         cy.get('h1').contains('Ustvari storitev')
 
-        cy.get('#map')
+        cy.get('select').select('sdfdsfsdafasdf')
+        cy.get('.btn').contains('Kopiraj')
             .click()
 
-        cy.get('input[name="ime"]')
-            .type('Nova storitev')
-            .should('have.value', 'Nova storitev')
+        cy.get('#map')
+            .click()
 
         cy.get('.od')
             .type(`${new Date().toJSON().toString().substring(0, 10)}`)
@@ -36,12 +36,6 @@ describe('Dodajanje nove storitve', function () {
         myDate = myDate.toJSON().toString().substring(0, 10)
         cy.get('.do')
             .type(myDate)
-
-        cy.get('textarea[name="komentarji"]')
-            .type('To je nek komentar.')
-
-        cy.get('textarea[name="omejitve"]')
-            .type('To so neke omejitve.')
 
         cy.get('.btn').contains('Oddaj storitev')
             .click()

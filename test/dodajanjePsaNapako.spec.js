@@ -6,12 +6,12 @@ describe('Dodajanje novega psa z napako', function () {
             .should('include', '/login')
 
         cy.get('.email')
-            .type('metkanovak')
-            .should('have.value', 'metkanovak')
+            .type('lastničko')
+            .should('have.value', 'lastničko')
 
         cy.get('.password')
-            .type('metkametka')
-            .should('have.value', 'metkametka')
+            .type('lastnik')
+            .should('have.value', 'lastnik')
 
         cy.get('.btn-primary')
             .click()
