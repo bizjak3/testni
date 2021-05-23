@@ -8,6 +8,7 @@ import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserType;
 import si.fri.tpo.pasjehodec.backend.database.repositories.UserRepository;
 import si.fri.tpo.pasjehodec.backend.exceptions.BadRequestException;
+import si.fri.tpo.pasjehodec.backend.exceptions.DataNotFoundException;
 import si.fri.tpo.pasjehodec.backend.exceptions.ForbiddenOperationException;
 
 @Service
@@ -18,9 +19,19 @@ public class UserServices {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder; //za kriptiranje gesel
 
-    public UserEntity saveData(UserEntity user, boolean sifrirajGeslo) {
+    public UserEntity updateUserMe(UserEntity user, boolean sifrirajGeslo) {
         if(sifrirajGeslo)
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+        return userRepository.save(user);
+    }
+
+    public UserEntity updateUserOther(UserEntity user) throws DataNotFoundException {
+        var userDatabase = userRepository.findByUsername(user.getUsername())
+                .orElseThrow(() -> new DataNotFoundException("Uporabnik ne obstaja"));
+
+        // geslo ne moremo spreminjat drugemu uporabniku
+        user.setPassword(userDatabase.getPassword());
 
         return userRepository.save(user);
     }
