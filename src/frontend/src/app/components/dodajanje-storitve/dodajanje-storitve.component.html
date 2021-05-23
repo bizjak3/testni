@@ -4,12 +4,23 @@
     <div class="container shadow-lg p-3 m-5 bg-white rounded ">
     <form (submit)="dodajStoritev()" name="dodajStoritev" id="storitevPlus" class="box mx-auto">
       <h1 >Ustvari storitev</h1>
+      <div class="form-group" style="border:none;">
+        <h3>Kopiraj preteklo storitev:</h3>
+        <div class="mx-2">
+          <select [(ngModel)]="kopija" [ngModelOptions]="{standalone: true}" class="form-control">
+            <option *ngFor="let s of storitve" [ngValue]="s">{{s.name}}</option>
+          </select> 
+        </div>
+        <div class="mx-2 mt-2">
+          <button type="button" (click)="kopirajStoritev()" class="btn btn-primary btn-block">Kopiraj</button>
+        </div>
+      </div>
       <div class="card" style="border:none; height: 300px">
           <div style="  position: absolute;top: 0;left: 0;right: 0;bottom: 0;">
             <div class="map-frame" style="height: 100%;">
               <div id="map" style="height:100%"></div>
             </div>
-          </div>
+            </div>
           </div>
         <div style="">
         <div class="form-group">
