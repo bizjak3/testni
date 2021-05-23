@@ -12,6 +12,7 @@
                 placeholder="Iskanje"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                [(ngModel)]="searchInput"
               />
               <div class="input-group-append">
                 <span class="input-group-text">
@@ -28,7 +29,7 @@
           {{ error }}
         </div>
 
-        <div *ngFor="let service of services" class="p-4 shadow m-3 row main">
+        <div *ngFor="let service of services | serviceSearch : searchInput" class="p-4 shadow m-3 row main">
             <div class="col-md-8">
               <a class="stretched-link">
                 <h2>{{ service.name }}</h2>

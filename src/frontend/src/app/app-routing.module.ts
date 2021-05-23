@@ -10,6 +10,7 @@ import { LoginService } from './services/login/login.service';
 import { PregledStoritevComponent } from './components/pregled-storitev/pregled-storitev.component';
 import { EditProfileComponent} from './components/edit-profile/edit-profile.component';
 import {SeznamUporabnikovComponent} from './components/seznam-uporabnikov/seznam-uporabnikov.component';
+import {PublicProfileComponent} from './components/public-profile/public-profile.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
     path: 'profil',
     component: ProfilComponent,
     canActivate: [LoginService],
+  },
+  {
+    path: 'profile/:username',
+    component: PublicProfileComponent
   },
   {
     path: 'pregled_storitev',
