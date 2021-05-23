@@ -1,9 +1,15 @@
 describe('registracija uporabnika izvajalca', function () {
     it('Obisk strani za registracijo in registracija', function () {
-        cy.visit('http://localhost:4200/signup')
+        cy.visit('http://localhost:4200/')
 
         cy.url()
-            .should('include', '/signup')
+            .should('include', '/')
+
+        cy.get('.btn').contains(' Registracija kot ponudnik storitev ')
+            .click()
+
+        cy.url()
+            .should('include', '/signup/izvajalec')
 
         cy.get('.name')
             .type('Bor')
@@ -29,7 +35,7 @@ describe('registracija uporabnika izvajalca', function () {
             .type('borbor')
             .should('have.value', 'borbor')
 
-        cy.get('[type="radio"]').check('izvajalec')
+        // cy.get('[type="radio"]').contains('Izvajalec storitve').click()
 
         cy.get('.btn-primary')
             .click()
