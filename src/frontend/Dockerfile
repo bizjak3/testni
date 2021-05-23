@@ -5,7 +5,9 @@ WORKDIR /app
 COPY . .
 RUN npm install -g @angular/cli
 RUN npm install
-RUN ng build --prod
+
+ARG mode
+RUN if [ "x$mode" = "xdev" ] ; then echo ng build ; else echo ng build --prod; fi
 
 # stage 2
 

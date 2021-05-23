@@ -4,7 +4,10 @@ services:
   # frontenda v razvojni fazi ne potrebujemo v dockerju
   # ohranjamo za teste
   frontend:
-    build: frontend
+    build:
+      context: frontend
+      args:
+        mode: dev
     ports:
     - "4200:80"
 
@@ -13,7 +16,7 @@ services:
   backend:
     build: backend
     ports:
-    - "10011:80"
+    - "8080:80"
 
 
   # databases
@@ -29,7 +32,7 @@ services:
       MYSQL_USER: pasjehodec
       MYSQL_PASSWORD: pasjehodec
     ports:
-    - "10001:3306"
+    - "3306:3306"
   redis:
     image: redis
     hostname: redis
@@ -37,13 +40,4 @@ services:
     volumes:
       - ./volumes/redis:/data
     ports:
-    - "10002:6379"
-
-  watchtower:
-    image: v2tec/watchtower
-    environment:
-      REPO_USER: bizjak3
-      REPO_PASS: Vp&LLPQJdES6RXc
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30 --debug
+    - "6379:6379"
