@@ -146,8 +146,8 @@ export class DodajanjeStoritveComponent implements OnInit {
     this.storitev.ime = this.kopija.name;
     this.storitev.komentarji = this.kopija.description;
     this.storitev.omejitve = this.kopija.restrictions;
-    //this.storitev.lat = this.kopija.locations[0].geoLat;
-    //this.storitev.lng = this.kopija.locations[0].geoLon;
+    this.storitev.lat = this.kopija.locations[0].geoLat;
+    this.storitev.lng = this.kopija.locations[0].geoLon;
 
     this.copyMarker = L.marker([this.storitev.lat, this.storitev.lng]).addTo(this.map);
   }

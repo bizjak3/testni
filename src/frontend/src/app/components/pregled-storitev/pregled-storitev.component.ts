@@ -73,7 +73,7 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
     this.services.forEach((value) => {
       console.log("map" + value.id);
       let map = L.map('map' + value.id, {
-        center: [46.050596, 14.506015],
+        center: [value.locations[0].geoLat, value.locations[0].geoLon],
         zoom: 8
       });
   
@@ -81,6 +81,8 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
         maxZoom: 19,
         attribution: '&copy <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
+
+      L.marker([value.locations[0].geoLat, value.locations[0].geoLon]).addTo(map);
 
       this.maps.push(map);
     }); 
