@@ -38,6 +38,12 @@ export class DodajanjeStoritveComponent implements OnInit {
 
   public errors;
 
+  public storitve = [];
+
+  public kopija;
+
+  private copyMarker;
+
   public storitev = {
     ime: "",
     lat: "",
@@ -51,6 +57,7 @@ export class DodajanjeStoritveComponent implements OnInit {
   constructor(private serviceService: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
+    this.loadServices();
     this.initMap();
   }
 
@@ -72,6 +79,9 @@ export class DodajanjeStoritveComponent implements OnInit {
     this.map.on('click', e => {
       if (marker != null) {
         this.map.removeLayer(marker);
+      }
+      if(this.copyMarker != null){
+        this.map.removeLayer(this.copyMarker);
       }
       marker = new L.marker(e.latlng).addTo(this.map);
       console.log(e.latlng.lat, e.latlng.lng);
@@ -131,4 +141,27 @@ export class DodajanjeStoritveComponent implements OnInit {
     }
   }
 
+  public kopirajStoritev(){
+    console.log(this.kopija.locations);
+    this.storitev.ime = this.kopija.name;
+    this.storitev.komentarji = this.kopija.description;
+    this.storitev.omejitve = this.kopija.restrictions;
+    this.storitev.lat = this.kopija.locations[0].geoLat;
+    this.storitev.lng = this.kopija.locations[0].geoLon;
+
+    this.copyMarker = L.marker([this.storitev.lat, this.storitev.lng]).addTo(this.map);
+  }
+
+  private async loadServices(){
+    const obs = await this.serviceService.getAllActiveUserServices();
+    obs.subscribe(
+      (data) => {
+        this.storitve = data;
+      },
+      () => {
+        console.log("error");
+      }
+    );
+    
+  }
 }

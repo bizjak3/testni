@@ -29,4 +29,5 @@ public class UserEntityMapper {
     public UserEntity mapUserEntityFromDto(UserDto entity) {
         return modelMapper.map(entity, UserEntity.class);
     }
+
 }

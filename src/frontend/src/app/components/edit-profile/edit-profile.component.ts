@@ -13,7 +13,7 @@ import {ErrorWrapper} from '../../models/error/ErrorWrapper';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
-  public user = {
+  public user: User = {
     name: '',
     surname: '',
     username: '',
@@ -22,7 +22,9 @@ export class EditProfileComponent implements OnInit {
 
   public napakaNaObrazcu = '';
 
-  constructor(private userService: UserService, private router: Router, private loginService: LoginService) { }
+  constructor(private userService: UserService, private router: Router, private loginService: LoginService) {
+    this.user = this.loginService.userLoggedIn;
+  }
 
   ngOnInit(): void {
   }
@@ -47,7 +49,7 @@ export class EditProfileComponent implements OnInit {
     const observable = await this.userService.updateUser(this.loginService.userLoggedIn);
     observable.subscribe((data) => {
       alert('Uporabnik posodobljen');
-      this.router.navigate(['/pregled_storitev']);
+      this.router.navigate(['/profil']);
     }, (err: HttpErrorResponse) => {
       const errorWrapper: ErrorWrapper = err.error;
       console.log(errorWrapper);

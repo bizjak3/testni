@@ -3,6 +3,8 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../../models/user';
 import { LoginService } from '../login/login.service';
+import {Observable} from 'rxjs';
+import {Service} from '../../models/service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +19,19 @@ export class UserService {
     console.log("here");
     const headers = await this.loginService.getAuthorizationHeader();
     return this.http.put<User>(this.baseUrl + 'put', uporabnik, {headers});
+  }
+
+  public async getAllUsers(): Promise<Observable<User[]>> {
+    const headers = await this.loginService.getAuthorizationHeader();
+    console.log('Sem v getAllUsers');
+
+    return this.http.get<User[]>(this.baseUrl + 'get-all', {headers});
+  }
+
+  public async getMe(): Promise<Observable<User>> {
+    const headers = await this.loginService.getAuthorizationHeader();
+    console.log('Sem v getMe');
+
+    return this.http.get<User>(this.baseUrl + 'me', {headers});
   }
 }

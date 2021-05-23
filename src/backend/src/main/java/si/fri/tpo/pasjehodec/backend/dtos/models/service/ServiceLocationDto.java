@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Data
 public class ServiceLocationDto {
     private Integer id;
-    private LocalDateTime date;
     @NotNull(message = "Koordinata ne sme biti prazna")
     private double geoLat;
     @NotNull(message = "Koordinata ne sme biti prazna")

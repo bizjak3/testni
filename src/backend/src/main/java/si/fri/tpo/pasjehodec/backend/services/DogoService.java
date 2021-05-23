@@ -16,7 +16,7 @@ public class DogoService {
 
     public DogoEntity addDogo(DogoEntity dogo, UserEntity lastnik) {
         if(lastnik.getId() == null) {
-            lastnik = userServices.saveData(lastnik);
+            lastnik = userServices.saveData(lastnik, true);
         } else {
             lastnik = userRepository.getOne(lastnik.getId());
         }

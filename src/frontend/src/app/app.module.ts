@@ -17,6 +17,9 @@ import { ProfilComponent } from './components/profil/profil.component';
 import { PregledStoritevComponent } from './components/pregled-storitev/pregled-storitev.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { SeznamUporabnikovComponent } from './components/seznam-uporabnikov/seznam-uporabnikov.component';
+import { UporabnikComponent } from './components/uporabnik/uporabnik.component';
+import { SpremeniUporabnikaComponent } from './components/spremeni-uporabnika/spremeni-uporabnika.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     ProfilComponent,
     PregledStoritevComponent,
     FooterComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    SeznamUporabnikovComponent,
+    UporabnikComponent,
+    SpremeniUporabnikaComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +47,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     NgbModule,
     HttpClientModule
   ],
+  entryComponents: [SpremeniUporabnikaComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
