@@ -9,6 +9,7 @@ import { ProfilComponent } from './components/profil/profil.component';
 import { LoginService } from './services/login/login.service';
 import { PregledStoritevComponent } from './components/pregled-storitev/pregled-storitev.component';
 import { EditProfileComponent} from './components/edit-profile/edit-profile.component';
+import {SeznamUporabnikovComponent} from './components/seznam-uporabnikov/seznam-uporabnikov.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'spremeni_profil',
     component: EditProfileComponent
+  },
+  {
+    path: 'seznam_uporabnikov',
+    component: SeznamUporabnikovComponent
   }
 ];
 

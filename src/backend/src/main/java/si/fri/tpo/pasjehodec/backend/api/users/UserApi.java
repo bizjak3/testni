@@ -45,7 +45,7 @@ public class UserApi {
     }
 
     @GetMapping("/get-all")
-    @Secured({"ADMIN"})
+//    @Secured({"ADMIN"})
     public ResponseEntity<UserDto[]> getUsers() {
         return ResponseEntity.ok(
                 Arrays.stream(userServices.usersOverview())
