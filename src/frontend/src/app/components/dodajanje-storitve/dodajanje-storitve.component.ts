@@ -4,9 +4,11 @@ import * as geo from "esri-leaflet-geocoder"
 import { Service } from 'src/app/models/service';
 import { Location } from 'src/app/models/location';
 import { ServiceService } from 'src/app/services/service/service.service';
+import { LoginService } from 'src/app/services/login/login.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorWrapper } from 'src/app/models/error/ErrorWrapper';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 
 
@@ -52,11 +54,17 @@ export class DodajanjeStoritveComponent implements OnInit {
     datum_to: "",
     komentarji: "",
     omejitve: ""
-
   }
-  constructor(private serviceService: ServiceService, private router: Router) { }
+
+  public user: User;
+
+  constructor(private serviceService: ServiceService, private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.user = this.loginService.userLoggedIn;
+    if(this.user.isDogOwner){
+      this.router.navigate(["/pregled_storitev"]);
+    }
     this.loadServices();
     this.initMap();
   }
