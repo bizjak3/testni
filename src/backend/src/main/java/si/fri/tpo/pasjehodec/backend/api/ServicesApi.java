@@ -114,10 +114,13 @@ public class ServicesApi {
 
     @PostMapping("post-service-diary")
     public ResponseEntity<ServiceDiaryDto> postServiceDiary(@RequestBody ServiceDiaryEntity serviceDiaryEntity,
-                                                            @Parameter Integer dogoId,
-                                                            @Parameter Integer serviceId) {
+                                                            @Parameter String dogoId,
+                                                            @Parameter String serviceId) {
 
-        ServiceDiaryEntity entity = serviceDiaryServices.createNewServiceDiary(serviceDiaryEntity, dogoId, serviceId);
+        Integer dogId = Integer.parseInt(dogoId);
+        Integer servicId = Integer.parseInt(serviceId);
+
+        ServiceDiaryEntity entity = serviceDiaryServices.createNewServiceDiary(serviceDiaryEntity, dogId, servicId);
 
         return ResponseEntity.ok(
                 serviceDiaryEntityMapper.castFromServiceDiaryEntityToServiceDiaryDto(entity)
