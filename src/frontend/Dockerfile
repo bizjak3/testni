@@ -7,7 +7,7 @@ RUN npm install -g @angular/cli
 RUN npm install
 
 ARG mode
-RUN if [ "x$mode" = "xdev" ] ; then echo ng build ; else echo ng build --prod; fi
+RUN if [ "x$mode" = "xdev" ] ; then ng build ; else ng build --prod; fi
 
 # stage 2
 
