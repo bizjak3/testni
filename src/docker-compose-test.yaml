@@ -3,17 +3,20 @@ version: "3"
 services:
   # frontenda v razvojni fazi ne potrebujemo v dockerju
   # ohranjamo za teste
-  #frontend:
-  #  build: frontend
-  #  ports:
-  #  - "4200:80"
+  frontend:
+    build:
+      context: frontend
+      args:
+        mode: dev
+    ports:
+      - "4200:80"
 
   # backenda v razvojni fazi ne potrebujemo v dockerju
   # ohranjamo za teste
-  #backend:
-  #  build: backend
-  #  ports:
-  #  - "10011:80"
+  backend:
+    build: backend
+    ports:
+      - "8080:80"
 
 
   # databases
@@ -29,7 +32,7 @@ services:
       MYSQL_USER: pasjehodec
       MYSQL_PASSWORD: pasjehodec
     ports:
-    - "10001:3306"
+      - "3306:3306"
   redis:
     image: redis
     hostname: redis
@@ -37,4 +40,4 @@ services:
     volumes:
       - ./volumes/redis:/data
     ports:
-    - "10002:6379"
+      - "6379:6379"
