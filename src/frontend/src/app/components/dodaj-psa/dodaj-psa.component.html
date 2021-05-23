@@ -1,32 +1,39 @@
-
 <main>
   <div class="main col d-flex justify-content-center">
     <div class="card shadow-lg p-3 mb-5 bg-white rounded">
-    <form (submit)="dodajPsa()" name="dodajPsa" id="pesPlus" class="box mx-auto">
-      <div class="login-container">
-        <h1>Dodaj psa</h1>
-        <div class="form-group">
-          <label>Ime</label>
-          <input type="text" name="ime" class="form-control" [(ngModel)]="pes.ime">
-        </div>
-        <div class="form-group">
-          <label>Pasma</label>
-          <input type="text" name="pasma" class="form-control" [(ngModel)]="pes.pasma">
-        </div>
-        <div class="form-group">
-          <label>Komentarji</label><br>
-          <textarea name="komentarji" rows="6" cols="60" [(ngModel)]="pes.komentarji"></textarea>
-        </div>
-        <div *ngFor="let error of errors">
-          <div class="alert alert-warning">
-            {{ error }}
+      <div *ngIf="loading">
+        Nalagam pasme
+      </div>
+
+      <form *ngIf="!loading" (submit)="dodajPsa()" name="dodajPsa" id="pesPlus" class="box mx-auto">
+        <div class="login-container">
+          <h1>Dodaj psa</h1>
+          <div class="form-group">
+            <label>Ime</label>
+            <input type="text" name="ime" class="form-control" [(ngModel)]="pes.ime">
+          </div>
+          <div class="form-group">
+            <label>Pasma</label>
+            <input list="breedsList" type="text" name="pasma" class="form-control" [(ngModel)]="pes.pasma">
+            <datalist id="breedsList">
+              <option *ngFor="let breed of breeds" [value]="breed.name">{{breed.name}}</option>
+            </datalist>
+          </div>
+          <div class="form-group">
+            <label>Komentarji</label><br>
+            <textarea name="komentarji" rows="6" cols="60" [(ngModel)]="pes.komentarji"></textarea>
+          </div>
+          <div *ngFor="let error of errors">
+            <div class="alert alert-warning">
+              {{ error }}
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary pull-right">Dodaj štirinožca</button>
           </div>
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary pull-right">Dodaj štirinožca</button>
-        </div>
-      </div>
-    </form>
+      </form>
+
     </div>
   </div>
 </main>
