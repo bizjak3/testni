@@ -28,8 +28,16 @@
     <div *ngIf="user.isDogOwner; else serviceWorker" class="row container justify-content-center">
       <div class="row container">
         <h1>Moji štirinožni prijatelji</h1>
-        <div *ngFor="let service of services" class="p-4 shadow m-3 main row container">
-          
+        <div *ngFor="let dogo of dogos" class="p-4 shadow m-3 main row container">
+          <div class="">
+            <a class="">
+              <h2>{{ dogo.name }}</h2>
+            </a>
+            <hr />
+
+            <h4 class="text-secondary">Pasma</h4>
+            <p class="p-2">{{ dogo.breed }}</p>
+          </div>
         </div>
       </div>
       <div class="row container">
