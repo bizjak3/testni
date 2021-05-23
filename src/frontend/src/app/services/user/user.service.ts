@@ -27,4 +27,11 @@ export class UserService {
 
     return this.http.get<User[]>(this.baseUrl + 'get-all', {headers});
   }
+
+  public async getMe(): Promise<Observable<User>> {
+    const headers = await this.loginService.getAuthorizationHeader();
+    console.log('Sem v getMe');
+
+    return this.http.get<User>(this.baseUrl + 'me', {headers});
+  }
 }
