@@ -15,7 +15,9 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import si.fri.tpo.pasjehodec.backend.database.entities.DogoEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.ServiceDiaryEntity;
+import si.fri.tpo.pasjehodec.backend.database.entities.ServiceEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserType;
 import si.fri.tpo.pasjehodec.backend.dtos.mappers.ServiceDiaryEntityMapper;
@@ -41,7 +43,7 @@ public class ServicesApi {
     private final ServiceDiaryEntityMapper serviceDiaryEntityMapper;
 
     @PostMapping("add")
-    @Secured({UserType.ADMIN, UserType.SERVICE_WORKER})
+    // @Secured({UserType.ADMIN, UserType.SERVICE_WORKER})
     @Operation(
             summary = "Create new service"
     )
@@ -86,7 +88,7 @@ public class ServicesApi {
     }
 
     @GetMapping("user-service-all")
-    @Secured({UserType.ADMIN, UserType.SERVICE_WORKER})
+    // @Secured({UserType.ADMIN, UserType.SERVICE_WORKER})
     @Operation(
             summary = "Get list of all users services"
     )
@@ -111,11 +113,26 @@ public class ServicesApi {
 
 
     @PostMapping("post-service-diary")
-    public ResponseEntity<ServiceDiaryDto> postServiceDiary(@RequestBody ServiceDiaryEntity serviceDiary) {
-        ServiceDiaryEntity entity = serviceDiaryServices.createNewServiceDiary(serviceDiary);
+    public ResponseEntity<ServiceDiaryDto> postServiceDiary(@RequestBody ServiceDiaryEntity serviceDiaryEntity,
+                                                            @RequestBody DogoEntity dogoEntity,
+                                                            @RequestBody ServiceEntity serviceEntity) {
+
+        ServiceDiaryEntity entity = serviceDiaryServices.createNewServiceDiary(serviceDiaryEntity, dogoEntity, serviceEntity);
 
         return ResponseEntity.ok(
                 serviceDiaryEntityMapper.castFromServiceDiaryEntityToServiceDiaryDto(entity)
         );
+    }
+
+    @PostMapping("post-rating")
+    public ResponseEntity<ServiceDiaryDto> postRating(Integer id, Integer rating) {
+
+        // TODO preveri ce je vredu serviceDiaryEntiry podan
+
+        // ServiceDiaryEntity entity = serviceDiaryEntityMapper.castFromServiceDiaryDtoToServiceDiaryEntity(serviceDiaryDto);
+        ServiceDiaryEntity entity = serviceDiaryServices.addRating(id, rating);
+        return ResponseEntity.ok(
+                serviceDiaryEntityMapper.castFromServiceDiaryEntityToServiceDiaryDto(entity)
+            );
     }
 }

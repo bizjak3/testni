@@ -14,5 +14,5 @@ public class MessageDto {
 
     private LocalDateTime created;
 
-    private UserEntity sender;
+
 }

@@ -7,7 +7,8 @@ import { LoginService } from 'src/app/services/login/login.service';
 import * as L from "leaflet";
 import * as geo from "esri-leaflet-geocoder"
 import { User } from 'src/app/models/user';
-
+import { DogoService } from 'src/app/services/dogo/dogo.service';
+import { Dogo } from 'src/app/models/dogo';
 
 
 const iconRetinaUrl = '../../assets/pictures/marker-icon-2x.png';
@@ -42,9 +43,13 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
 
   public user: User;
 
+  public service;
+  public dogos;
+  public dogo;
+
   private observable;
 
-  constructor(private serviceServices: ServiceService, private loginService: LoginService) {}
+  constructor(private serviceServices: ServiceService, private loginService: LoginService, private dogoService: DogoService) {}
 
   ngOnInit(): void {
     this.user = this.loginService.userLoggedIn;
@@ -71,6 +76,13 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
         this.error = 'Napaka pri pridobivanju podatkov';
       }
     );
+
+    if(this.user.isDogOwner){
+      const obs = await this.dogoService.getUserDogos();
+      obs.subscribe((data) => {
+        this.dogos = data;
+      })
+    }
     
   }
 
@@ -93,4 +105,10 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
       this.maps.push(map);
     }); 
   }
+
+  public narociStoritev(service: Service){
+    this.service = service;
+    console.log(service, this.dogo);
+  }
+
 }

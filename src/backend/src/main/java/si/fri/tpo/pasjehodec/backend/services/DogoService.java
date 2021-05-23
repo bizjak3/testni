@@ -7,6 +7,8 @@ import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 import si.fri.tpo.pasjehodec.backend.database.repositories.DogoRepository;
 import si.fri.tpo.pasjehodec.backend.database.repositories.UserRepository;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class DogoService {
@@ -23,5 +25,12 @@ public class DogoService {
 
         dogo.setOwner(lastnik);
         return dogoRepository.save(dogo);
+    }
+
+    public List<DogoEntity> getUsersDogos(UserEntity lastnik) {
+
+        // TODO preveri lastnika
+
+        return dogoRepository.findByOwner(lastnik);
     }
 }

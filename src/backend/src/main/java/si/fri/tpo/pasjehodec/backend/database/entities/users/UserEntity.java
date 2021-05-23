@@ -56,6 +56,9 @@ public class UserEntity implements UserDetails {
     @OneToMany(mappedBy = "sender")
     private Set<MessageEntity> messages;
 
+    @OneToMany(mappedBy = "recipient")
+    private Set<MessageEntity> messagesReceived;
+
     @OneToMany(mappedBy = "cardOwner")
     private Set<PaymentTypeEntity> paymentTypes;
 
