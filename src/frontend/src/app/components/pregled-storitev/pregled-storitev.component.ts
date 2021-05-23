@@ -49,6 +49,8 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
 
   private observable;
 
+  public searchInput: string = "";
+
   constructor(private serviceServices: ServiceService, private loginService: LoginService, private dogoService: DogoService) {}
 
   ngOnInit(): void {

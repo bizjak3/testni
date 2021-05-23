@@ -1,4 +1,4 @@
-describe('Dodajanje nove storitve', function () {
+describe('Kopiranje storitve', function () {
     it('Obisk strani za dodajanje in dodajenje', function () {
         cy.visit('http://localhost:4200/login')
 
@@ -22,7 +22,7 @@ describe('Dodajanje nove storitve', function () {
 
         cy.get('h1').contains('Ustvari storitev')
 
-        cy.get('select').select('sdfdsfsdafasdf')
+        cy.get('select').select('Nova storitev')
         cy.get('.btn').contains('Kopiraj')
             .click()
 

@@ -79,4 +79,9 @@ public class UserServices {
 
         return entity;
     }
+
+    public UserEntity getUserData(String username) throws DataNotFoundException {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new DataNotFoundException("Ne najdem uporabnika"));
+    }
 }
