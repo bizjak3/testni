@@ -17,20 +17,25 @@ import java.util.Arrays;
 public class MessageApi {
 
     private final MessageService messageService;
-    // private final MessageEntityMapper messageEntityMapper;
+    private final MessageEntityMapper messageEntityMapper;
 
     @GetMapping("get-all")
-    public ResponseEntity<MessageEntity[]> getMessages() {
+    public ResponseEntity<MessageDto[]> getMessages() {
         return ResponseEntity.ok(
                 Arrays.stream(messageService.getAllMessages())
-                .toArray(MessageEntity[]::new)
+                        .map(messageEntityMapper::castFromMessageEntityToMessageDto)
+                        .toArray(MessageDto[]::new)
         );
     }
 
     @PostMapping("post-message")
-    public ResponseEntity<MessageEntity> postMessage(@RequestBody MessageEntity messageEntity) {
+    public ResponseEntity<MessageDto> postMessage(@RequestBody MessageDto messageDto) {
+
+        MessageEntity messageEntity = messageEntityMapper.castFromMessageDtoToMessageEntity(messageDto);
+
         MessageEntity entity = messageService.createNewMessage(messageEntity);
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(messageEntityMapper.castFromMessageEntityToMessageDto(entity));
     }
 }
