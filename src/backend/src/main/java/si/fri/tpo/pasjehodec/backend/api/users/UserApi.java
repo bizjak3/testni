@@ -79,4 +79,11 @@ public class UserApi {
                 userEntityMapper.mapUserDtoFromEntity(userServices.updateUserOther(entity))
         );
     }
+
+    @GetMapping
+    public ResponseEntity<UserDto> getPublicUserData(@RequestParam String username) throws DataNotFoundException {
+        return ResponseEntity.ok(
+                userEntityMapper.mapUserDtoFromEntity(userServices.getUserData(username))
+        );
+    }
 }

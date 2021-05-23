@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToBeDeletedPipe } from './pipes/to-be-deleted/to-be-deleted.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarLoginSignupComponent } from './components/navbars/navbar-login-signup/navbar-login-signup.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -19,11 +18,13 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { SeznamUporabnikovComponent } from './components/seznam-uporabnikov/seznam-uporabnikov.component';
 import { UporabnikComponent } from './components/uporabnik/uporabnik.component';
 import { SpremeniUporabnikaComponent } from './components/spremeni-uporabnika/spremeni-uporabnika.component';
+import { PublicProfileComponent } from './components/public-profile/public-profile.component';
+import { UserTypePipe } from './pipes/user-type.pipe';
+import { ServiceSearchPipe } from './pipes/service-search/service-search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToBeDeletedPipe,
     LoginComponent,
     NavbarLoginSignupComponent,
     SignupComponent,
@@ -36,7 +37,10 @@ import { SpremeniUporabnikaComponent } from './components/spremeni-uporabnika/sp
     EditProfileComponent,
     SeznamUporabnikovComponent,
     UporabnikComponent,
-    SpremeniUporabnikaComponent
+    SpremeniUporabnikaComponent,
+    PublicProfileComponent,
+    UserTypePipe,
+    ServiceSearchPipe
   ],
   imports: [
     BrowserModule,

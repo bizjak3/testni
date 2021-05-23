@@ -40,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // to je "produkcijska" verzija
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/register/**", "/docs/**")
+                .antMatchers("/register/**", "/docs/**", "/users")
                     .permitAll()
                 .anyRequest().authenticated()
                 .and()
