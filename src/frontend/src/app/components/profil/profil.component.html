@@ -1,18 +1,23 @@
 <section class="profile">
   <header class="header">
-    <div class="form-group text-center">
+    <div *ngIf="loading">Nalaganje podatkov...</div>
+
+    <div *ngIf="error">
+      {{ error }}
+    </div>
+    <div class="form-group text-center" *ngIf="user1">
     <div class="details shadow">
       <img class="avatar mt-3" src="assets/pictures/user-silhouette.png">
-      <h1 class="heading">{{ user.name}} {{ user.surname}}</h1>
+      <h1 class="heading">{{ user1.name}} {{ user1.surname}}</h1>
       <div class="stats">
         <div class="col-4">
           <h4>Email</h4>
-          <p>{{ user.email }}</p>
+          <p>{{ user1.email }}</p>
         </div>
         <div class="col-4 vrsta text-justify">
           <h4>Uporabnik</h4>
-          <p *ngIf="user.isDogOwner">Lastnik</p>
-          <p *ngIf="!user.isDogOwner">Izvajalec storitve</p>
+          <p *ngIf="user1.isDogOwner">Lastnik</p>
+          <p *ngIf="!user1.isDogOwner">Izvajalec storitve</p>
         </div>
       </div>
     </div>

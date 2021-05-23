@@ -49,7 +49,7 @@ export class EditProfileComponent implements OnInit {
     const observable = await this.userService.updateUser(this.loginService.userLoggedIn);
     observable.subscribe((data) => {
       alert('Uporabnik posodobljen');
-      this.router.navigate(['/pregled_storitev']);
+      this.router.navigate(['/profil']);
     }, (err: HttpErrorResponse) => {
       const errorWrapper: ErrorWrapper = err.error;
       console.log(errorWrapper);
