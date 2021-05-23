@@ -12,28 +12,28 @@ describe('registracija uporabnika izvajalca', function () {
             .should('include', '/signup/izvajalec')
 
         cy.get('.name')
-            .type('Bor')
-            .should('have.value', 'Bor')
+            .type('Test')
+            .should('have.value', 'Test')
 
         cy.get('.lastname')
-            .type('Novak')
-            .should('have.value', 'Novak')
+            .type('Testko')
+            .should('have.value', 'Testko')
 
         cy.get('.username')
-            .type('bornovak')
-            .should('have.value', 'bornovak')
+            .type('testko')
+            .should('have.value', 'testko')
 
         cy.get('.email')
-            .type('bornovak@gmail.com')
-            .should('have.value', 'bornovak@gmail.com')
+            .type('test@gmail.com')
+            .should('have.value', 'test@gmail.com')
 
         cy.get('.password1')
-            .type('borbor')
-            .should('have.value', 'borbor')
+            .type('test')
+            .should('have.value', 'test')
 
         cy.get('.password2')
-            .type('borbor')
-            .should('have.value', 'borbor')
+            .type('test')
+            .should('have.value', 'test')
 
         // cy.get('[type="radio"]').contains('Izvajalec storitve').click()
 
