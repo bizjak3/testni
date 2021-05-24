@@ -62,4 +62,10 @@ export class ServiceService {
 
     return this.http.get<User>(this.baseUrl + "find-person?serviceId=" + service.id, {headers});
   }
+
+  public async postRating(service: Service, rating: number): Promise<Observable<any>> {
+    const headers = await this.loginService.getAuthorizationHeader();
+
+    return this.http.post(this.baseUrl + "post-rating" + "?serviceId=" + service.id + "&rating=" + rating, null, {headers});
+  }
 }
