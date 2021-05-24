@@ -133,12 +133,12 @@ public class ServicesApi {
     }
 
     @PostMapping("post-rating")
-    public ResponseEntity<ServiceDiaryDto> postRating(Integer id, Integer rating) {
+    public ResponseEntity<ServiceDiaryDto> postRating(Integer serviceId, Integer rating) {
 
         // TODO preveri ce je vredu serviceDiaryEntiry podan
 
         // ServiceDiaryEntity entity = serviceDiaryEntityMapper.castFromServiceDiaryDtoToServiceDiaryEntity(serviceDiaryDto);
-        ServiceDiaryEntity entity = serviceDiaryServices.addRating(id, rating);
+        ServiceDiaryEntity entity = serviceDiaryServices.addRating(serviceId, rating);
         return ResponseEntity.ok(
                 serviceDiaryEntityMapper.castFromServiceDiaryEntityToServiceDiaryDto(entity)
             );

@@ -26,9 +26,13 @@ public class ServiceDiaryServices {
     }
 
     public ServiceDiaryEntity addRating(Integer id, int rating) {
-        ServiceDiaryEntity serviceDiaryEntity = serviceDiaryRepository.getOne(id);
-        serviceDiaryEntity.setAssess(rating);
-        return serviceDiaryEntity;
+        if (serviceDiaryRepository.getSDbyService(id).isPresent()) {
+            ServiceDiaryEntity serviceDiaryEntity = serviceDiaryRepository.getSDbyService(id).get();
+            serviceDiaryEntity.setAssess(rating);
+            serviceDiaryEntity.setStatus("zakljuceno");
+            return serviceDiaryEntity;
+        }
+        else return null;
     }
 
 }
