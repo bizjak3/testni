@@ -15,7 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import si.fri.tpo.pasjehodec.backend.database.repositories.UserRepository;
 import si.fri.tpo.pasjehodec.backend.security.filters.AuthenticationFilter;
 import si.fri.tpo.pasjehodec.backend.security.filters.AuthorizationFilter;
 

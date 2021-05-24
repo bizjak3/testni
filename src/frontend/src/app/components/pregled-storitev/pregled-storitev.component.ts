@@ -120,4 +120,8 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
       })
   }
 
+  public odjaviGaK(): void {
+    this.loginService.logOut();
+  }
+
 }

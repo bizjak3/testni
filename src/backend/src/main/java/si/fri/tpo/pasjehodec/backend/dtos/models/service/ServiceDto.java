@@ -23,6 +23,8 @@ public class ServiceDto {
     private LocalDateTime dateTo;
     private ServiceAuthorDto author;
 
+    private Double average;
+
     private List<ServiceLocationDto> locations;
     private List<ServiceServiceDiaryDto> serviceDiaries;
 }

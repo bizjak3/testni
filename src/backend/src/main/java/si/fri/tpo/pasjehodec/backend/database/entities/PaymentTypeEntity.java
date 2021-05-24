@@ -9,7 +9,6 @@ import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 @Entity

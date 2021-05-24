@@ -76,16 +76,19 @@
           </div>
         </ng-template>
 
-        <div *ngFor="let service of services | serviceSearch : searchInput" class="p-4 shadow m-3 row main">
-            <div class="col-md-8">
-              <a class="">
-                <h2>{{ service.name }}</h2>
-              </a>
-              <h5>
-                {{ service.dateFrom | date: "dd.MM.YYYY" }} -
-                {{ service.dateTo | date: "dd.MM.YYYY" }}
-              </h5>
-              <hr />
+        <div
+          *ngFor="let service of services | serviceSearch: searchInput"
+          class="p-4 shadow m-3 row main"
+        >
+          <div class="col-md-8">
+            <a class="">
+              <h2>{{ service.name }}</h2>
+            </a>
+            <h5>
+              {{ service.dateFrom | date: "dd.MM.YYYY" }} -
+              {{ service.dateTo | date: "dd.MM.YYYY" }}
+            </h5>
+            <hr />
 
             <h4 class="text-secondary">Opis storitve</h4>
             <p class="p-2">{{ service.description }}</p>
@@ -132,7 +135,7 @@
           <a
             class="btn btn-outline-secondary btn-block"
             routerLink="/dodaj_psa"
-            [class.disabled]="user.isServiceWorker"
+            [class.disabled]="!user.isDogOwner && !user.isAdmin"
           >
             Dodaj novega psa
           </a>
@@ -141,7 +144,7 @@
           <a
             class="btn btn-outline-secondary btn-block"
             routerLink="/dodaj_storitev"
-            [class.disabled]="user.isDogOwner"
+            [class.disabled]="!user.isServiceWorker && !user.isAdmin"
           >
             Dodaj novo storitev
           </a>
@@ -164,7 +167,7 @@
           >
         </div>
         <div class="m-2">
-          <a class="btn btn-outline-danger btn-block" routerLink="/profil">
+          <a class="btn btn-outline-danger btn-block" (click)="odjaviGaK()">
             Odjava</a
           >
         </div>

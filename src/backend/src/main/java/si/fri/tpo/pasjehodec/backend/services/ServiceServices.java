@@ -2,7 +2,6 @@ package si.fri.tpo.pasjehodec.backend.services;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 import si.fri.tpo.pasjehodec.backend.database.entities.ServiceEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
@@ -12,7 +11,6 @@ import si.fri.tpo.pasjehodec.backend.exceptions.BadRequestException;
 import si.fri.tpo.pasjehodec.backend.exceptions.ForbiddenOperationException;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;

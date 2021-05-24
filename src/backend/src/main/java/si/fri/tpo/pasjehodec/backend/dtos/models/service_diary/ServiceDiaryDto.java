@@ -1,17 +1,11 @@
 package si.fri.tpo.pasjehodec.backend.dtos.models.service_diary;
 
 import lombok.Data;
-import si.fri.tpo.pasjehodec.backend.database.entities.DogoEntity;
-import si.fri.tpo.pasjehodec.backend.database.entities.LocationEntity;
-import si.fri.tpo.pasjehodec.backend.database.entities.ServiceEntity;
-import si.fri.tpo.pasjehodec.backend.database.entities.TransactionEntity;
 import si.fri.tpo.pasjehodec.backend.dtos.models.dogo.DogoDto;
 import si.fri.tpo.pasjehodec.backend.dtos.models.service.ServiceDto;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import java.util.Set;
 
 @Data
 public class ServiceDiaryDto {
