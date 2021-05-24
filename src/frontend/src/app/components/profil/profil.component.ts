@@ -126,7 +126,7 @@ export class ProfilComponent implements OnInit {
     console.log(this.ocena);
     console.log(service);
 
-    const obs = await this.serviceService.postRating(service, this.ocena);
+    const obs = await this.serviceService.postRating(service.id, this.ocena);
 
     obs.subscribe(
       (data) => {
