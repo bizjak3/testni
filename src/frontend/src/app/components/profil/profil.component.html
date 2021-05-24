@@ -58,7 +58,29 @@
 
             <h4 class="text-secondary">Omejitve storitve</h4>
             <p class="p-2">{{ service.restrictions }}</p>
+
+            <h4 class="text-secondary">Izvajalec storitve</h4>
+            <p class="p-2">{{ service.author.name }} {{ service.author.surname }} ({{ service.author.username }})</p>
           </div>
+          <div class="col-md-8"></div>
+            <select
+              [(ngModel)]="ocena"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control col-md-2"
+            >
+              <option [ngValue]="1">1</option>
+              <option [ngValue]="2">2</option>
+              <option [ngValue]="3">3</option>
+              <option [ngValue]="4">4</option>
+              <option [ngValue]="5">5</option>
+            </select>
+            <button
+              type="button"
+              (click)="oceniStoritev(service)"
+              class="btn btn-primary col-md-2"
+            >
+              Oceni
+            </button>
         </div>
       </div>
     </div>
@@ -86,7 +108,7 @@
       </div>
       <div class="row container">
         <h1>Moje naročene storitve</h1>
-        <div *ngFor="let service of pastServices" class="p-4 shadow m-3 main row container">
+        <div *ngFor="let service of orderedServices" class="p-4 shadow m-3 main row container">
           <div class="">
             <a class="">
               <h2>{{ service.name }}</h2>

@@ -105,7 +105,7 @@
               </div>
             </div>
           </div>
-          <div class="container-fluid row mt-2" *ngIf="user.isDogOwner">
+          <div class="container-fluid row mt-2" *ngIf="user.isDogOwner && !service.ordered">
             <div class="col-md-8"></div>
             <select
               [(ngModel)]="dogo"
