@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Dogo } from 'src/app/models/dogo';
 import { Service } from 'src/app/models/service';
 import { ServiceDiary } from 'src/app/models/service_diary';
+import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 import { LoginService } from '../login/login.service';
 
@@ -54,5 +55,11 @@ export class ServiceService {
     const headers = await this.loginService.getAuthorizationHeader();
 
     return this.http.get<Service[]>(this.baseUrl + "get-selected-services", {headers});
+  }
+
+  public async findPerson(service: Service): Promise<Observable<User>>{
+    const headers = await this.loginService.getAuthorizationHeader();
+
+    return this.http.get<User>(this.baseUrl + "find-person?serviceId=" + service.id, {headers});
   }
 }

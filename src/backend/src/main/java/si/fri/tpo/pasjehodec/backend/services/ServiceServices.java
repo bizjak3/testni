@@ -5,6 +5,7 @@ import org.apache.catalina.User;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
+import si.fri.tpo.pasjehodec.backend.database.entities.ServiceDiaryEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.ServiceEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 import si.fri.tpo.pasjehodec.backend.database.repositories.LocationRepository;
@@ -72,6 +73,13 @@ public class ServiceServices {
     public UserEntity getPerson(UserEntity user) {
         if(serviceRepository.findPersonWhoOrdered(user.getId()).isPresent()) {
             return serviceRepository.findPersonWhoOrdered(user.getId()).get();
+        }
+        else return null;
+    }
+
+    public UserEntity findPerson(Integer id) {
+        if(serviceRepository.findPerson(id).isPresent()) {
+            return serviceRepository.findPerson(id).get();
         }
         else return null;
     }
