@@ -1,6 +1,7 @@
 package si.fri.tpo.pasjehodec.backend.services;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
@@ -66,5 +67,12 @@ public class ServiceServices {
 
     public List<ServiceEntity> getALlSelectedServices(UserEntity user) {
         return serviceRepository.findAllSelectedServices(user.getId());
+    }
+
+    public UserEntity getPerson(UserEntity user) {
+        if(serviceRepository.findPersonWhoOrdered(user.getId()).isPresent()) {
+            return serviceRepository.findPersonWhoOrdered(user.getId()).get();
+        }
+        else return null;
     }
 }

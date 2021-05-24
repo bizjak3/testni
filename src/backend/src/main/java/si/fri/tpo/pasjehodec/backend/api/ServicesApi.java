@@ -23,8 +23,10 @@ import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserType;
 import si.fri.tpo.pasjehodec.backend.dtos.mappers.ServiceDiaryEntityMapper;
 import si.fri.tpo.pasjehodec.backend.dtos.mappers.ServiceEntityMapper;
+import si.fri.tpo.pasjehodec.backend.dtos.mappers.UserEntityMapper;
 import si.fri.tpo.pasjehodec.backend.dtos.models.service.ServiceDto;
 import si.fri.tpo.pasjehodec.backend.dtos.models.service_diary.ServiceDiaryDto;
+import si.fri.tpo.pasjehodec.backend.dtos.models.user.UserDto;
 import si.fri.tpo.pasjehodec.backend.exceptions.BadRequestException;
 import si.fri.tpo.pasjehodec.backend.exceptions.ForbiddenOperationException;
 import si.fri.tpo.pasjehodec.backend.services.ServiceDiaryServices;
@@ -42,6 +44,8 @@ public class ServicesApi {
 
     private final ServiceDiaryServices serviceDiaryServices;
     private final ServiceDiaryEntityMapper serviceDiaryEntityMapper;
+
+    private final UserEntityMapper userEntityMapper;
 
     @PostMapping("add")
     // @Secured({UserType.ADMIN, UserType.SERVICE_WORKER})
@@ -158,6 +162,11 @@ public class ServicesApi {
                         .map(serviceEntityMapper::castFromServiceEntityToServiceDto)
                         .toArray(ServiceDto[]::new)
         );
+    }
+
+    @GetMapping("get-person")
+    public ResponseEntity<UserDto> getPerson(@AuthenticationPrincipal UserEntity user) {
+        return ResponseEntity.ok(userEntityMapper.mapUserDtoFromEntity(serviceServices.getPerson(user)));
     }
 
 }
