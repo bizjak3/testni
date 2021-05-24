@@ -30,6 +30,7 @@ public class ServiceDiaryServices {
             ServiceDiaryEntity serviceDiaryEntity = serviceDiaryRepository.getSDbyService(id).get();
             serviceDiaryEntity.setAssess(rating);
             serviceDiaryEntity.setStatus("zakljuceno");
+            serviceDiaryRepository.save(serviceDiaryEntity);
             return serviceDiaryEntity;
         }
         else return null;
