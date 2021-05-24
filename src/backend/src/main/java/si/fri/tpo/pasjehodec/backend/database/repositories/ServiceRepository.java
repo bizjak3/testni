@@ -29,6 +29,6 @@ public interface ServiceRepository extends JpaRepository<ServiceEntity, Integer>
     @Query("select distinct u from UserEntity u, ServiceEntity s, ServiceDiaryEntity sd, DogoEntity d where sd.service.author.id = :id and sd.service.id = s.id and sd.status = 'Narocena storitev' and u.id = sd.dogo.owner.id")
     Optional<UserEntity> findPersonWhoOrdered(Integer id);
 
-    @Query("select distinct u from UserEntity u, ServiceDiaryEntity sd where sd.id = :id and sd.dogo.owner.id = u.id")
+    @Query("select distinct u from UserEntity u, ServiceDiaryEntity sd where sd.service.id = :id and sd.dogo.owner.id = u.id")
     Optional<UserEntity> findPerson(Integer id);
 }

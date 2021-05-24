@@ -75,10 +75,19 @@ export class ProfilComponent implements OnInit {
 
       const obs2 = await this.serviceService.getSelectedServices();
       obs2.subscribe(
-        (data) => {
+        async (data) => {
           this.orderedServices = data;
-          console.log(data);
           this.loading = false;
+          let i = 0;
+          data.forEach(async (element) => {
+
+            const obs3 = await this.serviceService.findPerson(element);
+            obs3.subscribe((user) => {
+              console.log(user);
+              this.orderedServices[i].uporabnik = user;
+              i++;
+            })
+          })
         },
         () => {
           this.loading = false;
@@ -116,6 +125,18 @@ export class ProfilComponent implements OnInit {
   public async oceniStoritev(service: Service){
     console.log(this.ocena);
     console.log(service);
+
+    const obs = await this.serviceService.postRating(service, this.ocena);
+
+    obs.subscribe(
+      (data) => {
+        alert("Ocenjeno");
+      },
+      () => {
+        this.loading = false;
+        this.error = 'Napaka pri ocenjevanju podatkov';
+      }
+    )
   }
 
 }

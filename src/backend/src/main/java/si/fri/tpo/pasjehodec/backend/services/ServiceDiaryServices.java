@@ -24,6 +24,7 @@ public class ServiceDiaryServices {
         return serviceDiaryRepository.save(entity);
     }
 
+<<<<<<< HEAD
     public ServiceDiaryEntity addRating(Integer id, int rating, UserEntity userEntity) throws DataNotFoundException {
         var serviceDiaryEntity = serviceRepository.findById(id).orElseThrow(() -> new DataNotFoundException("Servis ne obstaja"))
                 .getServiceDiaries().stream()
@@ -32,6 +33,17 @@ public class ServiceDiaryServices {
 
         serviceDiaryEntity.setAssess(rating);
         return serviceDiaryRepository.save(serviceDiaryEntity);
+=======
+    public ServiceDiaryEntity addRating(Integer id, int rating) {
+        if (serviceDiaryRepository.getSDbyService(id).isPresent()) {
+            ServiceDiaryEntity serviceDiaryEntity = serviceDiaryRepository.getSDbyService(id).get();
+            serviceDiaryEntity.setAssess(rating);
+            serviceDiaryEntity.setStatus("zakljuceno");
+            serviceDiaryRepository.save(serviceDiaryEntity);
+            return serviceDiaryEntity;
+        }
+        else return null;
+>>>>>>> c45346d85c4f8a0cc0d9d201827ca04a756cfaed
     }
 
 }
