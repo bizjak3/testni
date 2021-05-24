@@ -37,10 +37,16 @@ export class ServiceService {
     const headers = await this.loginService.getAuthorizationHeader();
 
     let sd = {
-      dogo: dogo,
-      service: service,
+      dogo: null,
+      service: null,
     }
 
     return this.http.post(this.baseUrl + "post-service-diary" + "?dogoId=" + dogo.id + "&serviceId=" + service.id, sd, {headers});
+  }
+
+  public async getOrderedServices(): Promise<Observable<Service[]>> {
+    const headers = await this.loginService.getAuthorizationHeader();
+
+    return this.http.get<Service[]>(this.baseUrl + "get-ordered-services", {headers});
   }
 }

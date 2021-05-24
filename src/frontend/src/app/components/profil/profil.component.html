@@ -42,8 +42,23 @@
       </div>
       <div class="row container">
         <h1>Moje naročene storitve</h1>
-        <div *ngFor="let service of pastServices" class="p-4 shadow m-3 main row container">
-          
+        <div *ngFor="let service of orderedServices" class="p-4 shadow m-3 main row container">
+          <div class="">
+            <a class="">
+              <h2>{{ service.name }}</h2>
+            </a>
+            <h5>
+              {{ service.dateFrom | date: "dd.MM.YYYY" }} -
+              {{ service.dateTo | date: "dd.MM.YYYY" }}
+            </h5>
+            <hr />
+
+            <h4 class="text-secondary">Opis storitve</h4>
+            <p class="p-2">{{ service.description }}</p>
+
+            <h4 class="text-secondary">Omejitve storitve</h4>
+            <p class="p-2">{{ service.restrictions }}</p>
+          </div>
         </div>
       </div>
     </div>
