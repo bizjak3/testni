@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToBeDeletedComponent } from './components/to-be-deleted/to-be-deleted.component';
-import { ToBeDeletedPipe } from './pipes/to-be-deleted/to-be-deleted.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarLoginSignupComponent } from './components/navbars/navbar-login-signup/navbar-login-signup.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -16,12 +14,19 @@ import { DodajanjeStoritveComponent } from './components/dodajanje-storitve/doda
 import { ProfilComponent } from './components/profil/profil.component';
 import { PregledStoritevComponent } from './components/pregled-storitev/pregled-storitev.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { SeznamUporabnikovComponent } from './components/seznam-uporabnikov/seznam-uporabnikov.component';
+import { UporabnikComponent } from './components/uporabnik/uporabnik.component';
+import { SpremeniUporabnikaComponent } from './components/spremeni-uporabnika/spremeni-uporabnika.component';
+import { PublicProfileComponent } from './components/public-profile/public-profile.component';
+import { UserTypePipe } from './pipes/user-type.pipe';
+import { ServiceSearchPipe } from './pipes/service-search/service-search.pipe';
+import { NewMessageModalComponent } from './components/new-message-modal/new-message-modal.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToBeDeletedComponent,
-    ToBeDeletedPipe,
     LoginComponent,
     NavbarLoginSignupComponent,
     SignupComponent,
@@ -30,7 +35,16 @@ import { FooterComponent } from './components/footer/footer.component';
     DodajanjeStoritveComponent,
     ProfilComponent,
     PregledStoritevComponent,
-    FooterComponent
+    FooterComponent,
+    EditProfileComponent,
+    SeznamUporabnikovComponent,
+    UporabnikComponent,
+    SpremeniUporabnikaComponent,
+    PublicProfileComponent,
+    UserTypePipe,
+    ServiceSearchPipe,
+    NewMessageModalComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +53,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NgbModule,
     HttpClientModule
   ],
+  entryComponents: [SpremeniUporabnikaComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -12,4 +12,7 @@ export interface Service {
   author?: User;
   locations?: Location[];
   serviceDiaries?: ServiceDiary[];
+  canSubscribe?: boolean;
+  canAssess?: boolean;
+  average?: number;
 }

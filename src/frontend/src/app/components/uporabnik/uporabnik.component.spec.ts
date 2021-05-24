@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToBeDeletedComponent } from './to-be-deleted.component';
+import { UporabnikComponent } from './uporabnik.component';
 
-describe('ToBeDeletedComponent', () => {
-  let component: ToBeDeletedComponent;
-  let fixture: ComponentFixture<ToBeDeletedComponent>;
+describe('UporabnikComponent', () => {
+  let component: UporabnikComponent;
+  let fixture: ComponentFixture<UporabnikComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ToBeDeletedComponent ]
+      declarations: [ UporabnikComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToBeDeletedComponent);
+    fixture = TestBed.createComponent(UporabnikComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

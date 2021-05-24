@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
     uporabniskoIme: '',
     email: '',
     geslo: '',
+    geslo1: ''
   };
   submitted = false;
   emptyPassword = true;
@@ -51,51 +52,62 @@ export class SignupComponent implements OnInit {
   public register() {
     console.log(this.uporabnik);
     if (this.vsaPolna()) {
-      if (this.uporabnik.tip == 'lastnik') {
-        console.log('je lastnik');
-        this.reg
-          .registerOwner({
-            name: this.uporabnik.ime,
-            surname: this.uporabnik.priimek,
-            email: this.uporabnik.email,
-            username: this.uporabnik.uporabniskoIme,
-            password: this.uporabnik.geslo,
-          })
-          .subscribe(
-            (data) => {
-              alert('Registracija uspešna, lahko se prijavite');
-              this.router.navigate(['/login']);
-            },
-            (err: HttpErrorResponse) => {
-              const errorWrapper = err.error as ErrorWrapper;
-              //naredi nekaj z errorji
-            }
-          );
+      if (this.gesliEnaki()) {
+        if (this.uporabnik.tip === 'lastnik') {
+          console.log('je lastnik');
+          this.reg
+            .registerOwner({
+              name: this.uporabnik.ime,
+              surname: this.uporabnik.priimek,
+              email: this.uporabnik.email,
+              username: this.uporabnik.uporabniskoIme,
+              password: this.uporabnik.geslo,
+            })
+            .subscribe(
+              (data) => {
+                alert('Registracija uspešna, lahko se prijavite');
+                this.router.navigate(['/login']);
+              },
+              (err: HttpErrorResponse) => {
+                const errorWrapper = err.error as ErrorWrapper;
+                //naredi nekaj z errorji
+                errorWrapper.errors.forEach((napaka) => {
+                  this.napakaNaObrazcu = napaka + '\n';
+                });
+                console.log(errorWrapper);
+              }
+            );
+        } else {
+          console.log('ni lastnik');
+          this.reg
+            .registerWorker({
+              name: this.uporabnik.ime,
+              surname: this.uporabnik.priimek,
+              email: this.uporabnik.email,
+              username: this.uporabnik.uporabniskoIme,
+              password: this.uporabnik.geslo,
+            })
+            .subscribe(
+              (data) => {
+                alert('Registracija uspešna, lahko se prijavite');
+                this.router.navigate(['/login']);
+              },
+              (err: HttpErrorResponse) => {
+                const errorWrapper = err.error as ErrorWrapper;
+                //naredi nekaj z errorji
+                errorWrapper.errors.forEach((napaka) => {
+                  this.napakaNaObrazcu = napaka + '\n';
+                });
+              }
+            );
+        }
       } else {
-        console.log('ni lastnik');
-        this.reg
-          .registerWorker({
-            name: this.uporabnik.ime,
-            surname: this.uporabnik.priimek,
-            email: this.uporabnik.email,
-            username: this.uporabnik.uporabniskoIme,
-            password: this.uporabnik.geslo,
-          })
-          .subscribe(
-            (data) => {
-              alert('Registracija uspešna, lahko se prijavite');
-              this.router.navigate(['/login']);
-            },
-            (err: HttpErrorResponse) => {
-              const errorWrapper = err.error as ErrorWrapper;
-              //naredi nekaj z errorji
-            }
-          );
+        this.napakaNaObrazcu = 'Gesli marata biti enaki\n';
       }
     }
   }
 
-  public vsaPolna() {
+  public vsaPolna(): boolean {
     // tslint:disable-next-line:max-line-length
     if (
       this.uporabnik.ime === '' ||
@@ -104,9 +116,16 @@ export class SignupComponent implements OnInit {
       this.uporabnik.email === '' ||
       this.uporabnik.geslo === ''
     ) {
-      this.napakaNaObrazcu = 'Vsa polja morajo biti izpolnjena';
+      this.napakaNaObrazcu = 'Vsa polja morajo biti izpolnjena\n';
       return false;
     }
     return true;
+  }
+
+  public gesliEnaki(): boolean {
+    if (this.uporabnik.geslo === this.uporabnik.geslo1) {
+      return true;
+    }
+    return false;
   }
 }

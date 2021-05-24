@@ -1,5 +1,7 @@
 package si.fri.tpo.pasjehodec.backend.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,13 +14,16 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class LocationEntity {
 
     @Id
     @GeneratedValue
     private Integer id;
 
-    private LocalDateTime date;
+    private LocalDateTime date = LocalDateTime.now();
     private double geoLat;
     private double geoLon;
 

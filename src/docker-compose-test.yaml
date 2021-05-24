@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  # frontenda v razvojni fazi ne potrebujemo v dockerju
+  # ohranjamo za teste
+  frontend:
+    build:
+      context: frontend
+      args:
+        mode: dev
+    ports:
+      - "4200:80"
+
+  # backenda v razvojni fazi ne potrebujemo v dockerju
+  # ohranjamo za teste
+  backend:
+    build: backend
+    ports:
+      - "8080:80"
+
+
+  # databases
+  mariadb:
+    image: mariadb
+    hostname: mariadb
+    restart: on-failure
+    volumes:
+      - ./volumes/mariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: PasjehodecDB
+      MYSQL_USER: pasjehodec
+      MYSQL_PASSWORD: pasjehodec
+    ports:
+      - "3306:3306"
+  redis:
+    image: redis
+    hostname: redis
+    restart: on-failure
+    volumes:
+      - ./volumes/redis:/data
+    ports:
+      - "6379:6379"

@@ -4,9 +4,11 @@ import * as geo from "esri-leaflet-geocoder"
 import { Service } from 'src/app/models/service';
 import { Location } from 'src/app/models/location';
 import { ServiceService } from 'src/app/services/service/service.service';
+import { LoginService } from 'src/app/services/login/login.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorWrapper } from 'src/app/models/error/ErrorWrapper';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 
 
@@ -35,6 +37,15 @@ var geocodeService = geo.geocodeService();
 })
 export class DodajanjeStoritveComponent implements OnInit {
   private map;
+
+  public errors;
+
+  public storitve = [];
+
+  public kopija;
+
+  private copyMarker;
+
   public storitev = {
     ime: "",
     lat: "",
@@ -43,11 +54,18 @@ export class DodajanjeStoritveComponent implements OnInit {
     datum_to: "",
     komentarji: "",
     omejitve: ""
-
   }
-  constructor(private serviceService: ServiceService, private router: Router) { }
+
+  public user: User;
+
+  constructor(private serviceService: ServiceService, private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.user = this.loginService.userLoggedIn;
+    if(this.user.isDogOwner){
+      this.router.navigate(["/pregled_storitev"]);
+    }
+    this.loadServices();
     this.initMap();
   }
 
@@ -70,6 +88,9 @@ export class DodajanjeStoritveComponent implements OnInit {
       if (marker != null) {
         this.map.removeLayer(marker);
       }
+      if(this.copyMarker != null){
+        this.map.removeLayer(this.copyMarker);
+      }
       marker = new L.marker(e.latlng).addTo(this.map);
       console.log(e.latlng.lat, e.latlng.lng);
       this.storitev.lat = e.latlng.lat;
@@ -82,31 +103,73 @@ export class DodajanjeStoritveComponent implements OnInit {
   }
 
   public async dodajStoritev () {
-    const service: Service = {
-      name: this.storitev.ime,
-      description: this.storitev.komentarji,
-      restrictions: this.storitev.omejitve,
-      dateFrom: new Date(this.storitev.datum_from),
-      dateTo: new Date(this.storitev.datum_to),
-      locations: [
-        {
-          geoLat: +this.storitev.lat,
-          geoLon: +this.storitev.lng
-        } as Location
-      ]
+    this.errors = [];
+    if(this.storitev.lat == "" || this.storitev.lng == ""){
+      this.errors.push("Lokacija ne sme biti prazna");
+    }
+    if(this.storitev.ime == ""){
+      this.errors.push("Naziv storitve ne sme biti prazen");
+    }
+    if(this.storitev.datum_from == ""){
+      this.errors.push("Začetni datum ne sme biti prazen");
+    }
+    if(this.storitev.datum_to == ""){
+      this.errors.push("Končni datum ne sme biti prazen");
+    }
+    if(this.storitev.komentarji == ""){
+      this.errors.push("Opis storitve ne sme biti prazen");
     }
 
-    const observable = await this.serviceService.postNewService(service);
-    observable.subscribe((data) => {
-      alert("Shranjeno");
-      this.router.navigate(["/pregled_storitev"]);
-    }, (err: HttpErrorResponse) => {
-      const errorWrapper: ErrorWrapper = err.error;
-      console.log(errorWrapper);
-      alert("Napaka");
-    })
+    if(this.errors.length == 0){
+      const service: Service = {
+        name: this.storitev.ime,
+        description: this.storitev.komentarji,
+        restrictions: this.storitev.omejitve,
+        dateFrom: new Date(this.storitev.datum_from),
+        dateTo: new Date(this.storitev.datum_to),
+        locations: [
+          {
+            geoLat: +this.storitev.lat,
+            geoLon: +this.storitev.lng
+          } as Location
+        ]
+      }
 
-    console.log(this.storitev);
+      const observable = await this.serviceService.postNewService(service);
+      observable.subscribe((data) => {
+        alert("Shranjeno");
+        this.router.navigate(["/pregled_storitev"]);
+      }, (err: HttpErrorResponse) => {
+        const errorWrapper: ErrorWrapper = err.error;
+        console.log(errorWrapper);
+        this.errors = errorWrapper.errors;
+      })
+
+      console.log(this.storitev);
+    }
   }
 
+  public kopirajStoritev(){
+    console.log(this.kopija.locations);
+    this.storitev.ime = this.kopija.name;
+    this.storitev.komentarji = this.kopija.description;
+    this.storitev.omejitve = this.kopija.restrictions;
+    this.storitev.lat = this.kopija.locations[0].geoLat;
+    this.storitev.lng = this.kopija.locations[0].geoLon;
+
+    this.copyMarker = L.marker([this.storitev.lat, this.storitev.lng]).addTo(this.map);
+  }
+
+  private async loadServices(){
+    const obs = await this.serviceService.getAllActiveUserServices();
+    obs.subscribe(
+      (data) => {
+        this.storitve = data;
+      },
+      () => {
+        console.log("error");
+      }
+    );
+    
+  }
 }

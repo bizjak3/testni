@@ -1,23 +1,117 @@
-<section class="profile">
-  <header class="header">
-    <div class="form-group text-center">
+<div class="container justify-content-center">
+    <div *ngIf="loading">Nalaganje podatkov...</div>
+
+    <div *ngIf="error">
+      {{ error }}
+    </div>
+    <div class="form-group text-center row justify-content-center" *ngIf="user1">
     <div class="details shadow">
-      <img class="avatar" src="assets/pictures/user-silhouette.png">
-      <h1 class="heading">Janez Novak</h1>
+      <img class="avatar mt-3" src="assets/pictures/user-silhouette.png">
+      <h1 class="heading">{{ user1.name}} {{ user1.surname}}</h1>
       <div class="stats">
         <div class="col-4">
           <h4>Email</h4>
-          <p>janeznovak@gmail.com</p>
+          <p>{{ user1.email }}</p>
         </div>
         <div class="col-4 vrsta text-justify">
           <h4>Uporabnik</h4>
-          <p>Lastnik</p>
+          <p *ngIf="user1.isDogOwner">Lastnik</p>
+          <p *ngIf="!user1.isDogOwner">Izvajalec storitve</p>
         </div>
       </div>
     </div>
-    <div class="button">
-      <button type="button" class="btn btn-ultra-voilet" routerLink="/uredi">Primary</button>
+    
     </div>
+    <div class="row justify-content-center">
+      <button type="button" class="btn btn-outline-primary" routerLink="/spremeni_profil">Uredi profil</button>
     </div>
-  </header>
-</section>
+    <div *ngIf="user.isDogOwner; else serviceWorker" class="row container justify-content-center">
+      <div class="row container">
+        <h1>Moji štirinožni prijatelji</h1>
+        <div *ngFor="let dogo of dogos" class="p-4 shadow m-3 main row container">
+          <div class="">
+            <a class="">
+              <h2>{{ dogo.name }}</h2>
+            </a>
+            <hr />
+
+            <h4 class="text-secondary">Pasma</h4>
+            <p class="p-2">{{ dogo.breed }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row container">
+        <h1>Moje naročene storitve</h1>
+        <div *ngFor="let service of orderedServices" class="p-4 shadow m-3 main row container">
+          <div class="">
+            <a class="">
+              <h2>{{ service.name }}</h2>
+            </a>
+            <h5>
+              {{ service.dateFrom | date: "dd.MM.YYYY" }} -
+              {{ service.dateTo | date: "dd.MM.YYYY" }}
+            </h5>
+            <hr />
+
+            <h4 class="text-secondary">Opis storitve</h4>
+            <p class="p-2">{{ service.description }}</p>
+
+            <h4 class="text-secondary">Omejitve storitve</h4>
+            <p class="p-2">{{ service.restrictions }}</p>
+
+            <h4 class="text-secondary">Izvajalec storitve</h4>
+            <p class="p-2">{{ service.author.name }} {{ service.author.surname }} ({{ service.author.username }})</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #serviceWorker class="row container justify-content-center">
+      <div class="row container">
+        <h1>Moje storitve</h1>
+        <div *ngFor="let service of services" class="p-4 shadow m-3 main row container">
+          <div class="">
+            <a class="">
+              <h2>{{ service.name }}</h2>
+            </a>
+            <h5>
+              {{ service.dateFrom | date: "dd.MM.YYYY" }} -
+              {{ service.dateTo | date: "dd.MM.YYYY" }}
+            </h5>
+            <hr />
+
+            <h4 class="text-secondary">Opis storitve</h4>
+            <p class="p-2">{{ service.description }}</p>
+
+            <h4 class="text-secondary">Omejitve storitve</h4>
+            <p class="p-2">{{ service.restrictions }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row container">
+        <h1>Moje naročene storitve</h1>
+        <div *ngFor="let service of orderedServices" class="p-4 shadow m-3 main row container">
+          <div class="">
+            <a class="">
+              <h2>{{ service.name }}</h2>
+            </a>
+            <h5>
+              {{ service.dateFrom | date: "dd.MM.YYYY" }} -
+              {{ service.dateTo | date: "dd.MM.YYYY" }}
+            </h5>
+            <hr />
+
+            <h4 class="text-secondary">Opis storitve</h4>
+            <p class="p-2">{{ service.description }}</p>
+
+            <h4 class="text-secondary">Omejitve storitve</h4>
+            <p class="p-2">{{ service.restrictions }}</p>
+
+            <h4 class="text-secondary">Naročeni uporabnik</h4>
+            <p class="p-2">{{ service.uporabnik.name }} {{ service.uporabnik.surname }} ({{ service.uporabnik.username }})</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  
+  
+  </div>

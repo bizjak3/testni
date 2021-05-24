@@ -1,8 +1,6 @@
 package si.fri.tpo.pasjehodec.backend.dtos.models.login_register;
 
 import lombok.Data;
-import lombok.NonNull;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
 

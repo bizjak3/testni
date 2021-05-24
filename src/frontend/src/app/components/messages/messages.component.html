@@ -1,0 +1,75 @@
+<main class="bg-light">
+  <div *ngIf="loading">Nalaganje podatkov...</div>
+
+  <div *ngIf="error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="main row w-100 p-5">
+    <div class="col-md-8 pr-3">
+      <div class="p-2">
+        <div class="row w-100 d-flex align-items-center">
+          <h1 class="col-md-8">{{ selected.username }}</h1>
+        </div>
+
+        <div *ngFor="let element of selected.messages">
+          <div class="m-3" *ngIf="!element.sendByMe">
+            <div class="alert alert-dark">
+              <h6>{{ element.text }}</h6>
+              <p>
+                {{ selected.username }},
+                {{ element.created | date: "HH:mm dd.MM.yyyy" }}
+              </p>
+            </div>
+          </div>
+
+          <div class="m-3" *ngIf="element.sendByMe">
+            <div class="alert alert-light">
+              <h6>{{ element.text }}</h6>
+              <p>jaz, {{ element.created | date: "HH:mm dd.MM.yyyy" }}</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="urediExpense">
+          <div class="form-group">
+            <label for="Ime">Sporočilo</label>
+            <textarea
+              type="text"
+              class="form-control"
+              id="Ime"
+              name="Ime"
+              [(ngModel)]="message"
+            ></textarea>
+          </div>
+          <div class="modal-footer">
+            <button
+              id="formButtonSubmit"
+              type="submit"
+              class="btn btn-primary"
+              (click)="sendMessage()"
+            >
+              Pošlji sporočilo
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-2 shadow-lg bg-white">
+        <h1 class="text-center">Sporočila</h1>
+        <div *ngFor="let item of messages; let i = index">
+          <div class="m-2">
+            <a
+              class="btn btn-outline-secondary btn-block"
+              (click)="changeView(i)"
+            >
+              {{ item.username }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

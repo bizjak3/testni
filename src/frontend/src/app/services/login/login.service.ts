@@ -87,4 +87,10 @@ export class LoginService implements CanActivate {
     const bearer = await this.bearer();
     return new HttpHeaders({"Authorization": bearer});
   }
+
+  public logOut(): void {
+    this._userLoggedIn = null;
+    this._bearer = null;
+    this.canActivate();
+  }
 }

@@ -12,6 +12,7 @@
                 placeholder="Iskanje"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                [(ngModel)]="searchInput"
               />
               <div class="input-group-append">
                 <span class="input-group-text">
@@ -28,21 +29,124 @@
           {{ error }}
         </div>
 
-        <div *ngFor="let service of services" class="card p-4 shadow m-3">
-          <a href="#" class="stretched-link">
-            <h2>{{ service.name }}</h2>
-          </a>
-          <h5>
-            {{ service.dateFrom | date: "dd.MM.YYYY" }} -
-            {{ service.dateTo | date: "dd.MM.YYYY" }}
-          </h5>
-          <hr />
+        <ng-template #izborPsa let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="dateOfBirth">Date of birth</label>
+                <div class="input-group">
+                  <input
+                    id="dateOfBirth"
+                    class="form-control"
+                    placeholder="yyyy-mm-dd"
+                    name="dp"
+                    ngbDatepicker
+                    #dp="ngbDatepicker"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary calendar"
+                      (click)="dp.toggle()"
+                      type="button"
+                    ></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Save click')"
+            >
+              Save
+            </button>
+          </div>
+        </ng-template>
 
-          <h4 class="text-secondary">Opis storitve</h4>
-          <p class="p-2">{{ service.description }}</p>
+        <div
+          *ngFor="let service of services | serviceSearch: searchInput"
+          class="p-4 shadow m-3 row main"
+        >
+          <div class="col-md-8">
+            <a class="">
+              <h2>{{ service.name }} <span *ngIf="service.average != -1">({{service.average}} /5)</span></h2>
+            </a>
+            <h5>
+              {{ service.dateFrom | date: "dd.MM.YYYY" }} -
+              {{ service.dateTo | date: "dd.MM.YYYY" }}
+            </h5>
+            <hr />
 
-          <h4 class="text-secondary">Omejitve storitve</h4>
-          <p class="p-2">{{ service.restrictions }}</p>
+            <h4 class="text-secondary">Opis storitve</h4>
+            <p class="p-2">{{ service.description }}</p>
+
+            <h4 class="text-secondary">Omejitve storitve</h4>
+            <p class="p-2">{{ service.restrictions }}</p>
+          </div>
+          <div class="col-md-4">
+            <div
+              style="position: absolute; top: 0; left: 0; right: 0; bottom: 0"
+            >
+              <div class="map-frame" style="height: 100%">
+                <div id="map{{ service.id }}" style="height: 100%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid row mt-2" *ngIf="(user.isAdmin || user.isDogOwner) && service.canSubscribe">
+            <div class="col-md-8"></div>
+            <select
+              [(ngModel)]="dogo"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control col-md-2"
+            >
+              <option *ngFor="let d of dogos" [ngValue]="d">
+                {{ d.name }}
+              </option>
+            </select>
+            <button
+              type="button"
+              (click)="narociStoritev(service)"
+              class="btn btn-primary col-md-2"
+            >
+              Naroči
+            </button>
+          </div>
+          
+          <div class="container-fluid row mt-2" *ngIf="service.canAssess">
+            <div class="col-md-8"></div>
+            <select
+              [(ngModel)]="assess"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control col-md-2"
+            >
+            <option [ngValue]="1">1</option>
+            <option [ngValue]="2">2</option>
+            <option [ngValue]="3">3</option>
+            <option [ngValue]="4">4</option>
+            <option [ngValue]="5">5</option>
+          </select>
+            <button
+              type="button"
+              (click)="oceniStoritev(service)"
+              class="btn btn-outline-secondary col-md-2"
+            >
+              Oceni
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
@@ -54,6 +158,7 @@
           <a
             class="btn btn-outline-secondary btn-block"
             routerLink="/dodaj_psa"
+            [class.disabled]="!user.isDogOwner && !user.isAdmin"
           >
             Dodaj novega psa
           </a>
@@ -62,6 +167,7 @@
           <a
             class="btn btn-outline-secondary btn-block"
             routerLink="/dodaj_storitev"
+            [class.disabled]="!user.isServiceWorker && !user.isAdmin"
           >
             Dodaj novo storitev
           </a>
@@ -72,7 +178,19 @@
           >
         </div>
         <div class="m-2">
-          <a class="btn btn-outline-danger btn-block" routerLink="/profil">
+          <a
+            class="btn btn-outline-secondary btn-block"
+            routerLink="/seznam_uporabnikov"
+            >Uporabniki</a
+          >
+        </div>
+        <div class="m-2">
+          <a class="btn btn-outline-secondary btn-block" routerLink="/messages"
+            >Sporočila</a
+          >
+        </div>
+        <div class="m-2">
+          <a class="btn btn-outline-danger btn-block" (click)="odjaviGaK()">
             Odjava</a
           >
         </div>
