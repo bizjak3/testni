@@ -35,4 +35,12 @@ public class ServiceDiaryServices {
         return serviceDiaryRepository.save(serviceDiaryEntity);
     }
 
+    public ServiceDiaryEntity getServiceDiary(Integer id) {
+        if (serviceDiaryRepository.getSDbyService(id).isPresent()) {
+            ServiceDiaryEntity serviceDiaryEntity = serviceDiaryRepository.getSDbyService(id).get();
+            return serviceDiaryEntity;
+        }
+        else return null;
+    }
+
 }
