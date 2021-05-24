@@ -169,4 +169,9 @@ public class ServicesApi {
         return ResponseEntity.ok(userEntityMapper.mapUserDtoFromEntity(serviceServices.getPerson(user)));
     }
 
+    @GetMapping("find-person")
+    public ResponseEntity<UserDto> findPerson(@RequestBody ServiceEntity serviceEntity) {
+        return ResponseEntity.ok(userEntityMapper.mapUserDtoFromEntity(serviceServices.findPerson(serviceEntity.getId())));
+    }
+
 }
