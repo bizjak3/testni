@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -138,4 +139,15 @@ public class ServicesApi {
                 serviceDiaryEntityMapper.castFromServiceDiaryEntityToServiceDiaryDto(entity)
             );
     }
+
+    @GetMapping("get-ordered-services")
+    public ResponseEntity<ServiceDto[]> getOrderedServices(@AuthenticationPrincipal UserEntity user) {
+
+        return ResponseEntity.ok(
+                CollectionUtils.emptyIfNull(serviceServices.getALlOrderedServices(user)).stream()
+                        .map(serviceEntityMapper::castFromServiceEntityToServiceDto)
+                        .toArray(ServiceDto[]::new)
+        );
+    }
+
 }

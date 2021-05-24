@@ -59,4 +59,8 @@ public class ServiceServices {
     public List<ServiceEntity> getAllUsersServices(UserEntity user) {
         return serviceRepository.findByAuthor(user);
     }
+
+    public List<ServiceEntity> getALlOrderedServices(UserEntity user) {
+        return serviceRepository.findAllOrderedServices(user.getId());
+    }
 }
