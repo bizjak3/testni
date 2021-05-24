@@ -4,6 +4,7 @@ import {UserService} from '../../services/user/user.service';
 import {SpremeniUporabnikaComponent} from '../spremeni-uporabnika/spremeni-uporabnika.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LoginService} from '../../services/login/login.service';
+import { NewMessageModalComponent } from '../new-message-modal/new-message-modal.component';
 
 @Component({
   selector: 'app-seznam-uporabnikov',
@@ -50,6 +51,19 @@ export class SeznamUporabnikovComponent implements OnInit {
     const modalRef = this.modalService.open(SpremeniUporabnikaComponent);
     modalRef.componentInstance.uporabnik = activityData;
     console.log(activityData);
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
+    // modalRef.componentInstance.passEntry.subscribe((receivedEntry) => {
+    //   console.log(receivedEntry);
+    // })
+  }
+
+  openMessageModal(activityData) {
+    const modalRef = this.modalService.open(NewMessageModalComponent);
+    modalRef.componentInstance.uporabnik = activityData;
     modalRef.result.then((result) => {
       if (result) {
         console.log(result);

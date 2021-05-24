@@ -85,6 +85,7 @@
               <p class="p-2" *ngIf="!uporabnik.isDogOwner">Izvajalec storitev</p>
               <p class="p-2" *ngIf="userSedaj.isAdmin">{{ uporabnik.email }}</p>
               <button type="button" class="btn btn-primary" (click)="openModal(uporabnik)" *ngIf="userSedaj.isAdmin">Uredi uporabnika</button>
+              <button type="button" class="btn btn-outline-success mt-1" (click)="openMessageModal(uporabnik)" *ngIf="userSedaj.isAdmin">Pošlji sporočilo uporabniku</button>
 <!--              <button class="btn-primary" (click)="openModal(uporabnik)">open the modal</button>-->
               </div>
 <!--            <button (click)="openModal(uporabnik)" *ngFor="let uporabnik of users">open the modal</button>-->

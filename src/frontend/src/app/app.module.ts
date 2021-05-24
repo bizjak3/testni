@@ -21,6 +21,8 @@ import { SpremeniUporabnikaComponent } from './components/spremeni-uporabnika/sp
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { UserTypePipe } from './pipes/user-type.pipe';
 import { ServiceSearchPipe } from './pipes/service-search/service-search.pipe';
+import { NewMessageModalComponent } from './components/new-message-modal/new-message-modal.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ServiceSearchPipe } from './pipes/service-search/service-search.pipe';
     SpremeniUporabnikaComponent,
     PublicProfileComponent,
     UserTypePipe,
-    ServiceSearchPipe
+    ServiceSearchPipe,
+    NewMessageModalComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

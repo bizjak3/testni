@@ -8,9 +8,10 @@ import { DodajanjeStoritveComponent } from './components/dodajanje-storitve/doda
 import { ProfilComponent } from './components/profil/profil.component';
 import { LoginService } from './services/login/login.service';
 import { PregledStoritevComponent } from './components/pregled-storitev/pregled-storitev.component';
-import { EditProfileComponent} from './components/edit-profile/edit-profile.component';
-import {SeznamUporabnikovComponent} from './components/seznam-uporabnikov/seznam-uporabnikov.component';
-import {PublicProfileComponent} from './components/public-profile/public-profile.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { SeznamUporabnikovComponent } from './components/seznam-uporabnikov/seznam-uporabnikov.component';
+import { PublicProfileComponent } from './components/public-profile/public-profile.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 const routes: Routes = [
   {
@@ -46,7 +47,7 @@ const routes: Routes = [
   },
   {
     path: 'profile/:username',
-    component: PublicProfileComponent
+    component: PublicProfileComponent,
   },
   {
     path: 'pregled_storitev',
@@ -55,12 +56,19 @@ const routes: Routes = [
   },
   {
     path: 'spremeni_profil',
-    component: EditProfileComponent
+    component: EditProfileComponent,
+    canActivate: [LoginService],
   },
   {
     path: 'seznam_uporabnikov',
-    component: SeznamUporabnikovComponent
-  }
+    component: SeznamUporabnikovComponent,
+    canActivate: [LoginService],
+  },
+  {
+    path: 'messages',
+    component: MessagesComponent,
+    canActivate: [LoginService],
+  },
 ];
 
 @NgModule({
