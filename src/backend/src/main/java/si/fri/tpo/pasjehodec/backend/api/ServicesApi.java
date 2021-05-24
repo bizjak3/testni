@@ -150,4 +150,14 @@ public class ServicesApi {
         );
     }
 
+    @GetMapping("get-selected-services")
+    public ResponseEntity<ServiceDto[]> getSelectedServices(@AuthenticationPrincipal UserEntity user) {
+
+        return ResponseEntity.ok(
+                CollectionUtils.emptyIfNull(serviceServices.getALlSelectedServices(user)).stream()
+                        .map(serviceEntityMapper::castFromServiceEntityToServiceDto)
+                        .toArray(ServiceDto[]::new)
+        );
+    }
+
 }

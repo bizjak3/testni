@@ -63,4 +63,8 @@ public class ServiceServices {
     public List<ServiceEntity> getALlOrderedServices(UserEntity user) {
         return serviceRepository.findAllOrderedServices(user.getId());
     }
+
+    public List<ServiceEntity> getALlSelectedServices(UserEntity user) {
+        return serviceRepository.findAllSelectedServices(user.getId());
+    }
 }
