@@ -82,7 +82,7 @@
         >
           <div class="col-md-8">
             <a class="">
-              <h2>{{ service.name }}</h2>
+              <h2>{{ service.name }} <span *ngIf="service.average != -1">({{service.average}} /5)</span></h2>
             </a>
             <h5>
               {{ service.dateFrom | date: "dd.MM.YYYY" }} -
@@ -105,7 +105,7 @@
               </div>
             </div>
           </div>
-          <div class="container-fluid row mt-2" *ngIf="user.isDogOwner && !service.ordered">
+          <div class="container-fluid row mt-2" *ngIf="(user.isAdmin || user.isDogOwner) && service.canSubscribe">
             <div class="col-md-8"></div>
             <select
               [(ngModel)]="dogo"
@@ -124,6 +124,29 @@
               Naroči
             </button>
           </div>
+          
+          <div class="container-fluid row mt-2" *ngIf="service.canAssess">
+            <div class="col-md-8"></div>
+            <select
+              [(ngModel)]="assess"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control col-md-2"
+            >
+            <option [ngValue]="1">1</option>
+            <option [ngValue]="2">2</option>
+            <option [ngValue]="3">3</option>
+            <option [ngValue]="4">4</option>
+            <option [ngValue]="5">5</option>
+          </select>
+            <button
+              type="button"
+              (click)="oceniStoritev(service)"
+              class="btn btn-outline-secondary col-md-2"
+            >
+              Oceni
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
