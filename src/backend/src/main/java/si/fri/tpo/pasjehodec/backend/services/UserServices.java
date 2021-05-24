@@ -1,7 +1,6 @@
 package si.fri.tpo.pasjehodec.backend.services;
 
 import lombok.RequiredArgsConstructor;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;

@@ -8,7 +8,6 @@ import lombok.Setter;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity

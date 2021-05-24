@@ -125,6 +125,18 @@ export class ProfilComponent implements OnInit {
   public async oceniStoritev(service: Service){
     console.log(this.ocena);
     console.log(service);
+
+    const obs = await this.serviceService.postRating(service, this.ocena);
+
+    obs.subscribe(
+      (data) => {
+        alert("Ocenjeno");
+      },
+      () => {
+        this.loading = false;
+        this.error = 'Napaka pri ocenjevanju podatkov';
+      }
+    )
   }
 
 }

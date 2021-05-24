@@ -48,7 +48,7 @@ public class MessageApi {
     }
 
     @GetMapping
-    public ResponseEntity getMessagesOfUser(@Parameter(hidden = true) @AuthenticationPrincipal UserEntity userEntity) {
+    public ResponseEntity<List<MessageRootDto>> getMessagesOfUser(@Parameter(hidden = true) @AuthenticationPrincipal UserEntity userEntity) {
         var data = messageService.getMessagesOfUser(userEntity);
 
         List<MessageRootDto> messages = new ArrayList<>();

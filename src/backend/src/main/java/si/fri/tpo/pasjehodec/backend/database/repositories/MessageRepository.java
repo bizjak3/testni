@@ -7,7 +7,6 @@ import si.fri.tpo.pasjehodec.backend.database.entities.MessageEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
 
 import java.util.List;
-import java.util.Set;
 
 @Repository
 public interface MessageRepository extends JpaRepository<MessageEntity, Integer> {

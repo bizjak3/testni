@@ -23,6 +23,10 @@ public class ServiceDto {
     private LocalDateTime dateTo;
     private ServiceAuthorDto author;
 
+    private Double average;
+    private Boolean canSubscribe;
+    private Boolean canAssess;
+
     private List<ServiceLocationDto> locations;
     private List<ServiceServiceDiaryDto> serviceDiaries;
 }

@@ -47,6 +47,8 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
   public dogos;
   public dogo;
 
+  public assess: number = 0;
+
   private observable;
 
   public searchInput: string = "";
@@ -79,7 +81,7 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
       }
     );
 
-    if(this.user.isDogOwner){
+    if(this.user.isDogOwner || this.user.isAdmin){
       const obs = await this.dogoService.getUserDogos();
       const obs2 = await this.serviceServices.getOrderedServices();
       
@@ -125,10 +127,22 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
     const observable = await this.serviceServices.postServiceDiary(service, this.dogo);
       observable.subscribe((data) => {
         alert("Naročen");
+        this.getData();
       }, (err: HttpErrorResponse) => {
         const errorWrapper: ErrorWrapper = err.error;
         console.log(errorWrapper);
       })
+  }
+
+  public async oceniStoritev(service: Service) {
+    (await this.serviceServices.postRating(service.id, this.assess)).subscribe(() => {
+      this.assess = 0;
+      this.getData();
+    });
+  }
+
+  public odjaviGaK(): void {
+    this.loginService.logOut();
   }
 
 }

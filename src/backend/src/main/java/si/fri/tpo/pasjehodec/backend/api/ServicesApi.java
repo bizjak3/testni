@@ -8,19 +8,15 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import si.fri.tpo.pasjehodec.backend.database.entities.DogoEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.ServiceDiaryEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.ServiceEntity;
 import si.fri.tpo.pasjehodec.backend.database.entities.users.UserEntity;
-import si.fri.tpo.pasjehodec.backend.database.entities.users.UserType;
 import si.fri.tpo.pasjehodec.backend.dtos.mappers.ServiceDiaryEntityMapper;
 import si.fri.tpo.pasjehodec.backend.dtos.mappers.ServiceEntityMapper;
 import si.fri.tpo.pasjehodec.backend.dtos.mappers.UserEntityMapper;
@@ -28,6 +24,7 @@ import si.fri.tpo.pasjehodec.backend.dtos.models.service.ServiceDto;
 import si.fri.tpo.pasjehodec.backend.dtos.models.service_diary.ServiceDiaryDto;
 import si.fri.tpo.pasjehodec.backend.dtos.models.user.UserDto;
 import si.fri.tpo.pasjehodec.backend.exceptions.BadRequestException;
+import si.fri.tpo.pasjehodec.backend.exceptions.DataNotFoundException;
 import si.fri.tpo.pasjehodec.backend.exceptions.ForbiddenOperationException;
 import si.fri.tpo.pasjehodec.backend.services.ServiceDiaryServices;
 import si.fri.tpo.pasjehodec.backend.services.ServiceServices;
@@ -84,9 +81,20 @@ public class ServicesApi {
                     }
             )
     })
-    public ResponseEntity<List<ServiceDto>> getAllActiveServices() {
+    public ResponseEntity<List<ServiceDto>> getAllActiveServices(@Parameter(hidden = true) @AuthenticationPrincipal UserEntity userEntity) {
         var data = serviceServices.getAllActiveServices().stream()
-                .map(serviceEntityMapper::castFromServiceEntityToServiceDto)
+                .map(e -> {
+                    var canSubscribe = CollectionUtils.emptyIfNull(e.getServiceDiaries()).stream()
+                            .noneMatch(f -> f.getDogo().getOwner().getId().equals(userEntity.getId()) && f.getStatus().equals("Narocena storitev"));
+
+                    var canAssess = CollectionUtils.emptyIfNull(e.getServiceDiaries()).stream()
+                            .anyMatch(f -> f.getDogo().getOwner().getId().equals(userEntity.getId()) && f.getAssess() == 0);
+
+                    var dto =  serviceEntityMapper.castFromServiceEntityToServiceDto(e);
+                    dto.setCanSubscribe(canSubscribe);
+                    dto.setCanAssess(canAssess);
+                    return dto;
+                })
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(data);
@@ -133,12 +141,12 @@ public class ServicesApi {
     }
 
     @PostMapping("post-rating")
-    public ResponseEntity<ServiceDiaryDto> postRating(Integer serviceId, Integer rating) {
+    public ResponseEntity<ServiceDiaryDto> postRating(Integer id, Integer rating, @Parameter(hidden = true) @AuthenticationPrincipal UserEntity userEntity) throws DataNotFoundException {
 
         // TODO preveri ce je vredu serviceDiaryEntiry podan
 
         // ServiceDiaryEntity entity = serviceDiaryEntityMapper.castFromServiceDiaryDtoToServiceDiaryEntity(serviceDiaryDto);
-        ServiceDiaryEntity entity = serviceDiaryServices.addRating(serviceId, rating);
+        ServiceDiaryEntity entity = serviceDiaryServices.addRating(id, rating, userEntity);
         return ResponseEntity.ok(
                 serviceDiaryEntityMapper.castFromServiceDiaryEntityToServiceDiaryDto(entity)
             );
