@@ -108,9 +108,16 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
     }); 
   }
 
-  public narociStoritev(service: Service){
+  public async narociStoritev(service: Service){
+    console.log(this.dogo, service);
     this.service = service;
-    console.log(service, this.dogo);
+    const observable = await this.serviceServices.postServiceDiary(service, this.dogo);
+      observable.subscribe((data) => {
+        alert("Naročen");
+      }, (err: HttpErrorResponse) => {
+        const errorWrapper: ErrorWrapper = err.error;
+        console.log(errorWrapper);
+      })
   }
 
 }

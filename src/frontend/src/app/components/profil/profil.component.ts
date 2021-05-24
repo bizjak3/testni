@@ -21,7 +21,7 @@ export class ProfilComponent implements OnInit {
   };
 
   public services;
-  public pastServices;
+  public orderedServices;
   public dogos;
 
   public user1: User;
@@ -82,6 +82,18 @@ export class ProfilComponent implements OnInit {
           this.error = 'Napaka pri pridobivanju podatkov';
         }
       );
+      const obs2 = await this.serviceService.getOrderedServices();
+      obs2.subscribe(
+        (data) => {
+          this.orderedServices = data;
+          this.loading = false;
+          console.log(this.orderedServices.length);
+        },
+        () => {
+          this.loading = false;
+          this.error = "Napaka pri pridobivanju podatkov";
+        }
+      )
     }
   }
 

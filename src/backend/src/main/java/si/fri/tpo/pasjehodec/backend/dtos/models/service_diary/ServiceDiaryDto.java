@@ -23,8 +23,8 @@ public class ServiceDiaryDto {
 
     private String status;
 
-    private DogoEntity dogo;
-    private ServiceEntity service;
+    private DogoDto dogo;
+    private ServiceDto service;
 
 //    private Set<LocationEntity> locations;
 //

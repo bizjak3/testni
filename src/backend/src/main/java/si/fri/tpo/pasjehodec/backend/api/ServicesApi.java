@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -114,10 +115,13 @@ public class ServicesApi {
 
     @PostMapping("post-service-diary")
     public ResponseEntity<ServiceDiaryDto> postServiceDiary(@RequestBody ServiceDiaryEntity serviceDiaryEntity,
-                                                            @RequestBody DogoEntity dogoEntity,
-                                                            @RequestBody ServiceEntity serviceEntity) {
+                                                            @Parameter String dogoId,
+                                                            @Parameter String serviceId) {
 
-        ServiceDiaryEntity entity = serviceDiaryServices.createNewServiceDiary(serviceDiaryEntity, dogoEntity, serviceEntity);
+        Integer dogId = Integer.parseInt(dogoId);
+        Integer servicId = Integer.parseInt(serviceId);
+
+        ServiceDiaryEntity entity = serviceDiaryServices.createNewServiceDiary(serviceDiaryEntity, dogId, servicId);
 
         return ResponseEntity.ok(
                 serviceDiaryEntityMapper.castFromServiceDiaryEntityToServiceDiaryDto(entity)
@@ -135,4 +139,25 @@ public class ServicesApi {
                 serviceDiaryEntityMapper.castFromServiceDiaryEntityToServiceDiaryDto(entity)
             );
     }
+
+    @GetMapping("get-ordered-services")
+    public ResponseEntity<ServiceDto[]> getOrderedServices(@AuthenticationPrincipal UserEntity user) {
+
+        return ResponseEntity.ok(
+                CollectionUtils.emptyIfNull(serviceServices.getALlOrderedServices(user)).stream()
+                        .map(serviceEntityMapper::castFromServiceEntityToServiceDto)
+                        .toArray(ServiceDto[]::new)
+        );
+    }
+
+    @GetMapping("get-selected-services")
+    public ResponseEntity<ServiceDto[]> getSelectedServices(@AuthenticationPrincipal UserEntity user) {
+
+        return ResponseEntity.ok(
+                CollectionUtils.emptyIfNull(serviceServices.getALlSelectedServices(user)).stream()
+                        .map(serviceEntityMapper::castFromServiceEntityToServiceDto)
+                        .toArray(ServiceDto[]::new)
+        );
+    }
+
 }
