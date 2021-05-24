@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Dogo } from 'src/app/models/dogo';
 import { Service } from 'src/app/models/service';
+import { ServiceDiary } from 'src/app/models/service_diary';
 import { environment } from 'src/environments/environment';
 import { LoginService } from '../login/login.service';
 
@@ -29,5 +31,16 @@ export class ServiceService {
     const headers = await this.loginService.getAuthorizationHeader();
 
     return this.http.get<Service[]>(this.baseUrl + "user-service-all", {headers});
+  }
+
+  public async postServiceDiary(service: Service, dogo: Dogo): Promise<Observable<any>>{
+    const headers = await this.loginService.getAuthorizationHeader();
+
+    let sd = {
+      dogo: dogo,
+      service: service,
+    }
+
+    return this.http.post(this.baseUrl + "post-service-diary" + "?dogoId=" + dogo.id + "&serviceId=" + service.id, sd, {headers});
   }
 }
