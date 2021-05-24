@@ -174,4 +174,9 @@ public class ServicesApi {
         return ResponseEntity.ok(userEntityMapper.mapUserDtoFromEntity(serviceServices.findPerson(serviceId)));
     }
 
+    @GetMapping("get-service-diary")
+    public ResponseEntity<ServiceDiaryDto> getServiceDiary(@Parameter Integer serviceId) {
+        return ResponseEntity.ok(serviceDiaryEntityMapper.castFromServiceDiaryEntityToServiceDiaryDto(serviceDiaryServices.getServiceDiary(serviceId)));
+    }
+
 }
