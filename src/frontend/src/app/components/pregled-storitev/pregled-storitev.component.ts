@@ -81,8 +81,19 @@ export class PregledStoritevComponent implements OnInit, AfterViewInit {
 
     if(this.user.isDogOwner){
       const obs = await this.dogoService.getUserDogos();
+      const obs2 = await this.serviceServices.getOrderedServices();
+      
       obs.subscribe((data) => {
         this.dogos = data;
+        obs2.subscribe((data2) => {
+          data2.forEach((value) => {
+            for(let i = 0; i < this.services.length; i++){
+              if(value.id == this.services[i].id){
+                this.services[i].ordered = true;
+              }
+            }
+          })
+        })
       })
     }
     
