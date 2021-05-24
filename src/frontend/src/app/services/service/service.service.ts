@@ -49,4 +49,10 @@ export class ServiceService {
 
     return this.http.get<Service[]>(this.baseUrl + "get-ordered-services", {headers});
   }
+
+  public async getSelectedServices(): Promise<Observable<Service[]>> {
+    const headers = await this.loginService.getAuthorizationHeader();
+
+    return this.http.get<Service[]>(this.baseUrl + "get-selected-services", {headers});
+  }
 }

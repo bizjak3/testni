@@ -5,6 +5,7 @@ import {UserService} from '../../services/user/user.service';
 import {ServiceService} from '../../services/service/service.service';
 import { User } from '../../models/user';
 import { DogoService } from 'src/app/services/dogo/dogo.service';
+import { Service } from 'src/app/models/service';
 
 @Component({
   selector: 'app-profil',
@@ -23,6 +24,8 @@ export class ProfilComponent implements OnInit {
   public services;
   public orderedServices;
   public dogos;
+
+  public ocena;
 
   public user1: User;
   public loading: boolean = false;
@@ -69,6 +72,19 @@ export class ProfilComponent implements OnInit {
           this.error = 'Napaka pri pridobivanju podatkov';
         }
       );
+
+      const obs2 = await this.serviceService.getSelectedServices();
+      obs2.subscribe(
+        (data) => {
+          this.orderedServices = data;
+          console.log(data);
+          this.loading = false;
+        },
+        () => {
+          this.loading = false;
+          this.error = 'Napaka pri pridobivanju podatkov';
+        }
+      )
     }
     if(this.loginService.userLoggedIn.isDogOwner){
       const obs = await this.dogoService.getUserDogos();
@@ -95,6 +111,11 @@ export class ProfilComponent implements OnInit {
         }
       )
     }
+  }
+
+  public async oceniStoritev(service: Service){
+    console.log(this.ocena);
+    console.log(service);
   }
 
 }
